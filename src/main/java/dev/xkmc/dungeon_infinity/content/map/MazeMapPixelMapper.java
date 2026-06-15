@@ -1,6 +1,7 @@
 package dev.xkmc.dungeon_infinity.content.map;
 
 import dev.xkmc.dungeon_infinity.content.chunkgen.CellInterpreter;
+import dev.xkmc.dungeon_infinity.content.config.TemplateConfig;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 
@@ -14,17 +15,6 @@ public class MazeMapPixelMapper {
 		CACHE.clear();
 	}
 
-	private static int grayen(int col) {
-		if ((col & 0xffffff) == 0) return col;
-		int r = (col >> 16) & 0xFF;
-		int g = (col >> 8) & 0xFF;
-		int b = col & 0xFF;
-		r = (r >> 1) + 0x7F;
-		g = (g >> 1) + 0x3F;
-		b = (b >> 1) + 0x3F;
-		return col & 0xFF000000 | r << 16 | g << 8 | b;
-	}
-
 	public static int[][] getPixels(int cell, boolean defeated) {
 		int flag = cell & 0x1FFF;
 		defeated |= CellInterpreter.isHallway(cell);
@@ -32,53 +22,70 @@ public class MazeMapPixelMapper {
 		if (CACHE.containsKey(flag))
 			return CACHE.get(flag);
 
-		int b = 0xff000000;
-		int w = 0xff5f5f5f;
-		int a = 0xffafafaf;
-		int g = 0xff7fff7f;
-		int y = 0xffffaf0f;
-		int r = 0xffff7f7f;
+		int b = 0xff000000; // black, cell border color
+		int w = 0xff5f5f5f; // path wall color
+		int a = 0xffd6d6d6; // walkable room color
+		int g = 0xff3042ec; // downward stairs
+		int y = 0xff30a7ec; // upward stairs
+		int f = 0xfff5342b; // mob room color
+		int q = 0xffce3cff; // quad color
+		int r = 0xff5704c6; // boss color
+		int k = 0xff4edf4a; // workshop color
+		int s = 0xff4edf4a; // shop color
+		int h = 0xfff3b829; // warehouse color
+
 
 		int[][] ans = new int[5][5];
 
 		if (CellInterpreter.isBossRoom(flag)) {
 			int boss = CellInterpreter.getBossRoom(flag);
-			int col = boss >= 9 ? g : r;
+			int col = defeated ? boss >= 9 ? g : y : r;
 			int c = boss % 9;
 			int x = c / 3;
 			int z = c % 3;
 			for (int i = 0; i < 5; i++)
 				Arrays.fill(ans[i], col);
 			if (x == 0 || x == 2) {
-				int k = x * 2;
+				int j = x * 2;
 				if (z != 1) {
 					for (int i = 0; i < 5; i++)
-						ans[k][i] = b;
+						ans[j][i] = b;
 				} else {
-					ans[k][0] = ans[k][4] = b;
+					ans[j][0] = ans[j][4] = b;
 				}
 			}
 			if (z == 0 || z == 2) {
-				int k = z * 2;
+				int j = z * 2;
 				if (x != 1) {
 					for (int i = 0; i < 5; i++)
-						ans[i][k] = b;
+						ans[i][j] = b;
 				} else {
-					ans[0][k] = ans[4][k] = b;
+					ans[0][j] = ans[4][j] = b;
 				}
 			}
 		} else if (CellInterpreter.isQuadRoom(flag)) {
 			int open = CellInterpreter.getOpenings(flag);
+			int col = defeated ? a : q;
 			for (int i = 0; i < 5; i++)
-				Arrays.fill(ans[i], r);
+				Arrays.fill(ans[i], col);
 			if ((open & 1) == 0) for (int i = 0; i <= 4; i++) ans[0][i] = b;
 			if ((open & 2) == 0) for (int i = 0; i <= 4; i++) ans[4][i] = b;
 			if ((open & 4) == 0) for (int i = 0; i <= 4; i++) ans[i][0] = b;
 			if ((open & 8) == 0) for (int i = 0; i <= 4; i++) ans[i][4] = b;
 		} else {
 			int open = CellInterpreter.getOpenings(flag);
-			int c = (open & 16) != 0 ? y : (open & 32) != 0 ? g : a;
-			if (CellInterpreter.isHallway(flag)) {
+			int c = defeated ? (open & 16) != 0 ? y : (open & 32) != 0 ? g : a : f;
+			boolean special = false;
+			if (CellInterpreter.isHallway(flag) && CellInterpreter.getTemplateType(flag) == 1) {
+				special = true;
+				int variant = CellInterpreter.getVariant(cell);
+				int style = CellInterpreter.getStyle(cell);
+				int warehouse = TemplateConfig.of(flag).variantIndex(style, "warehouse");
+				int workshop = TemplateConfig.of(flag).variantIndex(style, "workshop");
+				int shop = TemplateConfig.of(flag).variantIndex(style, "shop");
+				c = variant == warehouse ? h : variant == workshop ? k : variant == shop ? s : c;
+			}
+			if (CellInterpreter.isHallway(flag) && !special) {
 				for (int i = 0; i < 5; i++)
 					Arrays.fill(ans[i], w);
 				if ((open & 1) != 0) for (int i = 0; i <= 2; i++) ans[i][2] = c;
@@ -94,13 +101,6 @@ public class MazeMapPixelMapper {
 			if ((open & 2) == 0) for (int i = 1; i <= 3; i++) ans[4][i] = b;
 			if ((open & 4) == 0) for (int i = 1; i <= 3; i++) ans[i][0] = b;
 			if ((open & 8) == 0) for (int i = 1; i <= 3; i++) ans[i][4] = b;
-		}
-		if (!defeated) {
-			for (int i = 0; i < 5; i++) {
-				for (int j = 0; j < 5; j++) {
-					ans[i][j] = grayen(ans[i][j]);
-				}
-			}
 		}
 		CACHE.put(flag, ans);
 		return ans;
