@@ -1,0 +1,98 @@
+{
+  "templates": {
+    "cross_stairs": {
+      "stone:": {
+        "path": "test/cross_stairs",
+        "spawn": "dungeon_infinity:stone/quad",
+        "weight": 100
+      }
+    },
+    "path/corner": {
+      "stone:": {
+        "path": "test/path/corner",
+        "weight": 100
+      }
+    },
+    "path/cross": {
+      "stone:": {
+        "path": "test/path/cross",
+        "weight": 100
+      }
+    },
+    "path/end": {
+      "stone:shop": {
+        "path": "test/shop",
+        "weight": 100
+      },
+      "stone:warehouse": {
+        "path": "test/warehouse",
+        "weight": 100
+      },
+      "stone:workshop": {
+        "path": "test/workshop",
+        "weight": 100
+      }
+    },
+    "path/straight": {
+      "stone:": {
+        "path": "test/path/straight",
+        "weight": 100
+      }
+    },
+    "path/t_way": {
+      "stone:": {
+        "path": "test/path/t_way",
+        "weight": 100
+      }
+    },
+    "quad": {
+      "stone:": {
+        "path": "test/quad",
+        "spawn": "dungeon_infinity:stone/quad",
+        "weight": 100
+      }
+    },
+    "room/corner": {
+      "stone:": {
+        "path": "stone/room/corner",
+        "spawn": "dungeon_infinity:stone/room",
+        "weight": 100
+      }
+    },
+    "room/cross": {
+      "stone:": {
+        "path": "stone/room/cross",
+        "spawn": "dungeon_infinity:stone/room",
+        "weight": 100
+      }
+    },
+    "room/end": {
+      "stone:": {
+        "path": "stone/room/end",
+        "spawn": "dungeon_infinity:stone/room",
+        "weight": 100
+      }
+    },
+    "room/straight": {
+      "stone:": {
+        "path": "stone/room/straight",
+        "spawn": "dungeon_infinity:stone/room",
+        "weight": 100
+      }
+    },
+    "room/t_way": {
+      "stone:": {
+        "path": "stone/room/t_way",
+        "spawn": "dungeon_infinity:stone/room",
+        "weight": 100
+      }
+    },
+    "stairs": {
+      "stone:": {
+        "path": "test/stairs",
+        "spawn": "dungeon_infinity:stone/quad",
+        "weight": 100
+      }
+    }
+  }
+}

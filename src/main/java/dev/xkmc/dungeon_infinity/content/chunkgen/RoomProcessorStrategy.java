@@ -15,6 +15,12 @@ public class RoomProcessorStrategy {
 
 	private static final String[] STYLES = {"sculk", "deepslate", "copper", "mineshaft", "stone"};
 
+	private static final Map<String, Integer> SPECIAL_ROOMS = Map.of(
+			"warehouse", 8,
+			"workshop", 4,
+			"shop", 2
+	);
+
 	private final int r1;
 
 	public RoomProcessorStrategy(int r1) {
@@ -23,6 +29,7 @@ public class RoomProcessorStrategy {
 
 	public float getRoomChance(int cell) {
 		return switch (CellInterpreter.getTemplateType(cell)) {
+			case 1 -> 0.9f;
 			case 5 -> 1;
 			case 4 -> 0.5f;
 			case 2, 3 -> 0.3f;
@@ -229,6 +236,71 @@ public class RoomProcessorStrategy {
 			maze[x][z] |= CellInterpreter.setRoomTypeMask(maze[x][z], mark);
 			maze[x][z] |= CellInterpreter.setStyleAndVariant(style, variant);
 		}
+
+		public void set(int x, int z, int mark, String variant) {
+			marker[x][z] = mark;
+			maze[x][z] |= CellInterpreter.setRoomTypeMask(maze[x][z], mark);
+			variants[x][z] = TemplateConfig.of(maze[x][z]).variantIndex(style, variant);
+			maze[x][z] |= CellInterpreter.setStyleAndVariant(style, variants[x][z]);
+		}
+
+		public void setEndRoom(int x, int z) {
+			marker[x][z] = -1;
+		}
+
+		public void resolveEndRoom() {
+			List<Integer> ends = new ArrayList<>();
+			for (int x = 0; x < r1; x++) {
+				for (int z = 0; z < r1; z++) {
+					if (marker[x][z] == -1) {
+						ends.add(x * r1 + z);
+					}
+				}
+			}
+			int n = ends.size();
+			for (int i = 0; i < n * 2; i++) {
+				int a = rand.nextInt(n);
+				int b = rand.nextInt(n);
+				var temp = ends.get(a);
+				ends.set(a, ends.get(b));
+				ends.set(b, temp);
+			}
+			int total = 0;
+			Map<String, Integer> rooms = new LinkedHashMap<>();
+			for (var e : SPECIAL_ROOMS.entrySet()) {
+				total += e.getValue();
+				rooms.put(e.getKey(), e.getValue());
+			}
+			if (total > ends.size()) {
+				int average = ends.size() / SPECIAL_ROOMS.size();
+				for (var e : SPECIAL_ROOMS.entrySet()) {
+					if (e.getValue() > average) {
+						total -= e.getValue() - average;
+						rooms.put(e.getKey(), average);
+					}
+				}
+			}
+			int index = 0;
+			for (var e : rooms.entrySet()) {
+				String room = e.getKey();
+				int count = e.getValue();
+				for (int i = 0; i < count; i++) {
+					int pos = ends.get(index);
+					index++;
+					int x = pos / r1;
+					int z = pos % r1;
+					set(x, z, CellInterpreter.HALLWAY, room);
+				}
+			}
+			for (int i = index; i < n; i++) {
+				int pos = ends.get(i);
+				int x = pos / r1;
+				int z = pos % r1;
+				set(x, z, CellInterpreter.ROOM + 1);
+			}
+
+		}
+
 	}
 
 	public class Scanner {
@@ -277,8 +349,8 @@ public class RoomProcessorStrategy {
 				for (int ddx = 0; ddx <= 1; ddx++) {
 					for (int ddz = 0; ddz <= 1; ddz++) {
 						int cell = maze[dx + ddx][dz + ddz];
-						marker.set(dx + ddx, dz + ddz, CellInterpreter.getTemplateType(cell) == 1 ?
-								CellInterpreter.ROOM : CellInterpreter.HALLWAY);
+						if (CellInterpreter.getTemplateType(cell) != 1)
+							marker.set(dx + ddx, dz + ddz, CellInterpreter.HALLWAY);
 					}
 				}
 
@@ -316,14 +388,17 @@ public class RoomProcessorStrategy {
 					if (cell >= 64)
 						grid.set(x, z, CellInterpreter.SPECIAL);
 					int flag = CellInterpreter.getCellFlags(cell);
-					if (flag != 3)
+					if (CellInterpreter.getTemplateType(cell) == 1) {
+						grid.setEndRoom(x, z);
+					} else if (flag != 3) {
 						grid.set(x, z, CellInterpreter.getRoomMarker(cell, flag));
-					else if ((cell & 1) != 0 && x == 0 || (cell & 2) != 0 && x == r1 - 1 ||
-							(cell & 4) != 0 && z == 0 || (cell & 8) != 0 && z == r1 - 1)
+					} else if ((cell & 1) != 0 && x == 0 || (cell & 2) != 0 && x == r1 - 1 ||
+							(cell & 4) != 0 && z == 0 || (cell & 8) != 0 && z == r1 - 1) {
 						grid.set(x, z, CellInterpreter.HALLWAY);
-
+					}
 				}
 			}
+			grid.resolveEndRoom();
 			for (int x = 0; x < r1; x++) {
 				for (int z = 0; z < r1; z++) {
 					if (grid.marker[x][z] == CellInterpreter.SPECIAL) {

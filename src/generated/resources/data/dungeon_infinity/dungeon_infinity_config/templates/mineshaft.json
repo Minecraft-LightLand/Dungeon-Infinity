@@ -1,0 +1,105 @@
+{
+  "templates": {
+    "boss": {
+      "mineshaft:": {
+        "path": "test/boss",
+        "spawn": "dungeon_infinity:stone/boss",
+        "weight": 100
+      }
+    },
+    "cross_stairs": {
+      "mineshaft:": {
+        "path": "test/cross_stairs",
+        "spawn": "dungeon_infinity:stone/quad",
+        "weight": 100
+      }
+    },
+    "path/corner": {
+      "mineshaft:": {
+        "path": "test/path/corner",
+        "weight": 100
+      }
+    },
+    "path/cross": {
+      "mineshaft:": {
+        "path": "test/path/cross",
+        "weight": 100
+      }
+    },
+    "path/end": {
+      "mineshaft:shop": {
+        "path": "test/shop",
+        "weight": 100
+      },
+      "mineshaft:warehouse": {
+        "path": "test/warehouse",
+        "weight": 100
+      },
+      "mineshaft:workshop": {
+        "path": "test/workshop",
+        "weight": 100
+      }
+    },
+    "path/straight": {
+      "mineshaft:": {
+        "path": "test/path/straight",
+        "weight": 100
+      }
+    },
+    "path/t_way": {
+      "mineshaft:": {
+        "path": "test/path/t_way",
+        "weight": 100
+      }
+    },
+    "quad": {
+      "mineshaft:": {
+        "path": "test/quad",
+        "spawn": "dungeon_infinity:stone/quad",
+        "weight": 100
+      }
+    },
+    "room/corner": {
+      "mineshaft:": {
+        "path": "mineshaft/room/corner",
+        "spawn": "dungeon_infinity:stone/room",
+        "weight": 100
+      }
+    },
+    "room/cross": {
+      "mineshaft:": {
+        "path": "mineshaft/room/cross",
+        "spawn": "dungeon_infinity:stone/room",
+        "weight": 100
+      }
+    },
+    "room/end": {
+      "mineshaft:": {
+        "path": "mineshaft/room/end",
+        "spawn": "dungeon_infinity:stone/room",
+        "weight": 100
+      }
+    },
+    "room/straight": {
+      "mineshaft:": {
+        "path": "mineshaft/room/straight",
+        "spawn": "dungeon_infinity:stone/room",
+        "weight": 100
+      }
+    },
+    "room/t_way": {
+      "mineshaft:": {
+        "path": "mineshaft/room/t_way",
+        "spawn": "dungeon_infinity:stone/room",
+        "weight": 100
+      }
+    },
+    "stairs": {
+      "mineshaft:": {
+        "path": "test/stairs",
+        "spawn": "dungeon_infinity:stone/quad",
+        "weight": 100
+      }
+    }
+  }
+}

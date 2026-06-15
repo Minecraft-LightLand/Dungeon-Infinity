@@ -36,7 +36,7 @@ public class TemplateConfig extends BaseConfig {
 				.data[CellInterpreter.getVariant(cell)];
 	}
 
-	@ConfigCollect(CollectType.MAP_OVERWRITE)
+	@ConfigCollect(CollectType.MAP_COLLECT)
 	@SerialField
 	public final LinkedHashMap<String, LinkedHashMap<Identifier, TemplateData>> templates = new LinkedHashMap<>();
 
@@ -61,7 +61,7 @@ public class TemplateConfig extends BaseConfig {
 			revMap.put(ids[i], i);
 		}
 		for (var ent : templates.entrySet()) {
-			cache.put(ent.getKey(), new CompiledSet(ids, ent.getValue()));
+			cache.put(ent.getKey(), new CompiledSet(ids, ent.getKey(), ent.getValue()));
 		}
 		indexed = new CompiledSet[TemplateMapper.ROOMS.length];
 		for (int i = 0; i < indexed.length; i++) {
@@ -81,10 +81,10 @@ public class TemplateConfig extends BaseConfig {
 		return new StyleBuilder(this, style);
 	}
 
-	public record TemplateData(int weight, @Nullable Identifier spawn) {
+	public record TemplateData(int weight, String path, @Nullable Identifier spawn) {
 
 		public TemplateData() {
-			this(100, null);
+			this(100, "", null);
 		}
 
 	}
@@ -94,7 +94,7 @@ public class TemplateConfig extends BaseConfig {
 		private final String[] ids;
 		private final CompiledRoom[] data;
 
-		private CompiledSet(String[] ids, Map<Identifier, TemplateData> map) {
+		private CompiledSet(String[] ids, String room, Map<Identifier, TemplateData> map) {
 			Map<String, List<Pair<String, TemplateData>>> split = new LinkedHashMap<>();
 			for (var ent : map.entrySet()) {
 				var id = ent.getKey();
@@ -105,7 +105,8 @@ public class TemplateConfig extends BaseConfig {
 			this.ids = ids;
 			data = new CompiledRoom[n];
 			for (int i = 0; i < n; i++) {
-				data[i] = new CompiledRoom(split.get(ids[i]));
+				var x = split.get(ids[i]);
+				data[i] = new CompiledRoom(room, x == null ? new ArrayList<>() : x);
 			}
 		}
 
@@ -117,8 +118,12 @@ public class TemplateConfig extends BaseConfig {
 			return data[i].data[j];
 		}
 
+		public int variantIndex(int i, String variant) {
+			return data[i].revMap.get(variant);
+		}
+
 		public String path(String room, int i, int j) {
-			return ids[i] + "/" + room + data[i].ids[j];
+			return ids[i] + "/" + data[i].path(j);
 		}
 
 		public int getRandom(int i, RandomSource rand) {
@@ -129,11 +134,14 @@ public class TemplateConfig extends BaseConfig {
 
 	private static class CompiledRoom {
 
+		private final String room;
 		private final String[] ids;
 		private final TemplateData[] data;
 		private final WeightedList<Integer> weighted;
+		private final Map<String, Integer> revMap = new LinkedHashMap<>();
 
-		private CompiledRoom(List<Pair<String, TemplateData>> list) {
+		private CompiledRoom(String room, List<Pair<String, TemplateData>> list) {
+			this.room = room;
 			list.sort(Comparator.comparing(Pair::getFirst));
 			int n = list.size();
 			ids = new String[n];
@@ -143,8 +151,13 @@ public class TemplateConfig extends BaseConfig {
 				ids[i] = list.get(i).getFirst();
 				data[i] = list.get(i).getSecond();
 				builder.add(i, data[i].weight());
+				revMap.put(ids[i], i);
 			}
 			weighted = builder.build();
+		}
+
+		private String path(int i) {
+			return data[i].path();
 		}
 
 	}
@@ -154,9 +167,12 @@ public class TemplateConfig extends BaseConfig {
 		private final TemplateConfig config;
 		private final String style;
 
+		private String root;
+
 		private StyleBuilder(TemplateConfig config, String style) {
 			this.config = config;
 			this.style = style;
+			root = style + "/";
 		}
 
 		public VariantBuilder room(String room) {
@@ -165,6 +181,11 @@ public class TemplateConfig extends BaseConfig {
 
 		public TemplateConfig end() {
 			return config;
+		}
+
+		public StyleBuilder root(String folder) {
+			root = folder + "/";
+			return this;
 		}
 
 	}
@@ -180,12 +201,26 @@ public class TemplateConfig extends BaseConfig {
 		}
 
 		public VariantBuilder variant(String suffix, int weight) {
-			return variant(suffix, weight, null);
+			return variant(suffix, weight, room + suffix, null);
 		}
 
 		public VariantBuilder variant(String suffix, int weight, @Nullable Identifier id) {
+			return variant(suffix, weight, room + suffix, id);
+		}
+
+		public VariantBuilder variant(String suffix, int weight, String path) {
+			return variant(suffix, weight, path + suffix, null);
+		}
+
+		public VariantBuilder variants(String... names) {
+			for (var name : names)
+				variant(name, 100, name, null);
+			return this;
+		}
+
+		public VariantBuilder variant(String suffix, int weight, String path, @Nullable Identifier id) {
 			parent.config.templates.computeIfAbsent(room, k -> new LinkedHashMap<>())
-					.put(Identifier.fromNamespaceAndPath(parent.style, suffix), new TemplateData(weight, id));
+					.put(Identifier.fromNamespaceAndPath(parent.style, suffix), new TemplateData(weight, parent.root + path, id));
 			return this;
 		}
 

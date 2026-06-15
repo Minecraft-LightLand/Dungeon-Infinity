@@ -7,7 +7,7 @@ public class TemplateMapper {
 	public static final String[] ROOMS = {
 			"boss", "quad", "stairs", "cross_stairs",
 			"room/end", "room/straight", "room/corner", "room/t_way", "room/cross",
-			"path/straight", "path/corner", "path/t_way", "path/cross"
+			"path/end", "path/straight", "path/corner", "path/t_way", "path/cross"
 	};
 
 	public static int getTemplateIndex(int cell) {
