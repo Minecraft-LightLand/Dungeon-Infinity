@@ -91,10 +91,12 @@ public class TemplateConfig extends BaseConfig {
 
 	public static class CompiledSet {
 
+		private final String room;
 		private final String[] ids;
 		private final CompiledRoom[] data;
 
 		private CompiledSet(String[] ids, String room, Map<Identifier, TemplateData> map) {
+			this.room = room;
 			Map<String, List<Pair<String, TemplateData>>> split = new LinkedHashMap<>();
 			for (var ent : map.entrySet()) {
 				var id = ent.getKey();
@@ -119,11 +121,15 @@ public class TemplateConfig extends BaseConfig {
 		}
 
 		public int variantIndex(int i, String variant) {
+			if (!data[i].revMap.containsKey(variant)) {
+				DungeonInfinity.LOGGER.throwing(new IllegalStateException("Set " + room + " at style " + ids[i] + " has no variant " + variant));
+				return 0;
+			}
 			return data[i].revMap.get(variant);
 		}
 
 		public String path(String room, int i, int j) {
-			return ids[i] + "/" + data[i].path(j);
+			return data[i].path(j);
 		}
 
 		public int getRandom(int i, RandomSource rand) {

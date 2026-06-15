@@ -16,13 +16,13 @@
     },
     "path/corner": {
       "deepslate:": {
-        "path": "test/path/corner",
+        "path": "deepslate/path/corner",
         "weight": 100
       }
     },
     "path/cross": {
       "deepslate:": {
-        "path": "test/path/cross",
+        "path": "deepslate/path/cross",
         "weight": 100
       }
     },
@@ -42,13 +42,13 @@
     },
     "path/straight": {
       "deepslate:": {
-        "path": "test/path/straight",
+        "path": "deepslate/path/straight",
         "weight": 100
       }
     },
     "path/t_way": {
       "deepslate:": {
-        "path": "test/path/t_way",
+        "path": "deepslate/path/t_way",
         "weight": 100
       }
     },
@@ -61,35 +61,35 @@
     },
     "room/corner": {
       "deepslate:": {
-        "path": "deepslate/room/corner",
+        "path": "test/room/corner",
         "spawn": "dungeon_infinity:stone/room",
         "weight": 100
       }
     },
     "room/cross": {
       "deepslate:": {
-        "path": "deepslate/room/cross",
+        "path": "test/room/cross",
         "spawn": "dungeon_infinity:stone/room",
         "weight": 100
       }
     },
     "room/end": {
       "deepslate:": {
-        "path": "deepslate/room/end",
+        "path": "test/room/end",
         "spawn": "dungeon_infinity:stone/room",
         "weight": 100
       }
     },
     "room/straight": {
       "deepslate:": {
-        "path": "deepslate/room/straight",
+        "path": "test/room/straight",
         "spawn": "dungeon_infinity:stone/room",
         "weight": 100
       }
     },
     "room/t_way": {
       "deepslate:": {
-        "path": "deepslate/room/t_way",
+        "path": "test/room/t_way",
         "spawn": "dungeon_infinity:stone/room",
         "weight": 100
       }

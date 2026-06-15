@@ -16,13 +16,13 @@
     },
     "path/corner": {
       "sculk:": {
-        "path": "test/path/corner",
+        "path": "sculk/path/corner",
         "weight": 100
       }
     },
     "path/cross": {
       "sculk:": {
-        "path": "test/path/cross",
+        "path": "sculk/path/cross",
         "weight": 100
       }
     },
@@ -42,13 +42,13 @@
     },
     "path/straight": {
       "sculk:": {
-        "path": "test/path/straight",
+        "path": "sculk/path/straight",
         "weight": 100
       }
     },
     "path/t_way": {
       "sculk:": {
-        "path": "test/path/t_way",
+        "path": "sculk/path/t_way",
         "weight": 100
       }
     },
@@ -61,35 +61,35 @@
     },
     "room/corner": {
       "sculk:": {
-        "path": "sculk/room/corner",
+        "path": "test/room/corner",
         "spawn": "dungeon_infinity:stone/room",
         "weight": 100
       }
     },
     "room/cross": {
       "sculk:": {
-        "path": "sculk/room/cross",
+        "path": "test/room/cross",
         "spawn": "dungeon_infinity:stone/room",
         "weight": 100
       }
     },
     "room/end": {
       "sculk:": {
-        "path": "sculk/room/end",
+        "path": "test/room/end",
         "spawn": "dungeon_infinity:stone/room",
         "weight": 100
       }
     },
     "room/straight": {
       "sculk:": {
-        "path": "sculk/room/straight",
+        "path": "test/room/straight",
         "spawn": "dungeon_infinity:stone/room",
         "weight": 100
       }
     },
     "room/t_way": {
       "sculk:": {
-        "path": "sculk/room/t_way",
+        "path": "test/room/t_way",
         "spawn": "dungeon_infinity:stone/room",
         "weight": 100
       }

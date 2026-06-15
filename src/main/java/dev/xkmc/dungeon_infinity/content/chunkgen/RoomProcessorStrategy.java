@@ -385,8 +385,10 @@ public class RoomProcessorStrategy {
 				for (int z = 0; z < r1; z++) {
 					if (grid.marker[x][z] != 0) continue;
 					int cell = maze[x][z];
-					if (cell >= 64)
+					if (cell >= 64) {
 						grid.set(x, z, CellInterpreter.SPECIAL);
+						continue;
+					}
 					int flag = CellInterpreter.getCellFlags(cell);
 					if (CellInterpreter.getTemplateType(cell) == 1) {
 						grid.setEndRoom(x, z);

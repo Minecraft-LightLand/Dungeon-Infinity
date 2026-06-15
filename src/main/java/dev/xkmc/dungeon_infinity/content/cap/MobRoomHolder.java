@@ -29,9 +29,10 @@ public class MobRoomHolder {
 				}
 			}
 		}
+		var spawner = rooms[0].length > 1 ? rooms[1][0][1] : list.getFirst();
 		holder = rooms[0].length > 1 ? rooms[1][1][1] : list.getFirst();
 		if (holder.data == null) {
-			holder.data = holder.createSpawner(rooms);
+			holder.data = spawner.createSpawner(rooms);
 		}
 		data = holder.data;
 	}

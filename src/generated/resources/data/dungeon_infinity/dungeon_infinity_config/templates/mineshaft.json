@@ -16,13 +16,13 @@
     },
     "path/corner": {
       "mineshaft:": {
-        "path": "test/path/corner",
+        "path": "mineshaft/path/corner",
         "weight": 100
       }
     },
     "path/cross": {
       "mineshaft:": {
-        "path": "test/path/cross",
+        "path": "mineshaft/path/cross",
         "weight": 100
       }
     },
@@ -42,13 +42,13 @@
     },
     "path/straight": {
       "mineshaft:": {
-        "path": "test/path/straight",
+        "path": "mineshaft/path/straight",
         "weight": 100
       }
     },
     "path/t_way": {
       "mineshaft:": {
-        "path": "test/path/t_way",
+        "path": "mineshaft/path/t_way",
         "weight": 100
       }
     },
@@ -61,35 +61,35 @@
     },
     "room/corner": {
       "mineshaft:": {
-        "path": "mineshaft/room/corner",
+        "path": "test/room/corner",
         "spawn": "dungeon_infinity:stone/room",
         "weight": 100
       }
     },
     "room/cross": {
       "mineshaft:": {
-        "path": "mineshaft/room/cross",
+        "path": "test/room/cross",
         "spawn": "dungeon_infinity:stone/room",
         "weight": 100
       }
     },
     "room/end": {
       "mineshaft:": {
-        "path": "mineshaft/room/end",
+        "path": "test/room/end",
         "spawn": "dungeon_infinity:stone/room",
         "weight": 100
       }
     },
     "room/straight": {
       "mineshaft:": {
-        "path": "mineshaft/room/straight",
+        "path": "test/room/straight",
         "spawn": "dungeon_infinity:stone/room",
         "weight": 100
       }
     },
     "room/t_way": {
       "mineshaft:": {
-        "path": "mineshaft/room/t_way",
+        "path": "test/room/t_way",
         "spawn": "dungeon_infinity:stone/room",
         "weight": 100
       }

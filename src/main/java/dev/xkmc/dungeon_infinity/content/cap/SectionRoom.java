@@ -95,8 +95,16 @@ public class SectionRoom {
 				for (int z = src.getZ(); z <= dst.getZ(); z++) {
 					mpos.set(x, y, z);
 					var old = lc.getBlockState(mpos);
-					if (old.is(DITagGen.FORCEFIELD_CANNOT_REPLACE)) continue;
-					level().setBlockAndUpdate(mpos, old.isSolid() ? block : wall);
+					if (gen) {
+						if (!old.isAir()) continue;//TODO
+						if (old.is(DITagGen.FORCEFIELD_CANNOT_REPLACE)) continue;
+						level().setBlockAndUpdate(mpos, old.isSolid() ? block : wall);
+					} else {
+						if (old.is(DIItems.FORCEFIELD_BLOCK))
+							level().setBlockAndUpdate(mpos, block);
+						else if (old.is(DIItems.FORCEFIELD))
+							level().setBlockAndUpdate(mpos, wall);
+					}
 				}
 			}
 		}

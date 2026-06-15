@@ -28,7 +28,7 @@ public class TemplateMapper {
 				default -> -1;
 			};
 			if (open < 16 && CellInterpreter.isHallway(cell)) {
-				ans += 4;
+				ans += 5;
 			}
 			return ans;
 		}
