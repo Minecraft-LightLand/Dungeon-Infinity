@@ -24,7 +24,6 @@ public class DILootGen {
 	public static final ResourceKey<LootTable> STONE_ROOM = replace("stone/room");
 	public static final ResourceKey<LootTable> STONE_QUAD = replace("stone/quad");
 	public static final ResourceKey<LootTable> STONE_STAIR = replace("stone/stair");
-	public static final ResourceKey<LootTable> STONE_BOSS = replace("stone/boss");
 
 	// ===== MINESHAFT 矿道级 =====
 	public static final ResourceKey<LootTable> MINESHAFT_ROOM = replace("mineshaft/room");
@@ -50,6 +49,7 @@ public class DILootGen {
 	public static final ResourceKey<LootTable> SCULK_STAIR = replace("sculk/stair");
 	public static final ResourceKey<LootTable> SCULK_BOSS = replace("sculk/boss");
 
+	@SuppressWarnings("deprecation")
 	public static void genLoot(RegistrateLootTableProvider pvd) {
 
 		// ==================== STONE ====================
@@ -87,21 +87,6 @@ public class DILootGen {
 						.withPool(LootPool.lootPool()
 								.add(LootItem.lootTableItem(Items.GOLDEN_APPLE))
 								.add(LootTableTemplate.getItem(Items.COOKED_PORKCHOP, 3, 6))
-						)
-		));
-
-		pvd.addLootAction(LootContextParamSets.CHEST, sub -> sub.accept(STONE_BOSS,
-				LootTable.lootTable()
-						.withPool(LootPool.lootPool()
-								.add(LootTableTemplate.getItem(Items.GOLD_INGOT, 5, 10))
-								.add(LootTableTemplate.getItem(Items.GOLDEN_APPLE, 2, 4))
-						)
-						.withPool(LootPool.lootPool()
-								.add(LootTableTemplate.getItem(Items.GOLD_BLOCK, 1, 2))
-						)
-						.withPool(LootPool.lootPool()
-								.add(LootTableTemplate.getItem(Items.COOKED_BEEF, 4, 8))
-								.add(LootTableTemplate.getItem(Items.GOLDEN_APPLE, 1, 2))
 						)
 		));
 

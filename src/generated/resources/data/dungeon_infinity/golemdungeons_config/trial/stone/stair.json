@@ -3,7 +3,7 @@
   "list": [
     [
       {
-        "num": 2,
+        "num": 1,
         "target": "golemdungeons:factory_humanoid_basic"
       },
       {
@@ -13,28 +13,18 @@
     ],
     [
       {
-        "num": 3,
+        "num": 2,
         "target": "golemdungeons:factory_humanoid_basic"
       },
       {
         "num": 1,
-        "target": "dungeon_infinity:early_ranged"
-      }
-    ],
-    [
-      {
-        "num": 4,
-        "target": "golemdungeons:factory_humanoid_basic"
-      },
-      {
-        "num": 2,
         "target": "dungeon_infinity:early_ranged"
       }
     ]
   ],
   "maxY": 6,
   "minY": -4,
-  "reward": "dungeon_infinity:stone/boss",
+  "reward": "dungeon_infinity:stone/stair",
   "spawnCost": 1000,
   "triggerRange": 12
 }

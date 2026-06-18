@@ -23,16 +23,16 @@ public class GolemSpawnData extends AbstractGolemSpawn {
 
 	// ==================== STONE 石制级（最低难度）====================
 	// 使用 FactoryGolemSpawn 的配置，金材料由战利品表产出
-
 	public static final Identifier STONE_ROOM = DungeonInfinity.loc("stone/room");
 	public static final Identifier STONE_QUAD = DungeonInfinity.loc("stone/quad");
-	public static final Identifier STONE_BOSS = DungeonInfinity.loc("stone/boss");
+	public static final Identifier STONE_STAIR = DungeonInfinity.loc("stone/stair");
 
 	// ==================== MINESHAFT 矿道级（次低难度）====================
 	// 使用 FactoryGolemSpawn 的配置，铜/铁材料由战利品表产出
 
 	public static final Identifier MINESHAFT_ROOM = DungeonInfinity.loc("mineshaft/room");
 	public static final Identifier MINESHAFT_QUAD = DungeonInfinity.loc("mineshaft/quad");
+	public static final Identifier MINESHAFT_STAIR = DungeonInfinity.loc("mineshaft/stair");
 	public static final Identifier MINESHAFT_BOSS = DungeonInfinity.loc("mineshaft/boss");
 
 	// ==================== COPPER 铜制级（基准难度）====================
@@ -82,10 +82,9 @@ public class GolemSpawnData extends AbstractGolemSpawn {
 				.add(of(FactoryGolemSpawn.HUMANOID_BASIC, 2), of(EARLY_RANGED, 1))
 		);
 
-		col.add(GolemDungeons.TRIAL, STONE_BOSS, new TrialConfig().setReward(DILootGen.STONE_BOSS).genChest()
+		col.add(GolemDungeons.TRIAL, STONE_STAIR, new TrialConfig().setReward(DILootGen.STONE_STAIR).genChest()
+				.add(of(FactoryGolemSpawn.HUMANOID_BASIC, 1), of(EARLY_RANGED, 1))
 				.add(of(FactoryGolemSpawn.HUMANOID_BASIC, 2), of(EARLY_RANGED, 1))
-				.add(of(FactoryGolemSpawn.HUMANOID_BASIC, 3), of(EARLY_RANGED, 1))
-				.add(of(FactoryGolemSpawn.HUMANOID_BASIC, 4), of(EARLY_RANGED, 2))
 		);
 
 		// --- MINESHAFT 矿道级（工厂兵，混入大型怪）---
@@ -101,6 +100,12 @@ public class GolemSpawnData extends AbstractGolemSpawn {
 						of(EARLY_RANGED, 1),
 						of(FactoryGolemSpawn.LARGE_2, 1),
 						of(FactoryGolemSpawn.HUMANOID_ROCKET, 1))
+		);
+
+		col.add(GolemDungeons.TRIAL, MINESHAFT_STAIR, new TrialConfig().setReward(DILootGen.MINESHAFT_STAIR).genChest()
+				.add(of(FactoryGolemSpawn.HUMANOID_BASIC, 2), of(EARLY_RANGED, 1))
+				.add(of(FactoryGolemSpawn.HUMANOID_BASIC, 3), of(EARLY_RANGED, 1))
+				.add(of(FactoryGolemSpawn.HUMANOID_BASIC, 4), of(EARLY_RANGED, 2))
 		);
 
 		col.add(GolemDungeons.TRIAL, MINESHAFT_BOSS, new TrialConfig().setReward(DILootGen.MINESHAFT_BOSS).genChest()

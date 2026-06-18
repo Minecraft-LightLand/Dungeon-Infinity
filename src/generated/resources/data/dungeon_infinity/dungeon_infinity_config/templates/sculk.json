@@ -3,14 +3,14 @@
     "boss": {
       "sculk:": {
         "path": "test/boss",
-        "spawn": "dungeon_infinity:stone/boss",
+        "spawn": "dungeon_infinity:sculk/boss",
         "weight": 100
       }
     },
     "cross_stairs": {
       "sculk:": {
         "path": "test/cross_stairs",
-        "spawn": "dungeon_infinity:stone/quad",
+        "spawn": "dungeon_infinity:sculk/stair",
         "weight": 100
       }
     },
@@ -55,49 +55,49 @@
     "quad": {
       "sculk:": {
         "path": "test/quad",
-        "spawn": "dungeon_infinity:stone/quad",
+        "spawn": "dungeon_infinity:sculk/quad",
         "weight": 100
       }
     },
     "room/corner": {
       "sculk:": {
         "path": "test/room/corner",
-        "spawn": "dungeon_infinity:stone/room",
+        "spawn": "dungeon_infinity:sculk/room",
         "weight": 100
       }
     },
     "room/cross": {
       "sculk:": {
         "path": "test/room/cross",
-        "spawn": "dungeon_infinity:stone/room",
+        "spawn": "dungeon_infinity:sculk/room",
         "weight": 100
       }
     },
     "room/end": {
       "sculk:": {
         "path": "test/room/end",
-        "spawn": "dungeon_infinity:stone/room",
+        "spawn": "dungeon_infinity:sculk/room",
         "weight": 100
       }
     },
     "room/straight": {
       "sculk:": {
         "path": "test/room/straight",
-        "spawn": "dungeon_infinity:stone/room",
+        "spawn": "dungeon_infinity:sculk/room",
         "weight": 100
       }
     },
     "room/t_way": {
       "sculk:": {
         "path": "test/room/t_way",
-        "spawn": "dungeon_infinity:stone/room",
+        "spawn": "dungeon_infinity:sculk/room",
         "weight": 100
       }
     },
     "stairs": {
       "sculk:": {
         "path": "test/stairs",
-        "spawn": "dungeon_infinity:stone/quad",
+        "spawn": "dungeon_infinity:sculk/stair",
         "weight": 100
       }
     }
