@@ -403,8 +403,10 @@ public class RoomProcessorStrategy {
 			grid.resolveEndRoom();
 			for (int x = 0; x < r1; x++) {
 				for (int z = 0; z < r1; z++) {
-					if (grid.marker[x][z] == CellInterpreter.SPECIAL) {
-						int cell = maze[x][z];
+					int cell = maze[x][z];
+					int mark = grid.marker[x][z];
+					if (mark == CellInterpreter.SPECIAL || mark == CellInterpreter.HALLWAY &&
+							CellInterpreter.getTemplateType(cell) == 1) {
 						if ((cell & 1) != 0) prefill(x - 1, z);
 						if ((cell & 2) != 0) prefill(x + 1, z);
 						if ((cell & 4) != 0) prefill(x, z - 1);
