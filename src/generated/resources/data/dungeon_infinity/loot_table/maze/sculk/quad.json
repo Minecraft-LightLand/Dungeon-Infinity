@@ -11,13 +11,13 @@
               "add": false,
               "count": {
                 "type": "minecraft:uniform",
-                "max": 6.0,
-                "min": 3.0
+                "max": 8.0,
+                "min": 4.0
               },
               "function": "minecraft:set_count"
             }
           ],
-          "name": "minecraft:diamond"
+          "name": "minecraft:echo_shard"
         },
         {
           "type": "minecraft:item",
@@ -26,33 +26,16 @@
               "add": false,
               "count": {
                 "type": "minecraft:uniform",
-                "max": 3.0,
-                "min": 1.0
+                "max": 4.0,
+                "min": 2.0
               },
               "function": "minecraft:set_count"
             }
           ],
-          "name": "minecraft:netherite_scrap"
-        }
-      ],
-      "rolls": 1.0
-    },
-    {
-      "bonus_rolls": 0.0,
-      "entries": [
+          "name": "minecraft:diamond"
+        },
         {
           "type": "minecraft:item",
-          "functions": [
-            {
-              "add": false,
-              "count": {
-                "type": "minecraft:uniform",
-                "max": 2.0,
-                "min": 1.0
-              },
-              "function": "minecraft:set_count"
-            }
-          ],
           "name": "minecraft:enchanted_golden_apple"
         }
       ],
@@ -65,7 +48,7 @@
           "type": "minecraft:item",
           "conditions": [
             {
-              "chance": 0.75,
+              "chance": 0.5,
               "condition": "minecraft:random_chance"
             }
           ],
@@ -84,13 +67,13 @@
               "add": false,
               "count": {
                 "type": "minecraft:uniform",
-                "max": 10.0,
-                "min": 6.0
+                "max": 6.0,
+                "min": 3.0
               },
               "function": "minecraft:set_count"
             }
           ],
-          "name": "minecraft:cooked_beef"
+          "name": "minecraft:chorus_fruit"
         },
         {
           "type": "minecraft:item",
@@ -99,8 +82,8 @@
               "add": false,
               "count": {
                 "type": "minecraft:uniform",
-                "max": 6.0,
-                "min": 3.0
+                "max": 4.0,
+                "min": 2.0
               },
               "function": "minecraft:set_count"
             }
@@ -111,5 +94,5 @@
       "rolls": 1.0
     }
   ],
-  "random_sequence": "dungeon_infinity:deepslate/stair"
+  "random_sequence": "dungeon_infinity:maze/sculk/quad"
 }

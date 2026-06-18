@@ -11,14 +11,51 @@
               "add": false,
               "count": {
                 "type": "minecraft:uniform",
-                "max": 7.0,
-                "min": 3.0
+                "max": 5.0,
+                "min": 2.0
               },
               "function": "minecraft:set_count"
             }
           ],
-          "name": "minecraft:gold_ingot"
+          "name": "minecraft:iron_ingot"
         },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 10.0,
+                "min": 4.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "minecraft:redstone"
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "conditions": [
+            {
+              "chance": 0.5,
+              "condition": "minecraft:random_chance"
+            }
+          ],
+          "name": "modulargolems:recycle"
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
         {
           "type": "minecraft:item",
           "functions": [
@@ -32,17 +69,7 @@
               "function": "minecraft:set_count"
             }
           ],
-          "name": "minecraft:iron_ingot"
-        }
-      ],
-      "rolls": 1.0
-    },
-    {
-      "bonus_rolls": 0.0,
-      "entries": [
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:golden_apple"
+          "name": "minecraft:cooked_beef"
         },
         {
           "type": "minecraft:item",
@@ -57,11 +84,11 @@
               "function": "minecraft:set_count"
             }
           ],
-          "name": "minecraft:cooked_porkchop"
+          "name": "minecraft:baked_potato"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "dungeon_infinity:stone/stair"
+  "random_sequence": "dungeon_infinity:maze/mineshaft/quad"
 }

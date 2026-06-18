@@ -16,38 +16,38 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCon
 
 public class DILootGen {
 
-	private static ResourceKey<LootTable> replace(String path) {
-		return ResourceKey.create(Registries.LOOT_TABLE, DungeonInfinity.loc(path));
+	private static ResourceKey<LootTable> maze(String path) {
+		return ResourceKey.create(Registries.LOOT_TABLE, DungeonInfinity.loc("maze/" + path));
 	}
 
 	// ===== STONE 石制级 =====
-	public static final ResourceKey<LootTable> STONE_ROOM = replace("stone/room");
-	public static final ResourceKey<LootTable> STONE_QUAD = replace("stone/quad");
-	public static final ResourceKey<LootTable> STONE_STAIR = replace("stone/stair");
+	public static final ResourceKey<LootTable> STONE_ROOM = maze("stone/room");
+	public static final ResourceKey<LootTable> STONE_QUAD = maze("stone/quad");
+	public static final ResourceKey<LootTable> STONE_STAIR = maze("stone/stair");
 
 	// ===== MINESHAFT 矿道级 =====
-	public static final ResourceKey<LootTable> MINESHAFT_ROOM = replace("mineshaft/room");
-	public static final ResourceKey<LootTable> MINESHAFT_QUAD = replace("mineshaft/quad");
-	public static final ResourceKey<LootTable> MINESHAFT_STAIR = replace("mineshaft/stair");
-	public static final ResourceKey<LootTable> MINESHAFT_BOSS = replace("mineshaft/boss");
+	public static final ResourceKey<LootTable> MINESHAFT_ROOM = maze("mineshaft/room");
+	public static final ResourceKey<LootTable> MINESHAFT_QUAD = maze("mineshaft/quad");
+	public static final ResourceKey<LootTable> MINESHAFT_STAIR = maze("mineshaft/stair");
+	public static final ResourceKey<LootTable> MINESHAFT_BOSS = maze("mineshaft/boss");
 
 	// ===== COPPER 铜制级 =====
-	public static final ResourceKey<LootTable> COPPER_ROOM = replace("copper/room");
-	public static final ResourceKey<LootTable> COPPER_QUAD = replace("copper/quad");
-	public static final ResourceKey<LootTable> COPPER_STAIR = replace("copper/stair");
-	public static final ResourceKey<LootTable> COPPER_BOSS = replace("copper/boss");
+	public static final ResourceKey<LootTable> COPPER_ROOM = maze("copper/room");
+	public static final ResourceKey<LootTable> COPPER_QUAD = maze("copper/quad");
+	public static final ResourceKey<LootTable> COPPER_STAIR = maze("copper/stair");
+	public static final ResourceKey<LootTable> COPPER_BOSS = maze("copper/boss");
 
 	// ===== DEEPSLATE 深板岩级 =====
-	public static final ResourceKey<LootTable> DEEPSLATE_ROOM = replace("deepslate/room");
-	public static final ResourceKey<LootTable> DEEPSLATE_QUAD = replace("deepslate/quad");
-	public static final ResourceKey<LootTable> DEEPSLATE_STAIR = replace("deepslate/stair");
-	public static final ResourceKey<LootTable> DEEPSLATE_BOSS = replace("deepslate/boss");
+	public static final ResourceKey<LootTable> DEEPSLATE_ROOM = maze("deepslate/room");
+	public static final ResourceKey<LootTable> DEEPSLATE_QUAD = maze("deepslate/quad");
+	public static final ResourceKey<LootTable> DEEPSLATE_STAIR = maze("deepslate/stair");
+	public static final ResourceKey<LootTable> DEEPSLATE_BOSS = maze("deepslate/boss");
 
 	// ===== SCULK 幽匿级 =====
-	public static final ResourceKey<LootTable> SCULK_ROOM = replace("sculk/room");
-	public static final ResourceKey<LootTable> SCULK_QUAD = replace("sculk/quad");
-	public static final ResourceKey<LootTable> SCULK_STAIR = replace("sculk/stair");
-	public static final ResourceKey<LootTable> SCULK_BOSS = replace("sculk/boss");
+	public static final ResourceKey<LootTable> SCULK_ROOM = maze("sculk/room");
+	public static final ResourceKey<LootTable> SCULK_QUAD = maze("sculk/quad");
+	public static final ResourceKey<LootTable> SCULK_STAIR = maze("sculk/stair");
+	public static final ResourceKey<LootTable> SCULK_BOSS = maze("sculk/boss");
 
 	@SuppressWarnings("deprecation")
 	public static void genLoot(RegistrateLootTableProvider pvd) {

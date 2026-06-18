@@ -42,7 +42,7 @@
   ],
   "maxY": 6,
   "minY": -4,
-  "reward": "dungeon_infinity:copper/quad",
+  "reward": "dungeon_infinity:maze/copper/quad",
   "spawnCost": 1000,
   "triggerRange": 12
 }

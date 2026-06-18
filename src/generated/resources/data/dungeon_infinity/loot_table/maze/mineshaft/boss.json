@@ -11,14 +11,35 @@
               "add": false,
               "count": {
                 "type": "minecraft:uniform",
+                "max": 10.0,
+                "min": 5.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "minecraft:iron_ingot"
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
                 "max": 8.0,
                 "min": 4.0
               },
               "function": "minecraft:set_count"
             }
           ],
-          "name": "minecraft:diamond"
-        },
+          "name": "minecraft:emerald"
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
         {
           "type": "minecraft:item",
           "functions": [
@@ -32,14 +53,8 @@
               "function": "minecraft:set_count"
             }
           ],
-          "name": "minecraft:netherite_scrap"
-        }
-      ],
-      "rolls": 1.0
-    },
-    {
-      "bonus_rolls": 0.0,
-      "entries": [
+          "name": "minecraft:diamond"
+        },
         {
           "type": "minecraft:item",
           "functions": [
@@ -47,27 +62,13 @@
               "add": false,
               "count": {
                 "type": "minecraft:uniform",
-                "max": 2.0,
-                "min": 1.0
+                "max": 8.0,
+                "min": 4.0
               },
               "function": "minecraft:set_count"
             }
           ],
-          "name": "minecraft:netherite_upgrade_smithing_template"
-        }
-      ],
-      "rolls": 1.0
-    },
-    {
-      "bonus_rolls": 0.0,
-      "entries": [
-        {
-          "type": "minecraft:item",
-          "name": "golemdungeons:trial_medal"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "modulargolems:netherite"
+          "name": "minecraft:gold_ingot"
         }
       ],
       "rolls": 1.0
@@ -92,8 +93,8 @@
               "add": false,
               "count": {
                 "type": "minecraft:uniform",
-                "max": 12.0,
-                "min": 8.0
+                "max": 8.0,
+                "min": 4.0
               },
               "function": "minecraft:set_count"
             }
@@ -113,11 +114,11 @@
               "function": "minecraft:set_count"
             }
           ],
-          "name": "minecraft:enchanted_golden_apple"
+          "name": "minecraft:golden_apple"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "dungeon_infinity:deepslate/boss"
+  "random_sequence": "dungeon_infinity:maze/mineshaft/boss"
 }

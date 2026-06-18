@@ -11,8 +11,8 @@
               "add": false,
               "count": {
                 "type": "minecraft:uniform",
-                "max": 5.0,
-                "min": 2.0
+                "max": 7.0,
+                "min": 3.0
               },
               "function": "minecraft:set_count"
             }
@@ -26,13 +26,13 @@
               "add": false,
               "count": {
                 "type": "minecraft:uniform",
-                "max": 12.0,
-                "min": 6.0
+                "max": 4.0,
+                "min": 2.0
               },
               "function": "minecraft:set_count"
             }
           ],
-          "name": "minecraft:arrow"
+          "name": "minecraft:iron_ingot"
         }
       ],
       "rolls": 1.0
@@ -42,18 +42,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "functions": [
-            {
-              "add": false,
-              "count": {
-                "type": "minecraft:uniform",
-                "max": 4.0,
-                "min": 2.0
-              },
-              "function": "minecraft:set_count"
-            }
-          ],
-          "name": "minecraft:cooked_porkchop"
+          "name": "minecraft:golden_apple"
         },
         {
           "type": "minecraft:item",
@@ -68,11 +57,11 @@
               "function": "minecraft:set_count"
             }
           ],
-          "name": "minecraft:bread"
+          "name": "minecraft:cooked_porkchop"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "dungeon_infinity:stone/quad"
+  "random_sequence": "dungeon_infinity:maze/stone/stair"
 }

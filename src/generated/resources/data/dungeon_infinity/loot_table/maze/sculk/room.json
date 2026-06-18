@@ -11,13 +11,13 @@
               "add": false,
               "count": {
                 "type": "minecraft:uniform",
-                "max": 10.0,
-                "min": 4.0
+                "max": 5.0,
+                "min": 2.0
               },
               "function": "minecraft:set_count"
             }
           ],
-          "name": "minecraft:gold_nugget"
+          "name": "minecraft:echo_shard"
         },
         {
           "type": "minecraft:item",
@@ -26,13 +26,13 @@
               "add": false,
               "count": {
                 "type": "minecraft:uniform",
-                "max": 5.0,
-                "min": 2.0
+                "max": 3.0,
+                "min": 1.0
               },
               "function": "minecraft:set_count"
             }
           ],
-          "name": "minecraft:bone"
+          "name": "minecraft:amethyst_block"
         }
       ],
       "rolls": 1.0
@@ -53,7 +53,7 @@
               "function": "minecraft:set_count"
             }
           ],
-          "name": "minecraft:bread"
+          "name": "minecraft:chorus_fruit"
         },
         {
           "type": "minecraft:item",
@@ -62,17 +62,17 @@
               "add": false,
               "count": {
                 "type": "minecraft:uniform",
-                "max": 4.0,
-                "min": 2.0
+                "max": 3.0,
+                "min": 1.0
               },
               "function": "minecraft:set_count"
             }
           ],
-          "name": "minecraft:apple"
+          "name": "minecraft:golden_carrot"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "dungeon_infinity:stone/room"
+  "random_sequence": "dungeon_infinity:maze/sculk/room"
 }

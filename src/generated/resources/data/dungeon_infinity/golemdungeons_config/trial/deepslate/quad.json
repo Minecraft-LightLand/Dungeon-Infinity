@@ -42,7 +42,7 @@
   ],
   "maxY": 6,
   "minY": -4,
-  "reward": "dungeon_infinity:deepslate/quad",
+  "reward": "dungeon_infinity:maze/deepslate/quad",
   "spawnCost": 1000,
   "triggerRange": 12
 }

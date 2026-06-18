@@ -11,35 +11,14 @@
               "add": false,
               "count": {
                 "type": "minecraft:uniform",
-                "max": 16.0,
-                "min": 8.0
-              },
-              "function": "minecraft:set_count"
-            }
-          ],
-          "name": "minecraft:echo_shard"
-        },
-        {
-          "type": "minecraft:item",
-          "functions": [
-            {
-              "add": false,
-              "count": {
-                "type": "minecraft:uniform",
-                "max": 2.0,
+                "max": 3.0,
                 "min": 1.0
               },
               "function": "minecraft:set_count"
             }
           ],
-          "name": "minecraft:netherite_ingot"
-        }
-      ],
-      "rolls": 1.0
-    },
-    {
-      "bonus_rolls": 0.0,
-      "entries": [
+          "name": "minecraft:copper_block"
+        },
         {
           "type": "minecraft:item",
           "functions": [
@@ -47,27 +26,28 @@
               "add": false,
               "count": {
                 "type": "minecraft:uniform",
-                "max": 4.0,
+                "max": 5.0,
                 "min": 2.0
               },
               "function": "minecraft:set_count"
             }
           ],
-          "name": "minecraft:enchanted_golden_apple"
-        }
-      ],
-      "rolls": 1.0
-    },
-    {
-      "bonus_rolls": 0.0,
-      "entries": [
-        {
-          "type": "minecraft:item",
-          "name": "golemdungeons:trial_medal"
+          "name": "minecraft:emerald"
         },
         {
           "type": "minecraft:item",
-          "name": "modulargolems:netherite"
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 6.0,
+                "min": 3.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "minecraft:iron_ingot"
         }
       ],
       "rolls": 1.0
@@ -77,6 +57,12 @@
       "entries": [
         {
           "type": "minecraft:item",
+          "conditions": [
+            {
+              "chance": 0.5,
+              "condition": "minecraft:random_chance"
+            }
+          ],
           "name": "modulargolems:recycle"
         }
       ],
@@ -92,13 +78,13 @@
               "add": false,
               "count": {
                 "type": "minecraft:uniform",
-                "max": 10.0,
-                "min": 6.0
+                "max": 7.0,
+                "min": 4.0
               },
               "function": "minecraft:set_count"
             }
           ],
-          "name": "minecraft:chorus_fruit"
+          "name": "minecraft:cooked_beef"
         },
         {
           "type": "minecraft:item",
@@ -107,17 +93,17 @@
               "add": false,
               "count": {
                 "type": "minecraft:uniform",
-                "max": 3.0,
-                "min": 2.0
+                "max": 2.0,
+                "min": 1.0
               },
               "function": "minecraft:set_count"
             }
           ],
-          "name": "minecraft:enchanted_golden_apple"
+          "name": "minecraft:golden_carrot"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "dungeon_infinity:sculk/boss"
+  "random_sequence": "dungeon_infinity:maze/copper/quad"
 }

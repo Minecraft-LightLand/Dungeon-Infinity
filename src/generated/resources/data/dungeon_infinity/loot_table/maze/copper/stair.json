@@ -11,13 +11,13 @@
               "add": false,
               "count": {
                 "type": "minecraft:uniform",
-                "max": 5.0,
-                "min": 2.0
+                "max": 3.0,
+                "min": 1.0
               },
               "function": "minecraft:set_count"
             }
           ],
-          "name": "minecraft:iron_ingot"
+          "name": "minecraft:diamond"
         },
         {
           "type": "minecraft:item",
@@ -26,13 +26,28 @@
               "add": false,
               "count": {
                 "type": "minecraft:uniform",
-                "max": 10.0,
-                "min": 4.0
+                "max": 5.0,
+                "min": 2.0
               },
               "function": "minecraft:set_count"
             }
           ],
-          "name": "minecraft:redstone"
+          "name": "minecraft:obsidian"
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 2.0,
+                "min": 1.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "minecraft:golden_apple"
         }
       ],
       "rolls": 1.0
@@ -44,7 +59,7 @@
           "type": "minecraft:item",
           "conditions": [
             {
-              "chance": 0.5,
+              "chance": 0.75,
               "condition": "minecraft:random_chance"
             }
           ],
@@ -63,8 +78,8 @@
               "add": false,
               "count": {
                 "type": "minecraft:uniform",
-                "max": 4.0,
-                "min": 2.0
+                "max": 8.0,
+                "min": 4.0
               },
               "function": "minecraft:set_count"
             }
@@ -78,17 +93,17 @@
               "add": false,
               "count": {
                 "type": "minecraft:uniform",
-                "max": 6.0,
-                "min": 3.0
+                "max": 4.0,
+                "min": 2.0
               },
               "function": "minecraft:set_count"
             }
           ],
-          "name": "minecraft:baked_potato"
+          "name": "minecraft:golden_carrot"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "dungeon_infinity:mineshaft/quad"
+  "random_sequence": "dungeon_infinity:maze/copper/stair"
 }

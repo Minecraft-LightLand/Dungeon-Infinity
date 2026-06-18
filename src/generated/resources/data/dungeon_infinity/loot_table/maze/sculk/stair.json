@@ -11,8 +11,8 @@
               "add": false,
               "count": {
                 "type": "minecraft:uniform",
-                "max": 8.0,
-                "min": 4.0
+                "max": 12.0,
+                "min": 6.0
               },
               "function": "minecraft:set_count"
             }
@@ -32,11 +32,22 @@
               "function": "minecraft:set_count"
             }
           ],
-          "name": "minecraft:diamond"
+          "name": "minecraft:netherite_scrap"
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:enchanted_golden_apple"
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 8.0,
+                "min": 4.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "minecraft:diamond"
         }
       ],
       "rolls": 1.0
@@ -48,7 +59,7 @@
           "type": "minecraft:item",
           "conditions": [
             {
-              "chance": 0.5,
+              "chance": 0.75,
               "condition": "minecraft:random_chance"
             }
           ],
@@ -67,8 +78,8 @@
               "add": false,
               "count": {
                 "type": "minecraft:uniform",
-                "max": 6.0,
-                "min": 3.0
+                "max": 8.0,
+                "min": 4.0
               },
               "function": "minecraft:set_count"
             }
@@ -82,17 +93,17 @@
               "add": false,
               "count": {
                 "type": "minecraft:uniform",
-                "max": 4.0,
-                "min": 2.0
+                "max": 2.0,
+                "min": 1.0
               },
               "function": "minecraft:set_count"
             }
           ],
-          "name": "minecraft:golden_carrot"
+          "name": "minecraft:enchanted_golden_apple"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "dungeon_infinity:sculk/quad"
+  "random_sequence": "dungeon_infinity:maze/sculk/stair"
 }

@@ -34,7 +34,7 @@
   ],
   "maxY": 6,
   "minY": -4,
-  "reward": "dungeon_infinity:mineshaft/stair",
+  "reward": "dungeon_infinity:maze/mineshaft/stair",
   "spawnCost": 1000,
   "triggerRange": 12
 }
