@@ -1,5 +1,5 @@
 {
-  "generateChest": false,
+  "generateChest": true,
   "list": [
     [
       {
@@ -21,7 +21,7 @@
         "target": "golemdungeons:factory_large_2"
       },
       {
-        "num": 1,
+        "num": 2,
         "target": "golemdungeons:factory_humanoid_melee"
       },
       {
@@ -43,7 +43,7 @@
         "target": "golemdungeons:factory_large_2"
       },
       {
-        "num": 1,
+        "num": 2,
         "target": "golemdungeons:factory_humanoid_melee"
       },
       {
@@ -62,6 +62,7 @@
   ],
   "maxY": 6,
   "minY": -4,
+  "reward": "dungeon_infinity:copper/stair",
   "spawnCost": 1000,
   "triggerRange": 12
 }

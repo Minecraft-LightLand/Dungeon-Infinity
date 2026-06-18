@@ -67,6 +67,7 @@ public class DungeonInfinity {
 		REGISTRATE.addDataGenerator(ProviderType.LANG, DILang::genLang);
 		REGISTRATE.addDataGenerator(ProviderType.ITEM_TAGS, DITagGen::genItemTags);
 		REGISTRATE.addDataGenerator(ProviderType.BLOCK_TAGS, DITagGen::genBlockTags);
+		REGISTRATE.addDataGenerator(ProviderType.LOOT, DILootGen::genLoot);
 		var init = REGISTRATE.getDataGenInitializer();
 		DIDimensionGen.init(init);
 		var gen = event.getGenerator();

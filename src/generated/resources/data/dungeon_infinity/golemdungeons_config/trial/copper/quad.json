@@ -1,0 +1,48 @@
+{
+  "generateChest": true,
+  "list": [
+    [
+      {
+        "num": 1,
+        "target": "golemdungeons:factory_large_1"
+      },
+      {
+        "num": 1,
+        "target": "golemdungeons:factory_humanoid_melee"
+      }
+    ],
+    [
+      {
+        "num": 1,
+        "target": "golemdungeons:factory_large_1"
+      },
+      {
+        "num": 2,
+        "target": "golemdungeons:factory_humanoid_ranged"
+      }
+    ],
+    [
+      {
+        "num": 2,
+        "target": "golemdungeons:factory_large_1"
+      },
+      {
+        "num": 1,
+        "target": "golemdungeons:factory_humanoid_ranged"
+      },
+      {
+        "num": 1,
+        "target": "golemdungeons:factory_humanoid_tipped"
+      },
+      {
+        "num": 1,
+        "target": "golemdungeons:factory_humanoid_rocket"
+      }
+    ]
+  ],
+  "maxY": 6,
+  "minY": -4,
+  "reward": "dungeon_infinity:copper/quad",
+  "spawnCost": 1000,
+  "triggerRange": 12
+}

@@ -1,71 +1,40 @@
 {
-  "generateChest": false,
+  "generateChest": true,
   "list": [
     [
       {
-        "num": 1,
-        "target": "golemdungeons:factory_large_2"
+        "num": 2,
+        "target": "golemdungeons:factory_humanoid_basic"
       },
       {
         "num": 1,
-        "target": "golemdungeons:factory_humanoid_melee"
-      },
-      {
-        "num": 1,
-        "target": "golemdungeons:factory_humanoid_tipped"
-      },
-      {
-        "num": 1,
-        "target": "golemdungeons:factory_humanoid_rocket"
+        "target": "dungeon_infinity:early_ranged"
       }
     ],
     [
       {
-        "num": 2,
-        "target": "golemdungeons:factory_large_3"
-      },
-      {
-        "num": 2,
-        "target": "golemdungeons:factory_humanoid_melee"
-      },
-      {
-        "num": 2,
-        "target": "golemdungeons:factory_humanoid_ranged"
+        "num": 3,
+        "target": "golemdungeons:factory_humanoid_basic"
       },
       {
         "num": 1,
-        "target": "golemdungeons:factory_humanoid_tipped"
-      },
-      {
-        "num": 1,
-        "target": "golemdungeons:factory_humanoid_rocket"
+        "target": "dungeon_infinity:early_ranged"
       }
     ],
     [
       {
         "num": 4,
-        "target": "golemdungeons:factory_large_3"
+        "target": "golemdungeons:factory_humanoid_basic"
       },
       {
         "num": 2,
-        "target": "golemdungeons:factory_humanoid_melee"
-      },
-      {
-        "num": 2,
-        "target": "golemdungeons:factory_humanoid_ranged"
-      },
-      {
-        "num": 2,
-        "target": "golemdungeons:factory_humanoid_tipped"
-      },
-      {
-        "num": 2,
-        "target": "golemdungeons:factory_humanoid_rocket"
+        "target": "dungeon_infinity:early_ranged"
       }
     ]
   ],
   "maxY": 6,
   "minY": -4,
+  "reward": "dungeon_infinity:stone/boss",
   "spawnCost": 1000,
   "triggerRange": 12
 }

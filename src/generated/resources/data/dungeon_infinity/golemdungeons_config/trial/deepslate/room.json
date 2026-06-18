@@ -1,0 +1,26 @@
+{
+  "generateChest": true,
+  "list": [
+    [
+      {
+        "num": 1,
+        "target": "golemdungeons:factory_humanoid_tipped"
+      }
+    ],
+    [
+      {
+        "num": 1,
+        "target": "golemdungeons:factory_humanoid_melee"
+      },
+      {
+        "num": 1,
+        "target": "golemdungeons:factory_humanoid_ranged"
+      }
+    ]
+  ],
+  "maxY": 6,
+  "minY": -4,
+  "reward": "dungeon_infinity:deepslate/room",
+  "spawnCost": 1000,
+  "triggerRange": 12
+}

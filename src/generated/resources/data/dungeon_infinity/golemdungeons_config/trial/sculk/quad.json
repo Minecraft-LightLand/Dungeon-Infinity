@@ -1,0 +1,44 @@
+{
+  "generateChest": true,
+  "list": [
+    [
+      {
+        "num": 1,
+        "target": "golemdungeons:sculk_humanoid_melee"
+      },
+      {
+        "num": 1,
+        "target": "golemdungeons:sculk_humanoid_ranged"
+      }
+    ],
+    [
+      {
+        "num": 1,
+        "target": "golemdungeons:sculk_large_1"
+      },
+      {
+        "num": 2,
+        "target": "golemdungeons:sculk_humanoid_ranged"
+      }
+    ],
+    [
+      {
+        "num": 2,
+        "target": "golemdungeons:sculk_large_1"
+      },
+      {
+        "num": 2,
+        "target": "golemdungeons:sculk_humanoid_melee"
+      },
+      {
+        "num": 2,
+        "target": "golemdungeons:sculk_humanoid_ranged"
+      }
+    ]
+  ],
+  "maxY": 6,
+  "minY": -4,
+  "reward": "dungeon_infinity:sculk/quad",
+  "spawnCost": 1000,
+  "triggerRange": 12
+}

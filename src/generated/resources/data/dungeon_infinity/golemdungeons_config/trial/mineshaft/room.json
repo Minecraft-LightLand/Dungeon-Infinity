@@ -5,15 +5,11 @@
       {
         "num": 1,
         "target": "golemdungeons:factory_humanoid_basic"
-      },
-      {
-        "num": 1,
-        "target": "dungeon_infinity:early_ranged"
       }
     ],
     [
       {
-        "num": 2,
+        "num": 1,
         "target": "golemdungeons:factory_humanoid_basic"
       },
       {
@@ -24,7 +20,7 @@
   ],
   "maxY": 6,
   "minY": -4,
-  "reward": "dungeon_infinity:stone/quad",
+  "reward": "dungeon_infinity:mineshaft/room",
   "spawnCost": 1000,
   "triggerRange": 12
 }

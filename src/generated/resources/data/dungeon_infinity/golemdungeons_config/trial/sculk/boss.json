@@ -1,0 +1,48 @@
+{
+  "generateChest": true,
+  "list": [
+    [
+      {
+        "num": 1,
+        "target": "golemdungeons:sculk_large_1"
+      },
+      {
+        "num": 2,
+        "target": "golemdungeons:sculk_humanoid_melee"
+      },
+      {
+        "num": 2,
+        "target": "golemdungeons:sculk_humanoid_ranged"
+      }
+    ],
+    [
+      {
+        "num": 1,
+        "target": "golemdungeons:sculk_infestation"
+      },
+      {
+        "num": 2,
+        "target": "golemdungeons:sculk_large_1"
+      },
+      {
+        "num": 3,
+        "target": "golemdungeons:sculk_humanoid_ranged"
+      }
+    ],
+    [
+      {
+        "num": 8,
+        "target": "golemdungeons:sculk_infestation"
+      },
+      {
+        "num": 1,
+        "target": "golemdungeons:sculk_full"
+      }
+    ]
+  ],
+  "maxY": 6,
+  "minY": -4,
+  "reward": "dungeon_infinity:sculk/boss",
+  "spawnCost": 1000,
+  "triggerRange": 12
+}

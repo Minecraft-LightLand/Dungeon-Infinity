@@ -1,0 +1,30 @@
+{
+  "equipments": [
+    {
+      "type": "modulargolems:humanoid_golem",
+      "sets": [
+        {
+          "target": "golemdungeons:factory_humanoid_weapon_bow",
+          "weight": 100
+        }
+      ]
+    }
+  ],
+  "faction": "golemdungeons:factory_remnant",
+  "materials": {
+    "modulargolems:copper": {
+      "bonus": [],
+      "forbid": [],
+      "weight": 100
+    }
+  },
+  "types": {
+    "modulargolems:humanoid_golem": {
+      "bonus": [],
+      "mountChance": 0.0,
+      "mounts": [],
+      "weight": 40
+    }
+  },
+  "upgrades": []
+}
