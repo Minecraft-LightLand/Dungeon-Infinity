@@ -1,5 +1,6 @@
 package dev.xkmc.dungeon_infinity.content.cap;
 
+import dev.xkmc.dungeon_infinity.content.block.PositionerBlockEntity;
 import dev.xkmc.dungeon_infinity.content.chunkgen.CellInterpreter;
 import dev.xkmc.dungeon_infinity.content.chunkgen.MazeChunkGenerator;
 import dev.xkmc.dungeon_infinity.content.chunkgen.MazeDimHolder;
@@ -22,6 +23,7 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import org.jspecify.annotations.Nullable;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @SerialClass
@@ -32,23 +34,29 @@ public class SectionRoom {
 	private SectionPos pos;
 	private MazeDimHolder dim;
 	private TemplateConfig.TemplateData info;
+	private List<BlockPos> positions;
 	private int[][] maze;
 	private int x, z;
 
 	public void update(ServerLevel sl, LevelChunk lc, SectionPos pos) {
-		if (this.sl != sl || this.lc != lc) {
-			this.sl = sl;
-			this.lc = lc;
-			this.pos = pos;
-			if (sl.getChunkSource().getGenerator() instanceof MazeChunkGenerator gen) {
-				dim = gen.getMaze(sl.getChunkSource().randomState());
-			} else throw new IllegalStateException("Illegal Dimension for Section");
-			int rx = Math.floorDiv(pos.x(), 25);
-			int rz = Math.floorDiv(pos.z(), 25);
-			maze = dim.getRegion(rx, pos.y(), rz);
-			x = pos.x() - rx * 25;
-			z = pos.z() - rz * 25;
-			info = TemplateConfig.getEntry(maze[x][z]);
+		if (this.sl == sl && this.lc == lc) return;
+		this.sl = sl;
+		this.lc = lc;
+		this.pos = pos;
+		if (sl.getChunkSource().getGenerator() instanceof MazeChunkGenerator gen) {
+			dim = gen.getMaze(sl.getChunkSource().randomState());
+		} else throw new IllegalStateException("Illegal Dimension for Section");
+		int rx = Math.floorDiv(pos.x(), 25);
+		int rz = Math.floorDiv(pos.z(), 25);
+		maze = dim.getRegion(rx, pos.y(), rz);
+		x = pos.x() - rx * 25;
+		z = pos.z() - rz * 25;
+		info = TemplateConfig.getEntry(maze[x][z]);
+		positions = new ArrayList<>();
+		for (var ent : lc.getBlockEntities().entrySet()) {
+			if (ent.getKey().getY() >> 4 == pos.y() && ent.getValue() instanceof PositionerBlockEntity be) {
+				positions.addAll(be.getTargets());
+			}
 		}
 	}
 
@@ -70,6 +78,10 @@ public class SectionRoom {
 
 	public BlockPos getBlockPos() {
 		return pos.origin();
+	}
+
+	public List<BlockPos> getSpawns() {
+		return positions;
 	}
 
 	public boolean isActive() {
@@ -183,9 +195,9 @@ public class SectionRoom {
 		}
 	}
 
-	public MobRoomTicker createSpawner(@Nullable SectionRoom[][][] rooms) {
+	public MobRoomTicker createSpawner(@Nullable SectionRoom[][][] rooms, List<BlockPos> spawns) {
 		var ans = new MobRoomTicker();
-		ans.spawner = SpawnHelper.createTickerFromTemplate(info, rooms);
+		ans.spawner = SpawnHelper.createTickerFromTemplate(info, rooms,spawns);
 		return ans;
 	}
 

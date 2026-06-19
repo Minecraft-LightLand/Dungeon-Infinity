@@ -1,5 +1,6 @@
 package dev.xkmc.dungeon_infinity.content.cap;
 
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
@@ -32,7 +33,12 @@ public class MobRoomHolder {
 		var spawner = rooms[0].length > 1 ? rooms[1][0][1] : list.getFirst();
 		holder = rooms[0].length > 1 ? rooms[1][1][1] : list.getFirst();
 		if (holder.data == null) {
-			holder.data = spawner.createSpawner(rooms);
+			var spawns = new ArrayList<>(holder.getSpawns());
+			for (var e : list) {
+				if (e == holder) continue;
+				spawns.addAll(e.getSpawns());
+			}
+			holder.data = spawner.createSpawner(rooms, spawns);
 		}
 		data = holder.data;
 	}
