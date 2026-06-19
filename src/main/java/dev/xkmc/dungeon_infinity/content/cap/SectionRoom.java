@@ -110,6 +110,12 @@ public class SectionRoom {
 		}
 	}
 
+
+	public boolean isBoss() {
+		int cell = maze[x][z];
+		return CellInterpreter.isBossRoom(cell);
+	}
+
 	public boolean isLarge() {
 		int cell = maze[x][z];
 		return CellInterpreter.isBossRoom(cell) || CellInterpreter.isQuadRoom(cell);

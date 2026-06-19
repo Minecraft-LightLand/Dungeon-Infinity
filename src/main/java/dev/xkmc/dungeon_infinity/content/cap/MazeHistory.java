@@ -22,6 +22,7 @@ import net.minecraft.world.level.storage.LevelData;
 import net.minecraft.world.phys.Vec3;
 import org.jspecify.annotations.Nullable;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 @SerialClass
@@ -155,6 +156,15 @@ public class MazeHistory extends PlayerCapabilityTemplate<MazeHistory> {
 				}
 			}
 		}
+	}
+
+	public void defeat(ServerPlayer sp, ArrayList<MazePos> points, SectionRoom holder) {
+		for (var mp : points)
+			getOrCreate(mp).defeat(mp);
+		int total = 0;
+		for (var e : data.values())
+			total += e.defeat;
+
 	}
 
 	public Visit getOrCreate(MazePos pos) {
