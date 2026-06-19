@@ -1,5 +1,6 @@
 package dev.xkmc.dungeon_infinity.content.block;
 
+import dev.xkmc.dungeon_infinity.content.cap.MazeHistory;
 import dev.xkmc.l2core.base.tile.BaseBlockEntity;
 import dev.xkmc.l2modularblock.tile_api.TickableBlockEntity;
 import dev.xkmc.l2serial.serialization.marker.SerialClass;
@@ -21,6 +22,7 @@ public class MerchantBlockEntity extends BaseBlockEntity implements TickableBloc
 	@SerialField
 	public long nextSpawnTime;
 	@SerialField
+	@Nullable
 	public UUID prevMerchant;
 
 	public MerchantBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
@@ -51,6 +53,7 @@ public class MerchantBlockEntity extends BaseBlockEntity implements TickableBloc
 		if (time % 20 != 0) return;
 		var sp = hasPlayerNearby(level);
 		if (sp == null) return;
+		if (!MazeHistory.inMazeDim(sp)) return;
 
 		var pos = getBlockPos().above().getCenter();
 		if (prevMerchant != null) {
