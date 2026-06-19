@@ -1,0 +1,159 @@
+{
+  "offers": {
+    "deepslate:consumable": [
+      {
+        "cost": "minecraft:emerald",
+        "count": 3,
+        "limit": 64,
+        "result": {
+          "id": "minecraft:golden_carrot"
+        },
+        "weight": 50
+      },
+      {
+        "cost": "minecraft:emerald",
+        "count": 24,
+        "limit": 16,
+        "result": {
+          "id": "minecraft:golden_apple"
+        },
+        "weight": 50
+      },
+      {
+        "cost": "minecraft:emerald",
+        "count": 64,
+        "limit": 1,
+        "result": {
+          "id": "minecraft:enchanted_golden_apple"
+        },
+        "weight": 20
+      },
+      {
+        "cost": "minecraft:emerald",
+        "count": 1,
+        "limit": 64,
+        "result": {
+          "count": 4,
+          "id": "minecraft:experience_bottle"
+        },
+        "weight": 200
+      },
+      {
+        "cost": "minecraft:emerald",
+        "count": 1,
+        "limit": 32,
+        "result": {
+          "count": 4,
+          "id": "minecraft:glowstone"
+        },
+        "weight": 100
+      }
+    ],
+    "deepslate:equipments": [
+      {
+        "cost": "minecraft:emerald",
+        "count": 16,
+        "limit": 64,
+        "result": {
+          "count": 64,
+          "id": "minecraft:arrow"
+        },
+        "weight": 400
+      },
+      {
+        "cost": "minecraft:emerald",
+        "count": 48,
+        "limit": 1,
+        "result": {
+          "id": "modulargolems:wind_spirit_helmet"
+        },
+        "weight": 100
+      },
+      {
+        "cost": "minecraft:emerald",
+        "count": 64,
+        "limit": 1,
+        "result": {
+          "id": "modulargolems:wind_spirit_chestplate"
+        },
+        "weight": 100
+      },
+      {
+        "cost": "minecraft:emerald",
+        "count": 32,
+        "limit": 1,
+        "result": {
+          "id": "modulargolems:wind_spirit_shinguard"
+        },
+        "weight": 100
+      }
+    ],
+    "deepslate:material": [
+      {
+        "cost": "minecraft:emerald",
+        "count": 1,
+        "limit": 64,
+        "result": {
+          "count": 16,
+          "id": "minecraft:oak_log"
+        },
+        "weight": 200
+      },
+      {
+        "cost": "minecraft:emerald",
+        "count": 1,
+        "limit": 64,
+        "result": {
+          "count": 16,
+          "id": "minecraft:clay_ball"
+        },
+        "weight": 200
+      },
+      {
+        "cost": "minecraft:emerald",
+        "count": 1,
+        "limit": 32,
+        "result": {
+          "count": 4,
+          "id": "minecraft:redstone"
+        },
+        "weight": 100
+      },
+      {
+        "cost": "minecraft:emerald",
+        "count": 1,
+        "limit": 32,
+        "result": {
+          "count": 4,
+          "id": "minecraft:lapis_lazuli"
+        },
+        "weight": 100
+      },
+      {
+        "cost": "minecraft:emerald",
+        "count": 8,
+        "limit": 4,
+        "result": {
+          "id": "minecraft:diamond"
+        },
+        "weight": 100
+      }
+    ]
+  },
+  "shops": {
+    "deepslate": [
+      {
+        "count": 3,
+        "offer": "deepslate:consumable"
+      },
+      {
+        "count": 4,
+        "offer": "deepslate:material"
+      },
+      {
+        "count": 3,
+        "offer": "deepslate:equipments"
+      }
+    ]
+  }
+}

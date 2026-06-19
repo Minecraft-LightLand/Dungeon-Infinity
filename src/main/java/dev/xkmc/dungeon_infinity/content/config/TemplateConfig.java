@@ -73,6 +73,10 @@ public class TemplateConfig extends BaseConfig {
 		return ids.length;
 	}
 
+	public String styleName(int index) {
+		return ids[index];
+	}
+
 	public int styleIndex(String style) {
 		return revMap.getOrDefault(style, 0);
 	}

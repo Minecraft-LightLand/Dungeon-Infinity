@@ -11,6 +11,8 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.util.random.WeightedList;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ItemStackTemplate;
+import net.minecraft.world.item.Items;
 
 import java.util.*;
 
@@ -54,8 +56,12 @@ public class ShopConfig extends BaseConfig {
 
 	}
 
-	public record Entry(Item cost, int count, ItemStack result, int weight) {
+	public record Entry(Item cost, int count, ItemStackTemplate result, int weight, int limit) {
 
+	}
+
+	public ShopBuilder start(String style) {
+		return new ShopBuilder(this, style);
 	}
 
 	public static class ShopBuilder {
@@ -70,8 +76,8 @@ public class ShopConfig extends BaseConfig {
 			this.style = style;
 		}
 
-		public PoolBuilder addPool(Identifier id) {
-			return new PoolBuilder(this, id);
+		public PoolBuilder addPool(String id) {
+			return new PoolBuilder(this, Identifier.fromNamespaceAndPath(style, id));
 		}
 
 		public ShopConfig end() {
@@ -96,6 +102,10 @@ public class ShopConfig extends BaseConfig {
 		public PoolBuilder add(Entry entry) {
 			list.add(entry);
 			return this;
+		}
+
+		public PoolBuilder add(int cost, Item result, int count, int weight, int limit) {
+			return add(new Entry(Items.EMERALD, cost, new ItemStackTemplate(result, count), weight, limit));
 		}
 
 		public ShopBuilder end(int count) {

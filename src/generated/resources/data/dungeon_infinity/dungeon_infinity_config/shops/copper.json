@@ -1,0 +1,187 @@
+{
+  "offers": {
+    "copper:consumable": [
+      {
+        "cost": "minecraft:emerald",
+        "count": 1,
+        "limit": 64,
+        "result": {
+          "count": 3,
+          "id": "minecraft:cooked_beef"
+        },
+        "weight": 100
+      },
+      {
+        "cost": "minecraft:emerald",
+        "count": 3,
+        "limit": 32,
+        "result": {
+          "id": "minecraft:golden_carrot"
+        },
+        "weight": 50
+      },
+      {
+        "cost": "minecraft:emerald",
+        "count": 24,
+        "limit": 4,
+        "result": {
+          "id": "minecraft:golden_apple"
+        },
+        "weight": 50
+      },
+      {
+        "cost": "minecraft:emerald",
+        "count": 1,
+        "limit": 64,
+        "result": {
+          "count": 4,
+          "id": "minecraft:experience_bottle"
+        },
+        "weight": 200
+      },
+      {
+        "cost": "minecraft:emerald",
+        "count": 1,
+        "limit": 32,
+        "result": {
+          "count": 4,
+          "id": "minecraft:glowstone"
+        },
+        "weight": 100
+      }
+    ],
+    "copper:equipments": [
+      {
+        "cost": "minecraft:emerald",
+        "count": 4,
+        "limit": 64,
+        "result": {
+          "count": 16,
+          "id": "minecraft:arrow"
+        },
+        "weight": 400
+      },
+      {
+        "cost": "minecraft:emerald",
+        "count": 2,
+        "limit": 4,
+        "result": {
+          "id": "minecraft:bow"
+        },
+        "weight": 200
+      },
+      {
+        "cost": "minecraft:emerald",
+        "count": 2,
+        "limit": 4,
+        "result": {
+          "id": "minecraft:shield"
+        },
+        "weight": 200
+      },
+      {
+        "cost": "minecraft:emerald",
+        "count": 24,
+        "limit": 1,
+        "result": {
+          "id": "modulargolems:roman_guard_helmet"
+        },
+        "weight": 100
+      },
+      {
+        "cost": "minecraft:emerald",
+        "count": 32,
+        "limit": 1,
+        "result": {
+          "id": "modulargolems:roman_guard_chestplate"
+        },
+        "weight": 100
+      },
+      {
+        "cost": "minecraft:emerald",
+        "count": 16,
+        "limit": 1,
+        "result": {
+          "id": "modulargolems:roman_guard_shinguard"
+        },
+        "weight": 100
+      }
+    ],
+    "copper:material": [
+      {
+        "cost": "minecraft:emerald",
+        "count": 1,
+        "limit": 64,
+        "result": {
+          "count": 16,
+          "id": "minecraft:oak_log"
+        },
+        "weight": 200
+      },
+      {
+        "cost": "minecraft:emerald",
+        "count": 1,
+        "limit": 64,
+        "result": {
+          "count": 16,
+          "id": "minecraft:clay_ball"
+        },
+        "weight": 200
+      },
+      {
+        "cost": "minecraft:emerald",
+        "count": 1,
+        "limit": 32,
+        "result": {
+          "count": 4,
+          "id": "minecraft:redstone"
+        },
+        "weight": 100
+      },
+      {
+        "cost": "minecraft:emerald",
+        "count": 1,
+        "limit": 32,
+        "result": {
+          "count": 4,
+          "id": "minecraft:lapis_lazuli"
+        },
+        "weight": 100
+      },
+      {
+        "cost": "minecraft:emerald",
+        "count": 4,
+        "limit": 16,
+        "result": {
+          "id": "minecraft:gold_ingot"
+        },
+        "weight": 100
+      },
+      {
+        "cost": "minecraft:emerald",
+        "count": 8,
+        "limit": 4,
+        "result": {
+          "id": "minecraft:diamond"
+        },
+        "weight": 100
+      }
+    ]
+  },
+  "shops": {
+    "copper": [
+      {
+        "count": 3,
+        "offer": "copper:consumable"
+      },
+      {
+        "count": 4,
+        "offer": "copper:material"
+      },
+      {
+        "count": 3,
+        "offer": "copper:equipments"
+      }
+    ]
+  }
+}

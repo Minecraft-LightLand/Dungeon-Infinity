@@ -1,11 +1,14 @@
 package dev.xkmc.dungeon_infinity.init.data;
 
 import dev.xkmc.dungeon_infinity.compat.GolemSpawnData;
+import dev.xkmc.dungeon_infinity.content.config.ShopConfig;
 import dev.xkmc.dungeon_infinity.content.config.TemplateConfig;
 import dev.xkmc.dungeon_infinity.init.DungeonInfinity;
 import dev.xkmc.l2core.serial.config.ConfigDataProvider;
+import dev.xkmc.modulargolems.init.registrate.GolemItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.world.item.Items;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -37,6 +40,36 @@ public class DIConfigGen extends ConfigDataProvider {
 				.room("path/end").variants("workshop", "warehouse", "shop").end()
 				.end());
 
+		map.add(DungeonInfinity.SHOPS, DungeonInfinity.loc("stone"), new ShopConfig()
+				.start("stone")
+				.addPool("consumable")
+				.add(1, Items.BREAD, 16, 100, 64)
+				.add(1, Items.BAKED_POTATO, 12, 100, 64)
+				.add(1, Items.COOKED_BEEF, 3, 100, 32)
+				.add(3, Items.GOLDEN_CARROT, 1, 50, 16)
+				.add(24, Items.GOLDEN_APPLE, 1, 50, 1)
+				.add(1, Items.EXPERIENCE_BOTTLE, 4, 200, 64)
+				.add(1, Items.GLOWSTONE, 4, 100, 32)
+				.end(3)
+				.addPool("material")
+				.add(1, Items.OAK_LOG, 16, 200, 64)
+				.add(1, Items.CLAY_BALL, 16, 200, 64)
+				.add(1, Items.COPPER_INGOT, 4, 100, 32)
+				.add(1, Items.IRON_INGOT, 1, 100, 16)
+				.add(4, Items.GOLD_INGOT, 1, 50, 4)
+				.add(8, Items.DIAMOND, 1, 50, 1)
+				.end(3)
+				.addPool("equipments")
+				.add(4, Items.ARROW, 16, 400, 64)
+				.add(2, Items.BOW, 1, 200, 4)
+				.add(2, Items.SHIELD, 1, 200, 4)
+				.add(24, GolemItems.GOLEMGUARD_HELMET.asItem(), 1, 100, 1)
+				.add(32, GolemItems.GOLEMGUARD_CHESTPLATE.asItem(), 1, 100, 1)
+				.add(16, GolemItems.GOLEMGUARD_SHINGUARD.asItem(), 1, 100, 1)
+				.end(2)
+				.end()
+		);
+
 		map.add(DungeonInfinity.TEMPLATES, DungeonInfinity.loc("mineshaft"), new TemplateConfig()
 				.start("mineshaft")
 				.room("path/corner").variant("", 100).end()
@@ -55,6 +88,36 @@ public class DIConfigGen extends ConfigDataProvider {
 				.room("cross_stairs").variant("", 100, GolemSpawnData.MINESHAFT_STAIR).end()
 				.room("path/end").variants("workshop", "warehouse", "shop").end()
 				.end());
+
+		map.add(DungeonInfinity.SHOPS, DungeonInfinity.loc("mineshaft"), new ShopConfig()
+				.start("mineshaft")
+				.addPool("consumable")
+				.add(1, Items.BAKED_POTATO, 12, 100, 64)
+				.add(1, Items.COOKED_BEEF, 3, 100, 32)
+				.add(3, Items.GOLDEN_CARROT, 1, 50, 16)
+				.add(24, Items.GOLDEN_APPLE, 1, 50, 1)
+				.add(1, Items.EXPERIENCE_BOTTLE, 4, 200, 64)
+				.add(1, Items.GLOWSTONE, 4, 100, 32)
+				.end(3)
+				.addPool("material")
+				.add(1, Items.OAK_LOG, 16, 200, 64)
+				.add(1, Items.CLAY_BALL, 16, 200, 64)
+				.add(1, Items.REDSTONE, 4, 100, 32)
+				.add(1, Items.LAPIS_LAZULI, 4, 100, 32)
+				.add(1, Items.IRON_INGOT, 1, 100, 32)
+				.add(4, Items.GOLD_INGOT, 1, 100, 8)
+				.add(8, Items.DIAMOND, 1, 100, 4)
+				.end(3)
+				.addPool("equipments")
+				.add(4, Items.ARROW, 16, 400, 64)
+				.add(2, Items.BOW, 1, 200, 4)
+				.add(2, Items.SHIELD, 1, 200, 4)
+				.add(24, GolemItems.GOLEMGUARD_HELMET.asItem(), 1, 100, 1)
+				.add(32, GolemItems.GOLEMGUARD_CHESTPLATE.asItem(), 1, 100, 1)
+				.add(16, GolemItems.GOLEMGUARD_SHINGUARD.asItem(), 1, 100, 1)
+				.end(3)
+				.end()
+		);
 
 		map.add(DungeonInfinity.TEMPLATES, DungeonInfinity.loc("copper"), new TemplateConfig()
 				.start("copper")
@@ -75,6 +138,34 @@ public class DIConfigGen extends ConfigDataProvider {
 				.room("path/end").variants("workshop", "warehouse", "shop").end()
 				.end());
 
+		map.add(DungeonInfinity.SHOPS, DungeonInfinity.loc("copper"), new ShopConfig()
+				.start("copper")
+				.addPool("consumable")
+				.add(1, Items.COOKED_BEEF, 3, 100, 64)
+				.add(3, Items.GOLDEN_CARROT, 1, 50, 32)
+				.add(24, Items.GOLDEN_APPLE, 1, 50, 4)
+				.add(1, Items.EXPERIENCE_BOTTLE, 4, 200, 64)
+				.add(1, Items.GLOWSTONE, 4, 100, 32)
+				.end(3)
+				.addPool("material")
+				.add(1, Items.OAK_LOG, 16, 200, 64)
+				.add(1, Items.CLAY_BALL, 16, 200, 64)
+				.add(1, Items.REDSTONE, 4, 100, 32)
+				.add(1, Items.LAPIS_LAZULI, 4, 100, 32)
+				.add(4, Items.GOLD_INGOT, 1, 100, 16)
+				.add(8, Items.DIAMOND, 1, 100, 4)
+				.end(4)
+				.addPool("equipments")
+				.add(4, Items.ARROW, 16, 400, 64)
+				.add(2, Items.BOW, 1, 200, 4)
+				.add(2, Items.SHIELD, 1, 200, 4)
+				.add(24, GolemItems.GOLEMGUARD_HELMET.asItem(), 1, 100, 1)
+				.add(32, GolemItems.GOLEMGUARD_CHESTPLATE.asItem(), 1, 100, 1)
+				.add(16, GolemItems.GOLEMGUARD_SHINGUARD.asItem(), 1, 100, 1)
+				.end(3)
+				.end()
+		);
+
 		map.add(DungeonInfinity.TEMPLATES, DungeonInfinity.loc("deepslate"), new TemplateConfig()
 				.start("deepslate")
 				.room("path/corner").variant("", 100).end()
@@ -94,6 +185,31 @@ public class DIConfigGen extends ConfigDataProvider {
 				.room("path/end").variants("workshop", "warehouse", "shop").end()
 				.end());
 
+		map.add(DungeonInfinity.SHOPS, DungeonInfinity.loc("deepslate"), new ShopConfig()
+				.start("deepslate")
+				.addPool("consumable")
+				.add(3, Items.GOLDEN_CARROT, 1, 50, 64)
+				.add(24, Items.GOLDEN_APPLE, 1, 50, 16)
+				.add(64, Items.ENCHANTED_GOLDEN_APPLE, 1, 20, 1)
+				.add(1, Items.EXPERIENCE_BOTTLE, 4, 200, 64)
+				.add(1, Items.GLOWSTONE, 4, 100, 32)
+				.end(3)
+				.addPool("material")
+				.add(1, Items.OAK_LOG, 16, 200, 64)
+				.add(1, Items.CLAY_BALL, 16, 200, 64)
+				.add(1, Items.REDSTONE, 4, 100, 32)
+				.add(1, Items.LAPIS_LAZULI, 4, 100, 32)
+				.add(8, Items.DIAMOND, 1, 100, 4)
+				.end(4)
+				.addPool("equipments")
+				.add(16, Items.ARROW, 64, 400, 64)
+				.add(48, GolemItems.WINDSPIRIT_HELMET.asItem(), 1, 100, 1)
+				.add(64, GolemItems.WINDSPIRIT_CHESTPLATE.asItem(), 1, 100, 1)
+				.add(32, GolemItems.WINDSPIRIT_SHINGUARD.asItem(), 1, 100, 1)
+				.end(3)
+				.end()
+		);
+
 		map.add(DungeonInfinity.TEMPLATES, DungeonInfinity.loc("sculk"), new TemplateConfig()
 				.start("sculk")
 				.room("path/corner").variant("", 100).end()
@@ -112,6 +228,32 @@ public class DIConfigGen extends ConfigDataProvider {
 				.room("cross_stairs").variant("", 100, GolemSpawnData.SCULK_STAIR).end()
 				.room("path/end").variants("workshop", "warehouse", "shop").end()
 				.end());
+
+
+		map.add(DungeonInfinity.SHOPS, DungeonInfinity.loc("sculk"), new ShopConfig()
+				.start("sculk")
+				.addPool("consumable")
+				.add(3, Items.GOLDEN_CARROT, 1, 50, 64)
+				.add(24, Items.GOLDEN_APPLE, 1, 50, 16)
+				.add(64, Items.ENCHANTED_GOLDEN_APPLE, 1, 20, 1)
+				.add(1, Items.EXPERIENCE_BOTTLE, 4, 200, 64)
+				.add(1, Items.GLOWSTONE, 4, 100, 32)
+				.end(3)
+				.addPool("material")
+				.add(1, Items.OAK_LOG, 16, 200, 64)
+				.add(1, Items.CLAY_BALL, 16, 200, 64)
+				.add(1, Items.REDSTONE, 4, 100, 32)
+				.add(1, Items.LAPIS_LAZULI, 4, 100, 32)
+				.add(8, Items.DIAMOND, 1, 100, 16)
+				.end(4)
+				.addPool("equipments")
+				.add(16, Items.ARROW, 64, 400, 64)
+				.add(48, GolemItems.WINDSPIRIT_HELMET.asItem(), 1, 100, 1)
+				.add(64, GolemItems.WINDSPIRIT_CHESTPLATE.asItem(), 1, 100, 1)
+				.add(32, GolemItems.WINDSPIRIT_SHINGUARD.asItem(), 1, 100, 1)
+				.end(3)
+				.end()
+		);
 	}
 
 }
