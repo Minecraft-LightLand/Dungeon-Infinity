@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "dungeon_infinity:block/merchant_block"
+    }
+  }
+}

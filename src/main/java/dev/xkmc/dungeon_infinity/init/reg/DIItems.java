@@ -1,10 +1,9 @@
 package dev.xkmc.dungeon_infinity.init.reg;
 
+import com.tterrag.registrate.util.entry.BlockEntityEntry;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.entry.ItemEntry;
-import dev.xkmc.dungeon_infinity.content.block.ForceFieldBlock;
-import dev.xkmc.dungeon_infinity.content.block.MazeFillerBlock;
-import dev.xkmc.dungeon_infinity.content.block.MazeWallBlock;
+import dev.xkmc.dungeon_infinity.content.block.*;
 import dev.xkmc.dungeon_infinity.content.item.KeyOfAccess;
 import dev.xkmc.dungeon_infinity.content.item.KeyOfTomb;
 import dev.xkmc.dungeon_infinity.content.map.MazeMapItem;
@@ -32,6 +31,9 @@ public class DIItems {
 
 	public static final BlockEntry<ForceFieldBlock> FORCEFIELD;
 	public static final BlockEntry<Block> FORCEFIELD_BLOCK, BROKEN_FORCEFIELD;
+
+	public static final BlockEntry<DelegateBlock> MERCHANT_BLOCK;
+	public static final BlockEntityEntry<MerchantBlockEntity> MERCHANT_BE;
 
 	public static final ItemEntry<MazeMapItem> MAP;
 	public static final ItemEntry<KeyOfTomb> KEY_OF_TOMB;
@@ -76,8 +78,18 @@ public class DIItems {
 				.properties(p -> p.mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM)
 						.strength(1, 1).noLootTable())
 				.defaultBlockstate().simpleItem()
+				.tag(BlockTags.MINEABLE_WITH_PICKAXE)
 				.register();
 
+		MERCHANT_BLOCK = DungeonInfinity.REGISTRATE.block("merchant_block", p ->
+						DelegateBlock.newBaseBlock(p.noLootTable(), MerchantBlock.TE))
+				.defaultBlockstate().simpleItem()
+				.tag(BlockTags.MINEABLE_WITH_PICKAXE)
+				.register();
+
+		MERCHANT_BE = DungeonInfinity.REGISTRATE.blockEntity("merchant_block", MerchantBlockEntity::new)
+				.validBlock(MERCHANT_BLOCK)
+				.register();
 
 		MAP = DungeonInfinity.REGISTRATE.item("maze_map", MazeMapItem::new)
 				.tag(DITagGen.ALWAYS_KEEP)
