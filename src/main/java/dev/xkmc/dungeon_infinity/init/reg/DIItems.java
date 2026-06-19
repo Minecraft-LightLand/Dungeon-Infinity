@@ -32,8 +32,9 @@ public class DIItems {
 	public static final BlockEntry<ForceFieldBlock> FORCEFIELD;
 	public static final BlockEntry<Block> FORCEFIELD_BLOCK, BROKEN_FORCEFIELD;
 
-	public static final BlockEntry<DelegateBlock> MERCHANT_BLOCK;
-	public static final BlockEntityEntry<MerchantBlockEntity> MERCHANT_BE;
+	public static final BlockEntry<DelegateBlock> MERCHANT_BLOCK, POSITIONER;
+	public static final BlockEntityEntry<MerchantBlockEntity> BE_MERCHANT;
+	public static final BlockEntityEntry<PositionerBlockEntity> BE_POSITION;
 
 	public static final ItemEntry<MazeMapItem> MAP;
 	public static final ItemEntry<KeyOfTomb> KEY_OF_TOMB;
@@ -87,8 +88,19 @@ public class DIItems {
 				.tag(BlockTags.MINEABLE_WITH_PICKAXE)
 				.register();
 
-		MERCHANT_BE = DungeonInfinity.REGISTRATE.blockEntity("merchant_block", MerchantBlockEntity::new)
+		BE_MERCHANT = DungeonInfinity.REGISTRATE.blockEntity("merchant_block", MerchantBlockEntity::new)
 				.validBlock(MERCHANT_BLOCK)
+				.register();
+
+		POSITIONER = DungeonInfinity.REGISTRATE.block("positioner", p ->
+						DelegateBlock.newBaseBlock(p.noLootTable(), PositionerBlock.TE))
+				.defaultBlockstate().simpleItem()
+				.tag(BlockTags.MINEABLE_WITH_PICKAXE)
+				.register();
+
+		BE_POSITION = DungeonInfinity.REGISTRATE.blockEntity("positioner", PositionerBlockEntity::new)
+				.validBlock(POSITIONER)
+				.renderer(() -> PositionerRenderer::new)
 				.register();
 
 		MAP = DungeonInfinity.REGISTRATE.item("maze_map", MazeMapItem::new)

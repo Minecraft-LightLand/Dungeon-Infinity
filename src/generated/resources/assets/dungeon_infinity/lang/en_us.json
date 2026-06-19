@@ -5,6 +5,7 @@
   "block.dungeon_infinity.forcefield_block": "Forcefield Block",
   "block.dungeon_infinity.mazestone": "Mazestone",
   "block.dungeon_infinity.merchant_block": "Merchant Block",
+  "block.dungeon_infinity.positioner": "Positioner",
   "dungeon_infinity.configuration.section.l2configs.dungeon.infinity.client.toml": "Dungeon Infinity Client Configuration",
   "dungeon_infinity.configuration.section.l2configs.dungeon.infinity.client.toml.title": "Dungeon Infinity Client Configuration",
   "dungeon_infinity.configuration.section.l2configs.dungeon.infinity.server.toml": "Dungeon Infinity Server Configuration",

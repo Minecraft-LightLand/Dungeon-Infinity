@@ -1,6 +1,7 @@
 {
   "values": [
     "dungeon_infinity:broken_forcefield",
-    "dungeon_infinity:merchant_block"
+    "dungeon_infinity:merchant_block",
+    "dungeon_infinity:positioner"
   ]
 }

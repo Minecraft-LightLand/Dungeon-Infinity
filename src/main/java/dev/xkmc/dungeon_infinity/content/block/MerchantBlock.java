@@ -21,7 +21,7 @@ import org.jspecify.annotations.Nullable;
 
 public class MerchantBlock {
 
-	public static final BlockEntityBlockMethodImpl<MerchantBlockEntity> TE = new BlockEntityBlockMethodImpl<>(DIItems.MERCHANT_BE, MerchantBlockEntity.class);
+	public static final BlockEntityBlockMethodImpl<MerchantBlockEntity> TE = new BlockEntityBlockMethodImpl<>(DIItems.BE_MERCHANT, MerchantBlockEntity.class);
 
 	@Nullable
 	public static WanderingTrader summonMerchant(ServerLevel level, ServerPlayer sp, BlockPos pos) {
