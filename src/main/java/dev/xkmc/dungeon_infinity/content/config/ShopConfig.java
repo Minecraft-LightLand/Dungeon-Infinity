@@ -52,16 +52,16 @@ public class ShopConfig extends BaseConfig {
 		return ans;
 	}
 
+	public ShopBuilder start(String style) {
+		return new ShopBuilder(this, style);
+	}
+
 	public record OfferPool(Identifier offer, int count) {
 
 	}
 
 	public record Entry(Item cost, int count, ItemStackTemplate result, int weight, int limit) {
 
-	}
-
-	public ShopBuilder start(String style) {
-		return new ShopBuilder(this, style);
 	}
 
 	public static class ShopBuilder {

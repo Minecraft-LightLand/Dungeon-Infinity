@@ -12,6 +12,7 @@ import dev.xkmc.dungeon_infinity.init.data.DITagGen;
 import dev.xkmc.l2core.init.reg.registrate.SimpleEntry;
 import dev.xkmc.l2core.init.reg.simple.DCReg;
 import dev.xkmc.l2core.init.reg.simple.DCVal;
+import dev.xkmc.l2modularblock.core.BlockTemplates;
 import dev.xkmc.l2modularblock.core.DelegateBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.tags.BlockTags;
@@ -93,7 +94,7 @@ public class DIItems {
 				.register();
 
 		POSITIONER = DungeonInfinity.REGISTRATE.block("positioner", p ->
-						DelegateBlock.newBaseBlock(p.noLootTable(), PositionerBlock.TE))
+						DelegateBlock.newBaseBlock(p.noLootTable(), BlockTemplates.HORIZONTAL, PositionerBlock.TE))
 				.defaultBlockstate().simpleItem()
 				.tag(BlockTags.MINEABLE_WITH_PICKAXE)
 				.register();

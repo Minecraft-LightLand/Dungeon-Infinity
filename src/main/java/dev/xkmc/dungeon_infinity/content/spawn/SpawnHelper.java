@@ -12,6 +12,7 @@ public class SpawnHelper {
 
 	public static MobSpawnTicker createTickerFromTemplate(TemplateConfig.TemplateData info, @Nullable SectionRoom[][][] rooms, List<BlockPos> spawns) {
 		var ans = new GolemSpawnTicker();
+		ans.trial = info.spawn();
 		for (var e : spawns) ans.addTargetPos(e);
 		if (spawns.isEmpty()) {
 			for (SectionRoom[][] room : rooms) {

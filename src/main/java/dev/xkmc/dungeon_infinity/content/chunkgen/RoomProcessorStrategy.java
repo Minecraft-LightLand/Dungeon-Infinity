@@ -16,9 +16,9 @@ public class RoomProcessorStrategy {
 	private static final String[] STYLES = {"sculk", "deepslate", "copper", "mineshaft", "stone"};
 
 	private static final Map<String, Integer> SPECIAL_ROOMS = Map.of(
-			"warehouse", 8,
-			"workshop", 4,
-			"shop", 2
+			"warehouse", 6,
+			"workshop", 6,
+			"shop", 6
 	);
 
 	private final int r1;
@@ -212,15 +212,13 @@ public class RoomProcessorStrategy {
 		private final RandomSource rand;
 		private final int style;
 		private final int[][] maze;
-		private final int[][] marker;
-		private final int[][] variants;
+		private final int[][] marker = new int[r1][r1];
+		private final int[][] variants = new int[r1][r1];
 
 		public Grid(RandomSource rand, int style, int[][] maze) {
 			this.rand = rand;
 			this.style = style;
 			this.maze = maze;
-			this.marker = new int[r1][r1];
-			this.variants = new int[r1][r1];
 		}
 
 		public void set(int x, int z, int mark) {
@@ -248,6 +246,40 @@ public class RoomProcessorStrategy {
 			marker[x][z] = -1;
 		}
 
+
+		private final int[][] margin = new int[r1][r1];
+		private final ArrayDeque<Integer> endRooms = new ArrayDeque<>();
+		private final ArrayDeque<Integer> fallback = new ArrayDeque<>();
+
+		private int getEndRoom() {
+			while (true) {
+				if (endRooms.isEmpty()) {
+					assert !fallback.isEmpty();
+					return fallback.poll();
+				}
+				int pos = endRooms.poll();
+				int x = pos / r1;
+				int z = pos % r1;
+				if (margin[x][z] == 0) {
+					spread(x, z, 4);
+					return pos;
+				}
+				fallback.add(pos);
+			}
+		}
+
+		private void spread(int x, int z, int step) {
+			if (x < 0 || z < 0 || x >= r1 || z >= r1) return;
+			if (step <= 0) return;
+			if (margin[x][z] >= step) return;
+			margin[x][z] = step;
+			int cell = maze[x][z];
+			if ((cell & 1) != 0) spread(x - 1, z, step - 1);
+			if ((cell & 2) != 0) spread(x + 1, z, step - 1);
+			if ((cell & 4) != 0) spread(x, z - 1, step - 1);
+			if ((cell & 8) != 0) spread(x, z + 1, step - 1);
+		}
+
 		public void resolveEndRoom() {
 			List<Integer> ends = new ArrayList<>();
 			for (int x = 0; x < r1; x++) {
@@ -265,6 +297,8 @@ public class RoomProcessorStrategy {
 				ends.set(a, ends.get(b));
 				ends.set(b, temp);
 			}
+			this.endRooms.addAll(ends);
+
 			int total = 0;
 			Map<String, Integer> rooms = new LinkedHashMap<>();
 			for (var e : SPECIAL_ROOMS.entrySet()) {
@@ -280,20 +314,20 @@ public class RoomProcessorStrategy {
 					}
 				}
 			}
-			int index = 0;
+
 			for (var e : rooms.entrySet()) {
 				String room = e.getKey();
 				int count = e.getValue();
 				for (int i = 0; i < count; i++) {
-					int pos = ends.get(index);
-					index++;
+					int pos = getEndRoom();
 					int x = pos / r1;
 					int z = pos % r1;
 					set(x, z, CellInterpreter.HALLWAY, room);
 				}
 			}
-			for (int i = index; i < n; i++) {
-				int pos = ends.get(i);
+			var remain = new ArrayList<>(endRooms);
+			remain.addAll(fallback);
+			for (var pos : remain) {
 				int x = pos / r1;
 				int z = pos % r1;
 				set(x, z, CellInterpreter.ROOM + 1);
