@@ -92,17 +92,15 @@ public class MazeMapPixelMapper {
 		} else {
 			int open = CellInterpreter.getOpenings(flag);
 			int c = defeated ? (open & 16) != 0 ? y : (open & 32) != 0 ? g : a : f;
-			boolean special = false;
 			if (CellInterpreter.isHallway(flag) && CellInterpreter.getTemplateType(flag) == 1) {
-				special = true;
 				int variant = CellInterpreter.getVariant(cell);
 				int style = CellInterpreter.getStyle(cell);
 				int warehouse = TemplateConfig.of(flag).variantIndex(style, "warehouse");
 				int workshop = TemplateConfig.of(flag).variantIndex(style, "workshop");
 				int shop = TemplateConfig.of(flag).variantIndex(style, "shop");
 				c = variant == warehouse ? h : variant == workshop ? k : variant == shop ? s : c;
-			}
-			if (CellInterpreter.isHallway(flag) && !special) {
+				fillWalled(ans, open, a, c);
+			} else if (CellInterpreter.isHallway(flag)) {
 				fillWalled(ans, open, c, w);
 			} else if (!defeated && (open & 32) != 0) {
 				fillWalled(ans, open, g, f);
