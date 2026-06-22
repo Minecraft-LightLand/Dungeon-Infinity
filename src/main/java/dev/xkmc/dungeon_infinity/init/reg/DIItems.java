@@ -84,7 +84,7 @@ public class DIItems {
 				.register();
 
 		MERCHANT_BLOCK = DungeonInfinity.REGISTRATE.block("merchant_block", p ->
-						DelegateBlock.newBaseBlock(p.noLootTable(), MerchantBlock.TE))
+						DelegateBlock.newBaseBlock(p.noLootTable(), new MerchantBlock(), MerchantBlock.TE))
 				.defaultBlockstate().simpleItem()
 				.tag(BlockTags.MINEABLE_WITH_PICKAXE)
 				.register();

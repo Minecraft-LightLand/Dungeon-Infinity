@@ -8,7 +8,7 @@
     },
     "cross_stairs": {
       "stone:": {
-        "path": "test/cross_stairs",
+        "path": "stone/cross_stairs",
         "spawn": "dungeon_infinity:stone/quad",
         "weight": 100
       }
@@ -60,42 +60,42 @@
     },
     "room/corner": {
       "stone:": {
-        "path": "test/room/corner",
+        "path": "stone/room/corner",
         "spawn": "dungeon_infinity:stone/room",
         "weight": 100
       }
     },
     "room/cross": {
       "stone:": {
-        "path": "test/room/cross",
+        "path": "stone/room/cross",
         "spawn": "dungeon_infinity:stone/room",
         "weight": 100
       }
     },
     "room/end": {
       "stone:": {
-        "path": "test/room/end",
+        "path": "stone/room/end",
         "spawn": "dungeon_infinity:stone/room",
         "weight": 100
       }
     },
     "room/straight": {
       "stone:": {
-        "path": "test/room/straight",
+        "path": "stone/room/straight",
         "spawn": "dungeon_infinity:stone/room",
         "weight": 100
       }
     },
     "room/t_way": {
       "stone:": {
-        "path": "test/room/t_way",
+        "path": "stone/room/t_way",
         "spawn": "dungeon_infinity:stone/room",
         "weight": 100
       }
     },
     "stairs": {
       "stone:": {
-        "path": "test/stairs",
+        "path": "stone/stairs",
         "spawn": "dungeon_infinity:stone/quad",
         "weight": 100
       }

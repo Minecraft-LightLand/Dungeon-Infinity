@@ -10,7 +10,6 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.random.WeightedList;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.Items;
 
@@ -19,15 +18,11 @@ import java.util.*;
 @SerialClass
 public class ShopConfig extends BaseConfig {
 
-	@ConfigCollect(CollectType.MAP_COLLECT)
-	@SerialField
-	public final Map<String, ArrayList<OfferPool>> shops = new LinkedHashMap<>();
+	public static Set<String> getAllTypes() {
+		return DungeonInfinity.SHOPS.getMerged().types;
+	}
 
-	@ConfigCollect(CollectType.MAP_COLLECT)
-	@SerialField
-	public final Map<Identifier, ArrayList<Entry>> offers = new LinkedHashMap<>();
-
-	public static List<Entry> build(String key, RandomSource rand) {
+	public static List<Entry> build(Identifier key, RandomSource rand) {
 		var config = DungeonInfinity.SHOPS.getMerged();
 		List<Entry> ans = new ArrayList<>();
 		var offerList = config.shops.get(key);
@@ -52,6 +47,23 @@ public class ShopConfig extends BaseConfig {
 		return ans;
 	}
 
+	@ConfigCollect(CollectType.MAP_COLLECT)
+	@SerialField
+	public final LinkedHashMap<Identifier, ArrayList<OfferPool>> shops = new LinkedHashMap<>();
+
+	@ConfigCollect(CollectType.MAP_COLLECT)
+	@SerialField
+	public final LinkedHashMap<Identifier, ArrayList<Entry>> offers = new LinkedHashMap<>();
+
+	private final Set<String> types = new LinkedHashSet<>();
+
+	@Override
+	protected void postMerge() {
+		for (var e : shops.keySet())
+			types.add(e.getPath());
+	}
+
+
 	public ShopBuilder start(String style) {
 		return new ShopBuilder(this, style);
 	}
@@ -69,8 +81,6 @@ public class ShopConfig extends BaseConfig {
 		private final ShopConfig parent;
 		private final String style;
 
-		private final ArrayList<OfferPool> list = new ArrayList<>();
-
 		public ShopBuilder(ShopConfig parent, String style) {
 			this.parent = parent;
 			this.style = style;
@@ -80,8 +90,17 @@ public class ShopConfig extends BaseConfig {
 			return new PoolBuilder(this, Identifier.fromNamespaceAndPath(style, id));
 		}
 
+		public ShopBuilder shop(String type, Map<String, Integer> map) {
+			ArrayList<OfferPool> list = new ArrayList<>();
+			for (var ent : map.entrySet()) {
+				list.add(new OfferPool(Identifier.fromNamespaceAndPath(style, ent.getKey()), ent.getValue()));
+			}
+			parent.shops.put(Identifier.fromNamespaceAndPath(style, type), list);
+			return this;
+		}
+
 		public ShopConfig end() {
-			parent.shops.put(style, list);
+
 			return parent;
 		}
 
@@ -108,9 +127,8 @@ public class ShopConfig extends BaseConfig {
 			return add(new Entry(Items.EMERALD, cost, new ItemStackTemplate(result, count), weight, limit));
 		}
 
-		public ShopBuilder end(int count) {
+		public ShopBuilder end() {
 			parent.parent.offers.put(id, list);
-			parent.list.add(new OfferPool(id, count));
 			return parent;
 		}
 

@@ -3,30 +3,13 @@
     "sculk:consumable": [
       {
         "cost": "minecraft:emerald",
-        "count": 3,
+        "count": 16,
         "limit": 64,
         "result": {
-          "id": "minecraft:golden_carrot"
+          "count": 64,
+          "id": "minecraft:arrow"
         },
-        "weight": 50
-      },
-      {
-        "cost": "minecraft:emerald",
-        "count": 24,
-        "limit": 16,
-        "result": {
-          "id": "minecraft:golden_apple"
-        },
-        "weight": 50
-      },
-      {
-        "cost": "minecraft:emerald",
-        "count": 64,
-        "limit": 1,
-        "result": {
-          "id": "minecraft:enchanted_golden_apple"
-        },
-        "weight": 20
+        "weight": 400
       },
       {
         "cost": "minecraft:emerald",
@@ -47,18 +30,62 @@
           "id": "minecraft:glowstone"
         },
         "weight": 100
+      },
+      {
+        "cost": "minecraft:emerald",
+        "count": 8,
+        "limit": 16,
+        "result": {
+          "id": "minecraft:netherrack"
+        },
+        "weight": 100
+      },
+      {
+        "cost": "minecraft:emerald",
+        "count": 64,
+        "limit": 4,
+        "result": {
+          "id": "minecraft:netherite_upgrade_smithing_template"
+        },
+        "weight": 100
       }
     ],
     "sculk:equipments": [
       {
         "cost": "minecraft:emerald",
-        "count": 16,
-        "limit": 64,
+        "count": 10,
+        "limit": 1,
         "result": {
-          "count": 64,
-          "id": "minecraft:arrow"
+          "id": "modulargolems:netherite_mecha_bow"
         },
-        "weight": 400
+        "weight": 100
+      },
+      {
+        "cost": "minecraft:emerald",
+        "count": 20,
+        "limit": 1,
+        "result": {
+          "id": "modulargolems:diamond_golem_spear"
+        },
+        "weight": 100
+      },
+      {
+        "cost": "minecraft:emerald",
+        "count": 24,
+        "limit": 1,
+        "result": {
+          "id": "modulargolems:diamond_golem_axe"
+        },
+        "weight": 100
+      },
+      {
+        "cost": "minecraft:emerald",
+        "count": 26,
+        "limit": 1,
+        "result": {
+          "id": "modulargolems:diamond_golem_sword"
+        },
+        "weight": 100
       },
       {
         "cost": "minecraft:emerald",
@@ -88,7 +115,36 @@
         "weight": 100
       }
     ],
-    "sculk:material": [
+    "sculk:food": [
+      {
+        "cost": "minecraft:emerald",
+        "count": 3,
+        "limit": 64,
+        "result": {
+          "id": "minecraft:golden_carrot"
+        },
+        "weight": 50
+      },
+      {
+        "cost": "minecraft:emerald",
+        "count": 24,
+        "limit": 16,
+        "result": {
+          "id": "minecraft:golden_apple"
+        },
+        "weight": 50
+      },
+      {
+        "cost": "minecraft:emerald",
+        "count": 64,
+        "limit": 1,
+        "result": {
+          "id": "minecraft:enchanted_golden_apple"
+        },
+        "weight": 20
+      }
+    ],
+    "sculk:ingredient": [
       {
         "cost": "minecraft:emerald",
         "count": 1,
@@ -131,28 +187,95 @@
       },
       {
         "cost": "minecraft:emerald",
+        "count": 1,
+        "limit": 32,
+        "result": {
+          "count": 4,
+          "id": "minecraft:amethyst_shard"
+        },
+        "weight": 100
+      }
+    ],
+    "sculk:material": [
+      {
+        "cost": "minecraft:emerald",
+        "count": 1,
+        "limit": 64,
+        "result": {
+          "count": 4,
+          "id": "minecraft:copper_ingot"
+        },
+        "weight": 100
+      },
+      {
+        "cost": "minecraft:emerald",
+        "count": 1,
+        "limit": 64,
+        "result": {
+          "id": "minecraft:iron_ingot"
+        },
+        "weight": 100
+      },
+      {
+        "cost": "minecraft:emerald",
+        "count": 4,
+        "limit": 32,
+        "result": {
+          "id": "minecraft:gold_ingot"
+        },
+        "weight": 50
+      },
+      {
+        "cost": "minecraft:emerald",
         "count": 8,
         "limit": 16,
         "result": {
           "id": "minecraft:diamond"
         },
         "weight": 100
+      },
+      {
+        "cost": "minecraft:emerald",
+        "count": 8,
+        "limit": 16,
+        "result": {
+          "id": "minecraft:netherite_scrap"
+        },
+        "weight": 100
       }
     ]
   },
   "shops": {
-    "sculk": [
+    "sculk:blacksmith": [
       {
-        "count": 3,
-        "offer": "sculk:consumable"
-      },
-      {
-        "count": 4,
-        "offer": "sculk:material"
+        "count": 2,
+        "offer": "sculk:golem_equipments"
       },
       {
         "count": 3,
         "offer": "sculk:equipments"
+      },
+      {
+        "count": 3,
+        "offer": "sculk:material"
+      }
+    ],
+    "sculk:groceries": [
+      {
+        "count": 2,
+        "offer": "sculk:food"
+      },
+      {
+        "count": 2,
+        "offer": "sculk:consumable"
+      },
+      {
+        "count": 3,
+        "offer": "sculk:ingredient"
+      },
+      {
+        "count": 1,
+        "offer": "sculk:material"
       }
     ]
   }

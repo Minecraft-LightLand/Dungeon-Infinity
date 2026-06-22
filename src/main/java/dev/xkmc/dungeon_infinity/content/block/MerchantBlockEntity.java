@@ -20,6 +20,9 @@ import java.util.UUID;
 public class MerchantBlockEntity extends BaseBlockEntity implements TickableBlockEntity {
 
 	@SerialField
+	public String type = "groceries";
+
+	@SerialField
 	public long nextSpawnTime;
 	@SerialField
 	@Nullable
@@ -29,16 +32,21 @@ public class MerchantBlockEntity extends BaseBlockEntity implements TickableBloc
 		super(type, pos, state);
 	}
 
+	public void setType(String type) {
+		this.type = type;
+		sync();
+	}
+
 	@Nullable
-	private ServerPlayer hasPlayerNearby(Level level) {
+	private ServerPlayer hasPlayerNearby(Level level, int dist) {
 		var pos = getBlockPos().getCenter();
 		var players = level.players();
 		int y = getBlockPos().getY() >> 4;
 		for (var p : players) {
 			int py = p.getBlockY() >> 4;
 			if (py != y) continue;
-			if (p.position().distanceTo(pos) > 64) continue;
-			if (p instanceof ServerPlayer sp)
+			if (p.position().distanceTo(pos) > dist) continue;
+			if (p instanceof ServerPlayer sp && !sp.isSpectator())
 				return sp;
 		}
 		return null;
@@ -51,10 +59,22 @@ public class MerchantBlockEntity extends BaseBlockEntity implements TickableBloc
 		long time = level.getGameTime();
 		if (time < nextSpawnTime) return;
 		if (time % 20 != 0) return;
-		var sp = hasPlayerNearby(level);
-		if (sp == null) return;
-		if (!MazeHistory.inMazeDim(sp)) return;
-
+		if (prevMerchant != null) {
+			var sp = hasPlayerNearby(level, 48);
+			if (sp == null || !MazeHistory.inMazeDim(sp)) {
+				var prev = level.getEntity(prevMerchant);
+				if (prev != null) {
+					prev.discard();
+				}
+				prevMerchant = null;
+				nextSpawnTime = 0;
+				return;
+			}
+		}
+		var sp = hasPlayerNearby(level, 24);
+		if (sp == null || !MazeHistory.inMazeDim(sp)) {
+			return;
+		}
 		var pos = getBlockPos().above().getCenter();
 		if (prevMerchant != null) {
 			var prev = level.getEntity(prevMerchant);
@@ -65,10 +85,11 @@ public class MerchantBlockEntity extends BaseBlockEntity implements TickableBloc
 				return;
 			} else if (prev != null) {
 				prev.discard();
+				prevMerchant = null;
 			}
 		}
 		nextSpawnTime = time + 1200;
-		var merchant = MerchantBlock.summonMerchant(sl, sp, getBlockPos());
+		var merchant = MerchantBlock.summonMerchant(sl, sp, getBlockPos(), type);
 		if (merchant == null) return;
 		merchant.snapTo(pos);
 		sl.addFreshEntity(merchant);

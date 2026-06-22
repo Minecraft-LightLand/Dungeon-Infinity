@@ -9,7 +9,7 @@
     },
     "cross_stairs": {
       "copper:": {
-        "path": "test/cross_stairs",
+        "path": "copper/cross_stairs",
         "spawn": "dungeon_infinity:copper/stair",
         "weight": 100
       }
@@ -61,42 +61,42 @@
     },
     "room/corner": {
       "copper:": {
-        "path": "test/room/corner",
+        "path": "copper/room/corner",
         "spawn": "dungeon_infinity:copper/room",
         "weight": 100
       }
     },
     "room/cross": {
       "copper:": {
-        "path": "test/room/cross",
+        "path": "copper/room/cross",
         "spawn": "dungeon_infinity:copper/room",
         "weight": 100
       }
     },
     "room/end": {
       "copper:": {
-        "path": "test/room/end",
+        "path": "copper/room/end",
         "spawn": "dungeon_infinity:copper/room",
         "weight": 100
       }
     },
     "room/straight": {
       "copper:": {
-        "path": "test/room/straight",
+        "path": "copper/room/straight",
         "spawn": "dungeon_infinity:copper/room",
         "weight": 100
       }
     },
     "room/t_way": {
       "copper:": {
-        "path": "test/room/t_way",
+        "path": "copper/room/t_way",
         "spawn": "dungeon_infinity:copper/room",
         "weight": 100
       }
     },
     "stairs": {
       "copper:": {
-        "path": "test/stairs",
+        "path": "copper/stairs",
         "spawn": "dungeon_infinity:copper/stair",
         "weight": 100
       }

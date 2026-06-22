@@ -7,29 +7,39 @@ import dev.xkmc.dungeon_infinity.content.config.ShopConfig;
 import dev.xkmc.dungeon_infinity.content.config.TemplateConfig;
 import dev.xkmc.dungeon_infinity.init.reg.DIItems;
 import dev.xkmc.l2modularblock.impl.BlockEntityBlockMethodImpl;
+import dev.xkmc.l2modularblock.mult.UseItemOnBlockMethod;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.SectionPos;
+import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.npc.wanderingtrader.WanderingTrader;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.trading.ItemCost;
 import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.item.trading.MerchantOffers;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.BlockHitResult;
 import org.jspecify.annotations.Nullable;
 
-public class MerchantBlock {
+public class MerchantBlock implements UseItemOnBlockMethod {
 
 	public static final BlockEntityBlockMethodImpl<MerchantBlockEntity> TE = new BlockEntityBlockMethodImpl<>(DIItems.BE_MERCHANT, MerchantBlockEntity.class);
 
 	@Nullable
-	public static WanderingTrader summonMerchant(ServerLevel level, ServerPlayer sp, BlockPos pos) {
+	public static WanderingTrader summonMerchant(ServerLevel level, ServerPlayer sp, BlockPos pos, String type) {
 		if (!MazeHistory.inMazeDim(sp)) return null;
 		var maze = MazeRoomData.get(level, SectionPos.of(pos));
 		if (maze == null) return null;
 		String style = TemplateConfig.get().styleName(CellInterpreter.getStyle(maze.getCell()));
-		var config = ShopConfig.build(style, sp.getRandom());
+		var config = ShopConfig.build(Identifier.fromNamespaceAndPath(style, type), sp.getRandom());
 		if (config.isEmpty()) return null;
 		WanderingTrader trader = EntityType.WANDERING_TRADER.spawn(level, pos, EntitySpawnReason.MOB_SUMMONED);
 		if (trader == null) return null;
@@ -40,8 +50,25 @@ public class MerchantBlock {
 		for (var e : config) {
 			offers.add(new MerchantOffer(new ItemCost(e.cost(), e.count()), e.result().create(), e.limit(), 0, 0));
 		}
-		trader.overrideOffers(offers);
+		trader.offers = offers;
+		trader.setHomeTo(pos, 1);
 		return trader;
+	}
+
+	@Override
+	public InteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+		if (level.getBlockEntity(pos) instanceof MerchantBlockEntity be && player.isCreative()) {
+			if (stack.is(Items.BREAD)) {
+				if (!level.isClientSide())
+					be.setType("groceries");
+				return InteractionResult.SUCCESS;
+			} else if (stack.is(Items.IRON_INGOT)) {
+				if (!level.isClientSide())
+					be.setType("blacksmith");
+				return InteractionResult.SUCCESS;
+			}
+		}
+		return InteractionResult.PASS;
 	}
 
 }
