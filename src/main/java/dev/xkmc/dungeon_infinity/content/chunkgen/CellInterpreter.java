@@ -91,8 +91,8 @@ public class CellInterpreter {
 		if (isBossRoom(cell)) return 0;
 		if (isQuadRoom(cell)) return 0;
 		return switch (getTemplateType(cell)) {
-			case 1, 7, 9 -> 1;
-			case 6, 8 -> 2;
+			case 1 -> 1;
+			case 6, 7, 8, 9 -> 2;
 			case 2, 3, 4, 5 -> 3;
 			default -> 0;
 		};

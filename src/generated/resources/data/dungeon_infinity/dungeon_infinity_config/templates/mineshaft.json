@@ -10,7 +10,6 @@
     "cross_stairs": {
       "mineshaft:": {
         "path": "mineshaft/cross_stairs",
-        "spawn": "dungeon_infinity:mineshaft/stair",
         "weight": 100
       }
     },
@@ -97,7 +96,6 @@
     "stairs": {
       "mineshaft:": {
         "path": "mineshaft/stairs",
-        "spawn": "dungeon_infinity:mineshaft/stair",
         "weight": 100
       }
     }

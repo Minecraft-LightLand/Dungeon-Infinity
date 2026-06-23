@@ -10,7 +10,6 @@
     "cross_stairs": {
       "sculk:": {
         "path": "sculk/cross_stairs",
-        "spawn": "dungeon_infinity:sculk/stair",
         "weight": 100
       }
     },
@@ -97,7 +96,6 @@
     "stairs": {
       "sculk:": {
         "path": "sculk/stairs",
-        "spawn": "dungeon_infinity:sculk/stair",
         "weight": 100
       }
     }

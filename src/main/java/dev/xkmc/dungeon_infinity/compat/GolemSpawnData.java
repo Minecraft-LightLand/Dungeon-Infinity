@@ -25,14 +25,14 @@ public class GolemSpawnData extends AbstractGolemSpawn {
 	// 使用 FactoryGolemSpawn 的配置，金材料由战利品表产出
 	public static final Identifier STONE_ROOM = DungeonInfinity.loc("stone/room");
 	public static final Identifier STONE_QUAD = DungeonInfinity.loc("stone/quad");
-	public static final Identifier STONE_STAIR = DungeonInfinity.loc("stone/stair");
+	public static final Identifier STONE_STAIR = DungeonInfinity.loc("stone/stair");//TODO remove
 
 	// ==================== MINESHAFT 矿道级（次低难度）====================
 	// 使用 FactoryGolemSpawn 的配置，铜/铁材料由战利品表产出
 
 	public static final Identifier MINESHAFT_ROOM = DungeonInfinity.loc("mineshaft/room");
 	public static final Identifier MINESHAFT_QUAD = DungeonInfinity.loc("mineshaft/quad");
-	public static final Identifier MINESHAFT_STAIR = DungeonInfinity.loc("mineshaft/stair");
+	public static final Identifier MINESHAFT_STAIR = DungeonInfinity.loc("mineshaft/stair");//TODO remove
 	public static final Identifier MINESHAFT_BOSS = DungeonInfinity.loc("mineshaft/boss");
 
 	// ==================== COPPER 铜制级（基准难度）====================
@@ -40,14 +40,14 @@ public class GolemSpawnData extends AbstractGolemSpawn {
 
 	public static final Identifier COPPER_ROOM = DungeonInfinity.loc("copper/room");
 	public static final Identifier COPPER_QUAD = DungeonInfinity.loc("copper/quad");
-	public static final Identifier COPPER_STAIR = DungeonInfinity.loc("copper/stair");
+	public static final Identifier COPPER_STAIR = DungeonInfinity.loc("copper/stair");//TODO remove
 	public static final Identifier COPPER_BOSS = DungeonInfinity.loc("copper/boss");
 
 	// ==================== DEEPSLATE 深板岩级（工厂+猪灵混编，线性难度）====================
 
 	public static final Identifier DEEPSLATE_ROOM = DungeonInfinity.loc("deepslate/room");
 	public static final Identifier DEEPSLATE_QUAD = DungeonInfinity.loc("deepslate/quad");
-	public static final Identifier DEEPSLATE_STAIR = DungeonInfinity.loc("deepslate/stair");
+	public static final Identifier DEEPSLATE_STAIR = DungeonInfinity.loc("deepslate/stair");//TODO remove
 	public static final Identifier DEEPSLATE_BOSS = DungeonInfinity.loc("deepslate/boss");
 
 	// ==================== SCULK 幽匿级（最高难度）====================
@@ -55,7 +55,7 @@ public class GolemSpawnData extends AbstractGolemSpawn {
 
 	public static final Identifier SCULK_ROOM = DungeonInfinity.loc("sculk/room");
 	public static final Identifier SCULK_QUAD = DungeonInfinity.loc("sculk/quad");
-	public static final Identifier SCULK_STAIR = DungeonInfinity.loc("sculk/stair");
+	public static final Identifier SCULK_STAIR = DungeonInfinity.loc("sculk/stair");//TODO remove
 	public static final Identifier SCULK_BOSS = DungeonInfinity.loc("sculk/boss");
 
 	public static void gen(ConfigDataProvider.Collector col) {

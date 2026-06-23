@@ -10,7 +10,6 @@
     "cross_stairs": {
       "deepslate:": {
         "path": "deepslate/cross_stairs",
-        "spawn": "dungeon_infinity:deepslate/stair",
         "weight": 100
       }
     },
@@ -97,7 +96,6 @@
     "stairs": {
       "deepslate:": {
         "path": "deepslate/stairs",
-        "spawn": "dungeon_infinity:deepslate/stair",
         "weight": 100
       }
     }

@@ -9,7 +9,6 @@
     "cross_stairs": {
       "stone:": {
         "path": "stone/cross_stairs",
-        "spawn": "dungeon_infinity:stone/quad",
         "weight": 100
       }
     },
@@ -96,7 +95,6 @@
     "stairs": {
       "stone:": {
         "path": "stone/stairs",
-        "spawn": "dungeon_infinity:stone/quad",
         "weight": 100
       }
     }
