@@ -1,4 +1,4 @@
-package dev.xkmc.dungeon_infinity.content.block;
+package dev.xkmc.dungeon_infinity.content.block.wall;
 
 import dev.xkmc.dungeon_infinity.init.reg.DIItems;
 import dev.xkmc.l2modularblock.mult.NeighborUpdateBlockMethod;

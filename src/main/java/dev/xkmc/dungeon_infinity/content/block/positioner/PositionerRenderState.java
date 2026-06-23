@@ -3,14 +3,12 @@
 // (powered by Fernflower decompiler)
 //
 
-package dev.xkmc.dungeon_infinity.content.block;
+package dev.xkmc.dungeon_infinity.content.block.positioner;
 
 import java.util.ArrayList;
 import java.util.List;
 import net.minecraft.client.renderer.blockentity.state.BlockEntityRenderState;
 import net.minecraft.core.BlockPos;
-import net.minecraft.resources.Identifier;
-import org.jspecify.annotations.Nullable;
 
 public class PositionerRenderState extends BlockEntityRenderState {
 

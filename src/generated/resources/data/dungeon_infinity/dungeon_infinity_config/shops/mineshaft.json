@@ -1,4 +1,5 @@
 {
+  "icon": {},
   "offers": {
     "mineshaft:consumable": [
       {
@@ -19,7 +20,7 @@
           "count": 4,
           "id": "minecraft:glowstone"
         },
-        "weight": 100
+        "weight": 200
       },
       {
         "cost": "minecraft:emerald",
@@ -30,6 +31,34 @@
           "id": "minecraft:arrow"
         },
         "weight": 400
+      },
+      {
+        "cost": "minecraft:emerald",
+        "count": 4,
+        "limit": 3,
+        "result": {
+          "components": {
+            "minecraft:potion_contents": {
+              "potion": "minecraft:strong_healing"
+            }
+          },
+          "id": "minecraft:potion"
+        },
+        "weight": 100
+      },
+      {
+        "cost": "minecraft:emerald",
+        "count": 6,
+        "limit": 3,
+        "result": {
+          "components": {
+            "minecraft:potion_contents": {
+              "potion": "minecraft:strong_healing"
+            }
+          },
+          "id": "minecraft:splash_potion"
+        },
+        "weight": 100
       }
     ],
     "mineshaft:equipments": [
@@ -48,6 +77,15 @@
         "limit": 8,
         "result": {
           "id": "minecraft:shield"
+        },
+        "weight": 200
+      },
+      {
+        "cost": "minecraft:emerald",
+        "count": 1,
+        "limit": 4,
+        "result": {
+          "id": "minecraft:stone_sword"
         },
         "weight": 200
       },
@@ -269,9 +307,41 @@
       {
         "cost": "minecraft:emerald",
         "count": 8,
-        "limit": 2,
+        "limit": 4,
         "result": {
           "id": "minecraft:diamond"
+        },
+        "weight": 500
+      }
+    ],
+    "mineshaft:recycle": [
+      {
+        "cost": "minecraft:copper_ingot",
+        "count": 16,
+        "limit": 32,
+        "result": {
+          "count": 2,
+          "id": "minecraft:emerald"
+        },
+        "weight": 100
+      },
+      {
+        "cost": "minecraft:iron_ingot",
+        "count": 16,
+        "limit": 16,
+        "result": {
+          "count": 8,
+          "id": "minecraft:emerald"
+        },
+        "weight": 100
+      },
+      {
+        "cost": "minecraft:gold_ingot",
+        "count": 4,
+        "limit": 16,
+        "result": {
+          "count": 8,
+          "id": "minecraft:emerald"
         },
         "weight": 100
       }
@@ -280,27 +350,19 @@
   "shops": {
     "mineshaft:blacksmith": [
       {
-        "count": 2,
-        "offer": "mineshaft:golem_equipments"
-      },
-      {
         "count": 3,
         "offer": "mineshaft:equipments"
       },
       {
         "count": 3,
         "offer": "mineshaft:material"
+      },
+      {
+        "count": 2,
+        "offer": "mineshaft:golem_equipments"
       }
     ],
     "mineshaft:groceries": [
-      {
-        "count": 2,
-        "offer": "mineshaft:food"
-      },
-      {
-        "count": 2,
-        "offer": "mineshaft:consumable"
-      },
       {
         "count": 3,
         "offer": "mineshaft:ingredient"
@@ -308,6 +370,32 @@
       {
         "count": 1,
         "offer": "mineshaft:material"
+      },
+      {
+        "count": 2,
+        "offer": "mineshaft:food"
+      },
+      {
+        "count": 2,
+        "offer": "mineshaft:consumable"
+      }
+    ],
+    "mineshaft:recycler": [
+      {
+        "count": 3,
+        "offer": "mineshaft:ingredient"
+      },
+      {
+        "count": 2,
+        "offer": "mineshaft:food"
+      },
+      {
+        "count": 2,
+        "offer": "mineshaft:recycle"
+      },
+      {
+        "count": 1,
+        "offer": "mineshaft:consumable"
       }
     ]
   }

@@ -3,7 +3,7 @@
 // (powered by Fernflower decompiler)
 //
 
-package dev.xkmc.dungeon_infinity.content.block;
+package dev.xkmc.dungeon_infinity.content.block.positioner;
 
 import dev.xkmc.dungeon_infinity.init.reg.DIItems;
 import dev.xkmc.l2modularblock.impl.BlockEntityBlockMethodImpl;

@@ -1,4 +1,4 @@
-package dev.xkmc.dungeon_infinity.content.block;
+package dev.xkmc.dungeon_infinity.content.block.merchant;
 
 import dev.xkmc.dungeon_infinity.content.cap.MazeHistory;
 import dev.xkmc.l2core.base.tile.BaseBlockEntity;
@@ -35,6 +35,14 @@ public class MerchantBlockEntity extends BaseBlockEntity implements TickableBloc
 	public void setType(String type) {
 		this.type = type;
 		sync();
+		if (prevMerchant != null && level != null) {
+			var prev = level.getEntity(prevMerchant);
+			if (prev != null) {
+				prev.discard();
+			}
+			prevMerchant = null;
+		}
+		nextSpawnTime = 0;
 	}
 
 	@Nullable

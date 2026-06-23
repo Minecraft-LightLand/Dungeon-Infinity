@@ -3,7 +3,7 @@
 // (powered by Fernflower decompiler)
 //
 
-package dev.xkmc.dungeon_infinity.content.block;
+package dev.xkmc.dungeon_infinity.content.block.merchant;
 
 import dev.xkmc.l2itemselector.overlay.OverlayUtil;
 import net.minecraft.client.DeltaTracker;

@@ -1,6 +1,6 @@
 package dev.xkmc.dungeon_infinity.init;
 
-import dev.xkmc.dungeon_infinity.content.block.MerchantOverlay;
+import dev.xkmc.dungeon_infinity.content.block.merchant.MerchantOverlay;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;

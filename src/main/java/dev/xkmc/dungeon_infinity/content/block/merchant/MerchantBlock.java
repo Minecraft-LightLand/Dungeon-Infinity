@@ -1,4 +1,4 @@
-package dev.xkmc.dungeon_infinity.content.block;
+package dev.xkmc.dungeon_infinity.content.block.merchant;
 
 import dev.xkmc.dungeon_infinity.content.cap.MazeHistory;
 import dev.xkmc.dungeon_infinity.content.cap.MazeRoomData;
@@ -8,6 +8,7 @@ import dev.xkmc.dungeon_infinity.content.config.TemplateConfig;
 import dev.xkmc.dungeon_infinity.init.reg.DIItems;
 import dev.xkmc.l2modularblock.impl.BlockEntityBlockMethodImpl;
 import dev.xkmc.l2modularblock.mult.UseItemOnBlockMethod;
+import dev.xkmc.l2modularblock.mult.UseWithoutItemBlockMethod;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.SectionPos;
 import net.minecraft.resources.Identifier;
@@ -20,7 +21,6 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.npc.wanderingtrader.WanderingTrader;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.trading.ItemCost;
 import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.item.trading.MerchantOffers;
@@ -56,17 +56,12 @@ public class MerchantBlock implements UseItemOnBlockMethod {
 	}
 
 	@Override
-	public InteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-		if (level.getBlockEntity(pos) instanceof MerchantBlockEntity be && player.isCreative()) {
-			if (stack.is(Items.BREAD)) {
-				if (!level.isClientSide())
-					be.setType("groceries");
-				return InteractionResult.SUCCESS;
-			} else if (stack.is(Items.IRON_INGOT)) {
-				if (!level.isClientSide())
-					be.setType("blacksmith");
-				return InteractionResult.SUCCESS;
-			}
+	public InteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result) {
+		if (level.getBlockEntity(pos) instanceof MerchantBlockEntity be) {
+			if (level.isClientSide())
+				if (!TypeSelWheelHandler.enableWheel(player, be))
+					return InteractionResult.FAIL;
+			return InteractionResult.SUCCESS;
 		}
 		return InteractionResult.PASS;
 	}

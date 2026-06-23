@@ -1,6 +1,7 @@
 package dev.xkmc.dungeon_infinity.init;
 
 import com.tterrag.registrate.providers.ProviderType;
+import dev.xkmc.dungeon_infinity.content.block.merchant.TypeSelToServer;
 import dev.xkmc.dungeon_infinity.content.cap.DefeatRoomPacket;
 import dev.xkmc.dungeon_infinity.content.cap.SetRadiusPacket;
 import dev.xkmc.dungeon_infinity.content.config.ShopConfig;
@@ -39,7 +40,8 @@ public class DungeonInfinity {
 	public static final PacketHandlerWithConfig HANDLER = new PacketHandlerWithConfig(
 			DungeonInfinity.MODID, 1,
 			e -> e.create(DefeatRoomPacket.class, PacketHandler.NetDir.PLAY_TO_CLIENT),
-			e -> e.create(SetRadiusPacket.class, PacketHandler.NetDir.PLAY_TO_CLIENT)
+			e -> e.create(SetRadiusPacket.class, PacketHandler.NetDir.PLAY_TO_CLIENT),
+			e -> e.create(TypeSelToServer.class, PacketHandler.NetDir.PLAY_TO_SERVER)
 	);
 
 	public static final ConfigTypeEntry<TemplateConfig> TEMPLATES = new ConfigTypeEntry<>(HANDLER, "templates", TemplateConfig.class);

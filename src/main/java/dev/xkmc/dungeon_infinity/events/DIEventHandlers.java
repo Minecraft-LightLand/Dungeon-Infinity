@@ -1,6 +1,6 @@
 package dev.xkmc.dungeon_infinity.events;
 
-import dev.xkmc.dungeon_infinity.content.block.PositionerBlockEntity;
+import dev.xkmc.dungeon_infinity.content.block.positioner.PositionerBlockEntity;
 import dev.xkmc.dungeon_infinity.content.cap.MazeHistory;
 import dev.xkmc.dungeon_infinity.init.DungeonInfinity;
 import dev.xkmc.dungeon_infinity.init.reg.DIMeta;

@@ -1,4 +1,5 @@
 {
+  "icon": {},
   "offers": {
     "stone:consumable": [
       {
@@ -9,7 +10,7 @@
           "count": 4,
           "id": "minecraft:glowstone"
         },
-        "weight": 100
+        "weight": 200
       },
       {
         "cost": "minecraft:emerald",
@@ -20,6 +21,34 @@
           "id": "minecraft:arrow"
         },
         "weight": 400
+      },
+      {
+        "cost": "minecraft:emerald",
+        "count": 2,
+        "limit": 3,
+        "result": {
+          "components": {
+            "minecraft:potion_contents": {
+              "potion": "minecraft:healing"
+            }
+          },
+          "id": "minecraft:potion"
+        },
+        "weight": 100
+      },
+      {
+        "cost": "minecraft:emerald",
+        "count": 3,
+        "limit": 3,
+        "result": {
+          "components": {
+            "minecraft:potion_contents": {
+              "potion": "minecraft:healing"
+            }
+          },
+          "id": "minecraft:splash_potion"
+        },
+        "weight": 100
       }
     ],
     "stone:equipments": [
@@ -217,14 +246,42 @@
         },
         "weight": 50
       }
+    ],
+    "stone:recycle": [
+      {
+        "cost": "minecraft:copper_ingot",
+        "count": 16,
+        "limit": 32,
+        "result": {
+          "count": 2,
+          "id": "minecraft:emerald"
+        },
+        "weight": 100
+      },
+      {
+        "cost": "minecraft:iron_ingot",
+        "count": 16,
+        "limit": 16,
+        "result": {
+          "count": 8,
+          "id": "minecraft:emerald"
+        },
+        "weight": 100
+      },
+      {
+        "cost": "minecraft:gold_ingot",
+        "count": 4,
+        "limit": 16,
+        "result": {
+          "count": 8,
+          "id": "minecraft:emerald"
+        },
+        "weight": 50
+      }
     ]
   },
   "shops": {
     "stone:blacksmith": [
-      {
-        "count": 2,
-        "offer": "stone:golem_equipments"
-      },
       {
         "count": 3,
         "offer": "stone:equipments"
@@ -232,17 +289,13 @@
       {
         "count": 3,
         "offer": "stone:material"
+      },
+      {
+        "count": 2,
+        "offer": "stone:golem_equipments"
       }
     ],
     "stone:groceries": [
-      {
-        "count": 2,
-        "offer": "stone:food"
-      },
-      {
-        "count": 2,
-        "offer": "stone:consumable"
-      },
       {
         "count": 2,
         "offer": "stone:ingredient"
@@ -250,6 +303,32 @@
       {
         "count": 1,
         "offer": "stone:material"
+      },
+      {
+        "count": 2,
+        "offer": "stone:food"
+      },
+      {
+        "count": 2,
+        "offer": "stone:consumable"
+      }
+    ],
+    "stone:recycler": [
+      {
+        "count": 2,
+        "offer": "stone:ingredient"
+      },
+      {
+        "count": 2,
+        "offer": "stone:food"
+      },
+      {
+        "count": 2,
+        "offer": "stone:recycle"
+      },
+      {
+        "count": 1,
+        "offer": "stone:consumable"
       }
     ]
   }

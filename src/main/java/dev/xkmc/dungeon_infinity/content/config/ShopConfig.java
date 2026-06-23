@@ -18,8 +18,8 @@ import java.util.*;
 @SerialClass
 public class ShopConfig extends BaseConfig {
 
-	public static Set<String> getAllTypes() {
-		return DungeonInfinity.SHOPS.getMerged().types;
+	public static Map<String, Item> getAllTypes() {
+		return DungeonInfinity.SHOPS.getMerged().icon;
 	}
 
 	public static List<Entry> build(Identifier key, RandomSource rand) {
@@ -55,14 +55,9 @@ public class ShopConfig extends BaseConfig {
 	@SerialField
 	public final LinkedHashMap<Identifier, ArrayList<Entry>> offers = new LinkedHashMap<>();
 
-	private final Set<String> types = new LinkedHashSet<>();
-
-	@Override
-	protected void postMerge() {
-		for (var e : shops.keySet())
-			types.add(e.getPath());
-	}
-
+	@ConfigCollect(CollectType.MAP_OVERWRITE)
+	@SerialField
+	public final LinkedHashMap<String, Item> icon = new LinkedHashMap<>();
 
 	public ShopBuilder start(String style) {
 		return new ShopBuilder(this, style);
@@ -74,6 +69,11 @@ public class ShopConfig extends BaseConfig {
 
 	public record Entry(Item cost, int count, ItemStackTemplate result, int weight, int limit) {
 
+	}
+
+	public ShopConfig setIcon(Map<String, Item> map) {
+		icon.putAll(map);
+		return this;
 	}
 
 	public static class ShopBuilder {
@@ -111,11 +111,18 @@ public class ShopConfig extends BaseConfig {
 		private final ShopBuilder parent;
 		private final Identifier id;
 
+		private Item currency = Items.EMERALD;
+
 		private final ArrayList<Entry> list = new ArrayList<>();
 
 		public PoolBuilder(ShopBuilder parent, Identifier id) {
 			this.parent = parent;
 			this.id = id;
+		}
+
+		public PoolBuilder setCurrency(Item item) {
+			currency = item;
+			return this;
 		}
 
 		public PoolBuilder add(Entry entry) {
@@ -124,7 +131,15 @@ public class ShopConfig extends BaseConfig {
 		}
 
 		public PoolBuilder add(int cost, Item result, int count, int weight, int limit) {
-			return add(new Entry(Items.EMERALD, cost, new ItemStackTemplate(result, count), weight, limit));
+			return add(new Entry(currency, cost, new ItemStackTemplate(result, count), weight, limit));
+		}
+
+		public PoolBuilder add(int cost, ItemStackTemplate stack, int weight, int limit) {
+			return add(new Entry(currency, cost, stack, weight, limit));
+		}
+
+		public PoolBuilder buy(Item input, int count, int price, int weight, int limit) {
+			return add(new Entry(input, count, new ItemStackTemplate(currency, price), weight, limit));
 		}
 
 		public ShopBuilder end() {

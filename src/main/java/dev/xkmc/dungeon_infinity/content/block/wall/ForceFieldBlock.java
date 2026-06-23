@@ -1,4 +1,4 @@
-package dev.xkmc.dungeon_infinity.content.block;
+package dev.xkmc.dungeon_infinity.content.block.wall;
 
 import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.generators.RegistrateBlockModelGenerator;
