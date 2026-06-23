@@ -191,10 +191,11 @@ dependencies {
     implementation "dev.xkmc:l2tabs:${l2tabs_ver}"
     implementation "dev.xkmc:l2damagetracker:${l2damagetracker_ver}"
     implementation "dev.xkmc:l2itemselector:${l2itemselector_ver}"
-    implementation "dev.xkmc:l2modularblock:${l2modularblock_ver}"
     implementation "dev.xkmc:mob_weapon_api:${mob_weapon_api_ver}"
     implementation "dev.xkmc:modulargolems:${modulargolems_ver}"
     implementation "com.tterrag.registrate:Registrate:${registrate_ver}"
+
+    implementation jarJar("dev.xkmc:l2modularblock:${l2modularblock_ver}")
 
     implementation "dev.xkmc:golemdungeons:${golemdungeons_ver}"
 

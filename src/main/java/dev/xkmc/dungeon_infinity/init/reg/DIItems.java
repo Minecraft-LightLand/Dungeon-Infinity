@@ -3,14 +3,14 @@ package dev.xkmc.dungeon_infinity.init.reg;
 import com.tterrag.registrate.util.entry.BlockEntityEntry;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.entry.ItemEntry;
-import dev.xkmc.dungeon_infinity.content.block.wall.ForceFieldBlock;
-import dev.xkmc.dungeon_infinity.content.block.wall.MazeFillerBlock;
-import dev.xkmc.dungeon_infinity.content.block.wall.MazeWallBlock;
 import dev.xkmc.dungeon_infinity.content.block.merchant.MerchantBlock;
 import dev.xkmc.dungeon_infinity.content.block.merchant.MerchantBlockEntity;
 import dev.xkmc.dungeon_infinity.content.block.positioner.PositionerBlock;
 import dev.xkmc.dungeon_infinity.content.block.positioner.PositionerBlockEntity;
 import dev.xkmc.dungeon_infinity.content.block.positioner.PositionerRenderer;
+import dev.xkmc.dungeon_infinity.content.block.wall.ForceFieldBlock;
+import dev.xkmc.dungeon_infinity.content.block.wall.MazeFillerBlock;
+import dev.xkmc.dungeon_infinity.content.block.wall.MazeWallBlock;
 import dev.xkmc.dungeon_infinity.content.item.KeyOfAccess;
 import dev.xkmc.dungeon_infinity.content.item.KeyOfTomb;
 import dev.xkmc.dungeon_infinity.content.map.MazeMapItem;
@@ -35,9 +35,7 @@ public class DIItems {
 			"dungeon_infinity", "Dungeon Infinity",
 			b -> b.icon(DIItems::getIcon));
 
-	public static final BlockEntry<DelegateBlock> MAZESTONE, FILLER;
-
-	public static final BlockEntry<ForceFieldBlock> FORCEFIELD;
+	public static final BlockEntry<DelegateBlock> MAZESTONE, FILLER, FORCEFIELD;
 	public static final BlockEntry<Block> FORCEFIELD_BLOCK, BROKEN_FORCEFIELD;
 
 	public static final BlockEntry<DelegateBlock> MERCHANT_BLOCK, POSITIONER;
@@ -68,7 +66,8 @@ public class DIItems {
 				.defaultBlockstate().simpleItem()
 				.register();
 
-		FORCEFIELD = DungeonInfinity.REGISTRATE.block("forcefield", ForceFieldBlock::new)
+		FORCEFIELD = DungeonInfinity.REGISTRATE.block("forcefield",
+						p -> DelegateBlock.newBaseBlock(p, BlockTemplates.ALL_DIRECTION, new ForceFieldBlock()))
 				.properties(p -> p.mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM)
 						.strength(-1.0F, 3600000).noLootTable().forceSolidOff().noOcclusion())
 				.blockstate(() -> ForceFieldBlock.Model::buildModel)

@@ -367,26 +367,26 @@
   "shops": {
     "sculk:blacksmith": [
       {
-        "count": 2,
-        "offer": "sculk:golem_equipments"
-      },
-      {
-        "count": 4,
-        "offer": "sculk:material"
-      },
-      {
         "count": 3,
         "offer": "sculk:equipments"
       },
       {
         "count": 1,
         "offer": "sculk:exchange"
+      },
+      {
+        "count": 2,
+        "offer": "sculk:golem_equipments"
+      },
+      {
+        "count": 4,
+        "offer": "sculk:material"
       }
     ],
     "sculk:groceries": [
       {
         "count": 4,
-        "offer": "sculk:ingredient"
+        "offer": "sculk:consumable"
       },
       {
         "count": 2,
@@ -394,29 +394,29 @@
       },
       {
         "count": 4,
-        "offer": "sculk:consumable"
+        "offer": "sculk:ingredient"
       }
     ],
     "sculk:recycler": [
-      {
-        "count": 3,
-        "offer": "sculk:recycle"
-      },
       {
         "count": 1,
         "offer": "sculk:consumable"
       },
       {
-        "count": 3,
-        "offer": "sculk:ingredient"
+        "count": 1,
+        "offer": "sculk:exchange"
       },
       {
         "count": 1,
         "offer": "sculk:food"
       },
       {
-        "count": 1,
-        "offer": "sculk:exchange"
+        "count": 3,
+        "offer": "sculk:ingredient"
+      },
+      {
+        "count": 3,
+        "offer": "sculk:recycle"
       }
     ]
   }

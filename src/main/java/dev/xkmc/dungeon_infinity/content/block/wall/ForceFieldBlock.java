@@ -6,6 +6,10 @@ import com.tterrag.registrate.providers.generators.RegistrateItemModelGenerator;
 import dev.xkmc.dungeon_infinity.content.cap.MazePos;
 import dev.xkmc.dungeon_infinity.init.reg.DIMeta;
 import dev.xkmc.l2modularblock.core.BlockTemplates;
+import dev.xkmc.l2modularblock.core.DelegateBlock;
+import dev.xkmc.l2modularblock.mult.PlacementBlockMethod;
+import dev.xkmc.l2modularblock.one.PathFindBlockMethod;
+import dev.xkmc.l2modularblock.one.ShapeBlockMethod;
 import net.minecraft.client.data.models.MultiVariant;
 import net.minecraft.client.data.models.blockstates.MultiVariantGenerator;
 import net.minecraft.client.data.models.model.ItemModelUtils;
@@ -35,27 +39,11 @@ import org.jspecify.annotations.Nullable;
 import static net.minecraft.client.data.models.BlockModelGenerators.ROTATION_FACING;
 import static net.minecraft.client.data.models.BlockModelGenerators.plainVariant;
 
-public class ForceFieldBlock extends Block {
-
-	public ForceFieldBlock(Properties properties) {
-		super(properties);
-	}
-
-	public void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-		builder.add(BlockTemplates.FACING);
-	}
+public class ForceFieldBlock  implements PlacementBlockMethod, ShapeBlockMethod, PathFindBlockMethod {
 
 	@Override
-	public @Nullable BlockState getStateForPlacement(BlockPlaceContext context) {
-		return defaultBlockState().setValue(BlockTemplates.FACING, context.getNearestLookingDirection().getOpposite());
-	}
-
-	public BlockState rotate(BlockState state, Rotation rot) {
-		return state.setValue(BlockTemplates.FACING, rot.rotate(state.getValue(BlockTemplates.FACING)));
-	}
-
-	public BlockState mirror(BlockState state, Mirror mirror) {
-		return state.rotate(mirror.getRotation(state.getValue(BlockTemplates.FACING)));
+	public @Nullable BlockState getStateForPlacement(BlockState state, BlockPlaceContext context) {
+		return state.setValue(BlockTemplates.FACING, context.getNearestLookingDirection().getOpposite());
 	}
 
 	@Override
@@ -81,13 +69,13 @@ public class ForceFieldBlock extends Block {
 	}
 
 	@Override
-	protected boolean isPathfindable(BlockState state, PathComputationType type) {
+	public boolean isPathfindable(BlockState state, PathComputationType type) {
 		return true;
 	}
 
 	public static class Model {
 
-		public static void buildModel(DataGenContext<Block, ForceFieldBlock> ctx, RegistrateBlockModelGenerator pvd) {
+		public static void buildModel(DataGenContext<Block, DelegateBlock> ctx, RegistrateBlockModelGenerator pvd) {
 			MultiVariant skinless = plainVariant(ModelTemplates.SINGLE_FACE.create(ctx.get(),
 					TextureMapping.defaultTexture(ctx.get()), pvd.modelOutput));
 			pvd.blockStateOutput.accept(MultiVariantGenerator.dispatch(ctx.get(), skinless)

@@ -354,48 +354,48 @@
         "offer": "mineshaft:equipments"
       },
       {
-        "count": 3,
-        "offer": "mineshaft:material"
-      },
-      {
         "count": 2,
         "offer": "mineshaft:golem_equipments"
+      },
+      {
+        "count": 3,
+        "offer": "mineshaft:material"
       }
     ],
     "mineshaft:groceries": [
       {
+        "count": 2,
+        "offer": "mineshaft:consumable"
+      },
+      {
+        "count": 2,
+        "offer": "mineshaft:food"
+      },
+      {
         "count": 3,
         "offer": "mineshaft:ingredient"
       },
       {
         "count": 1,
         "offer": "mineshaft:material"
+      }
+    ],
+    "mineshaft:recycler": [
+      {
+        "count": 1,
+        "offer": "mineshaft:consumable"
       },
       {
         "count": 2,
         "offer": "mineshaft:food"
       },
-      {
-        "count": 2,
-        "offer": "mineshaft:consumable"
-      }
-    ],
-    "mineshaft:recycler": [
       {
         "count": 3,
         "offer": "mineshaft:ingredient"
       },
       {
         "count": 2,
-        "offer": "mineshaft:food"
-      },
-      {
-        "count": 2,
         "offer": "mineshaft:recycle"
-      },
-      {
-        "count": 1,
-        "offer": "mineshaft:consumable"
       }
     ]
   }

@@ -72,7 +72,7 @@ public class ShopConfig extends BaseConfig {
 	}
 
 	public ShopConfig setIcon(Map<String, Item> map) {
-		icon.putAll(map);
+		icon.putAll(new TreeMap<>(map));
 		return this;
 	}
 
@@ -91,6 +91,7 @@ public class ShopConfig extends BaseConfig {
 		}
 
 		public ShopBuilder shop(String type, Map<String, Integer> map) {
+			map = new TreeMap<>(map);
 			ArrayList<OfferPool> list = new ArrayList<>();
 			for (var ent : map.entrySet()) {
 				list.add(new OfferPool(Identifier.fromNamespaceAndPath(style, ent.getKey()), ent.getValue()));

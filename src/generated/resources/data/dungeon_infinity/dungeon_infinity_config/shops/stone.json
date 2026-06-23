@@ -287,48 +287,48 @@
         "offer": "stone:equipments"
       },
       {
-        "count": 3,
-        "offer": "stone:material"
-      },
-      {
         "count": 2,
         "offer": "stone:golem_equipments"
+      },
+      {
+        "count": 3,
+        "offer": "stone:material"
       }
     ],
     "stone:groceries": [
       {
         "count": 2,
+        "offer": "stone:consumable"
+      },
+      {
+        "count": 2,
+        "offer": "stone:food"
+      },
+      {
+        "count": 2,
         "offer": "stone:ingredient"
       },
       {
         "count": 1,
         "offer": "stone:material"
+      }
+    ],
+    "stone:recycler": [
+      {
+        "count": 1,
+        "offer": "stone:consumable"
       },
       {
         "count": 2,
         "offer": "stone:food"
       },
-      {
-        "count": 2,
-        "offer": "stone:consumable"
-      }
-    ],
-    "stone:recycler": [
       {
         "count": 2,
         "offer": "stone:ingredient"
       },
       {
         "count": 2,
-        "offer": "stone:food"
-      },
-      {
-        "count": 2,
         "offer": "stone:recycle"
-      },
-      {
-        "count": 1,
-        "offer": "stone:consumable"
       }
     ]
   }
