@@ -1,0 +1,34 @@
+{
+  "criteria": {
+    "0": {
+      "conditions": {
+        "height": -1,
+        "isBoss": false,
+        "isQuad": false,
+        "total": 0,
+        "wholeGraph": false
+      },
+      "trigger": "dungeon_infinity:enter"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "background": "dungeon_infinity:textures/gui/advancements/backgrounds/main.png",
+    "description": {
+      "translate": "advancements.dungeon_infinity.main.visit.description"
+    },
+    "icon": {
+      "id": "dungeon_infinity:key_of_access"
+    },
+    "show_toast": false,
+    "title": {
+      "translate": "advancements.dungeon_infinity.main.visit.title"
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "dungeon_infinity:main/visit",
+  "criteria": {
+    "0": {
+      "conditions": {
+        "height": -1,
+        "isBoss": false,
+        "isQuad": false,
+        "total": 0,
+        "wholeGraph": false
+      },
+      "trigger": "dungeon_infinity:defeat"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.dungeon_infinity.main.defeat_room.description"
+    },
+    "icon": {
+      "id": "minecraft:cracked_stone_bricks"
+    },
+    "title": {
+      "translate": "advancements.dungeon_infinity.main.defeat_room.title"
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

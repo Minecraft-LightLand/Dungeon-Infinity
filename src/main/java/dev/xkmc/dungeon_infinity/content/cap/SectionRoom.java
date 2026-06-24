@@ -32,7 +32,7 @@ public class SectionRoom {
 	private ServerLevel sl;
 	private LevelChunk lc;
 	private SectionPos pos;
-	private MazeDimHolder dim;
+	MazeDimHolder dim;
 	private TemplateConfig.TemplateData info;
 	private List<BlockPos> positions;
 	private int[][] maze;
@@ -122,10 +122,14 @@ public class SectionRoom {
 		}
 	}
 
-
 	public boolean isBoss() {
 		int cell = maze[x][z];
 		return CellInterpreter.isBossRoom(cell);
+	}
+
+	public boolean isQuad() {
+		int cell = maze[x][z];
+		return CellInterpreter.isQuadRoom(cell);
 	}
 
 	public boolean isLarge() {
@@ -197,7 +201,7 @@ public class SectionRoom {
 
 	public MobRoomTicker createSpawner(@Nullable SectionRoom[][][] rooms, List<BlockPos> spawns) {
 		var ans = new MobRoomTicker();
-		ans.spawner = SpawnHelper.createTickerFromTemplate(info, rooms,spawns);
+		ans.spawner = SpawnHelper.createTickerFromTemplate(info, rooms, spawns);
 		return ans;
 	}
 

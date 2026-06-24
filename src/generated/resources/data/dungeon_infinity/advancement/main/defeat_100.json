@@ -1,0 +1,32 @@
+{
+  "parent": "dungeon_infinity:main/defeat_room",
+  "criteria": {
+    "0": {
+      "conditions": {
+        "height": -1,
+        "isBoss": false,
+        "isQuad": false,
+        "total": 100,
+        "wholeGraph": false
+      },
+      "trigger": "dungeon_infinity:defeat"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.dungeon_infinity.main.defeat_100.description"
+    },
+    "icon": {
+      "id": "minecraft:smooth_stone"
+    },
+    "title": {
+      "translate": "advancements.dungeon_infinity.main.defeat_100.title"
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

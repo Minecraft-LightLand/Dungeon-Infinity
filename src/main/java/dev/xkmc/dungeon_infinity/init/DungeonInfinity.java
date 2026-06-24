@@ -51,6 +51,7 @@ public class DungeonInfinity {
 		DIItems.register();
 		DIMeta.register();
 		DIWorldGen.register();
+		DITriggers.register();
 		DIConfig.init();
 
 	}
@@ -72,6 +73,7 @@ public class DungeonInfinity {
 		REGISTRATE.addDataGenerator(ProviderType.ITEM_TAGS, DITagGen::genItemTags);
 		REGISTRATE.addDataGenerator(ProviderType.BLOCK_TAGS, DITagGen::genBlockTags);
 		REGISTRATE.addDataGenerator(ProviderType.LOOT, DILootGen::genLoot);
+		REGISTRATE.addDataGenerator(ProviderType.ADVANCEMENT, DIAdvGen::genAdv);
 		var init = REGISTRATE.getDataGenInitializer();
 		DIDimensionGen.init(init);
 		var gen = event.getGenerator();

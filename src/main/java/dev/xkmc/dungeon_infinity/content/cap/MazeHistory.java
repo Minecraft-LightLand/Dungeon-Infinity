@@ -1,9 +1,11 @@
 package dev.xkmc.dungeon_infinity.content.cap;
 
+import dev.xkmc.dungeon_infinity.content.chunkgen.CellInterpreter;
 import dev.xkmc.dungeon_infinity.content.chunkgen.MazeChunkGenerator;
 import dev.xkmc.dungeon_infinity.content.item.KeyOfAccess;
 import dev.xkmc.dungeon_infinity.init.DungeonInfinity;
 import dev.xkmc.dungeon_infinity.init.data.DIDimensionGen;
+import dev.xkmc.dungeon_infinity.init.data.DITriggers;
 import dev.xkmc.dungeon_infinity.init.reg.DIMeta;
 import dev.xkmc.l2core.capability.player.PlayerCapabilityTemplate;
 import dev.xkmc.l2core.util.TeleportTool;
@@ -23,10 +25,13 @@ import net.minecraft.world.phys.Vec3;
 import org.jspecify.annotations.Nullable;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 @SerialClass
 public class MazeHistory extends PlayerCapabilityTemplate<MazeHistory> {
+
+	private static final int R = 25, MAX = 80;
 
 	public record RespawnData(Identifier dim, BlockPos pos, float yaw, float pitch, boolean forced) {
 
@@ -146,7 +151,7 @@ public class MazeHistory extends PlayerCapabilityTemplate<MazeHistory> {
 				radius = rad;
 			}
 		}
-		ent.visit(pos, radius);
+		boolean visited = ent.visit(pos, radius);
 		if (player instanceof ServerPlayer sp) {
 			var sec = MazeRoomData.get(sp.level(), SectionPos.of(sp.blockPosition()));
 			if (sec != null) {
@@ -154,17 +159,32 @@ public class MazeHistory extends PlayerCapabilityTemplate<MazeHistory> {
 				if (sec.isActive()) {
 					activeMobRoom = sp.blockPosition();
 				}
+				if (visited) {
+					int total = 0;
+					for (var e : data.values())
+						total += e.visited;
+					DITriggers.ENTER.get().trigger(sp, pos.y(), total, sec.isBoss(), sec.isQuad(), ent.visited == R * R);
+				}
 			}
 		}
 	}
 
 	public void defeat(ServerPlayer sp, ArrayList<MazePos> points, SectionRoom holder) {
-		for (var mp : points)
+		Map<Long, MazePos> mazes = new LinkedHashMap<>();
+		for (var mp : points) {
+			mazes.put(mp.key(), mp);
 			getOrCreate(mp).defeat(mp);
+		}
 		int total = 0;
 		for (var e : data.values())
 			total += e.defeat;
-
+		for (var e : mazes.entrySet()) {
+			var p = e.getValue();
+			var maze = holder.dim.getRegion(p.x(), p.y(), p.z());
+			var visit = getOrCreate(p);
+			int max = visit.getTotalRoom(maze);
+			DITriggers.DEFEAT.get().trigger(sp, p.y(), total, holder.isBoss(), holder.isQuad(), visit.defeat == max);
+		}
 	}
 
 	public Visit getOrCreate(MazePos pos) {
@@ -177,8 +197,6 @@ public class MazeHistory extends PlayerCapabilityTemplate<MazeHistory> {
 
 	@SerialClass
 	public static class Visit {
-
-		private static final int R = 25, MAX = 80;
 
 		@SerialField
 		private final byte[] visibleGrid = new byte[MAX];
@@ -213,18 +231,19 @@ public class MazeHistory extends PlayerCapabilityTemplate<MazeHistory> {
 			return (visibleGrid[i] & j) != 0;
 		}
 
-		public void visit(MazePos pos, int m) {
+		public boolean visit(MazePos pos, int m) {
 			int x = pos.px() >> 4;
 			int z = pos.pz() >> 4;
 			int index = x * R + z;
 			int i = index >> 3;
 			int j = 1 << (index & 7);
-			if ((visitedGrid[i] & j) != 0) return;
+			if ((visitedGrid[i] & j) != 0) return false;
 			visitedGrid[i] |= j;
 			visited++;
 			int old = revision;
 			markVisible(x - m, z - m, m * 2 + 1, m * 2 + 1);
 			revision = old + 1;
+			return true;
 		}
 
 		public void markVisible(int x, int z, int w, int h) {
@@ -276,6 +295,21 @@ public class MazeHistory extends PlayerCapabilityTemplate<MazeHistory> {
 			int i = index >> 3;
 			int j = 1 << (index & 7);
 			return (defeatGrid[i] & j) != 0;
+		}
+
+		private int totalCache = -1;
+
+		public int getTotalRoom(int[][] maze) {
+			if (totalCache >= 0) return totalCache;
+			totalCache = 0;
+			for (int x = 0; x < R; x++) {
+				for (int z = 0; z < R; z++) {
+					int c = maze[x][z];
+					if (CellInterpreter.isBossRoom(c) || CellInterpreter.isQuadRoom(c) || !CellInterpreter.isHallway(c))
+						totalCache++;
+				}
+			}
+			return totalCache;
 		}
 	}
 

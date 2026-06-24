@@ -1,0 +1,32 @@
+{
+  "parent": "dungeon_infinity:main/defeat_boss",
+  "criteria": {
+    "0": {
+      "conditions": {
+        "height": 0,
+        "isBoss": false,
+        "isQuad": false,
+        "total": 0,
+        "wholeGraph": false
+      },
+      "trigger": "dungeon_infinity:enter"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.dungeon_infinity.main.last.description"
+    },
+    "icon": {
+      "id": "minecraft:sculk"
+    },
+    "title": {
+      "translate": "advancements.dungeon_infinity.main.last.title"
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ],
+  "sends_telemetry_event": true
+}
