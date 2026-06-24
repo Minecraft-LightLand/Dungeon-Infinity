@@ -91,7 +91,7 @@ public class ShopConfig extends BaseConfig {
 		}
 
 		public ShopBuilder shop(String type, Map<String, Integer> map) {
-			map = new TreeMap<>(map);
+			//map = new TreeMap<>(map);
 			ArrayList<OfferPool> list = new ArrayList<>();
 			for (var ent : map.entrySet()) {
 				list.add(new OfferPool(Identifier.fromNamespaceAndPath(style, ent.getKey()), ent.getValue()));
@@ -101,8 +101,41 @@ public class ShopConfig extends BaseConfig {
 		}
 
 		public ShopConfig end() {
-
 			return parent;
+		}
+
+		public ShopBuilder shop(String type, String k1, int v1, String k2, int v2) {
+			var map = new LinkedHashMap<String, Integer>();
+			map.put(k1, v1);
+			map.put(k2, v2);
+			return shop(type, map);
+		}
+
+		public ShopBuilder shop(String type, String k1, int v1, String k2, int v2, String k3, int v3) {
+			var map = new LinkedHashMap<String, Integer>();
+			map.put(k1, v1);
+			map.put(k2, v2);
+			map.put(k3, v3);
+			return shop(type, map);
+		}
+
+		public ShopBuilder shop(String type, String k1, int v1, String k2, int v2, String k3, int v3, String k4, int v4) {
+			var map = new LinkedHashMap<String, Integer>();
+			map.put(k1, v1);
+			map.put(k2, v2);
+			map.put(k3, v3);
+			map.put(k4, v4);
+			return shop(type, map);
+		}
+
+		public ShopBuilder shop(String type, String k1, int v1, String k2, int v2, String k3, int v3, String k4, int v4, String k5, int v5) {
+			var map = new LinkedHashMap<String, Integer>();
+			map.put(k1, v1);
+			map.put(k2, v2);
+			map.put(k3, v3);
+			map.put(k4, v4);
+			map.put(k5, v5);
+			return shop(type, map);
 		}
 
 	}

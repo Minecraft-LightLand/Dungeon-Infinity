@@ -478,30 +478,30 @@
   "shops": {
     "deepslate:blacksmith": [
       {
-        "count": 3,
-        "offer": "deepslate:equipments"
-      },
-      {
         "count": 1,
         "offer": "deepslate:exchange"
       },
       {
-        "count": 2,
-        "offer": "deepslate:golem_equipments"
-      },
-      {
         "count": 4,
         "offer": "deepslate:material"
+      },
+      {
+        "count": 3,
+        "offer": "deepslate:equipments"
+      },
+      {
+        "count": 2,
+        "offer": "deepslate:golem_equipments"
       }
     ],
     "deepslate:groceries": [
       {
-        "count": 4,
-        "offer": "deepslate:consumable"
-      },
-      {
         "count": 2,
         "offer": "deepslate:food"
+      },
+      {
+        "count": 4,
+        "offer": "deepslate:consumable"
       },
       {
         "count": 3,
@@ -511,15 +511,15 @@
     "deepslate:recycler": [
       {
         "count": 1,
-        "offer": "deepslate:consumable"
-      },
-      {
-        "count": 1,
         "offer": "deepslate:exchange"
       },
       {
         "count": 1,
         "offer": "deepslate:food"
+      },
+      {
+        "count": 1,
+        "offer": "deepslate:consumable"
       },
       {
         "count": 3,

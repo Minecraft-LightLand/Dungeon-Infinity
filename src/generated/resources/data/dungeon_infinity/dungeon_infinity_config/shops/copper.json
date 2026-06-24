@@ -388,30 +388,30 @@
   "shops": {
     "copper:blacksmith": [
       {
-        "count": 3,
-        "offer": "copper:equipments"
-      },
-      {
         "count": 1,
         "offer": "copper:exchange"
       },
       {
-        "count": 2,
-        "offer": "copper:golem_equipments"
+        "count": 3,
+        "offer": "copper:material"
       },
       {
         "count": 3,
-        "offer": "copper:material"
+        "offer": "copper:equipments"
+      },
+      {
+        "count": 2,
+        "offer": "copper:golem_equipments"
       }
     ],
     "copper:groceries": [
       {
-        "count": 3,
-        "offer": "copper:consumable"
-      },
-      {
         "count": 2,
         "offer": "copper:food"
+      },
+      {
+        "count": 3,
+        "offer": "copper:consumable"
       },
       {
         "count": 3,
@@ -421,15 +421,15 @@
     "copper:recycler": [
       {
         "count": 1,
-        "offer": "copper:consumable"
-      },
-      {
-        "count": 1,
         "offer": "copper:exchange"
       },
       {
         "count": 1,
         "offer": "copper:food"
+      },
+      {
+        "count": 1,
+        "offer": "copper:consumable"
       },
       {
         "count": 3,

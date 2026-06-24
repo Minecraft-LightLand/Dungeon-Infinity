@@ -351,25 +351,25 @@
     "mineshaft:blacksmith": [
       {
         "count": 3,
+        "offer": "mineshaft:material"
+      },
+      {
+        "count": 3,
         "offer": "mineshaft:equipments"
       },
       {
         "count": 2,
         "offer": "mineshaft:golem_equipments"
-      },
-      {
-        "count": 3,
-        "offer": "mineshaft:material"
       }
     ],
     "mineshaft:groceries": [
       {
         "count": 2,
-        "offer": "mineshaft:consumable"
+        "offer": "mineshaft:food"
       },
       {
         "count": 2,
-        "offer": "mineshaft:food"
+        "offer": "mineshaft:consumable"
       },
       {
         "count": 3,
@@ -382,12 +382,12 @@
     ],
     "mineshaft:recycler": [
       {
-        "count": 1,
-        "offer": "mineshaft:consumable"
-      },
-      {
         "count": 2,
         "offer": "mineshaft:food"
+      },
+      {
+        "count": 1,
+        "offer": "mineshaft:consumable"
       },
       {
         "count": 3,

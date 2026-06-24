@@ -284,25 +284,25 @@
     "stone:blacksmith": [
       {
         "count": 3,
+        "offer": "stone:material"
+      },
+      {
+        "count": 3,
         "offer": "stone:equipments"
       },
       {
         "count": 2,
         "offer": "stone:golem_equipments"
-      },
-      {
-        "count": 3,
-        "offer": "stone:material"
       }
     ],
     "stone:groceries": [
       {
         "count": 2,
-        "offer": "stone:consumable"
+        "offer": "stone:food"
       },
       {
         "count": 2,
-        "offer": "stone:food"
+        "offer": "stone:consumable"
       },
       {
         "count": 2,
@@ -315,12 +315,12 @@
     ],
     "stone:recycler": [
       {
-        "count": 1,
-        "offer": "stone:consumable"
-      },
-      {
         "count": 2,
         "offer": "stone:food"
+      },
+      {
+        "count": 1,
+        "offer": "stone:consumable"
       },
       {
         "count": 2,

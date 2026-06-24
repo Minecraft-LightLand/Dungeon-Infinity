@@ -211,9 +211,9 @@ public class DIConfigGen extends ConfigDataProvider {
 					.add(32, GolemItems.GOLEMGUARD_CHESTPLATE.asItem(), 1, 100, 1)
 					.add(16, GolemItems.GOLEMGUARD_SHINGUARD.asItem(), 1, 100, 1)
 					.end()
-					.shop("groceries", Map.of("food", 2, "consumable", 2, "ingredient", 2, "material", 1))
-					.shop("recycler", Map.of("food", 2, "consumable", 1, "ingredient", 2, "recycle", 2))
-					.shop("blacksmith", Map.of("material", 3, "equipments", 3, "golem_equipments", 2))
+					.shop("groceries", "food", 2, "consumable", 2, "ingredient", 2, "material", 1)
+					.shop("recycler", "food", 2, "consumable", 1, "ingredient", 2, "recycle", 2)
+					.shop("blacksmith", "material", 3, "equipments", 3, "golem_equipments", 2)
 					.end()
 			);
 
@@ -267,9 +267,9 @@ public class DIConfigGen extends ConfigDataProvider {
 					.add(32, GolemItems.GOLEMGUARD_CHESTPLATE.asItem(), 1, 100, 1)
 					.add(16, GolemItems.GOLEMGUARD_SHINGUARD.asItem(), 1, 100, 1)
 					.end()
-					.shop("groceries", Map.of("food", 2, "consumable", 2, "ingredient", 3, "material", 1))
-					.shop("recycler", Map.of("food", 2, "consumable", 1, "ingredient", 3, "recycle", 2))
-					.shop("blacksmith", Map.of("material", 3, "equipments", 3, "golem_equipments", 2))
+					.shop("groceries", "food", 2, "consumable", 2, "ingredient", 3, "material", 1)
+					.shop("recycler", "food", 2, "consumable", 1, "ingredient", 3, "recycle", 2)
+					.shop("blacksmith", "material", 3, "equipments", 3, "golem_equipments", 2)
 					.end()
 			);
 
@@ -330,9 +330,9 @@ public class DIConfigGen extends ConfigDataProvider {
 					.add(32, GolemItems.GOLEMGUARD_CHESTPLATE.asItem(), 1, 100, 1)
 					.add(16, GolemItems.GOLEMGUARD_SHINGUARD.asItem(), 1, 100, 1)
 					.end()
-					.shop("groceries", Map.of("food", 2, "consumable", 3, "ingredient", 3))
-					.shop("recycler", Map.of("exchange", 1, "food", 1, "consumable", 1, "ingredient", 3, "recycle", 3))
-					.shop("blacksmith", Map.of("exchange", 1, "material", 3, "equipments", 3, "golem_equipments", 2))
+					.shop("groceries", "food", 2, "consumable", 3, "ingredient", 3)
+					.shop("recycler", "exchange", 1, "food", 1, "consumable", 1, "ingredient", 3, "recycle", 3)
+					.shop("blacksmith", "exchange", 1, "material", 3, "equipments", 3, "golem_equipments", 2)
 					.end()
 			);
 
@@ -404,9 +404,9 @@ public class DIConfigGen extends ConfigDataProvider {
 					.add(16, GolemItems.WINDSPIRIT_CHESTPLATE.asItem(), 1, 100, 1)
 					.add(10, GolemItems.WINDSPIRIT_SHINGUARD.asItem(), 1, 100, 1)
 					.end()
-					.shop("groceries", Map.of("food", 2, "consumable", 4, "ingredient", 3))
-					.shop("recycler", Map.of("exchange", 1, "food", 1, "consumable", 1, "ingredient", 3, "recycle", 3))
-					.shop("blacksmith", Map.of("exchange", 1, "material", 4, "equipments", 3, "golem_equipments", 2))
+					.shop("groceries", "food", 2, "consumable", 4, "ingredient", 3)
+					.shop("recycler", "exchange", 1, "food", 1, "consumable", 1, "ingredient", 3, "recycle", 3)
+					.shop("blacksmith", "exchange", 1, "material", 4, "equipments", 3, "golem_equipments", 2)
 					.end()
 			);
 
@@ -464,9 +464,9 @@ public class DIConfigGen extends ConfigDataProvider {
 					.add(16, GolemItems.WINDSPIRIT_CHESTPLATE.asItem(), 1, 100, 1)
 					.add(10, GolemItems.WINDSPIRIT_SHINGUARD.asItem(), 1, 100, 1)
 					.end()
-					.shop("groceries", Map.of("food", 2, "consumable", 4, "ingredient", 4))
-					.shop("recycler", Map.of("exchange", 1, "food", 1, "consumable", 1, "ingredient", 3, "recycle", 3))
-					.shop("blacksmith", Map.of("exchange", 1, "material", 4, "equipments", 3, "golem_equipments", 2))
+					.shop("groceries", "food", 2, "consumable", 4, "ingredient", 4)
+					.shop("recycler", "exchange", 1, "food", 1, "consumable", 1, "ingredient", 3, "recycle", 3)
+					.shop("blacksmith", "exchange", 1, "material", 4, "equipments", 3, "golem_equipments", 2)
 					.end()
 			);
 		}
