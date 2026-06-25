@@ -15,11 +15,11 @@ public class RoomProcessorStrategy {
 
 	private static final String[] STYLES = {"sculk", "deepslate", "copper", "mineshaft", "stone"};
 
-	private static final Map<String, Integer> SPECIAL_ROOMS = Map.of(
+	private static final Map<String, Integer> SPECIAL_ROOMS = new TreeMap<>(Map.of(
 			"warehouse", 6,
 			"workshop", 6,
 			"shop", 6
-	);
+	));
 
 	private final int r1;
 

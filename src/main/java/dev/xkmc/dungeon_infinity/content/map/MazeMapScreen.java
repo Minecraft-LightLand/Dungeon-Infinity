@@ -5,6 +5,7 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
 import dev.xkmc.dungeon_infinity.content.cap.MazePos;
 import dev.xkmc.dungeon_infinity.init.data.DILang;
 import dev.xkmc.dungeon_infinity.init.reg.DIMeta;
+import dev.xkmc.l2core.util.TooltipHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.navigation.ScreenRectangle;
@@ -48,7 +49,7 @@ public class MazeMapScreen extends Screen {
 		g.blit(RenderPipelines.GUI_TEXTURED, tex.id, 0, 0, 0, 0, 125, 125, 128, 128);
 		g.pose().pushMatrix();
 		g.pose().scale(5, 5);
-		if (!player.isCreative() || !player.isShiftKeyDown())
+		if (!player.isCreative() || !TooltipHelper.hasShiftDown())
 			g.blit(RenderPipelines.GUI_TEXTURED, fog.id, 0, 0, 0, 0, 25, 25, 32, 32);
 		g.pose().popMatrix();
 		g.pose().translate(pos.px() / 16f * 5f, pos.pz() / 16f * 5f);
