@@ -12,9 +12,19 @@ import javax.annotation.Nullable;
 import java.util.Locale;
 
 public enum DILang {
-	TOMB("tomb", "Retrieve items from previous death in the maze", 0, ChatFormatting.GRAY),
-	TOMB_ITEM_COUNT("tomb_item_count", "You have %s items to be retrieved", 1, ChatFormatting.GRAY),
-	ACCESS("access", "Teleport into or out of the maze", 0, ChatFormatting.GRAY);
+	TOMB("tooltip.tomb", "Retrieve items from previous death in the maze", 0, ChatFormatting.GRAY),
+	TOMB_ITEM_COUNT("tooltip.tomb_item_count", "You have %s items to be retrieved", 1, ChatFormatting.GRAY),
+	ACCESS("tooltip.access", "Teleport into or out of the maze", 0, ChatFormatting.GRAY),
+
+	DEPTH("legend.depth", "Depth: %s", 1, null),
+	BATTLE("legend.battle", "Battle Room", 0, null),
+	QUAD("legend.quad", "Large Battle Room", 0, null),
+	BOSS("legend.boss", "Boss Room", 0, null),
+	DOWN("legend.down", "Downward Stairs", 0, null),
+	UP("legend.up", "Upward Stairs", 0, null),
+	WORKSHOP("legend.workshop", "Workshop Room", 0, null),
+	SHOP("legend.shop", "Merchant Room", 0, null),
+	WAREHOUSE("legend.warehouse", "Warehouse Room", 0, null);
 
 	private final String key, def;
 	private final int arg;

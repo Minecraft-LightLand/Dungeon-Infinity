@@ -39,13 +39,12 @@ public class MazeMapRenderer {
 			});
 		pose.popPose();
 		pose.translate(pos.px() / 16f * 5f, pos.pz() / 16f * 5f, 0);
-		float r = Mth.sin(((int) (System.currentTimeMillis() % 1000)) / 1000f * Math.PI) * 0 + 2;
-		pose.scale(r, r, 1);
+		pose.scale(2, 2, 1);
 		var yrot = player.getYRot();
 		pose.mulPose(Axis.ZP.rotationDegrees(yrot));
 		col.submitCustomGeometry(pose, RenderTypes.text(tex.id), (mat, buffer) -> {
 			float s = 127 / 128f;
-			int c = 0xff3f7fff;
+			int c = 0xaf3f7fff;
 			buffer.addVertex(mat, 0, 1, -0.03F).setColor(c).setUv(s, 1).setLight(light);
 			buffer.addVertex(mat, 1, -1f, -0.03F).setColor(c).setUv(1, 1).setLight(light);
 			buffer.addVertex(mat, 0, -0.5f, -0.03F).setColor(c).setUv(1, s).setLight(light);

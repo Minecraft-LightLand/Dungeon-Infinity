@@ -9,6 +9,18 @@ import java.util.Arrays;
 
 public class MazeMapPixelMapper {
 
+	public static final int B = 0xff000000; // black, cell border color
+	public static final int W = 0xff5f5f5f; // path wall color
+	public static final int A = 0xffd6d6d6; // walkable room color
+	public static final int G = 0xff3042ec; // downward stairs
+	public static final int Y = 0xff30a7ec; // upward stairs
+	public static final int F = 0xfff5342b; // mob room color
+	public static final int Q = 0xffce3cff; // quad color
+	public static final int R = 0xff5704c6; // boss color
+	public static final int K = 0xff4edf4a; // workshop color
+	public static final int S = 0xff2eaf2a; // shop color
+	public static final int H = 0xfff3b829; // warehouse color
+
 	private static final Int2ObjectMap<int[][]> CACHE = new Int2ObjectOpenHashMap<>();
 
 	public static void clear() {
@@ -63,56 +75,43 @@ public class MazeMapPixelMapper {
 		if (CACHE.containsKey(flag))
 			return CACHE.get(flag);
 
-		int b = 0xff000000; // black, cell border color
-		int w = 0xff5f5f5f; // path wall color
-		int a = 0xffd6d6d6; // walkable room color
-		int g = 0xff3042ec; // downward stairs
-		int y = 0xff30a7ec; // upward stairs
-		int f = 0xfff5342b; // mob room color
-		int q = 0xffce3cff; // quad color
-		int r = 0xff5704c6; // boss color
-		int k = 0xff4edf4a; // workshop color
-		int s = 0xff4edf4a; // shop color
-		int h = 0xfff3b829; // warehouse color
-
-
 		int[][] ans = new int[5][5];
 
 		if (CellInterpreter.isBossRoom(flag)) {
 			int boss = CellInterpreter.getBossRoom(flag);
-			int col = defeated ? boss >= 9 ? g : y : r;
+			int col = defeated ? boss >= 9 ? G : Y : R;
 			int c = boss % 9;
 			int x = c / 3;
 			int z = c % 3;
-			fillBossRoom(ans, x, z, col, b);
+			fillBossRoom(ans, x, z, col, B);
 		} else if (CellInterpreter.isQuadRoom(flag)) {
 			int open = CellInterpreter.getOpenings(flag);
-			int col = defeated ? a : q;
-			fillQuadRoom(ans, open, col, b);
+			int col = defeated ? A : Q;
+			fillQuadRoom(ans, open, col, B);
 		} else {
 			int open = CellInterpreter.getOpenings(flag);
-			int c = defeated ? (open & 16) != 0 ? y : (open & 32) != 0 ? g : a : f;
+			int c = defeated ? (open & 16) != 0 ? Y : (open & 32) != 0 ? G : A : F;
 			if (CellInterpreter.isHallway(flag) && CellInterpreter.getTemplateType(flag) == 1) {
 				int variant = CellInterpreter.getVariant(cell);
 				int style = CellInterpreter.getStyle(cell);
 				int warehouse = TemplateConfig.of(flag).variantIndex(style, "warehouse");
 				int workshop = TemplateConfig.of(flag).variantIndex(style, "workshop");
 				int shop = TemplateConfig.of(flag).variantIndex(style, "shop");
-				c = variant == warehouse ? h : variant == workshop ? k : variant == shop ? s : c;
-				fillWalled(ans, open, a, c);
+				c = variant == warehouse ? H : variant == workshop ? K : variant == shop ? S : c;
+				fillWalled(ans, open, A, c);
 			} else if (CellInterpreter.isHallway(flag)) {
-				fillWalled(ans, open, c, w);
+				fillWalled(ans, open, c, W);
 			} else if (!defeated && (open & 32) != 0) {
-				fillWalled(ans, open, g, f);
+				fillWalled(ans, open, G, F);
 			} else {
 				for (int i = 0; i < 5; i++)
 					Arrays.fill(ans[i], c);
 			}
-			ans[0][0] = ans[0][4] = ans[4][0] = ans[4][4] = b;
-			if ((open & 1) == 0) for (int i = 1; i <= 3; i++) ans[0][i] = b;
-			if ((open & 2) == 0) for (int i = 1; i <= 3; i++) ans[4][i] = b;
-			if ((open & 4) == 0) for (int i = 1; i <= 3; i++) ans[i][0] = b;
-			if ((open & 8) == 0) for (int i = 1; i <= 3; i++) ans[i][4] = b;
+			ans[0][0] = ans[0][4] = ans[4][0] = ans[4][4] = B;
+			if ((open & 1) == 0) for (int i = 1; i <= 3; i++) ans[0][i] = B;
+			if ((open & 2) == 0) for (int i = 1; i <= 3; i++) ans[4][i] = B;
+			if ((open & 4) == 0) for (int i = 1; i <= 3; i++) ans[i][0] = B;
+			if ((open & 8) == 0) for (int i = 1; i <= 3; i++) ans[i][4] = B;
 		}
 		CACHE.put(flag, ans);
 		return ans;

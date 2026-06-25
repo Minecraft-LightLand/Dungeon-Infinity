@@ -32,7 +32,16 @@
   "item.dungeon_infinity.key_of_tomb": "Key Of Tomb",
   "item.dungeon_infinity.maze_map": "Maze Map",
   "itemGroup.l2core.dungeon_infinity": "Dungeon Infinity",
-  "modulargolems.access": "Teleport into or out of the maze",
-  "modulargolems.tomb": "Retrieve items from previous death in the maze",
-  "modulargolems.tomb_item_count": "You have %s items to be retrieved"
+  "modulargolems.legend.battle": "Battle Room",
+  "modulargolems.legend.boss": "Boss Room",
+  "modulargolems.legend.depth": "Depth: %s",
+  "modulargolems.legend.down": "Downward Stairs",
+  "modulargolems.legend.quad": "Large Battle Room",
+  "modulargolems.legend.shop": "Merchant Room",
+  "modulargolems.legend.up": "Upward Stairs",
+  "modulargolems.legend.warehouse": "Warehouse Room",
+  "modulargolems.legend.workshop": "Workshop Room",
+  "modulargolems.tooltip.access": "Teleport into or out of the maze",
+  "modulargolems.tooltip.tomb": "Retrieve items from previous death in the maze",
+  "modulargolems.tooltip.tomb_item_count": "You have %s items to be retrieved"
 }

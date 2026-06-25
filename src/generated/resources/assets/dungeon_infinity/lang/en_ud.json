@@ -32,7 +32,16 @@
   "item.dungeon_infinity.key_of_tomb": "qɯo⟘ ɟO ʎǝʞ",
   "item.dungeon_infinity.maze_map": "dɐW ǝzɐW",
   "itemGroup.l2core.dungeon_infinity": "ʎʇıuıɟuI uoǝbunᗡ",
-  "modulargolems.access": "ǝzɐɯ ǝɥʇ ɟo ʇno ɹo oʇuı ʇɹodǝןǝ⟘",
-  "modulargolems.tomb": "ǝzɐɯ ǝɥʇ uı ɥʇɐǝp snoıʌǝɹd ɯoɹɟ sɯǝʇı ǝʌǝıɹʇǝᴚ",
-  "modulargolems.tomb_item_count": "pǝʌǝıɹʇǝɹ ǝq oʇ sɯǝʇı %1$s ǝʌɐɥ noʎ"
+  "modulargolems.legend.battle": "ɯooᴚ ǝןʇʇɐᗺ",
+  "modulargolems.legend.boss": "ɯooᴚ ssoᗺ",
+  "modulargolems.legend.depth": "%1$s :ɥʇdǝᗡ",
+  "modulargolems.legend.down": "sɹıɐʇS pɹɐʍuʍoᗡ",
+  "modulargolems.legend.quad": "ɯooᴚ ǝןʇʇɐᗺ ǝbɹɐꞀ",
+  "modulargolems.legend.shop": "ɯooᴚ ʇuɐɥɔɹǝW",
+  "modulargolems.legend.up": "sɹıɐʇS pɹɐʍd∩",
+  "modulargolems.legend.warehouse": "ɯooᴚ ǝsnoɥǝɹɐM",
+  "modulargolems.legend.workshop": "ɯooᴚ doɥsʞɹoM",
+  "modulargolems.tooltip.access": "ǝzɐɯ ǝɥʇ ɟo ʇno ɹo oʇuı ʇɹodǝןǝ⟘",
+  "modulargolems.tooltip.tomb": "ǝzɐɯ ǝɥʇ uı ɥʇɐǝp snoıʌǝɹd ɯoɹɟ sɯǝʇı ǝʌǝıɹʇǝᴚ",
+  "modulargolems.tooltip.tomb_item_count": "pǝʌǝıɹʇǝɹ ǝq oʇ sɯǝʇı %1$s ǝʌɐɥ noʎ"
 }
