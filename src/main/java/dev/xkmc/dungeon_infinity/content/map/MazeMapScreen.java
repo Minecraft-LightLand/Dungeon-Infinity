@@ -58,9 +58,14 @@ public class MazeMapScreen extends Screen {
 		g.pose().rotate(yrot * Mth.DEG_TO_RAD);
 
 		float r = (Mth.sin(((int) (System.currentTimeMillis() % 2000)) / 2000f * Math.PI * 2) + 1) / 2;
-		int alpha = (int) (r * 0x3f + 0xc0);
-		int col = alpha << 24 | 0x3f7fff;
+		float pulse = 1 + r * 0.2f;
+		g.pose().scale(pulse, pulse);
+		int col = 0xffffffff;
 
+		g.pose().pushMatrix();
+		g.pose().scale(1.5f, 1.5f);
+		g.submitGuiElementRenderState(Arrow.of(g, -1, -1, 1, 1, 0xff000000));
+		g.pose().popMatrix();
 		g.submitGuiElementRenderState(Arrow.of(g, -1, -1, 1, 1, col));
 		g.pose().popMatrix();
 		int x1 = (int) (x0 + rate * 64);

@@ -29,7 +29,7 @@ import java.util.function.Consumer;
 public class KeyOfAccess extends Item {
 
 	public KeyOfAccess(Properties properties) {
-		super(properties.stacksTo(16));
+		super(properties.stacksTo(1));
 	}
 
 	@Override

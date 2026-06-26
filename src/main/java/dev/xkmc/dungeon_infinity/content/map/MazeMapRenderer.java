@@ -44,7 +44,7 @@ public class MazeMapRenderer {
 		pose.mulPose(Axis.ZP.rotationDegrees(yrot));
 		col.submitCustomGeometry(pose, RenderTypes.text(tex.id), (mat, buffer) -> {
 			float s = 127 / 128f;
-			int c = 0xaf3f7fff;
+			int c = 0xffffffff;
 			buffer.addVertex(mat, 0, 1, -0.03F).setColor(c).setUv(s, 1).setLight(light);
 			buffer.addVertex(mat, 1, -1f, -0.03F).setColor(c).setUv(1, 1).setLight(light);
 			buffer.addVertex(mat, 0, -0.5f, -0.03F).setColor(c).setUv(1, s).setLight(light);
