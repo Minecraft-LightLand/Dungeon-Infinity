@@ -42,13 +42,24 @@ public class MazeMapRenderer {
 		pose.scale(2, 2, 1);
 		var yrot = player.getYRot();
 		pose.mulPose(Axis.ZP.rotationDegrees(yrot));
+		pose.pushPose();
+		pose.scale(1.5f,1.5f,1);
 		col.submitCustomGeometry(pose, RenderTypes.text(tex.id), (mat, buffer) -> {
 			float s = 127 / 128f;
-			int c = 0xffffffff;
+			int c = 0xff000000;
 			buffer.addVertex(mat, 0, 1, -0.03F).setColor(c).setUv(s, 1).setLight(light);
 			buffer.addVertex(mat, 1, -1f, -0.03F).setColor(c).setUv(1, 1).setLight(light);
 			buffer.addVertex(mat, 0, -0.5f, -0.03F).setColor(c).setUv(1, s).setLight(light);
 			buffer.addVertex(mat, -1, -1f, -0.03F).setColor(c).setUv(s, s).setLight(light);
+		});
+		pose.popPose();
+		col.submitCustomGeometry(pose, RenderTypes.text(tex.id), (mat, buffer) -> {
+			float s = 127 / 128f;
+			int c = 0xffffffff;
+			buffer.addVertex(mat, 0, 1, -0.04F).setColor(c).setUv(s, 1).setLight(light);
+			buffer.addVertex(mat, 1, -1f, -0.04F).setColor(c).setUv(1, 1).setLight(light);
+			buffer.addVertex(mat, 0, -0.5f, -0.04F).setColor(c).setUv(1, s).setLight(light);
+			buffer.addVertex(mat, -1, -1f, -0.04F).setColor(c).setUv(s, s).setLight(light);
 		});
 		pose.popPose();
 	}
