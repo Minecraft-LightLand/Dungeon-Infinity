@@ -10,8 +10,6 @@ import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.ChunkPos;
 import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.Arrays;
 import java.util.Map;
@@ -20,7 +18,6 @@ import java.util.Random;
 public class MazeDimHolder {
 
 	public static final Map<Long, MazeDimHolder> cache = new Long2ObjectOpenHashMap<>();
-	private static final Logger log = LoggerFactory.getLogger(MazeDimHolder.class);
 
 	public static MazeDimHolder get(long seed) {
 		return cache.computeIfAbsent(seed, MazeDimHolder::new);
