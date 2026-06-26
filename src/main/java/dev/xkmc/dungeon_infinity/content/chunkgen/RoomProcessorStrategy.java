@@ -2,6 +2,7 @@ package dev.xkmc.dungeon_infinity.content.chunkgen;
 
 import com.mojang.datafixers.util.Pair;
 import dev.xkmc.dungeon_infinity.content.config.TemplateConfig;
+import dev.xkmc.dungeon_infinity.content.map.MapLogger;
 import dev.xkmc.dungeon_infinity.content.maze.generator.IRandom;
 import dev.xkmc.dungeon_infinity.content.maze.generator.MazeConfig;
 import dev.xkmc.dungeon_infinity.content.maze.generator.MazeGen;
@@ -209,13 +210,15 @@ public class RoomProcessorStrategy {
 
 	public class Grid {
 
+		private final MapLogger logger;
 		private final RandomSource rand;
 		private final int style;
 		private final int[][] maze;
 		private final int[][] marker = new int[r1][r1];
 		private final int[][] variants = new int[r1][r1];
 
-		public Grid(RandomSource rand, int style, int[][] maze) {
+		public Grid(MapLogger logger, RandomSource rand, int style, int[][] maze) {
+			this.logger = logger;
 			this.rand = rand;
 			this.style = style;
 			this.maze = maze;
@@ -289,6 +292,7 @@ public class RoomProcessorStrategy {
 					}
 				}
 			}
+			logger.print("Unsorted End Room Candidates: %s", ends);
 			int n = ends.size();
 			for (int i = 0; i < n * 2; i++) {
 				int a = rand.nextInt(n);
@@ -297,6 +301,7 @@ public class RoomProcessorStrategy {
 				ends.set(a, ends.get(b));
 				ends.set(b, temp);
 			}
+			logger.print("Sorted Room Candidates: %s", ends);
 			this.endRooms.addAll(ends);
 
 			int total = 0;
@@ -314,7 +319,7 @@ public class RoomProcessorStrategy {
 					}
 				}
 			}
-
+			logger.print("Room Types: %s", rooms);
 			for (var e : rooms.entrySet()) {
 				String room = e.getKey();
 				int count = e.getValue();
@@ -322,6 +327,7 @@ public class RoomProcessorStrategy {
 					int pos = getEndRoom();
 					int x = pos / r1;
 					int z = pos % r1;
+					logger.print("Set Room: %s at %d", room, pos);
 					set(x, z, CellInterpreter.HALLWAY, room);
 				}
 			}

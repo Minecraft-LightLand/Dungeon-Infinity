@@ -1,6 +1,7 @@
 package dev.xkmc.dungeon_infinity.content.chunkgen;
 
 import dev.xkmc.dungeon_infinity.content.cap.MazePos;
+import dev.xkmc.dungeon_infinity.content.map.MapLogger;
 import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
 import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 import net.minecraft.core.Direction;
@@ -9,6 +10,8 @@ import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.ChunkPos;
 import org.jspecify.annotations.Nullable;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Arrays;
 import java.util.Map;
@@ -17,6 +20,7 @@ import java.util.Random;
 public class MazeDimHolder {
 
 	public static final Map<Long, MazeDimHolder> cache = new Long2ObjectOpenHashMap<>();
+	private static final Logger log = LoggerFactory.getLogger(MazeDimHolder.class);
 
 	public static MazeDimHolder get(long seed) {
 		return cache.computeIfAbsent(seed, MazeDimHolder::new);
@@ -166,20 +170,21 @@ public class MazeDimHolder {
 
 			public class SubRegion {
 
+				public final MapLogger logger;
 				private final int cx, cz;
 				final int[][] maze;
 				private final MazeColumn col;
-				public final long roomSeed;
+				public final long[] roomSeed;
 
 				private boolean checked = false;
 
 				public SubRegion(long seed, int cx, int cz) {
+					logger = new MapLogger(seed, cx, y, cz);
 					this.cx = cx;
 					this.cz = cz;
-					long[] seeds = new long[2];
-					MazeRandHelper.getChildrenSeeds(seed, seeds);
-					this.maze = strategy.genMaze(r1, seeds[0]).ans;
-					roomSeed = seeds[1];
+					roomSeed = new long[4];
+					MazeRandHelper.getChildrenSeeds(seed, roomSeed);
+					this.maze = strategy.genMaze(r1, roomSeed[0]).ans;
 					this.col = getColumn(cx, cz);
 					int x0 = getSubWall(cx, cz, Direction.Axis.X);
 					int x1 = getSubWall(cx + 1, cz, Direction.Axis.X);
@@ -213,10 +218,9 @@ public class MazeDimHolder {
 					if (checked) return;
 					checked = true;
 					col.check();
-					var r = RandomSource.create(roomSeed);
-					var grid = strategy.new Grid(r, col.styles[y], maze);
-					strategy.new Scanner(maze, grid).scan(r);
-					strategy.new Marker(r, grid, maze).mark();
+					var grid = strategy.new Grid(logger, RandomSource.create(roomSeed[1]), col.styles[y], maze);
+					strategy.new Scanner(maze, grid).scan(RandomSource.create(roomSeed[2]));
+					strategy.new Marker(RandomSource.create(roomSeed[3]), grid, maze).mark();
 				}
 
 			}
