@@ -13,7 +13,7 @@
   },
   "display": {
     "announce_to_chat": false,
-    "background": "dungeon_infinity:textures/gui/advancements/backgrounds/main.png",
+    "background": "dungeon_infinity:gui/advancements/backgrounds/main.png",
     "description": {
       "translate": "advancements.dungeon_infinity.main.visit.description"
     },
