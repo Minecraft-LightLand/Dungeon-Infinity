@@ -102,12 +102,13 @@ public class MazeMapScreen extends Screen {
 		for (int wp : visit.getAllWaypoints()) {
 			int x = wp / 400 % 400;
 			int z = wp % 400;
-			col = 0xffffff00;
+			x = x & -0xFF | 0x80;
+			z = z & -0xFF | 0x80;
+			col = MazeMapColors.P;
 			g.pose().pushMatrix();
 			g.pose().translate(x / 16f * 5f, z / 16f * 5f);
 			if (x / 16 == cmx && z / 16 == cmz) {
 				g.pose().scale(2, 2);
-				col = 0xffffff00;
 			}
 			g.submitGuiElementRenderState(Waypoint.of(g, 1, col));
 			g.pose().popMatrix();
@@ -122,14 +123,14 @@ public class MazeMapScreen extends Screen {
 
 		g.text(font, DILang.DEPTH.get(16 - pos.y()), x1, y1 += h, -1);
 		y1 += h;
-		g.text(font, DILang.BATTLE.get(), x1, y1 += h, MazeMapPixelMapper.F);
-		g.text(font, DILang.QUAD.get(), x1, y1 += h, MazeMapPixelMapper.Q);
-		g.text(font, DILang.BOSS.get(), x1, y1 += h, MazeMapPixelMapper.R);
-		g.text(font, DILang.DOWN.get(), x1, y1 += h, MazeMapPixelMapper.G);
-		g.text(font, DILang.UP.get(), x1, y1 += h, MazeMapPixelMapper.Y);
-		g.text(font, DILang.WORKSHOP.get(), x1, y1 += h, MazeMapPixelMapper.K);
-		g.text(font, DILang.SHOP.get(), x1, y1 += h, MazeMapPixelMapper.S);
-		g.text(font, DILang.WAREHOUSE.get(), x1, y1 += h, MazeMapPixelMapper.H);
+		g.text(font, DILang.BATTLE.get(), x1, y1 += h, MazeMapColors.F);
+		g.text(font, DILang.QUAD.get(), x1, y1 += h, MazeMapColors.Q);
+		g.text(font, DILang.BOSS.get(), x1, y1 += h, MazeMapColors.R);
+		g.text(font, DILang.DOWN.get(), x1, y1 += h, MazeMapColors.G);
+		g.text(font, DILang.UP.get(), x1, y1 += h, MazeMapColors.Y);
+		g.text(font, DILang.WORKSHOP.get(), x1, y1 += h, MazeMapColors.K);
+		g.text(font, DILang.SHOP.get(), x1, y1 += h, MazeMapColors.S);
+		g.text(font, DILang.WAREHOUSE.get(), x1, y1 += h, MazeMapColors.H);
 	}
 
 	public record Arrow(
