@@ -1,7 +1,6 @@
 package dev.xkmc.dungeon_infinity.content.chunkgen;
 
 import dev.xkmc.dungeon_infinity.content.cap.MazePos;
-import dev.xkmc.dungeon_infinity.content.map.MapLogger;
 import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
 import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 import net.minecraft.core.Direction;
@@ -167,7 +166,6 @@ public class MazeDimHolder {
 
 			public class SubRegion {
 
-				public final MapLogger logger;
 				private final int cx, cz;
 				final int[][] maze;
 				private final MazeColumn col;
@@ -176,7 +174,6 @@ public class MazeDimHolder {
 				private boolean checked = false;
 
 				public SubRegion(long seed, int cx, int cz) {
-					logger = new MapLogger(seed, cx, y, cz);
 					this.cx = cx;
 					this.cz = cz;
 					roomSeed = new long[4];
@@ -215,7 +212,7 @@ public class MazeDimHolder {
 					if (checked) return;
 					checked = true;
 					col.check();
-					var grid = strategy.new Grid(logger, RandomSource.create(roomSeed[1]), col.styles[y], maze);
+					var grid = strategy.new Grid(RandomSource.create(roomSeed[1]), col.styles[y], maze);
 					strategy.new Scanner(maze, grid).scan(RandomSource.create(roomSeed[2]));
 					strategy.new Marker(RandomSource.create(roomSeed[3]), grid, maze).mark();
 				}
