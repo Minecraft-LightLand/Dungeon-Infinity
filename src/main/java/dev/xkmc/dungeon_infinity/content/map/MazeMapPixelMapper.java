@@ -72,6 +72,9 @@ public class MazeMapPixelMapper {
 		int flag = cell & 0x1FFF;
 		defeated |= CellInterpreter.isHallway(cell);
 		if (!defeated) flag |= 0x2000;
+		boolean special = CellInterpreter.isHallway(flag) && CellInterpreter.getTemplateType(flag) == 1;
+		if (special)
+			flag = cell;
 		if (CACHE.containsKey(flag))
 			return CACHE.get(flag);
 
@@ -91,7 +94,7 @@ public class MazeMapPixelMapper {
 		} else {
 			int open = CellInterpreter.getOpenings(flag);
 			int c = defeated ? (open & 16) != 0 ? Y : (open & 32) != 0 ? G : A : F;
-			if (CellInterpreter.isHallway(flag) && CellInterpreter.getTemplateType(flag) == 1) {
+			if (special) {
 				int variant = CellInterpreter.getVariant(cell);
 				int style = CellInterpreter.getStyle(cell);
 				int warehouse = TemplateConfig.of(flag).variantIndex(style, "warehouse");

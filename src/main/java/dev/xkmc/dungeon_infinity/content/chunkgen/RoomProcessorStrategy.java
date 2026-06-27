@@ -243,6 +243,7 @@ public class RoomProcessorStrategy {
 			maze[x][z] |= CellInterpreter.setRoomTypeMask(maze[x][z], mark);
 			variants[x][z] = TemplateConfig.of(maze[x][z]).variantIndex(style, variant);
 			maze[x][z] |= CellInterpreter.setStyleAndVariant(style, variants[x][z]);
+			logger.print("Set Room: %s at (%d,%d), data = %s", variant, x, z, Integer.toString(maze[x][z], 16));
 		}
 
 		public void setEndRoom(int x, int z) {
@@ -327,7 +328,6 @@ public class RoomProcessorStrategy {
 					int pos = getEndRoom();
 					int x = pos / r1;
 					int z = pos % r1;
-					logger.print("Set Room: %s at %d", room, pos);
 					set(x, z, CellInterpreter.HALLWAY, room);
 				}
 			}
