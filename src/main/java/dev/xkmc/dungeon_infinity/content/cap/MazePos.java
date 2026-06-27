@@ -23,4 +23,12 @@ public record MazePos(int x, int y, int z, int px, int pz) {
 		return new Vec3i(x, y, z);
 	}
 
+	public MazePos at(int px, int pz) {
+		return new MazePos(x, y, z, px, pz);
+	}
+
+	public BlockPos toPos(int py) {
+		return new BlockPos(x * 400 + px, y * 16 + py, z * 400 + pz);
+	}
+
 }

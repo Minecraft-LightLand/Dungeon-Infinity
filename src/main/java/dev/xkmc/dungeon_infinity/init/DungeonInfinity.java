@@ -2,10 +2,12 @@ package dev.xkmc.dungeon_infinity.init;
 
 import com.tterrag.registrate.providers.ProviderType;
 import dev.xkmc.dungeon_infinity.content.block.merchant.TypeSelToServer;
+import dev.xkmc.dungeon_infinity.content.cap.AddWaypointPacket;
 import dev.xkmc.dungeon_infinity.content.cap.DefeatRoomPacket;
 import dev.xkmc.dungeon_infinity.content.cap.SetRadiusPacket;
 import dev.xkmc.dungeon_infinity.content.config.ShopConfig;
 import dev.xkmc.dungeon_infinity.content.config.TemplateConfig;
+import dev.xkmc.dungeon_infinity.content.map.UseWaypointPacket;
 import dev.xkmc.dungeon_infinity.init.data.*;
 import dev.xkmc.dungeon_infinity.init.reg.DIItems;
 import dev.xkmc.dungeon_infinity.init.reg.DIMeta;
@@ -41,7 +43,9 @@ public class DungeonInfinity {
 			DungeonInfinity.MODID, 1,
 			e -> e.create(DefeatRoomPacket.class, PacketHandler.NetDir.PLAY_TO_CLIENT),
 			e -> e.create(SetRadiusPacket.class, PacketHandler.NetDir.PLAY_TO_CLIENT),
-			e -> e.create(TypeSelToServer.class, PacketHandler.NetDir.PLAY_TO_SERVER)
+			e -> e.create(TypeSelToServer.class, PacketHandler.NetDir.PLAY_TO_SERVER),
+			e -> e.create(AddWaypointPacket.class, PacketHandler.NetDir.PLAY_TO_CLIENT),
+			e -> e.create(UseWaypointPacket.class, PacketHandler.NetDir.PLAY_TO_SERVER)
 	);
 
 	public static final ConfigTypeEntry<TemplateConfig> TEMPLATES = new ConfigTypeEntry<>(HANDLER, "templates", TemplateConfig.class);

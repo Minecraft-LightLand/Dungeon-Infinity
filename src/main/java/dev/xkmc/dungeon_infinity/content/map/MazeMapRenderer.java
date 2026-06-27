@@ -6,7 +6,6 @@ import dev.xkmc.dungeon_infinity.content.cap.MazePos;
 import dev.xkmc.dungeon_infinity.init.reg.DIMeta;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Player;
 
 public class MazeMapRenderer {
@@ -38,12 +37,30 @@ public class MazeMapRenderer {
 				buffer.addVertex(mat, 0, 0, -0.02F).setColor(-1).setUv(0, 0).setLight(light);
 			});
 		pose.popPose();
+
+		for (int wp : visit.getAllWaypoints()) {
+			int x = wp / 400 % 400;
+			int z = wp % 400;
+			float s = 127 / 128f;
+			int c = 0xffffff00;
+			pose.pushPose();
+			pose.translate(x / 16f * 5f, z / 16f * 5f, 0);
+			pose.scale(1, 1, 1);
+			col.submitCustomGeometry(pose, RenderTypes.text(tex.id), (mat, buffer) -> {
+				buffer.addVertex(mat, 0, 1, -0.05F).setColor(c).setUv(s, 1).setLight(light);
+				buffer.addVertex(mat, 1, 0, -0.05F).setColor(c).setUv(1, 1).setLight(light);
+				buffer.addVertex(mat, 0, -1, -0.05F).setColor(c).setUv(1, s).setLight(light);
+				buffer.addVertex(mat, -1, 0, -0.05F).setColor(c).setUv(s, s).setLight(light);
+			});
+			pose.popPose();
+		}
+
 		pose.translate(pos.px() / 16f * 5f, pos.pz() / 16f * 5f, 0);
 		pose.scale(2, 2, 1);
 		var yrot = player.getYRot();
 		pose.mulPose(Axis.ZP.rotationDegrees(yrot));
 		pose.pushPose();
-		pose.scale(1.5f,1.5f,1);
+		pose.scale(1.5f, 1.5f, 1);
 		col.submitCustomGeometry(pose, RenderTypes.text(tex.id), (mat, buffer) -> {
 			float s = 127 / 128f;
 			int c = 0xff000000;

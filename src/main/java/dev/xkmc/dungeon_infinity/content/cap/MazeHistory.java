@@ -24,9 +24,7 @@ import net.minecraft.world.level.storage.LevelData;
 import net.minecraft.world.phys.Vec3;
 import org.jspecify.annotations.Nullable;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 
 @SerialClass
 public class MazeHistory extends PlayerCapabilityTemplate<MazeHistory> {
@@ -100,6 +98,16 @@ public class MazeHistory extends PlayerCapabilityTemplate<MazeHistory> {
 		if (!config.respawnData().dimension().identifier().equals(DIDimensionGen.LEVEL_MAZE.identifier())) {
 			prevHome = RespawnData.of(config);
 			sp.setRespawnPosition(null, false);
+		} else {
+			var pos = config.respawnData().pos();
+			var mp = MazePos.map(pos);
+			var pmp = MazePos.map(sp.blockPosition());
+			if (mp.key() == pmp.key()) {
+				if (getOrCreate(mp).addWaypoint(mp.px(), pos.getY() % 16, mp.pz())) {
+					DungeonInfinity.HANDLER.toClientPlayer(new AddWaypointPacket(pos), sp);
+				}
+			}
+
 		}
 	}
 
@@ -208,6 +216,8 @@ public class MazeHistory extends PlayerCapabilityTemplate<MazeHistory> {
 		private int visited = 0, visible = 0, defeat = 0;
 		@SerialField
 		private int revision = 0;
+		@SerialField
+		private final TreeSet<Integer> waypoints = new TreeSet<>();
 
 		public int getVer() {
 			return revision;
@@ -311,6 +321,15 @@ public class MazeHistory extends PlayerCapabilityTemplate<MazeHistory> {
 			}
 			return totalCache;
 		}
+
+		public boolean addWaypoint(int x, int y, int z) {
+			return waypoints.add(y * 160000 + x * 400 + z);
+		}
+
+		public Collection<Integer> getAllWaypoints() {
+			return waypoints;
+		}
+
 	}
 
 }
