@@ -44,8 +44,8 @@ public class MazeMapRenderer {
 			float s = 127 / 128f;
 			int c = MazeMapColors.P;
 			pose.pushPose();
-			x = x & -0xFF | 0x80;
-			z = z & -0xFF | 0x80;
+			x = x & -0xF | 0x8;
+			z = z & -0xF | 0x8;
 			pose.translate(x / 16f * 5f, z / 16f * 5f, 0);
 			pose.scale(1, 1, 1);
 			col.submitCustomGeometry(pose, RenderTypes.text(tex.id), (mat, buffer) -> {

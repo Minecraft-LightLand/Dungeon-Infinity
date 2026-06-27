@@ -102,8 +102,8 @@ public class MazeMapScreen extends Screen {
 		for (int wp : visit.getAllWaypoints()) {
 			int x = wp / 400 % 400;
 			int z = wp % 400;
-			x = x & -0xFF | 0x80;
-			z = z & -0xFF | 0x80;
+			x = x & -0xF | 0x8;
+			z = z & -0xF | 0x8;
 			col = MazeMapColors.P;
 			g.pose().pushMatrix();
 			g.pose().translate(x / 16f * 5f, z / 16f * 5f);
