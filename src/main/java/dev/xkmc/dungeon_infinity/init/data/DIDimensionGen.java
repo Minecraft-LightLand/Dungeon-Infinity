@@ -50,7 +50,7 @@ public class DIDimensionGen {
 			EnvironmentAttributeMap attr = EnvironmentAttributeMap.builder()
 					.set(EnvironmentAttributes.FOG_COLOR, -4138753)
 					.set(EnvironmentAttributes.SKY_COLOR, OverworldBiomes.calculateSkyColor(0.8F))
-					.set(EnvironmentAttributes.AMBIENT_LIGHT_COLOR, -16119286)
+					.set(EnvironmentAttributes.AMBIENT_LIGHT_COLOR, 0xff4f4a74)
 					.set(EnvironmentAttributes.BACKGROUND_MUSIC, BackgroundMusic.OVERWORLD)
 					.set(EnvironmentAttributes.BED_RULE, BedRule.EXPLODES)
 					.set(EnvironmentAttributes.RESPAWN_ANCHOR_WORKS, true)
