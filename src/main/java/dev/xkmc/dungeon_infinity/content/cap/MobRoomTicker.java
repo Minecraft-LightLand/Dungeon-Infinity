@@ -95,6 +95,7 @@ public class MobRoomTicker {
 	}
 
 	public void tick(MobRoomHolder ins) {
+		ins.markUnsaved();
 		var level = ins.holder.level();
 		var time = level.getGameTime();
 		if (time <= lastTick) return;

@@ -95,4 +95,10 @@ public class MobRoomHolder {
 		}
 		return false;
 	}
+
+	public void markUnsaved() {
+		for (var e : list)
+			e.markUnsaved();
+	}
+
 }

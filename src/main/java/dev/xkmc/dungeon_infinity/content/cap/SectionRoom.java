@@ -95,6 +95,10 @@ public class SectionRoom {
 		return ins;
 	}
 
+	public void markUnsaved() {
+		lc.markUnsaved();
+	}
+
 	public void setWall(Direction dir, boolean gen) {
 		var origin = pos.origin();
 		var src = origin.offset(dir.getStepX() > 0 ? 15 : 0, dir.getStepY() > 0 ? 15 : 0, dir.getStepZ() > 0 ? 15 : 0);
