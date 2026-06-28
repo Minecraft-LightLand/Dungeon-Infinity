@@ -87,7 +87,7 @@
         "result": {
           "id": "minecraft:stone_sword"
         },
-        "weight": 200
+        "weight": 100
       },
       {
         "cost": "minecraft:emerald",
@@ -96,7 +96,7 @@
         "result": {
           "id": "minecraft:diamond_sword"
         },
-        "weight": 200
+        "weight": 100
       },
       {
         "cost": "minecraft:emerald",
@@ -105,7 +105,7 @@
         "result": {
           "id": "minecraft:trident"
         },
-        "weight": 200
+        "weight": 100
       },
       {
         "cost": "minecraft:emerald",
