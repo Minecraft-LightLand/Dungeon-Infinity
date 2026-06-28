@@ -8,7 +8,7 @@
         "limit": 32,
         "result": {
           "count": 4,
-          "id": "minecraft:glowstone"
+          "id": "minecraft:glowstone_dust"
         },
         "weight": 200
       },
