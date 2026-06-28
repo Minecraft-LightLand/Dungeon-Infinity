@@ -3,6 +3,7 @@ package dev.xkmc.dungeon_infinity.events;
 import dev.xkmc.dungeon_infinity.init.DungeonInfinity;
 import dev.xkmc.l2menustacker.init.L2MSLangData;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.network.chat.contents.TranslatableContents;
 import net.minecraft.tags.ItemTags;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -17,9 +18,8 @@ public class DIShulkerEventHandlers {
 		if (event.getItemStack().is(ItemTags.SHULKER_BOXES)) {
 			var cont = event.getItemStack().get(DataComponents.CONTAINER);
 			if (cont != null && cont.getSlots() > 0) {
-				var first = event.getToolTip().getFirst();
-				event.getToolTip().clear();
-				event.getToolTip().add(first);
+				event.getToolTip().removeIf(e -> e.getContents() instanceof TranslatableContents tr &&
+						(tr.getKey().equals("item.container.item_count") || tr.getKey().equals("item.container.more_items")));
 			}
 			event.getToolTip().add(L2MSLangData.QUICK_ACCESS.get());
 		}
