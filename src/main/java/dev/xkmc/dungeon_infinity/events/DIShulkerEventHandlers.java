@@ -16,8 +16,11 @@ public class DIShulkerEventHandlers {
 	public static void onTooltip(ItemTooltipEvent event) {
 		if (event.getItemStack().is(ItemTags.SHULKER_BOXES)) {
 			var cont = event.getItemStack().get(DataComponents.CONTAINER);
-			if (cont != null && cont.getSlots() > 0)
+			if (cont != null && cont.getSlots() > 0) {
+				var first = event.getToolTip().getFirst();
 				event.getToolTip().clear();
+				event.getToolTip().add(first);
+			}
 			event.getToolTip().add(L2MSLangData.QUICK_ACCESS.get());
 		}
 	}
