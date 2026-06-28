@@ -32,7 +32,7 @@
     "minecraft:gameplay/piglins_zombify": false,
     "minecraft:gameplay/respawn_anchor_works": true,
     "minecraft:gameplay/snow_golem_melts": false,
-    "minecraft:visual/ambient_light_color": "#0a0a0a",
+    "minecraft:visual/ambient_light_color": "#4f4a74",
     "minecraft:visual/fog_color": "#c0d8ff",
     "minecraft:visual/sky_color": "#78a7ff"
   },
