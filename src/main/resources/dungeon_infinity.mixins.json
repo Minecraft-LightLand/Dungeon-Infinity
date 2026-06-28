@@ -4,6 +4,7 @@
 	"package": "dev.xkmc.dungeon_infinity.mixin",
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
+		"ItemStackMixin"
 	],
 	"client": [
 		"ItemInHandRendererMixin",

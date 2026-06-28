@@ -8,6 +8,7 @@ import dev.xkmc.dungeon_infinity.content.cap.SetRadiusPacket;
 import dev.xkmc.dungeon_infinity.content.config.ShopConfig;
 import dev.xkmc.dungeon_infinity.content.config.TemplateConfig;
 import dev.xkmc.dungeon_infinity.content.map.UseWaypointPacket;
+import dev.xkmc.dungeon_infinity.events.ShulkerClick;
 import dev.xkmc.dungeon_infinity.init.data.*;
 import dev.xkmc.dungeon_infinity.init.reg.DIItems;
 import dev.xkmc.dungeon_infinity.init.reg.DIMeta;
@@ -16,8 +17,11 @@ import dev.xkmc.l2core.init.reg.registrate.L2Registrate;
 import dev.xkmc.l2core.init.reg.simple.Reg;
 import dev.xkmc.l2core.serial.config.ConfigTypeEntry;
 import dev.xkmc.l2core.serial.config.PacketHandlerWithConfig;
+import dev.xkmc.l2menustacker.click.quickaccess.DefaultQuickAccessActions;
 import dev.xkmc.l2serial.network.PacketHandler;
 import net.minecraft.resources.Identifier;
+import net.minecraft.world.inventory.MenuType;
+import net.minecraft.world.item.Items;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -57,7 +61,7 @@ public class DungeonInfinity {
 		DIWorldGen.register();
 		DITriggers.register();
 		DIConfig.init();
-
+		new ShulkerClick(loc("shulker"));
 	}
 
 	@SubscribeEvent

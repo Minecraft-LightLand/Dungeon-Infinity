@@ -1,9 +1,12 @@
 package dev.xkmc.dungeon_infinity.init.reg;
 
+import com.tterrag.registrate.util.entry.MenuEntry;
 import dev.xkmc.dungeon_infinity.content.cap.LostAndFoundData;
 import dev.xkmc.dungeon_infinity.content.cap.MazeHistory;
 import dev.xkmc.dungeon_infinity.content.cap.MazeLevelData;
 import dev.xkmc.dungeon_infinity.content.cap.MazeRoomData;
+import dev.xkmc.dungeon_infinity.content.shulker.VirtualShulkerMenu;
+import dev.xkmc.dungeon_infinity.content.shulker.VirtualShulkerScreen;
 import dev.xkmc.dungeon_infinity.init.DungeonInfinity;
 import dev.xkmc.dungeon_infinity.init.data.DIDimensionGen;
 import dev.xkmc.l2core.capability.player.PlayerCapabilityNetworkHandler;
@@ -26,7 +29,10 @@ public class DIMeta {
 	public static final AttVal.CapVal<Level, MazeLevelData> ACTIVE = ATT.entity("maze_level_data", MazeLevelData.class, MazeLevelData::new, Level.class,
 			e -> e.dimension().identifier().equals(DIDimensionGen.LEVEL_MAZE.identifier()));
 
+	public static final MenuEntry<VirtualShulkerMenu> SHULKER = DungeonInfinity.REGISTRATE.menu("shulker", VirtualShulkerMenu::fromNetwork, () -> VirtualShulkerScreen::new).register();
+
 	public static void register() {
+
 	}
 
 }
