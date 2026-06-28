@@ -1,6 +1,7 @@
 package dev.xkmc.dungeon_infinity.events;
 
 import dev.xkmc.dungeon_infinity.init.DungeonInfinity;
+import dev.xkmc.l2menustacker.init.L2MSLangData;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.tags.ItemTags;
 import net.neoforged.api.distmarker.Dist;
@@ -17,6 +18,7 @@ public class DIShulkerEventHandlers {
 			var cont = event.getItemStack().get(DataComponents.CONTAINER);
 			if (cont != null && cont.getSlots() > 0)
 				event.getToolTip().clear();
+			event.getToolTip().add(L2MSLangData.QUICK_ACCESS.get());
 		}
 	}
 
