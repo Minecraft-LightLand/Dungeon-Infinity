@@ -28,7 +28,7 @@
         "limit": 32,
         "result": {
           "count": 4,
-          "id": "minecraft:glowstone"
+          "id": "minecraft:glowstone_dust"
         },
         "weight": 200
       },
@@ -124,7 +124,7 @@
         "result": {
           "id": "minecraft:stone_sword"
         },
-        "weight": 200
+        "weight": 100
       },
       {
         "cost": "minecraft:emerald",
@@ -133,7 +133,7 @@
         "result": {
           "id": "minecraft:diamond_sword"
         },
-        "weight": 500
+        "weight": 100
       },
       {
         "cost": "minecraft:emerald",
@@ -142,7 +142,35 @@
         "result": {
           "id": "minecraft:trident"
         },
-        "weight": 200
+        "weight": 100
+      },
+      {
+        "cost": "minecraft:emerald",
+        "count": 16,
+        "limit": 4,
+        "result": {
+          "components": {
+            "minecraft:stored_enchantments": {
+              "minecraft:protection": 2
+            }
+          },
+          "id": "minecraft:enchanted_book"
+        },
+        "weight": 100
+      },
+      {
+        "cost": "minecraft:emerald",
+        "count": 16,
+        "limit": 1,
+        "result": {
+          "components": {
+            "minecraft:stored_enchantments": {
+              "minecraft:infinity": 1
+            }
+          },
+          "id": "minecraft:enchanted_book"
+        },
+        "weight": 100
       }
     ],
     "copper:exchange": [
@@ -299,6 +327,15 @@
         "result": {
           "count": 4,
           "id": "minecraft:amethyst_shard"
+        },
+        "weight": 100
+      },
+      {
+        "cost": "minecraft:emerald",
+        "count": 8,
+        "limit": 4,
+        "result": {
+          "id": "minecraft:shulker_shell"
         },
         "weight": 100
       },

@@ -12,18 +12,33 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.core.component.DataComponentPatch;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.item.alchemy.Potions;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraft.world.item.enchantment.ItemEnchantments;
 
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
 public class DIConfigGen extends ConfigDataProvider {
 
+	private final CompletableFuture<HolderLookup.Provider> pvd;
+
 	public DIConfigGen(DataGenerator generator, CompletableFuture<HolderLookup.Provider> pvd) {
 		super(generator, pvd, "Golem Spawn Config");
+		this.pvd = pvd;
+	}
+
+	private ItemStackTemplate ench(ResourceKey<Enchantment> key, int lv) {
+		var ench = pvd.getNow(null).getOrThrow(key);
+		var mutable = new ItemEnchantments.Mutable(ItemEnchantments.EMPTY);
+		mutable.set(ench, lv);
+		return new ItemStackTemplate(Items.ENCHANTED_BOOK, DataComponentPatch.builder()
+				.set(DataComponents.STORED_ENCHANTMENTS, mutable.toImmutable()).build());
 	}
 
 	public void add(ConfigDataProvider.Collector map) {
@@ -177,7 +192,7 @@ public class DIConfigGen extends ConfigDataProvider {
 					.add(3, Items.GOLDEN_CARROT, 1, 50, 8)
 					.end()
 					.addPool("consumable")
-					.add(1, Items.GLOWSTONE, 4, 200, 32)
+					.add(1, Items.GLOWSTONE_DUST, 4, 200, 32)
 					.add(1, Items.ARROW, 16, 400, 64)
 					.add(2, heal, 100, 3)
 					.add(3, healsp, 100, 3)
@@ -228,7 +243,7 @@ public class DIConfigGen extends ConfigDataProvider {
 					.end()
 					.addPool("consumable")
 					.add(1, Items.EXPERIENCE_BOTTLE, 4, 200, 64)
-					.add(1, Items.GLOWSTONE, 4, 200, 32)
+					.add(1, Items.GLOWSTONE_DUST, 4, 200, 32)
 					.add(1, Items.ARROW, 16, 400, 64)
 					.add(4, heal2, 100, 3)
 					.add(6, heal2sp, 100, 3)
@@ -239,6 +254,7 @@ public class DIConfigGen extends ConfigDataProvider {
 					.add(1, Items.REDSTONE, 4, 100, 32)
 					.add(1, Items.LAPIS_LAZULI, 4, 100, 32)
 					.add(1, Items.AMETHYST_SHARD, 4, 100, 32)
+					.add(8, Items.SHULKER_SHELL, 1, 50, 4)
 					.end()
 					.addPool("material")
 					.add(1, Items.COPPER_INGOT, 4, 100, 32)
@@ -254,9 +270,11 @@ public class DIConfigGen extends ConfigDataProvider {
 					.addPool("equipments")
 					.add(2, Items.BOW, 1, 200, 8)
 					.add(2, Items.SHIELD, 1, 200, 8)
-					.add(1, Items.STONE_SWORD, 1, 200, 4)
-					.add(12, Items.DIAMOND_SWORD, 1, 200, 4)
-					.add(16, Items.TRIDENT, 1, 200, 1)
+					.add(1, Items.STONE_SWORD, 1, 100, 4)
+					.add(12, Items.DIAMOND_SWORD, 1, 100, 4)
+					.add(16, Items.TRIDENT, 1, 100, 1)
+					.add(8, ench(Enchantments.PROTECTION, 1), 100, 4)
+					.add(16, ench(Enchantments.INFINITY, 1), 100, 1)
 					.end()
 					.addPool("golem_equipments")
 					.add(10, GolemItems.IRON_BOW.asItem(), 1, 100, 1)
@@ -287,7 +305,7 @@ public class DIConfigGen extends ConfigDataProvider {
 					.addPool("consumable")
 					.add(1, Items.ARROW, 16, 400, 64)
 					.add(1, Items.EXPERIENCE_BOTTLE, 4, 200, 64)
-					.add(1, Items.GLOWSTONE, 4, 200, 32)
+					.add(1, Items.GLOWSTONE_DUST, 4, 200, 32)
 					.add(4, heal2, 50, 3)
 					.add(6, heal2sp, 50, 3)
 					.add(6, regen, 50, 3)
@@ -301,6 +319,7 @@ public class DIConfigGen extends ConfigDataProvider {
 					.add(1, Items.REDSTONE, 4, 100, 32)
 					.add(1, Items.LAPIS_LAZULI, 4, 100, 32)
 					.add(1, Items.AMETHYST_SHARD, 4, 100, 32)
+					.add(8, Items.SHULKER_SHELL, 1, 100, 4)
 					.add(8, Items.NETHERRACK, 1, 100, 4)
 					.end()
 					.addPool("material")
@@ -317,9 +336,11 @@ public class DIConfigGen extends ConfigDataProvider {
 					.addPool("equipments")
 					.add(2, Items.BOW, 1, 200, 4)
 					.add(2, Items.SHIELD, 1, 200, 4)
-					.add(1, Items.STONE_SWORD, 1, 200, 4)
-					.add(12, Items.DIAMOND_SWORD, 1, 500, 4)
-					.add(16, Items.TRIDENT, 1, 200, 2)
+					.add(1, Items.STONE_SWORD, 1, 100, 4)
+					.add(12, Items.DIAMOND_SWORD, 1, 100, 4)
+					.add(16, Items.TRIDENT, 1, 100, 2)
+					.add(16, ench(Enchantments.PROTECTION, 2), 100, 4)
+					.add(16, ench(Enchantments.INFINITY, 1), 100, 1)
 					.end()
 					.addPool("golem_equipments")
 					.add(10, GolemItems.IRON_BOW.asItem(), 1, 100, 1)
@@ -351,7 +372,7 @@ public class DIConfigGen extends ConfigDataProvider {
 					.addPool("consumable")
 					.add(16, Items.ARROW, 64, 400, 64)
 					.add(1, Items.EXPERIENCE_BOTTLE, 4, 200, 64)
-					.add(1, Items.GLOWSTONE, 4, 200, 32)
+					.add(1, Items.GLOWSTONE_DUST, 4, 200, 32)
 					.add(4, heal2, 50, 3)
 					.add(6, heal2sp, 50, 3)
 					.add(6, regen, 50, 3)
@@ -366,6 +387,7 @@ public class DIConfigGen extends ConfigDataProvider {
 					.add(1, Items.REDSTONE, 4, 100, 32)
 					.add(1, Items.LAPIS_LAZULI, 4, 100, 32)
 					.add(1, Items.AMETHYST_SHARD, 4, 100, 32)
+					.add(8, Items.SHULKER_SHELL, 1, 100, 8)
 					.add(8, Items.NETHERRACK, 1, 100, 4)
 					.end()
 					.addPool("material")
@@ -386,6 +408,10 @@ public class DIConfigGen extends ConfigDataProvider {
 					.add(2, Items.SHIELD, 1, 200, 4)
 					.add(12, Items.DIAMOND_SWORD, 1, 200, 4)
 					.add(16, Items.TRIDENT, 1, 200, 2)
+					.add(16, ench(Enchantments.INFINITY, 1), 100, 1)
+					.setCurrency(Items.DIAMOND)
+					.add(3, ench(Enchantments.MENDING, 1), 100, 4)
+					.add(4, ench(Enchantments.PROTECTION, 3), 100, 4)
 					.end()
 					.addPool("golem_equipments")
 					.add(10, GolemItems.IRON_BOW.asItem(), 1, 100, 1)
@@ -424,7 +450,7 @@ public class DIConfigGen extends ConfigDataProvider {
 					.addPool("consumable")
 					.add(16, Items.ARROW, 64, 400, 64)
 					.add(1, Items.EXPERIENCE_BOTTLE, 4, 200, 64)
-					.add(1, Items.GLOWSTONE, 4, 200, 32)
+					.add(1, Items.GLOWSTONE_DUST, 4, 200, 32)
 					.add(4, heal2, 50, 3)
 					.add(6, heal2sp, 50, 3)
 					.add(6, regen, 50, 3)
@@ -439,6 +465,7 @@ public class DIConfigGen extends ConfigDataProvider {
 					.add(1, Items.REDSTONE, 4, 100, 32)
 					.add(1, Items.LAPIS_LAZULI, 4, 100, 32)
 					.add(1, Items.AMETHYST_SHARD, 4, 100, 32)
+					.add(8, Items.SHULKER_SHELL, 1, 100, 8)
 					.add(8, Items.NETHERRACK, 1, 100, 16)
 					.end()
 					.addPool("material")
@@ -455,6 +482,16 @@ public class DIConfigGen extends ConfigDataProvider {
 					.buy(Items.DIAMOND, 1, 6, 100, 16)
 					.end()
 					.addPool("equipments")
+					.add(2, Items.BOW, 1, 200, 4)
+					.add(2, Items.SHIELD, 1, 200, 4)
+					.add(12, Items.DIAMOND_SWORD, 1, 200, 4)
+					.add(16, Items.TRIDENT, 1, 200, 2)
+					.add(16, ench(Enchantments.INFINITY, 1), 100, 1)
+					.setCurrency(Items.DIAMOND)
+					.add(3, ench(Enchantments.MENDING, 1), 100, 4)
+					.add(8, ench(Enchantments.PROTECTION, 4), 100, 4)
+					.end()
+					.addPool("golem_equipments")
 					.add(20, gdspear, 1, 100, 1)
 					.add(24, gdaxe, 1, 100, 1)
 					.add(26, gdsword, 1, 100, 1)

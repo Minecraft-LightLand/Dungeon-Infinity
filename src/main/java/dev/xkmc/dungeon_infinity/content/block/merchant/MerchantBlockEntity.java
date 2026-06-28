@@ -76,6 +76,7 @@ public class MerchantBlockEntity extends BaseBlockEntity implements TickableBloc
 				}
 				prevMerchant = null;
 				nextSpawnTime = 0;
+				setChanged();
 				return;
 			}
 		}
@@ -83,6 +84,7 @@ public class MerchantBlockEntity extends BaseBlockEntity implements TickableBloc
 		if (sp == null || !MazeHistory.inMazeDim(sp)) {
 			return;
 		}
+		setChanged();
 		var pos = getBlockPos().above().getCenter();
 		if (prevMerchant != null) {
 			var prev = level.getEntity(prevMerchant);
