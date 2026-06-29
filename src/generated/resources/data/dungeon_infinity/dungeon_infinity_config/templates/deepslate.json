@@ -22,7 +22,11 @@
     "path/cross": {
       "deepslate:": {
         "path": "deepslate/path/cross",
-        "weight": 100
+        "weight": 90
+      },
+      "deepslate:_waypoint": {
+        "path": "deepslate/path/cross_waypoint",
+        "weight": 10
       }
     },
     "path/end": {
@@ -48,7 +52,11 @@
     "path/t_way": {
       "deepslate:": {
         "path": "deepslate/path/t_way",
-        "weight": 100
+        "weight": 80
+      },
+      "deepslate:_waypoint": {
+        "path": "deepslate/path/t_way_waypoint",
+        "weight": 20
       }
     },
     "quad": {

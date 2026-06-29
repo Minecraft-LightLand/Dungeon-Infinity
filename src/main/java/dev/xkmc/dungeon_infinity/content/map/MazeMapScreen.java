@@ -46,6 +46,7 @@ public class MazeMapScreen extends Screen {
 		Player player = Minecraft.getInstance().player;
 		if (player != null) {
 			var pos = MazePos.map(player.blockPosition());
+			pos = pos.atLayer(Mth.clamp(pos.y() + diffY, 0, 15));
 			var visit = DIMeta.HISTORY.type().getOrCreate(player).getOrCreate(pos);
 			for (int wp : visit.getAllWaypoints()) {
 				int x = wp / 400 % 400;

@@ -22,7 +22,11 @@
     "path/cross": {
       "mineshaft:": {
         "path": "mineshaft/path/cross",
-        "weight": 100
+        "weight": 90
+      },
+      "mineshaft:_waypoint": {
+        "path": "mineshaft/path/cross_waypoint",
+        "weight": 10
       }
     },
     "path/end": {
@@ -48,7 +52,11 @@
     "path/t_way": {
       "mineshaft:": {
         "path": "mineshaft/path/t_way",
-        "weight": 100
+        "weight": 80
+      },
+      "mineshaft:_waypoint": {
+        "path": "mineshaft/path/t_way_waypoint",
+        "weight": 20
       }
     },
     "quad": {
