@@ -53,7 +53,7 @@
               "function": "minecraft:set_count"
             }
           ],
-          "name": "minecraft:golden_apple"
+          "name": "minecraft:enchanted_golden_apple"
         },
         {
           "type": "minecraft:item",

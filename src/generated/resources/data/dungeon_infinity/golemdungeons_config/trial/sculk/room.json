@@ -3,13 +3,7 @@
   "list": [
     [
       {
-        "num": 1,
-        "target": "golemdungeons:sculk_humanoid_melee"
-      }
-    ],
-    [
-      {
-        "num": 1,
+        "num": 2,
         "target": "golemdungeons:sculk_humanoid_melee"
       },
       {

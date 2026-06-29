@@ -7,14 +7,28 @@
         "target": "golemdungeons:factory_large_2"
       },
       {
-        "num": 3,
+        "num": 1,
         "target": "golemdungeons:piglin_humanoid_melee"
       }
     ],
     [
       {
+        "num": 1,
+        "target": "golemdungeons:factory_large_3"
+      },
+      {
         "num": 2,
-        "target": "golemdungeons:factory_large_2"
+        "target": "golemdungeons:piglin_humanoid_melee"
+      },
+      {
+        "num": 1,
+        "target": "golemdungeons:piglin_humanoid_ranged"
+      }
+    ],
+    [
+      {
+        "num": 2,
+        "target": "golemdungeons:piglin_large_melee"
       },
       {
         "num": 3,
@@ -23,20 +37,6 @@
       {
         "num": 2,
         "target": "golemdungeons:piglin_humanoid_ranged"
-      }
-    ],
-    [
-      {
-        "num": 3,
-        "target": "golemdungeons:factory_large_3"
-      },
-      {
-        "num": 3,
-        "target": "golemdungeons:piglin_humanoid_melee"
-      },
-      {
-        "num": 2,
-        "target": "golemdungeons:factory_humanoid_rocket"
       }
     ]
   ],

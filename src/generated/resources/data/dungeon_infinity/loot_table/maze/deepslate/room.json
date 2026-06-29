@@ -18,7 +18,13 @@
             }
           ],
           "name": "minecraft:iron_block"
-        },
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
         {
           "type": "minecraft:item",
           "functions": [
@@ -114,11 +120,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "modulargolems:gold"
+          "name": "modulargolems:enchanted_gold"
         },
         {
           "type": "minecraft:item",
-          "name": "modulargolems:diamond"
+          "name": "modulargolems:netherite"
         }
       ],
       "rolls": 1.0

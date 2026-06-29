@@ -11,28 +11,13 @@
               "add": false,
               "count": {
                 "type": "minecraft:uniform",
-                "max": 3.0,
-                "min": 1.0
+                "max": 10.0,
+                "min": 5.0
               },
               "function": "minecraft:set_count"
             }
           ],
           "name": "minecraft:diamond"
-        },
-        {
-          "type": "minecraft:item",
-          "functions": [
-            {
-              "add": false,
-              "count": {
-                "type": "minecraft:uniform",
-                "max": 2.0,
-                "min": 1.0
-              },
-              "function": "minecraft:set_count"
-            }
-          ],
-          "name": "minecraft:lava_bucket"
         }
       ],
       "rolls": 1.0
@@ -47,7 +32,7 @@
               "add": false,
               "count": {
                 "type": "minecraft:uniform",
-                "max": 20.0,
+                "max": 22.0,
                 "min": 10.0
               },
               "function": "minecraft:set_count"
@@ -62,8 +47,8 @@
               "add": false,
               "count": {
                 "type": "minecraft:uniform",
-                "max": 16.0,
-                "min": 8.0
+                "max": 18.0,
+                "min": 10.0
               },
               "function": "minecraft:set_count"
             }
@@ -151,7 +136,17 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "modulargolems:diamond_expansion_template"
+          "name": "modulargolems:golem_slicing_axe"
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "modulargolems:weak"
         }
       ],
       "rolls": 1.0
