@@ -70,7 +70,7 @@ public record TypeSelWheel(MerchantBlockEntity be) implements PersistentWheel<Ty
 			g.item(entry.stack(), -8, -16);
 			g.itemDecorations(Minecraft.getInstance().font, entry.stack(), -8, -16);
 			g.pose().popMatrix();
-			MutableComponent text = Component.literal(entry.key);
+			MutableComponent text = Component.translatable(DungeonInfinity.MODID + ".merchant." + entry.key);
 			Font font = Minecraft.getInstance().font;
 			int y = (int) ((float) y0 + s * 3.0F);
 

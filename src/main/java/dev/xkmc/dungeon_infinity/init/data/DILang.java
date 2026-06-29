@@ -1,6 +1,7 @@
 package dev.xkmc.dungeon_infinity.init.data;
 
 import com.tterrag.registrate.providers.RegistrateLangProvider;
+import dev.xkmc.dungeon_infinity.init.DungeonInfinity;
 import dev.xkmc.modulargolems.init.ModularGolems;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
@@ -63,5 +64,8 @@ public enum DILang {
 		for (DILang lang : DILang.values()) {
 			pvd.add(lang.key, lang.def);
 		}
+		pvd.add(DungeonInfinity.MODID + ".merchant.groceries", "Grocery Vendor");
+		pvd.add(DungeonInfinity.MODID + ".merchant.blacksmith", "Black Smith");
+		pvd.add(DungeonInfinity.MODID + ".merchant.recycler", "Metal Scrapper");
 	}
 }
