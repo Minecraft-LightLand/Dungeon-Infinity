@@ -4,39 +4,51 @@
     [
       {
         "num": 1,
-        "target": "golemdungeons:factory_large_1"
+        "target": "golemdungeons:piglin_large_melee"
+      },
+      {
+        "num": 2,
+        "target": "golemdungeons:piglin_humanoid_melee"
       },
       {
         "num": 1,
-        "target": "golemdungeons:piglin_humanoid_melee"
+        "target": "golemdungeons:factory_humanoid_tipped"
       }
     ],
     [
       {
         "num": 1,
-        "target": "golemdungeons:factory_large_1"
+        "target": "golemdungeons:piglin_large_bow"
       },
       {
         "num": 1,
-        "target": "golemdungeons:piglin_humanoid_melee"
+        "target": "golemdungeons:piglin_large_melee"
       },
       {
-        "num": 1,
+        "num": 2,
         "target": "golemdungeons:piglin_humanoid_ranged"
-      }
-    ],
-    [
-      {
-        "num": 1,
-        "target": "golemdungeons:factory_large_2"
-      },
-      {
-        "num": 1,
-        "target": "golemdungeons:piglin_humanoid_melee"
       },
       {
         "num": 1,
         "target": "golemdungeons:factory_humanoid_rocket"
+      }
+    ],
+    [
+      {
+        "num": 1,
+        "target": "golemdungeons:piglin_large_shoulder"
+      },
+      {
+        "num": 2,
+        "target": "golemdungeons:piglin_large_melee"
+      },
+      {
+        "num": 2,
+        "target": "golemdungeons:piglin_humanoid_melee"
+      },
+      {
+        "num": 2,
+        "target": "golemdungeons:piglin_humanoid_ranged"
       }
     ]
   ],

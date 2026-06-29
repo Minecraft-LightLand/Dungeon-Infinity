@@ -73,22 +73,22 @@ public class GolemSpawnData extends AbstractGolemSpawn {
 		// ========== TRIAL CONFIGS ==========
 
 		// --- STONE 石制级（纯工厂人形兵）---
-		col.add(GolemDungeons.TRIAL, STONE_ROOM, new TrialConfig().setReward(DILootGen.STONE_ROOM).genChest()
+		col.add(GolemDungeons.TRIAL, STONE_ROOM, new TrialConfig().setReward(DILootGen.STONE_ROOM)
 				.add(of(FactoryGolemSpawn.HUMANOID_BASIC, 2))
 		);
 
-		col.add(GolemDungeons.TRIAL, STONE_QUAD, new TrialConfig().setReward(DILootGen.STONE_QUAD).genChest()
+		col.add(GolemDungeons.TRIAL, STONE_QUAD, new TrialConfig().setReward(DILootGen.STONE_QUAD)
 				.add(of(FactoryGolemSpawn.HUMANOID_BASIC, 1), of(EARLY_RANGED, 1))
 				.add(of(FactoryGolemSpawn.HUMANOID_BASIC, 2), of(EARLY_RANGED, 1))
 		);
 
 		// --- MINESHAFT 矿道级（工厂兵，混入大型）---
-		col.add(GolemDungeons.TRIAL, MINESHAFT_ROOM, new TrialConfig().setReward(DILootGen.MINESHAFT_ROOM).genChest()
+		col.add(GolemDungeons.TRIAL, MINESHAFT_ROOM, new TrialConfig().setReward(DILootGen.MINESHAFT_ROOM)
 				.add(of(FactoryGolemSpawn.HUMANOID_BASIC, 1))
 				.add(of(FactoryGolemSpawn.HUMANOID_BASIC, 1), of(EARLY_RANGED, 1))
 		);
 
-		col.add(GolemDungeons.TRIAL, MINESHAFT_QUAD, new TrialConfig().setReward(DILootGen.MINESHAFT_QUAD).genChest()
+		col.add(GolemDungeons.TRIAL, MINESHAFT_QUAD, new TrialConfig().setReward(DILootGen.MINESHAFT_QUAD)
                 .add(of(FactoryGolemSpawn.LARGE_1, 1), of(FactoryGolemSpawn.HUMANOID_MELEE, 1))
                 .add(of(FactoryGolemSpawn.LARGE_1, 2), of(EARLY_RANGED, 2))
                 .add(of(FactoryGolemSpawn.LARGE_1, 4),
@@ -97,7 +97,7 @@ public class GolemSpawnData extends AbstractGolemSpawn {
                         of(FactoryGolemSpawn.LARGE_2, 1))
 		);
 
-		col.add(GolemDungeons.TRIAL, MINESHAFT_BOSS, new TrialConfig().setReward(DILootGen.MINESHAFT_BOSS).genChest()
+		col.add(GolemDungeons.TRIAL, MINESHAFT_BOSS, new TrialConfig().setReward(DILootGen.MINESHAFT_BOSS)
                 .add(of(FactoryGolemSpawn.LARGE_1, 1), of(FactoryGolemSpawn.HUMANOID_BASIC, 1))
                 .add(of(FactoryGolemSpawn.LARGE_1, 1), of(EARLY_RANGED, 2))
                 .add(of(FactoryGolemSpawn.LARGE_1, 2),
@@ -107,11 +107,11 @@ public class GolemSpawnData extends AbstractGolemSpawn {
 		);
 
 		// --- COPPER 铜制级（基准，原 STONE）---
-		col.add(GolemDungeons.TRIAL, COPPER_ROOM, new TrialConfig().setReward(DILootGen.COPPER_ROOM).genChest()
+		col.add(GolemDungeons.TRIAL, COPPER_ROOM, new TrialConfig().setReward(DILootGen.COPPER_ROOM)
 				.add(of(FactoryGolemSpawn.HUMANOID_MELEE, 1), of(FactoryGolemSpawn.HUMANOID_RANGED, 1))
 		);
 
-		col.add(GolemDungeons.TRIAL, COPPER_QUAD, new TrialConfig().setReward(DILootGen.COPPER_QUAD).genChest()
+		col.add(GolemDungeons.TRIAL, COPPER_QUAD, new TrialConfig().setReward(DILootGen.COPPER_QUAD)
                 .add(of(FactoryGolemSpawn.LARGE_2, 1),
                         of(FactoryGolemSpawn.HUMANOID_MELEE, 1),
                         of(FactoryGolemSpawn.HUMANOID_TIPPED, 1),
@@ -126,7 +126,7 @@ public class GolemSpawnData extends AbstractGolemSpawn {
                         of(FactoryGolemSpawn.HUMANOID_ROCKET, 2))
 		);
 
-		col.add(GolemDungeons.TRIAL, COPPER_STAIR, new TrialConfig().setReward(DILootGen.COPPER_STAIR).genChest()
+		col.add(GolemDungeons.TRIAL, COPPER_STAIR, new TrialConfig().setReward(DILootGen.COPPER_STAIR)
 				.add(of(FactoryGolemSpawn.LARGE_1, 1), of(FactoryGolemSpawn.HUMANOID_MELEE, 1), of(FactoryGolemSpawn.HUMANOID_RANGED, 2))
 				.add(of(FactoryGolemSpawn.LARGE_2, 2), of(FactoryGolemSpawn.HUMANOID_MELEE, 2),
 						of(FactoryGolemSpawn.HUMANOID_RANGED, 2),
@@ -138,7 +138,7 @@ public class GolemSpawnData extends AbstractGolemSpawn {
 						of(FactoryGolemSpawn.HUMANOID_ROCKET, 2))
 		);
 
-		col.add(GolemDungeons.TRIAL, COPPER_BOSS, new TrialConfig().setReward(DILootGen.COPPER_BOSS).genChest()
+		col.add(GolemDungeons.TRIAL, COPPER_BOSS, new TrialConfig().setReward(DILootGen.COPPER_BOSS)
                 .add(of(FactoryGolemSpawn.LARGE_1, 1), of(FactoryGolemSpawn.HUMANOID_MELEE, 1))
                 .add(of(FactoryGolemSpawn.LARGE_2, 1), of(FactoryGolemSpawn.HUMANOID_RANGED, 2))
                 .add(of(FactoryGolemSpawn.LARGE_2, 2),
@@ -148,12 +148,12 @@ public class GolemSpawnData extends AbstractGolemSpawn {
 		);
 
 		// --- DEEPSLATE 深板岩级（工厂+猪灵混编）---
-		col.add(GolemDungeons.TRIAL, DEEPSLATE_ROOM, new TrialConfig().setReward(DILootGen.DEEPSLATE_ROOM).genChest()
+		col.add(GolemDungeons.TRIAL, DEEPSLATE_ROOM, new TrialConfig().setReward(DILootGen.DEEPSLATE_ROOM)
 				.add(of(FactoryGolemSpawn.HUMANOID_TIPPED, 1))
 				.add(of(FactoryGolemSpawn.HUMANOID_MELEE, 1), of(FactoryGolemSpawn.HUMANOID_RANGED, 1))
 		);
 
-		col.add(GolemDungeons.TRIAL, DEEPSLATE_QUAD, new TrialConfig().setReward(DILootGen.DEEPSLATE_QUAD).genChest()
+		col.add(GolemDungeons.TRIAL, DEEPSLATE_QUAD, new TrialConfig().setReward(DILootGen.DEEPSLATE_QUAD)
                 .add(of(PiglinGolemSpawn.LARGE, 1), of(PiglinGolemSpawn.HUMANOID_MELEE, 2),
                         of(FactoryGolemSpawn.HUMANOID_TIPPED, 1))
                 .add(of(PiglinGolemSpawn.LARGE_BOW, 1), of(PiglinGolemSpawn.LARGE, 1),
@@ -162,7 +162,7 @@ public class GolemSpawnData extends AbstractGolemSpawn {
                         of(PiglinGolemSpawn.HUMANOID_MELEE, 2), of(PiglinGolemSpawn.HUMANOID_RANGED, 2))
 		);
 
-		col.add(GolemDungeons.TRIAL, DEEPSLATE_STAIR, new TrialConfig().setReward(DILootGen.DEEPSLATE_STAIR).genChest()
+		col.add(GolemDungeons.TRIAL, DEEPSLATE_STAIR, new TrialConfig().setReward(DILootGen.DEEPSLATE_STAIR)
 				.add(of(FactoryGolemSpawn.LARGE_2, 1), of(PiglinGolemSpawn.HUMANOID_MELEE, 1), of(PiglinGolemSpawn.HUMANOID_RANGED, 1))
 				.add(of(FactoryGolemSpawn.LARGE_2, 1), of(PiglinGolemSpawn.HUMANOID_MELEE, 2),
 						of(FactoryGolemSpawn.HUMANOID_TIPPED, 1), of(FactoryGolemSpawn.HUMANOID_ROCKET, 1))
@@ -170,32 +170,32 @@ public class GolemSpawnData extends AbstractGolemSpawn {
 						of(PiglinGolemSpawn.HUMANOID_RANGED, 2), of(FactoryGolemSpawn.HUMANOID_ROCKET, 1))
 		);
 
-		col.add(GolemDungeons.TRIAL, DEEPSLATE_BOSS, new TrialConfig().setReward(DILootGen.DEEPSLATE_BOSS).genChest()
+		col.add(GolemDungeons.TRIAL, DEEPSLATE_BOSS, new TrialConfig().setReward(DILootGen.DEEPSLATE_BOSS)
                 .add(of(FactoryGolemSpawn.LARGE_2, 2), of(PiglinGolemSpawn.HUMANOID_MELEE, 3))
                 .add(of(FactoryGolemSpawn.LARGE_2, 2), of(PiglinGolemSpawn.HUMANOID_MELEE, 3), of(PiglinGolemSpawn.HUMANOID_RANGED, 2))
                 .add(of(FactoryGolemSpawn.LARGE_3, 3), of(PiglinGolemSpawn.HUMANOID_MELEE, 3), of(FactoryGolemSpawn.HUMANOID_ROCKET, 2))
 		);
 
 		// --- SCULK 幽匿级（钻石装备，最高难度）---
-		col.add(GolemDungeons.TRIAL, SCULK_ROOM, new TrialConfig().setReward(DILootGen.SCULK_ROOM).genChest()
+		col.add(GolemDungeons.TRIAL, SCULK_ROOM, new TrialConfig().setReward(DILootGen.SCULK_ROOM)
 				.add(of(SculkGolemSpawn.HUMANOID_MELEE, 1))
 				.add(of(SculkGolemSpawn.HUMANOID_MELEE, 1), of(SculkGolemSpawn.HUMANOID_RANGED, 1))
 		);
 
-		col.add(GolemDungeons.TRIAL, SCULK_QUAD, new TrialConfig().setReward(DILootGen.SCULK_QUAD).genChest()
+		col.add(GolemDungeons.TRIAL, SCULK_QUAD, new TrialConfig().setReward(DILootGen.SCULK_QUAD)
                 .add(of(SculkGolemSpawn.LARGE, 1), of(SculkGolemSpawn.HUMANOID_MELEE, 2), of(SculkGolemSpawn.HUMANOID_RANGED, 2))
                 .add(of(SculkGolemSpawn.SCULK_ALL, 1), of(SculkGolemSpawn.LARGE, 2), of(SculkGolemSpawn.HUMANOID_RANGED, 3))
                 .add(of(SculkGolemSpawn.SCULK_ALL, 8), of(SculkGolemSpawn.SCULK_BETTER, 1))
 		);
 
-		col.add(GolemDungeons.TRIAL, SCULK_STAIR, new TrialConfig().setReward(DILootGen.SCULK_STAIR).genChest()
+		col.add(GolemDungeons.TRIAL, SCULK_STAIR, new TrialConfig().setReward(DILootGen.SCULK_STAIR)
 				.add(of(SculkGolemSpawn.HUMANOID_MELEE, 1), of(SculkGolemSpawn.HUMANOID_RANGED, 2))
 				.add(of(SculkGolemSpawn.LARGE, 1), of(SculkGolemSpawn.HUMANOID_MELEE, 2), of(SculkGolemSpawn.HUMANOID_RANGED, 2))
 				.add(of(SculkGolemSpawn.LARGE, 2), of(SculkGolemSpawn.HUMANOID_MELEE, 2), of(SculkGolemSpawn.HUMANOID_RANGED, 2),
 						of(SculkGolemSpawn.SCULK_ALL, 1))
 		);
 
-		col.add(GolemDungeons.TRIAL, SCULK_BOSS, new TrialConfig().setReward(DILootGen.SCULK_BOSS).genChest()
+		col.add(GolemDungeons.TRIAL, SCULK_BOSS, new TrialConfig().setReward(DILootGen.SCULK_BOSS)
                 .add(of(SculkGolemSpawn.HUMANOID_MELEE, 1), of(SculkGolemSpawn.HUMANOID_RANGED, 1))
                 .add(of(SculkGolemSpawn.LARGE, 1), of(SculkGolemSpawn.HUMANOID_RANGED, 2))
                 .add(of(SculkGolemSpawn.LARGE, 2), of(SculkGolemSpawn.HUMANOID_MELEE, 2), of(SculkGolemSpawn.HUMANOID_RANGED, 2))

@@ -4,26 +4,6 @@
     [
       {
         "num": 1,
-        "target": "golemdungeons:sculk_humanoid_melee"
-      },
-      {
-        "num": 1,
-        "target": "golemdungeons:sculk_humanoid_ranged"
-      }
-    ],
-    [
-      {
-        "num": 1,
-        "target": "golemdungeons:sculk_large_1"
-      },
-      {
-        "num": 2,
-        "target": "golemdungeons:sculk_humanoid_ranged"
-      }
-    ],
-    [
-      {
-        "num": 2,
         "target": "golemdungeons:sculk_large_1"
       },
       {
@@ -33,6 +13,30 @@
       {
         "num": 2,
         "target": "golemdungeons:sculk_humanoid_ranged"
+      }
+    ],
+    [
+      {
+        "num": 1,
+        "target": "golemdungeons:sculk_infestation"
+      },
+      {
+        "num": 2,
+        "target": "golemdungeons:sculk_large_1"
+      },
+      {
+        "num": 3,
+        "target": "golemdungeons:sculk_humanoid_ranged"
+      }
+    ],
+    [
+      {
+        "num": 8,
+        "target": "golemdungeons:sculk_infestation"
+      },
+      {
+        "num": 1,
+        "target": "golemdungeons:sculk_full"
       }
     ]
   ],
