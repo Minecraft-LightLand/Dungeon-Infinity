@@ -16,6 +16,7 @@ public enum DILang {
 	TOMB("tooltip.tomb", "Retrieve items from previous death in the maze", 0, ChatFormatting.GRAY),
 	TOMB_ITEM_COUNT("tooltip.tomb_item_count", "You have %s items to be retrieved", 1, ChatFormatting.GRAY),
 	ACCESS("tooltip.access", "Teleport into or out of the maze", 0, ChatFormatting.GRAY),
+	WAYPOINT("tooltip.waypoint", "Teleport", 0, null),
 
 	DEPTH("legend.depth", "Depth: %s", 1, null),
 	BATTLE("legend.battle", "Battle Room", 0, null),

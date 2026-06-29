@@ -21,6 +21,7 @@ import net.minecraft.world.entity.player.Player;
 import org.joml.Matrix3x2f;
 import org.joml.Matrix3x2fc;
 import org.jspecify.annotations.Nullable;
+import java.util.List;
 
 public class MazeMapScreen extends Screen {
 
@@ -123,6 +124,7 @@ public class MazeMapScreen extends Screen {
 			g.pose().popMatrix();
 		}
 
+		boolean hoverWaypoint = false;
 		for (int wp : visit.getAllWaypoints()) {
 			int x = wp / 400 % 400;
 			int z = wp % 400;
@@ -133,9 +135,13 @@ public class MazeMapScreen extends Screen {
 			g.pose().translate(x / 16f * 5f, z / 16f * 5f);
 			if (x / 16 == cmx && z / 16 == cmz) {
 				g.pose().scale(2, 2);
+				hoverWaypoint = true;
 			}
 			g.submitGuiElementRenderState(Waypoint.of(g, 1, col));
 			g.pose().popMatrix();
+		}
+		if (hoverWaypoint) {
+			g.setComponentTooltipForNextFrame(getFont(), List.of(DILang.WAYPOINT.get()), mx, my);
 		}
 		g.pose().popMatrix();
 
