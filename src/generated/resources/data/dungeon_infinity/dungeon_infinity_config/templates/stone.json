@@ -21,7 +21,11 @@
     "path/cross": {
       "stone:": {
         "path": "stone/path/cross",
-        "weight": 100
+        "weight": 90
+      },
+      "stone:_waypoint": {
+        "path": "stone/path/cross_waypoint",
+        "weight": 10
       }
     },
     "path/end": {
@@ -47,7 +51,11 @@
     "path/t_way": {
       "stone:": {
         "path": "stone/path/t_way",
-        "weight": 100
+        "weight": 80
+      },
+      "stone:_waypoint": {
+        "path": "stone/path/t_way_waypoint",
+        "weight": 20
       }
     },
     "quad": {

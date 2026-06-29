@@ -31,4 +31,8 @@ public record MazePos(int x, int y, int z, int px, int pz) {
 		return new BlockPos(x * 400 + px, y * 16 + py, z * 400 + pz);
 	}
 
+	public MazePos atLayer(int y) {
+		return new MazePos(x, y, z, px, pz);
+	}
+
 }

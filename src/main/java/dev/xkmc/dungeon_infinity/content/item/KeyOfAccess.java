@@ -3,6 +3,7 @@ package dev.xkmc.dungeon_infinity.content.item;
 import dev.xkmc.dungeon_infinity.content.cap.MazeHistory;
 import dev.xkmc.dungeon_infinity.content.chunkgen.CellInterpreter;
 import dev.xkmc.dungeon_infinity.content.chunkgen.MazeChunkGenerator;
+import dev.xkmc.dungeon_infinity.content.config.TemplateConfig;
 import dev.xkmc.dungeon_infinity.init.data.DIDimensionGen;
 import dev.xkmc.dungeon_infinity.init.data.DILang;
 import dev.xkmc.dungeon_infinity.init.reg.DIItems;
@@ -23,6 +24,8 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.level.Level;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 import java.util.function.Consumer;
 
@@ -53,12 +56,22 @@ public class KeyOfAccess extends Item {
 			if (target.getChunkSource().getGenerator() instanceof MazeChunkGenerator gen) {
 				var dim = gen.getMaze(target.getChunkSource().randomState());
 				var maze = dim.getRegion(x, 15, z);
-				int cell, cx, cz;
-				do {
-					cx = r.nextInt(25);
-					cz = r.nextInt(25);
-					cell = maze[cx][cz];
-				} while (!CellInterpreter.isHallway(cell));
+
+				List<Integer> candidates = new ArrayList<>();
+				for (int cx = 0; cx < 25; cx++) {
+					for (int cz = 0; cz < 25; cz++) {
+						int cell = maze[cx][cz];
+						if (!CellInterpreter.isHallway(cell) || CellInterpreter.getTemplateType(cell) != 1)
+							continue;
+						int style = CellInterpreter.getStyle(maze[0][0]);
+						int variant = TemplateConfig.of(cell).variantIndex(style, "workshop");
+						if (CellInterpreter.getVariant(cell) == variant)
+							candidates.add(cx * 25 + cz);
+					}
+				}
+				int p = candidates.get(r.nextInt(candidates.size()));
+				int cx = p / 25;
+				int cz = p % 25;
 				pos = new BlockPos(x * 400 + cx * 16 + 8, 244, z * 400 + cz * 16 + 8);
 			} else pos = new BlockPos(200 + x * 400, 244, 200 + z * 400);
 			DIItems.POS.set(stack, pos);

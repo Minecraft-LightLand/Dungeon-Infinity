@@ -22,7 +22,11 @@
     "path/cross": {
       "copper:": {
         "path": "copper/path/cross",
-        "weight": 100
+        "weight": 90
+      },
+      "copper:_waypoint": {
+        "path": "copper/path/cross_waypoint",
+        "weight": 10
       }
     },
     "path/end": {
@@ -48,7 +52,11 @@
     "path/t_way": {
       "copper:": {
         "path": "copper/path/t_way",
-        "weight": 100
+        "weight": 80
+      },
+      "copper:_waypoint": {
+        "path": "copper/path/t_way_waypoint",
+        "weight": 20
       }
     },
     "quad": {
