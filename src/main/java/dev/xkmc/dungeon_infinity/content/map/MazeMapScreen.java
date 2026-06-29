@@ -26,6 +26,8 @@ public class MazeMapScreen extends Screen {
 
 	private final long seed;
 
+	private int btnUpX, btnUpY, btnDownX, btnDownY;
+
 	protected MazeMapScreen(long seed) {
 		super(Component.literal("Maze Map"));
 		this.seed = seed;
@@ -51,6 +53,13 @@ public class MazeMapScreen extends Screen {
 					return true;
 				}
 			}
+		}
+		var font = getFont();
+		if (mx >= btnUpX && mx <= btnUpX + font.width("↑") && my >= btnUpY && my <= btnUpY + font.lineHeight) {
+			return true;
+		}
+		if (mx >= btnDownX && mx <= btnDownX + font.width("↓") && my >= btnDownY && my <= btnDownY + font.lineHeight) {
+			return true;
 		}
 		return super.mouseClicked(event, doubleClick);
 	}
@@ -119,6 +128,16 @@ public class MazeMapScreen extends Screen {
 		int y1 = (int) (y0 - rate * 64);
 		var font = getFont();
 		int h = font.lineHeight + 3;
+
+		int bx = x1 + 40;
+		int by = y1;
+		btnUpX = bx;
+		btnUpY = by;
+		btnDownX = bx;
+		btnDownY = by + h;
+		g.text(font, "↑", bx, by, -1);
+		g.text(font, "↓", bx, by + h, -1);
+
 		y1 -= h - 5;
 
 		g.text(font, DILang.DEPTH.get(16 - pos.y()), x1, y1 += h, -1);
