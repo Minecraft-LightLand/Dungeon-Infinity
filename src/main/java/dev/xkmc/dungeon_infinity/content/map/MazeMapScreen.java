@@ -46,6 +46,7 @@ public class MazeMapScreen extends Screen {
 		Player player = Minecraft.getInstance().player;
 		if (player != null) {
 			var pos = MazePos.map(player.blockPosition());
+			var layerY = pos.y();
 			pos = pos.atLayer(Mth.clamp(pos.y() + diffY, 0, 15));
 			var visit = DIMeta.HISTORY.type().getOrCreate(player).getOrCreate(pos);
 			for (int wp : visit.getAllWaypoints()) {
@@ -58,7 +59,6 @@ public class MazeMapScreen extends Screen {
 				}
 			}
 			var font = getFont();
-			layerY = pos.y();
 			if (mx >= btnUpX && mx <= btnUpX + font.width("↑") && my >= btnUpY && my <= btnUpY + font.lineHeight) {
 				if (Mth.clamp(layerY + diffY + 1, 0, 15) != diffY + layerY) {
 					diffY++;
