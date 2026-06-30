@@ -2,7 +2,7 @@ package dev.xkmc.dungeon_infinity.content.map;
 
 public class MazeMapColors {
 
-	public static final int P = 0xffffff00; // waypoint
+	public static final int P = 0xff4e60fe; // waypoint
 
 	public static final int B = 0xff000000; // black, cell border color
 	public static final int W = 0xff5f5f5f; // path wall color
