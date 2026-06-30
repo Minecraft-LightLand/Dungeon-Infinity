@@ -1,4 +1,44 @@
 {
+  "spawn": {
+    "stone:room": {
+      "depthScale": 0,
+      "list": [
+        {
+          "id": "dungeon_infinity:stone/room",
+          "point": {
+            "size": 1,
+            "y": 0
+          },
+          "weight": 100
+        },
+        {
+          "id": "dungeon_infinity:stone/room",
+          "point": {
+            "size": 2,
+            "y": 0
+          },
+          "weight": 100
+        },
+        {
+          "id": "dungeon_infinity:stone/room",
+          "point": {
+            "size": 2,
+            "y": 0
+          },
+          "weight": 100
+        },
+        {
+          "id": "dungeon_infinity:stone/room",
+          "point": {
+            "size": 2,
+            "y": 0
+          },
+          "weight": 100
+        }
+      ],
+      "sizeScale": 1
+    }
+  },
   "templates": {
     "boss": {
       "stone:": {
@@ -68,35 +108,35 @@
     "room/corner": {
       "stone:": {
         "path": "stone/room/corner",
-        "spawn": "dungeon_infinity:stone/room",
+        "spawn": "stone:room",
         "weight": 100
       }
     },
     "room/cross": {
       "stone:": {
         "path": "stone/room/cross",
-        "spawn": "dungeon_infinity:stone/room",
+        "spawn": "stone:room",
         "weight": 100
       }
     },
     "room/end": {
       "stone:": {
         "path": "stone/room/end",
-        "spawn": "dungeon_infinity:stone/room",
+        "spawn": "stone:room",
         "weight": 100
       }
     },
     "room/straight": {
       "stone:": {
         "path": "stone/room/straight",
-        "spawn": "dungeon_infinity:stone/room",
+        "spawn": "stone:room",
         "weight": 100
       }
     },
     "room/t_way": {
       "stone:": {
         "path": "stone/room/t_way",
-        "spawn": "dungeon_infinity:stone/room",
+        "spawn": "stone:room",
         "weight": 100
       }
     },

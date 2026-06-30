@@ -4,7 +4,11 @@
     [
       {
         "num": 2,
-        "target": "golemdungeons:factory_humanoid_basic"
+        "target": "golemdungeons:factory_humanoid_tipped"
+      },
+      {
+        "num": 1,
+        "target": "golemdungeons:factory_humanoid_rocket"
       }
     ]
   ],

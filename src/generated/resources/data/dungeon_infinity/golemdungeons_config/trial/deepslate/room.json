@@ -3,12 +3,12 @@
   "list": [
     [
       {
-        "num": 2,
-        "target": "golemdungeons:piglin_humanoid_melee"
+        "num": 1,
+        "target": "golemdungeons:piglin_large_shoulder"
       },
       {
-        "num": 1,
-        "target": "golemdungeons:factory_humanoid_tipped"
+        "num": 2,
+        "target": "golemdungeons:factory_humanoid_rocket"
       }
     ]
   ],

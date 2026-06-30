@@ -4,11 +4,11 @@
     [
       {
         "num": 2,
-        "target": "golemdungeons:sculk_humanoid_melee"
+        "target": "golemdungeons:sculk_infestation"
       },
       {
         "num": 1,
-        "target": "golemdungeons:sculk_humanoid_ranged"
+        "target": "golemdungeons:sculk_full"
       }
     ]
   ],

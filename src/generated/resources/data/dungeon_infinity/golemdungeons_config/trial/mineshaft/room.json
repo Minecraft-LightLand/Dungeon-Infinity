@@ -3,18 +3,12 @@
   "list": [
     [
       {
-        "num": 1,
-        "target": "golemdungeons:factory_humanoid_basic"
-      }
-    ],
-    [
-      {
-        "num": 1,
-        "target": "golemdungeons:factory_humanoid_basic"
+        "num": 2,
+        "target": "golemdungeons:factory_humanoid_rocket"
       },
       {
-        "num": 1,
-        "target": "dungeon_infinity:early_ranged"
+        "num": 2,
+        "target": "golemdungeons:factory_humanoid_tipped"
       }
     ]
   ],

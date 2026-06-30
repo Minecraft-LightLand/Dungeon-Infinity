@@ -1,4 +1,44 @@
 {
+  "spawn": {
+    "copper:room": {
+      "depthScale": 0,
+      "list": [
+        {
+          "id": "dungeon_infinity:copper/room",
+          "point": {
+            "size": 1,
+            "y": 0
+          },
+          "weight": 100
+        },
+        {
+          "id": "dungeon_infinity:copper/room",
+          "point": {
+            "size": 2,
+            "y": 0
+          },
+          "weight": 100
+        },
+        {
+          "id": "dungeon_infinity:copper/room",
+          "point": {
+            "size": 2,
+            "y": 0
+          },
+          "weight": 100
+        },
+        {
+          "id": "dungeon_infinity:copper/room",
+          "point": {
+            "size": 2,
+            "y": 0
+          },
+          "weight": 100
+        }
+      ],
+      "sizeScale": 1
+    }
+  },
   "templates": {
     "boss": {
       "copper:": {
@@ -69,35 +109,35 @@
     "room/corner": {
       "copper:": {
         "path": "copper/room/corner",
-        "spawn": "dungeon_infinity:copper/room",
+        "spawn": "copper:room",
         "weight": 100
       }
     },
     "room/cross": {
       "copper:": {
         "path": "copper/room/cross",
-        "spawn": "dungeon_infinity:copper/room",
+        "spawn": "copper:room",
         "weight": 100
       }
     },
     "room/end": {
       "copper:": {
         "path": "copper/room/end",
-        "spawn": "dungeon_infinity:copper/room",
+        "spawn": "copper:room",
         "weight": 100
       }
     },
     "room/straight": {
       "copper:": {
         "path": "copper/room/straight",
-        "spawn": "dungeon_infinity:copper/room",
+        "spawn": "copper:room",
         "weight": 100
       }
     },
     "room/t_way": {
       "copper:": {
         "path": "copper/room/t_way",
-        "spawn": "dungeon_infinity:copper/room",
+        "spawn": "copper:room",
         "weight": 100
       }
     },

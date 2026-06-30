@@ -1,4 +1,44 @@
 {
+  "spawn": {
+    "deepslate:room": {
+      "depthScale": 0,
+      "list": [
+        {
+          "id": "dungeon_infinity:deepslate/room",
+          "point": {
+            "size": 1,
+            "y": 0
+          },
+          "weight": 100
+        },
+        {
+          "id": "dungeon_infinity:deepslate/room",
+          "point": {
+            "size": 2,
+            "y": 0
+          },
+          "weight": 100
+        },
+        {
+          "id": "dungeon_infinity:deepslate/room",
+          "point": {
+            "size": 2,
+            "y": 0
+          },
+          "weight": 100
+        },
+        {
+          "id": "dungeon_infinity:deepslate/room",
+          "point": {
+            "size": 2,
+            "y": 0
+          },
+          "weight": 100
+        }
+      ],
+      "sizeScale": 1
+    }
+  },
   "templates": {
     "boss": {
       "deepslate:": {
@@ -69,35 +109,35 @@
     "room/corner": {
       "deepslate:": {
         "path": "deepslate/room/corner",
-        "spawn": "dungeon_infinity:deepslate/room",
+        "spawn": "deepslate:room",
         "weight": 100
       }
     },
     "room/cross": {
       "deepslate:": {
         "path": "deepslate/room/cross",
-        "spawn": "dungeon_infinity:deepslate/room",
+        "spawn": "deepslate:room",
         "weight": 100
       }
     },
     "room/end": {
       "deepslate:": {
         "path": "deepslate/room/end",
-        "spawn": "dungeon_infinity:deepslate/room",
+        "spawn": "deepslate:room",
         "weight": 100
       }
     },
     "room/straight": {
       "deepslate:": {
         "path": "deepslate/room/straight",
-        "spawn": "dungeon_infinity:deepslate/room",
+        "spawn": "deepslate:room",
         "weight": 100
       }
     },
     "room/t_way": {
       "deepslate:": {
         "path": "deepslate/room/t_way",
-        "spawn": "dungeon_infinity:deepslate/room",
+        "spawn": "deepslate:room",
         "weight": 100
       }
     },

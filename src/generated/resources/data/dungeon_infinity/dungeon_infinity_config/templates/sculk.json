@@ -1,4 +1,44 @@
 {
+  "spawn": {
+    "sculk:room": {
+      "depthScale": 0,
+      "list": [
+        {
+          "id": "dungeon_infinity:sculk/room",
+          "point": {
+            "size": 1,
+            "y": 0
+          },
+          "weight": 100
+        },
+        {
+          "id": "dungeon_infinity:sculk/room",
+          "point": {
+            "size": 2,
+            "y": 0
+          },
+          "weight": 100
+        },
+        {
+          "id": "dungeon_infinity:sculk/room",
+          "point": {
+            "size": 2,
+            "y": 0
+          },
+          "weight": 100
+        },
+        {
+          "id": "dungeon_infinity:sculk/room",
+          "point": {
+            "size": 2,
+            "y": 0
+          },
+          "weight": 100
+        }
+      ],
+      "sizeScale": 1
+    }
+  },
   "templates": {
     "boss": {
       "sculk:": {
@@ -69,35 +109,35 @@
     "room/corner": {
       "sculk:": {
         "path": "sculk/room/corner",
-        "spawn": "dungeon_infinity:sculk/room",
+        "spawn": "sculk:room",
         "weight": 100
       }
     },
     "room/cross": {
       "sculk:": {
         "path": "sculk/room/cross",
-        "spawn": "dungeon_infinity:sculk/room",
+        "spawn": "sculk:room",
         "weight": 100
       }
     },
     "room/end": {
       "sculk:": {
         "path": "sculk/room/end",
-        "spawn": "dungeon_infinity:sculk/room",
+        "spawn": "sculk:room",
         "weight": 100
       }
     },
     "room/straight": {
       "sculk:": {
         "path": "sculk/room/straight",
-        "spawn": "dungeon_infinity:sculk/room",
+        "spawn": "sculk:room",
         "weight": 100
       }
     },
     "room/t_way": {
       "sculk:": {
         "path": "sculk/room/t_way",
-        "spawn": "dungeon_infinity:sculk/room",
+        "spawn": "sculk:room",
         "weight": 100
       }
     },
