@@ -35,6 +35,15 @@
       {
         "cost": "minecraft:emerald",
         "count": 4,
+        "limit": 6,
+        "result": {
+          "id": "dungeon_infinity:key_of_tomb"
+        },
+        "weight": 200
+      },
+      {
+        "cost": "minecraft:emerald",
+        "count": 4,
         "limit": 3,
         "result": {
           "components": {

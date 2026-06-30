@@ -4,6 +4,7 @@ import dev.xkmc.dungeon_infinity.content.block.positioner.PositionerBlockEntity;
 import dev.xkmc.dungeon_infinity.content.cap.MazeHistory;
 import dev.xkmc.dungeon_infinity.init.DungeonInfinity;
 import dev.xkmc.dungeon_infinity.init.reg.DIMeta;
+import dev.xkmc.modulargolems.content.entity.common.AbstractGolemEntity;
 import dev.xkmc.modulargolems.content.item.card.PathRecordCard;
 import dev.xkmc.modulargolems.init.registrate.GolemItems;
 import net.minecraft.server.level.ServerPlayer;
@@ -33,11 +34,17 @@ public class DIEventHandlers {
 	@SubscribeEvent(priority = EventPriority.HIGH)
 	public static void onInventoryDrop(LivingDropsEvent event) {
 		LivingEntity var2 = event.getEntity();
-		if (var2 instanceof ServerPlayer player && MazeHistory.inMazeDim(player)) {
+		if (var2 instanceof ServerPlayer player && MazeHistory.inMazeDim(player) && player.isDeadOrDying()) {
 			var data = DIMeta.LOST.type().getOrCreate(player);
 			for (var e : event.getDrops())
 				data.add(e.getItem());
 			event.getDrops().clear();
+			var list = player.level().getEntities(player, player.getBoundingBox().inflate(48, 16, 48));
+			for (var e : list) {
+				if (e instanceof AbstractGolemEntity<?, ?> golem && golem.getOwnerPlayer() == player) {
+					data.add(golem.toItem(player));
+				}
+			}
 		}
 	}
 
