@@ -65,9 +65,10 @@ public class DIConfigGen extends ConfigDataProvider {
 				.room("path/cross").variant("", 90).variant("_waypoint", 10).end()
 				.spawn("room", new TemplateConfig.SpawnPool(1, 0, new ArrayList<>(List.of(
 						entry(1, 0, GolemSpawnData.STONE_ROOM_BASIC, 100),
-						entry(2, 0, GolemSpawnData.STONE_ROOM_LARGE, 100),
-						entry(2, 0, GolemSpawnData.STONE_ROOM_RIDER, 100),
-						entry(2, 0, GolemSpawnData.STONE_ROOM_RANGED, 100)
+						entry(3, 0, GolemSpawnData.STONE_ROOM_LARGE, 100),
+						entry(3, 0, GolemSpawnData.STONE_ROOM_RIDER, 100),
+						entry(3, 0, GolemSpawnData.STONE_ROOM_RANGED, 100),
+						entry(5, 0, GolemSpawnData.STONE_ROOM_MIXED, 100)
 				))))
 				.room("room/end").variant("", 100).end()
 				.room("room/corner").variant("", 100).end()
@@ -91,9 +92,10 @@ public class DIConfigGen extends ConfigDataProvider {
 				.room("path/cross").variant("", 90).variant("_waypoint", 10).end()
 				.spawn("room", new TemplateConfig.SpawnPool(1, 0, new ArrayList<>(List.of(
 						entry(1, 0, GolemSpawnData.MINESHAFT_ROOM_BASIC, 100),
-						entry(2, 0, GolemSpawnData.MINESHAFT_ROOM_LARGE, 100),
-						entry(2, 0, GolemSpawnData.MINESHAFT_ROOM_RIDER, 100),
-						entry(2, 0, GolemSpawnData.MINESHAFT_ROOM_RANGED, 100)
+						entry(3, 0, GolemSpawnData.MINESHAFT_ROOM_LARGE, 100),
+						entry(3, 0, GolemSpawnData.MINESHAFT_ROOM_RIDER, 100),
+						entry(3, 0, GolemSpawnData.MINESHAFT_ROOM_RANGED, 100),
+						entry(5, 0, GolemSpawnData.MINESHAFT_ROOM_MIXED, 100)
 				))))
 				.room("room/end").variant("", 100).end()
 				.room("room/corner").variant("", 100).end()
@@ -117,9 +119,10 @@ public class DIConfigGen extends ConfigDataProvider {
 				.room("path/cross").variant("", 90).variant("_waypoint", 10).end()
 				.spawn("room", new TemplateConfig.SpawnPool(1, 0, new ArrayList<>(List.of(
 						entry(1, 0, GolemSpawnData.COPPER_ROOM_BASIC, 100),
-						entry(2, 0, GolemSpawnData.COPPER_ROOM_LARGE, 100),
-						entry(2, 0, GolemSpawnData.COPPER_ROOM_RIDER, 100),
-						entry(2, 0, GolemSpawnData.COPPER_ROOM_RANGED, 100)
+						entry(3, 0, GolemSpawnData.COPPER_ROOM_LARGE, 100),
+						entry(3, 0, GolemSpawnData.COPPER_ROOM_RIDER, 100),
+						entry(3, 0, GolemSpawnData.COPPER_ROOM_RANGED, 100),
+						entry(5, 0, GolemSpawnData.COPPER_ROOM_MIXED, 100)
 				))))
 				.room("room/end").variant("", 100).end()
 				.room("room/corner").variant("", 100).end()
@@ -143,9 +146,10 @@ public class DIConfigGen extends ConfigDataProvider {
 				.room("path/cross").variant("", 90).variant("_waypoint", 10).end()
 				.spawn("room", new TemplateConfig.SpawnPool(1, 0, new ArrayList<>(List.of(
 						entry(1, 0, GolemSpawnData.DEEPSLATE_ROOM_BASIC, 100),
-						entry(2, 0, GolemSpawnData.DEEPSLATE_ROOM_LARGE, 100),
-						entry(2, 0, GolemSpawnData.DEEPSLATE_ROOM_RIDER, 100),
-						entry(2, 0, GolemSpawnData.DEEPSLATE_ROOM_RANGED, 100)
+						entry(3, 0, GolemSpawnData.DEEPSLATE_ROOM_LARGE, 100),
+						entry(3, 0, GolemSpawnData.DEEPSLATE_ROOM_RIDER, 100),
+						entry(3, 0, GolemSpawnData.DEEPSLATE_ROOM_RANGED, 100),
+						entry(5, 0, GolemSpawnData.DEEPSLATE_ROOM_MIXED, 100)
 				))))
 				.room("room/end").variant("", 100).end()
 				.room("room/corner").variant("", 100).end()
@@ -169,9 +173,10 @@ public class DIConfigGen extends ConfigDataProvider {
 				.room("path/cross").variant("", 90).variant("_waypoint", 10).end()
 				.spawn("room", new TemplateConfig.SpawnPool(1, 0, new ArrayList<>(List.of(
 						entry(1, 0, GolemSpawnData.SCULK_ROOM_BASIC, 100),
-						entry(2, 0, GolemSpawnData.SCULK_ROOM_LARGE, 100),
-						entry(2, 0, GolemSpawnData.SCULK_ROOM_RIDER, 100),
-						entry(2, 0, GolemSpawnData.SCULK_ROOM_RANGED, 100)
+						entry(3, 0, GolemSpawnData.SCULK_ROOM_LARGE, 100),
+						entry(3, 0, GolemSpawnData.SCULK_ROOM_RIDER, 100),
+						entry(3, 0, GolemSpawnData.SCULK_ROOM_RANGED, 100),
+						entry(5, 0, GolemSpawnData.SCULK_ROOM_MIXED, 100)
 				))))
 				.room("room/end").variant("", 100).end()
 				.room("room/corner").variant("", 100).end()

@@ -1,0 +1,38 @@
+{
+  "generateChest": false,
+  "list": [
+    [
+      {
+        "num": 1,
+        "target": "golemdungeons:piglin_large_melee"
+      },
+      {
+        "num": 2,
+        "target": "golemdungeons:piglin_humanoid_ranged"
+      },
+      {
+        "num": 1,
+        "target": "golemdungeons:factory_humanoid_rocket"
+      }
+    ],
+    [
+      {
+        "num": 1,
+        "target": "golemdungeons:piglin_large_bow"
+      },
+      {
+        "num": 2,
+        "target": "golemdungeons:piglin_humanoid_melee"
+      },
+      {
+        "num": 1,
+        "target": "golemdungeons:factory_humanoid_tipped"
+      }
+    ]
+  ],
+  "maxY": 6,
+  "minY": -4,
+  "reward": "dungeon_infinity:maze/deepslate/room/mixed",
+  "spawnCost": 1000,
+  "triggerRange": 12
+}

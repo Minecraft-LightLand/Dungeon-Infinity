@@ -4,7 +4,7 @@
       "depthScale": 0,
       "list": [
         {
-          "id": "dungeon_infinity:sculk/room",
+          "id": "dungeon_infinity:sculk/room/basic",
           "point": {
             "size": 1,
             "y": 0
@@ -12,25 +12,33 @@
           "weight": 100
         },
         {
-          "id": "dungeon_infinity:sculk/room",
+          "id": "dungeon_infinity:sculk/room/large",
           "point": {
-            "size": 2,
+            "size": 3,
             "y": 0
           },
           "weight": 100
         },
         {
-          "id": "dungeon_infinity:sculk/room",
+          "id": "dungeon_infinity:sculk/room/rider",
           "point": {
-            "size": 2,
+            "size": 3,
             "y": 0
           },
           "weight": 100
         },
         {
-          "id": "dungeon_infinity:sculk/room",
+          "id": "dungeon_infinity:sculk/room/ranged",
           "point": {
-            "size": 2,
+            "size": 3,
+            "y": 0
+          },
+          "weight": 100
+        },
+        {
+          "id": "dungeon_infinity:sculk/room/mixed",
+          "point": {
+            "size": 5,
             "y": 0
           },
           "weight": 100

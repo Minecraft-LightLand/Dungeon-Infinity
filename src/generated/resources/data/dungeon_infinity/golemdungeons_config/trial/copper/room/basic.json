@@ -1,0 +1,20 @@
+{
+  "generateChest": false,
+  "list": [
+    [
+      {
+        "num": 2,
+        "target": "golemdungeons:factory_humanoid_melee"
+      },
+      {
+        "num": 2,
+        "target": "golemdungeons:factory_humanoid_ranged"
+      }
+    ]
+  ],
+  "maxY": 6,
+  "minY": -4,
+  "reward": "dungeon_infinity:maze/copper/room/basic",
+  "spawnCost": 1000,
+  "triggerRange": 12
+}

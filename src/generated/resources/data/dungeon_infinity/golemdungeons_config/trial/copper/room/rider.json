@@ -1,0 +1,24 @@
+{
+  "generateChest": false,
+  "list": [
+    [
+      {
+        "num": 2,
+        "target": "golemdungeons:factory_humanoid_rocket"
+      },
+      {
+        "num": 1,
+        "target": "golemdungeons:factory_humanoid_tipped"
+      },
+      {
+        "num": 1,
+        "target": "golemdungeons:factory_large_2"
+      }
+    ]
+  ],
+  "maxY": 6,
+  "minY": -4,
+  "reward": "dungeon_infinity:maze/copper/room/rider",
+  "spawnCost": 1000,
+  "triggerRange": 12
+}
