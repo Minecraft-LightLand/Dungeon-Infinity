@@ -45,6 +45,34 @@
         }
       ],
       "sizeScale": 1
+    },
+    "sculk:sculk/boss": {
+      "depthScale": 0,
+      "list": [
+        {
+          "id": "dungeon_infinity:sculk/boss",
+          "point": {
+            "size": 0,
+            "y": 0
+          },
+          "weight": 100
+        }
+      ],
+      "sizeScale": 0
+    },
+    "sculk:sculk/quad": {
+      "depthScale": 0,
+      "list": [
+        {
+          "id": "dungeon_infinity:sculk/quad",
+          "point": {
+            "size": 0,
+            "y": 0
+          },
+          "weight": 100
+        }
+      ],
+      "sizeScale": 0
     }
   },
   "templates": {

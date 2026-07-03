@@ -279,8 +279,11 @@ public class TemplateConfig extends BaseConfig {
 			return variant(suffix, weight, room + suffix, parent.defaultSpawn);
 		}
 
-		public VariantBuilder variant(String suffix, int weight, @Nullable Identifier id) {
-			return variant(suffix, weight, room + suffix, id);
+		public VariantBuilder variant(String suffix, int weight, Identifier id) {
+			parent.spawn(id.getPath(), new SpawnPool(id));
+			variant(suffix, weight, room + suffix, id);
+			parent.endSpawn();
+			return this;
 		}
 
 		public VariantBuilder variant(String suffix, int weight, String path) {

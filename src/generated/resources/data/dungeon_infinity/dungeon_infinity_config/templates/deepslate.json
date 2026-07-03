@@ -1,5 +1,33 @@
 {
   "spawn": {
+    "deepslate:deepslate/boss": {
+      "depthScale": 0,
+      "list": [
+        {
+          "id": "dungeon_infinity:deepslate/boss",
+          "point": {
+            "size": 0,
+            "y": 0
+          },
+          "weight": 100
+        }
+      ],
+      "sizeScale": 0
+    },
+    "deepslate:deepslate/quad": {
+      "depthScale": 0,
+      "list": [
+        {
+          "id": "dungeon_infinity:deepslate/quad",
+          "point": {
+            "size": 0,
+            "y": 0
+          },
+          "weight": 100
+        }
+      ],
+      "sizeScale": 0
+    },
     "deepslate:room": {
       "depthScale": 0,
       "list": [
