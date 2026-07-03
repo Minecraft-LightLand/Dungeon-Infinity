@@ -215,6 +215,15 @@
           "id": "minecraft:clay_ball"
         },
         "weight": 200
+      },
+      {
+        "cost": "minecraft:emerald",
+        "count": 8,
+        "limit": 2,
+        "result": {
+          "id": "minecraft:shulker_shell"
+        },
+        "weight": 100
       }
     ],
     "stone:material": [

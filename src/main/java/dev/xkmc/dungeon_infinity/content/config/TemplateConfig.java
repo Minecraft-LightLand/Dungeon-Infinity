@@ -258,6 +258,10 @@ public class TemplateConfig extends BaseConfig {
 			return this;
 		}
 
+		public StyleBuilder spawn(String id, int sizeScale, int depthScale, SpawnPool.Entry... entries) {
+			return spawn(id, new TemplateConfig.SpawnPool(sizeScale, depthScale, new ArrayList<>(List.of(entries))));
+		}
+
 		public StyleBuilder endSpawn() {
 			defaultSpawn = null;
 			return this;
