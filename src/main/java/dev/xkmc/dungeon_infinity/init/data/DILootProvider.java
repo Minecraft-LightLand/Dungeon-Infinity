@@ -26,6 +26,7 @@ import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.entries.LootPoolEntryContainer;
 import net.minecraft.world.level.storage.loot.functions.SetComponentsFunction;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -64,7 +65,7 @@ public class DILootProvider {
 	public static void genLoot(RegistrateLootTableProvider pvd) {
 		MazeRoomLootGen.genLoot(pvd);
 
-		pvd.addLootAction(ContextKeySet.EMPTY, sub -> sub.accept(ENTRY, LootTable.lootTable()
+		pvd.addLootAction(LootContextParamSets.ADVANCEMENT_REWARD, sub -> sub.accept(ENTRY, LootTable.lootTable()
 				.withPool(LootPool.lootPool().add(LootItem.lootTableItem(GolemItems.TABLE.asItem())))
 				.withPool(LootPool.lootPool().add(LootItem.lootTableItem(GolemItems.OMNI_COMMAND.asItem())))
 				.withPool(LootPool.lootPool().add(getGolem(GolemItems.HOLDER_GOLEM.get(), ModularGolems.loc("iron"))))

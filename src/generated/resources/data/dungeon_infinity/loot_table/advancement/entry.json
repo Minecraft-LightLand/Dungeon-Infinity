@@ -1,0 +1,223 @@
+{
+  "type": "minecraft:advancement_reward",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "modulargolems:golem_workbench"
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "modulargolems:omnipotent_wand_command"
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "components": {
+                "modulargolems:golem_materials": {
+                  "parts": [
+                    {
+                      "material": "modulargolems:iron",
+                      "part": "modulargolems:metal_golem_arm"
+                    },
+                    {
+                      "material": "modulargolems:iron",
+                      "part": "modulargolems:metal_golem_body"
+                    },
+                    {
+                      "material": "modulargolems:iron",
+                      "part": "modulargolems:metal_golem_arm"
+                    },
+                    {
+                      "material": "modulargolems:iron",
+                      "part": "modulargolems:metal_golem_legs"
+                    }
+                  ]
+                }
+              },
+              "function": "minecraft:set_components"
+            }
+          ],
+          "name": "modulargolems:metal_golem_holder"
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "components": {
+                "minecraft:can_break": {
+                  "blocks": [
+                    "minecraft:raw_copper_block",
+                    "minecraft:raw_iron_block"
+                  ]
+                }
+              },
+              "function": "minecraft:set_components"
+            }
+          ],
+          "name": "minecraft:iron_pickaxe"
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "components": {
+                "minecraft:can_break": {
+                  "blocks": "#minecraft:logs"
+                }
+              },
+              "function": "minecraft:set_components"
+            }
+          ],
+          "name": "minecraft:iron_axe"
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "components": {
+                "minecraft:can_break": {
+                  "blocks": "minecraft:clay"
+                }
+              },
+              "function": "minecraft:set_components"
+            }
+          ],
+          "name": "minecraft:iron_axe"
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "components": {
+                "minecraft:can_break": {
+                  "blocks": "minecraft:cobweb"
+                }
+              },
+              "function": "minecraft:set_components"
+            }
+          ],
+          "name": "minecraft:iron_sword"
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:iron_helmet"
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:iron_chestplate"
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:iron_leggings"
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:iron_boots"
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:shield"
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:bow"
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": 64.0,
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "minecraft:arrow"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "dungeon_infinity:advancement/entry"
+}

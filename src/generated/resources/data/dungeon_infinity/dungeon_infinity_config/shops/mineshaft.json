@@ -318,7 +318,7 @@
         "result": {
           "id": "minecraft:shulker_shell"
         },
-        "weight": 50
+        "weight": 100
       }
     ],
     "mineshaft:material": [
