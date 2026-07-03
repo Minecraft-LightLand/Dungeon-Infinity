@@ -1,12 +1,14 @@
 package dev.xkmc.dungeon_infinity.content.cap;
 
 import dev.xkmc.dungeon_infinity.content.spawn.MobSpawnTicker;
+import dev.xkmc.dungeon_infinity.events.MazeRoomBattleStartEvent;
 import dev.xkmc.dungeon_infinity.init.DungeonInfinity;
 import dev.xkmc.dungeon_infinity.init.reg.DIMeta;
 import dev.xkmc.l2serial.serialization.marker.SerialClass;
 import dev.xkmc.l2serial.serialization.marker.SerialField;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.neoforged.neoforge.common.NeoForge;
 
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
@@ -106,6 +108,9 @@ public class MobRoomTicker {
 			ins.setWall(true);
 			spawner.start(level, ins);
 			DIMeta.ACTIVE.type().getOrCreate(level).activeRooms.add(ins.holder.getBlockPos());
+			for (var e : players) {
+				NeoForge.EVENT_BUS.post(new MazeRoomBattleStartEvent(e, ins));
+			}
 		}
 		if (started) spawner.tick(level, ins);
 		if (started && (!spawner.isActive() || players.isEmpty())) {
