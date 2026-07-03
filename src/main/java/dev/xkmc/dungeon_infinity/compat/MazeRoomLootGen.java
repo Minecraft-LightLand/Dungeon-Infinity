@@ -24,44 +24,48 @@ public class MazeRoomLootGen {
 	private static ResourceKey<LootTable> maze(String path) {
 		return loot("maze/" + path);
 	}
-
 	// ===== STONE 石制级 =====
-	public static final ResourceKey<LootTable> STONE_ROOM_BASIC = maze("stone/room_basic");
-	public static final ResourceKey<LootTable> STONE_ROOM_LARGE = maze("stone/room_large");
-	public static final ResourceKey<LootTable> STONE_ROOM_RANGED = maze("stone/room_range");
-	public static final ResourceKey<LootTable> STONE_ROOM_RIDER = maze("stone/room_rider");
+	public static final ResourceKey<LootTable> STONE_ROOM_BASIC = maze("stone/room/basic");
+	public static final ResourceKey<LootTable> STONE_ROOM_LARGE = maze("stone/room/large");
+	public static final ResourceKey<LootTable> STONE_ROOM_RANGED = maze("stone/room/ranged");
+	public static final ResourceKey<LootTable> STONE_ROOM_RIDER = maze("stone/room/rider");
+	public static final ResourceKey<LootTable> STONE_ROOM_MIXED = maze("stone/room/mixed");
 	public static final ResourceKey<LootTable> STONE_QUAD = maze("stone/quad");
 	public static final ResourceKey<LootTable> STONE_BOSS = maze("stone/boss");
 
 	// ===== MINESHAFT 矿道级 =====
-	public static final ResourceKey<LootTable> MINESHAFT_ROOM_BASIC = maze("mineshaft/room_basic");
-	public static final ResourceKey<LootTable> MINESHAFT_ROOM_LARGE = maze("mineshaft/room_large");
-	public static final ResourceKey<LootTable> MINESHAFT_ROOM_RANGED = maze("mineshaft/room_range");
-	public static final ResourceKey<LootTable> MINESHAFT_ROOM_RIDER = maze("mineshaft/room_rider");
+	public static final ResourceKey<LootTable> MINESHAFT_ROOM_BASIC = maze("mineshaft/room/basic");
+	public static final ResourceKey<LootTable> MINESHAFT_ROOM_LARGE = maze("mineshaft/room/large");
+	public static final ResourceKey<LootTable> MINESHAFT_ROOM_RANGED = maze("mineshaft/room/ranged");
+	public static final ResourceKey<LootTable> MINESHAFT_ROOM_RIDER = maze("mineshaft/room/rider");
+	public static final ResourceKey<LootTable> MINESHAFT_ROOM_MIXED = maze("mineshaft/room/mixed");
 	public static final ResourceKey<LootTable> MINESHAFT_QUAD = maze("mineshaft/quad");
 	public static final ResourceKey<LootTable> MINESHAFT_BOSS = maze("mineshaft/boss");
 
 	// ===== COPPER 铜制级 =====
-	public static final ResourceKey<LootTable> COPPER_ROOM_BASIC = maze("copper/room_basic");
-	public static final ResourceKey<LootTable> COPPER_ROOM_LARGE = maze("copper/room_large");
-	public static final ResourceKey<LootTable> COPPER_ROOM_RANGED = maze("copper/room_range");
-	public static final ResourceKey<LootTable> COPPER_ROOM_RIDER = maze("copper/room_rider");
+	public static final ResourceKey<LootTable> COPPER_ROOM_BASIC = maze("copper/room/basic");
+	public static final ResourceKey<LootTable> COPPER_ROOM_LARGE = maze("copper/room/large");
+	public static final ResourceKey<LootTable> COPPER_ROOM_RANGED = maze("copper/room/ranged");
+	public static final ResourceKey<LootTable> COPPER_ROOM_RIDER = maze("copper/room/rider");
+	public static final ResourceKey<LootTable> COPPER_ROOM_MIXED = maze("copper/room/mixed");
 	public static final ResourceKey<LootTable> COPPER_QUAD = maze("copper/quad");
 	public static final ResourceKey<LootTable> COPPER_BOSS = maze("copper/boss");
 
 	// ===== DEEPSLATE 深板岩级 =====
-	public static final ResourceKey<LootTable> DEEPSLATE_ROOM_BASIC = maze("deepslate/room_basic");
-	public static final ResourceKey<LootTable> DEEPSLATE_ROOM_LARGE = maze("deepslate/room_large");
-	public static final ResourceKey<LootTable> DEEPSLATE_ROOM_RANGED = maze("deepslate/room_range");
-	public static final ResourceKey<LootTable> DEEPSLATE_ROOM_RIDER = maze("deepslate/room_rider");
+	public static final ResourceKey<LootTable> DEEPSLATE_ROOM_BASIC = maze("deepslate/room/basic");
+	public static final ResourceKey<LootTable> DEEPSLATE_ROOM_LARGE = maze("deepslate/room/large");
+	public static final ResourceKey<LootTable> DEEPSLATE_ROOM_RANGED = maze("deepslate/room/ranged");
+	public static final ResourceKey<LootTable> DEEPSLATE_ROOM_RIDER = maze("deepslate/room/rider");
+	public static final ResourceKey<LootTable> DEEPSLATE_ROOM_MIXED = maze("deepslate/room/mixed");
 	public static final ResourceKey<LootTable> DEEPSLATE_QUAD = maze("deepslate/quad");
 	public static final ResourceKey<LootTable> DEEPSLATE_BOSS = maze("deepslate/boss");
 
 	// ===== SCULK 幽匿级 =====
-	public static final ResourceKey<LootTable> SCULK_ROOM_BASIC = maze("sculk/room_basic");
-	public static final ResourceKey<LootTable> SCULK_ROOM_LARGE = maze("sculk/room_large");
-	public static final ResourceKey<LootTable> SCULK_ROOM_RANGED = maze("sculk/room_range");
-	public static final ResourceKey<LootTable> SCULK_ROOM_RIDER = maze("sculk/room_rider");
+	public static final ResourceKey<LootTable> SCULK_ROOM_BASIC = maze("sculk/room/basic");
+	public static final ResourceKey<LootTable> SCULK_ROOM_LARGE = maze("sculk/room/large");
+	public static final ResourceKey<LootTable> SCULK_ROOM_RANGED = maze("sculk/room/ranged");
+	public static final ResourceKey<LootTable> SCULK_ROOM_RIDER = maze("sculk/room/rider");
+	public static final ResourceKey<LootTable> SCULK_ROOM_MIXED = maze("sculk/room/mixed");
 	public static final ResourceKey<LootTable> SCULK_QUAD = maze("sculk/quad");
 	public static final ResourceKey<LootTable> SCULK_BOSS = maze("sculk/boss");
 
@@ -170,6 +174,38 @@ public class MazeRoomLootGen {
 						)
 						.withPool(LootPool.lootPool()
 								.add(LootTableTemplate.getItem(Items.EMERALD, 2, 4))
+						)
+		));
+
+		// MIXED: 混合掉落，各类型汇集+额外奖励
+		pvd.addLootAction(LootContextParamSets.CHEST, sub -> sub.accept(STONE_ROOM_MIXED,
+				LootTable.lootTable()
+						.withPool(LootPool.lootPool()
+								.add(LootTableTemplate.getItem(Items.GOLD_INGOT, 2, 5))
+								.add(LootTableTemplate.getItem(Items.IRON_INGOT, 3, 8))
+								.add(LootTableTemplate.getItem(Items.DIAMOND, 1, 3))
+						)
+						.withPool(LootPool.lootPool()
+								.add(LootTableTemplate.getItem(Items.BREAD, 2, 4))
+								.add(LootTableTemplate.getItem(Items.GOLDEN_CARROT, 1, 2))
+						)
+						.withPool(LootPool.lootPool()
+								.add(LootTableTemplate.getItem(Items.ARROW, 4, 10))
+								.add(LootTableTemplate.getItem(Items.GUNPOWDER, 1, 4))
+						)
+						.withPool(LootPool.lootPool()
+								.add(LootTableTemplate.getItem(Items.OAK_LOG, 3, 8))
+								.add(LootTableTemplate.getItem(Items.LEATHER, 1, 3))
+						)
+						.withPool(LootPool.lootPool()
+								.add(LootItem.lootTableItem(GolemItems.QUARTZ.get()))
+								.add(LootItem.lootTableItem(GolemItems.GOLD.get()))
+						)
+						.withPool(LootPool.lootPool()
+								.add(LootTableTemplate.getItem(Items.EXPERIENCE_BOTTLE, 4, 8))
+						)
+						.withPool(LootPool.lootPool()
+								.add(LootTableTemplate.getItem(Items.EMERALD, 2, 5))
 						)
 		));
 
@@ -320,6 +356,39 @@ public class MazeRoomLootGen {
 						)
 						.withPool(LootPool.lootPool()
 								.add(LootTableTemplate.getItem(Items.EMERALD, 3, 5))
+						)
+		));
+
+		// MIXED: 混合掉落，各类型全覆盖
+		pvd.addLootAction(LootContextParamSets.CHEST, sub -> sub.accept(MINESHAFT_ROOM_MIXED,
+				LootTable.lootTable()
+						.withPool(LootPool.lootPool()
+								.add(LootTableTemplate.getItem(Items.IRON_INGOT, 5, 12))
+								.add(LootTableTemplate.getItem(Items.COPPER_BLOCK, 1, 3))
+								.add(LootTableTemplate.getItem(Items.GOLD_INGOT, 4, 10))
+								.add(LootTableTemplate.getItem(Items.DIAMOND, 1, 3))
+						)
+						.withPool(LootPool.lootPool()
+								.add(LootTableTemplate.getItem(Items.ARROW, 8, 18))
+								.add(LootTableTemplate.getItem(Items.GUNPOWDER, 2, 5))
+						)
+						.withPool(LootPool.lootPool()
+								.add(LootTableTemplate.getItem(Items.ENDER_PEARL, 1, 3))
+								.add(LootTableTemplate.getItem(Items.BLAZE_ROD, 1, 3))
+						)
+						.withPool(LootPool.lootPool()
+								.add(LootTableTemplate.getItem(Items.OAK_LOG, 5, 10))
+								.add(LootTableTemplate.getItem(Items.LEATHER, 1, 3))
+						)
+						.withPool(LootPool.lootPool()
+								.add(LootItem.lootTableItem(GolemItems.GOLD.get()))
+								.add(LootItem.lootTableItem(GolemItems.PICKUP.get()))
+						)
+						.withPool(LootPool.lootPool()
+								.add(LootTableTemplate.getItem(Items.EXPERIENCE_BOTTLE, 5, 10))
+						)
+						.withPool(LootPool.lootPool()
+								.add(LootTableTemplate.getItem(Items.EMERALD, 3, 6))
 						)
 		));
 
@@ -497,6 +566,40 @@ public class MazeRoomLootGen {
 						)
 						.withPool(LootPool.lootPool()
 								.add(LootTableTemplate.getItem(Items.EMERALD, 3, 6))
+						)
+		));
+
+		// MIXED: 混合掉落，各类型全覆盖
+		pvd.addLootAction(LootContextParamSets.CHEST, sub -> sub.accept(COPPER_ROOM_MIXED,
+				LootTable.lootTable()
+						.withPool(LootPool.lootPool()
+								.add(LootTableTemplate.getItem(Items.COPPER_BLOCK, 2, 4))
+								.add(LootTableTemplate.getItem(Items.GOLD_INGOT, 4, 10))
+								.add(LootTableTemplate.getItem(Items.IRON_INGOT, 4, 10))
+								.add(LootTableTemplate.getItem(Items.DIAMOND, 2, 4))
+						)
+						.withPool(LootPool.lootPool()
+								.add(LootTableTemplate.getItem(Items.ARROW, 8, 18))
+								.add(LootTableTemplate.getItem(Items.GUNPOWDER, 2, 5))
+						)
+						.withPool(LootPool.lootPool()
+								.add(LootTableTemplate.getItem(Items.BLAZE_ROD, 2, 5))
+								.add(LootTableTemplate.getItem(Items.ENDER_PEARL, 2, 4))
+								.add(LootTableTemplate.getItem(Items.GLOWSTONE_DUST, 1, 4))
+						)
+						.withPool(LootPool.lootPool()
+								.add(LootTableTemplate.getItem(Items.OAK_LOG, 5, 10))
+								.add(LootTableTemplate.getItem(Items.LEATHER, 2, 4))
+						)
+						.withPool(LootPool.lootPool()
+								.add(LootItem.lootTableItem(GolemItems.QUARTZ.get()))
+								.add(LootItem.lootTableItem(GolemItems.GOLD.get()))
+						)
+						.withPool(LootPool.lootPool()
+								.add(LootTableTemplate.getItem(Items.EXPERIENCE_BOTTLE, 6, 12))
+						)
+						.withPool(LootPool.lootPool()
+								.add(LootTableTemplate.getItem(Items.EMERALD, 4, 8))
 						)
 		));
 
@@ -690,6 +793,40 @@ public class MazeRoomLootGen {
 						)
 		));
 
+		// MIXED: 混合掉落+下界合金碎片
+		pvd.addLootAction(LootContextParamSets.CHEST, sub -> sub.accept(DEEPSLATE_ROOM_MIXED,
+				LootTable.lootTable()
+						.withPool(LootPool.lootPool()
+								.add(LootTableTemplate.getItem(Items.IRON_BLOCK, 2, 5))
+								.add(LootTableTemplate.getItem(Items.DIAMOND, 4, 10))
+								.add(LootTableTemplate.getItem(Items.NETHERITE_SCRAP, 2, 5))
+						)
+						.withPool(LootPool.lootPool()
+								.add(LootTableTemplate.getItem(Items.COOKED_BEEF, 4, 8))
+								.add(LootTableTemplate.getItem(Items.GOLDEN_CARROT, 2, 4))
+								.add(LootTableTemplate.getItem(Items.ENCHANTED_GOLDEN_APPLE, 1, 2))
+						)
+						.withPool(LootPool.lootPool()
+								.add(LootTableTemplate.getItem(Items.ARROW, 12, 24))
+								.add(LootTableTemplate.getItem(Items.GUNPOWDER, 3, 8))
+								.add(LootTableTemplate.getItem(Items.GLOWSTONE_DUST, 2, 5))
+						)
+						.withPool(LootPool.lootPool()
+								.add(LootTableTemplate.getItem(Items.OAK_LOG, 6, 12))
+								.add(LootTableTemplate.getItem(Items.LEATHER, 2, 4))
+						)
+						.withPool(LootPool.lootPool()
+								.add(LootItem.lootTableItem(GolemItems.ENCHANTED_GOLD.get()))
+								.add(LootItem.lootTableItem(GolemItems.NETHERITE.get()))
+						)
+						.withPool(LootPool.lootPool()
+								.add(LootTableTemplate.getItem(Items.EXPERIENCE_BOTTLE, 8, 16))
+						)
+						.withPool(LootPool.lootPool()
+								.add(LootTableTemplate.getItem(Items.EMERALD, 5, 10))
+						)
+		));
+
 		pvd.addLootAction(LootContextParamSets.CHEST, sub -> sub.accept(DEEPSLATE_QUAD,
 				LootTable.lootTable()
 						.withPool(LootPool.lootPool()
@@ -855,6 +992,35 @@ public class MazeRoomLootGen {
 						)
 						.withPool(LootPool.lootPool()
 								.add(LootTableTemplate.getItem(Items.EMERALD, 4, 8))
+						)
+		));
+
+		// MIXED: 混合掉落+终极奖励
+		pvd.addLootAction(LootContextParamSets.CHEST, sub -> sub.accept(SCULK_ROOM_MIXED,
+				LootTable.lootTable()
+						.withPool(LootPool.lootPool()
+								.add(LootTableTemplate.getItem(Items.ECHO_SHARD, 2, 5))
+								.add(LootTableTemplate.getItem(Items.DIAMOND, 6, 14))
+						)
+						.withPool(LootPool.lootPool()
+								.add(LootTableTemplate.getItem(Items.ENCHANTED_GOLDEN_APPLE, 2, 5))
+								.add(LootTableTemplate.getItem(Items.GOLDEN_CARROT, 2, 4))
+						)
+						.withPool(LootPool.lootPool()
+								.add(LootTableTemplate.getItem(Items.ARROW, 24, 48))
+						)
+						.withPool(LootPool.lootPool()
+								.add(LootTableTemplate.getItem(Items.OAK_LOG, 6, 12))
+						)
+						.withPool(LootPool.lootPool()
+								.add(LootItem.lootTableItem(GolemItems.NETHERITE.get()))
+								.add(LootItem.lootTableItem(GolemItems.ENCHANTED_GOLD.get()))
+						)
+						.withPool(LootPool.lootPool()
+								.add(LootTableTemplate.getItem(Items.EXPERIENCE_BOTTLE, 9, 16))
+						)
+						.withPool(LootPool.lootPool()
+								.add(LootTableTemplate.getItem(Items.EMERALD, 5, 10))
 						)
 		));
 

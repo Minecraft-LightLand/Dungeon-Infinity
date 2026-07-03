@@ -1,0 +1,24 @@
+{
+  "generateChest": false,
+  "list": [
+    [
+      {
+        "num": 1,
+        "target": "golemdungeons:piglin_large_melee"
+      },
+      {
+        "num": 1,
+        "target": "golemdungeons:factory_large_2"
+      },
+      {
+        "num": 1,
+        "target": "golemdungeons:piglin_humanoid_melee"
+      }
+    ]
+  ],
+  "maxY": 6,
+  "minY": -4,
+  "reward": "dungeon_infinity:maze/deepslate/room/large",
+  "spawnCost": 1000,
+  "triggerRange": 12
+}

@@ -20,42 +20,47 @@ public class GolemSpawnData extends AbstractGolemSpawn {
 	public static final Identifier EARLY_RANGED = DungeonInfinity.loc("early_ranged");
 
 	// ==================== STONE 石制级 ====================
-	public static final Identifier STONE_ROOM_BASIC = DungeonInfinity.loc("stone/room");
-	public static final Identifier STONE_ROOM_LARGE = DungeonInfinity.loc("stone/room");
-	public static final Identifier STONE_ROOM_RANGED = DungeonInfinity.loc("stone/room");
-	public static final Identifier STONE_ROOM_RIDER = DungeonInfinity.loc("stone/room");
+	public static final Identifier STONE_ROOM_BASIC = DungeonInfinity.loc("stone/room/basic");
+	public static final Identifier STONE_ROOM_LARGE = DungeonInfinity.loc("stone/room/large");
+	public static final Identifier STONE_ROOM_RANGED = DungeonInfinity.loc("stone/room/ranged");
+	public static final Identifier STONE_ROOM_RIDER = DungeonInfinity.loc("stone/room/rider");
+	public static final Identifier STONE_ROOM_MIXED = DungeonInfinity.loc("stone/room/mixed");
 	public static final Identifier STONE_QUAD = DungeonInfinity.loc("stone/quad");
 	public static final Identifier STONE_BOSS = DungeonInfinity.loc("stone/boss");
 
 	// ==================== MINESHAFT 矿道级 ====================
-	public static final Identifier MINESHAFT_ROOM_BASIC = DungeonInfinity.loc("mineshaft/room");
-	public static final Identifier MINESHAFT_ROOM_LARGE = DungeonInfinity.loc("mineshaft/room");
-	public static final Identifier MINESHAFT_ROOM_RANGED = DungeonInfinity.loc("mineshaft/room");
-	public static final Identifier MINESHAFT_ROOM_RIDER = DungeonInfinity.loc("mineshaft/room");
+	public static final Identifier MINESHAFT_ROOM_BASIC = DungeonInfinity.loc("mineshaft/room/basic");
+	public static final Identifier MINESHAFT_ROOM_LARGE = DungeonInfinity.loc("mineshaft/room/large");
+	public static final Identifier MINESHAFT_ROOM_RANGED = DungeonInfinity.loc("mineshaft/room/ranged");
+	public static final Identifier MINESHAFT_ROOM_RIDER = DungeonInfinity.loc("mineshaft/room/rider");
+	public static final Identifier MINESHAFT_ROOM_MIXED = DungeonInfinity.loc("mineshaft/room/mixed");
 	public static final Identifier MINESHAFT_QUAD = DungeonInfinity.loc("mineshaft/quad");
 	public static final Identifier MINESHAFT_BOSS = DungeonInfinity.loc("mineshaft/boss");
 
 	// ==================== COPPER 铜制级 ====================
-	public static final Identifier COPPER_ROOM_BASIC = DungeonInfinity.loc("copper/room");
-	public static final Identifier COPPER_ROOM_LARGE = DungeonInfinity.loc("copper/room");
-	public static final Identifier COPPER_ROOM_RANGED = DungeonInfinity.loc("copper/room");
-	public static final Identifier COPPER_ROOM_RIDER = DungeonInfinity.loc("copper/room");
+	public static final Identifier COPPER_ROOM_BASIC = DungeonInfinity.loc("copper/room/basic");
+	public static final Identifier COPPER_ROOM_LARGE = DungeonInfinity.loc("copper/room/large");
+	public static final Identifier COPPER_ROOM_RANGED = DungeonInfinity.loc("copper/room/ranged");
+	public static final Identifier COPPER_ROOM_RIDER = DungeonInfinity.loc("copper/room/rider");
+	public static final Identifier COPPER_ROOM_MIXED = DungeonInfinity.loc("copper/room/mixed");
 	public static final Identifier COPPER_QUAD = DungeonInfinity.loc("copper/quad");
 	public static final Identifier COPPER_BOSS = DungeonInfinity.loc("copper/boss");
 
 	// ==================== DEEPSLATE 深板岩级 ====================
-	public static final Identifier DEEPSLATE_ROOM_BASIC = DungeonInfinity.loc("deepslate/room");
-	public static final Identifier DEEPSLATE_ROOM_LARGE = DungeonInfinity.loc("deepslate/room");
-	public static final Identifier DEEPSLATE_ROOM_RANGED = DungeonInfinity.loc("deepslate/room");
-	public static final Identifier DEEPSLATE_ROOM_RIDER = DungeonInfinity.loc("deepslate/room");
+	public static final Identifier DEEPSLATE_ROOM_BASIC = DungeonInfinity.loc("deepslate/room/basic");
+	public static final Identifier DEEPSLATE_ROOM_LARGE = DungeonInfinity.loc("deepslate/room/large");
+	public static final Identifier DEEPSLATE_ROOM_RANGED = DungeonInfinity.loc("deepslate/room/ranged");
+	public static final Identifier DEEPSLATE_ROOM_RIDER = DungeonInfinity.loc("deepslate/room/rider");
+	public static final Identifier DEEPSLATE_ROOM_MIXED = DungeonInfinity.loc("deepslate/room/mixed");
 	public static final Identifier DEEPSLATE_QUAD = DungeonInfinity.loc("deepslate/quad");
 	public static final Identifier DEEPSLATE_BOSS = DungeonInfinity.loc("deepslate/boss");
 
 	// ==================== SCULK 幽匿级 ====================
-	public static final Identifier SCULK_ROOM_BASIC = DungeonInfinity.loc("sculk/room");
-	public static final Identifier SCULK_ROOM_LARGE = DungeonInfinity.loc("sculk/room");
-	public static final Identifier SCULK_ROOM_RANGED = DungeonInfinity.loc("sculk/room");
-	public static final Identifier SCULK_ROOM_RIDER = DungeonInfinity.loc("sculk/room");
+	public static final Identifier SCULK_ROOM_BASIC = DungeonInfinity.loc("sculk/room/basic");
+	public static final Identifier SCULK_ROOM_LARGE = DungeonInfinity.loc("sculk/room/large");
+	public static final Identifier SCULK_ROOM_RANGED = DungeonInfinity.loc("sculk/room/ranged");
+	public static final Identifier SCULK_ROOM_RIDER = DungeonInfinity.loc("sculk/room/rider");
+	public static final Identifier SCULK_ROOM_MIXED = DungeonInfinity.loc("sculk/room/mixed");
 	public static final Identifier SCULK_QUAD = DungeonInfinity.loc("sculk/quad");
 	public static final Identifier SCULK_BOSS = DungeonInfinity.loc("sculk/boss");
 
@@ -93,6 +98,12 @@ public class GolemSpawnData extends AbstractGolemSpawn {
 				.add(of(FactoryGolemSpawn.HUMANOID_TIPPED, 2), of(FactoryGolemSpawn.HUMANOID_ROCKET, 1))
 		);
 
+		// MIXED: 混合兵种，近战+远程+大型+骑兵
+		col.add(GolemDungeons.TRIAL, STONE_ROOM_MIXED, new TrialConfig().setReward(MazeRoomLootGen.STONE_ROOM_MIXED)
+				.add(of(FactoryGolemSpawn.HUMANOID_MELEE, 2), of(EARLY_RANGED, 2), of(FactoryGolemSpawn.HUMANOID_ROCKET, 1))
+				.add(of(FactoryGolemSpawn.LARGE_1, 1), of(FactoryGolemSpawn.HUMANOID_TIPPED, 1), of(EARLY_RANGED, 1))
+		);
+
 		// --- MINESHAFT 矿道级（工厂兵，铜铁装备）---
 		// BASIC: 基础混编
 		col.add(GolemDungeons.TRIAL, MINESHAFT_ROOM_BASIC, new TrialConfig().setReward(MazeRoomLootGen.MINESHAFT_ROOM_BASIC)
@@ -112,6 +123,12 @@ public class GolemSpawnData extends AbstractGolemSpawn {
 		// RIDER: 火箭骑兵+药水兵
 		col.add(GolemDungeons.TRIAL, MINESHAFT_ROOM_RIDER, new TrialConfig().setReward(MazeRoomLootGen.MINESHAFT_ROOM_RIDER)
 				.add(of(FactoryGolemSpawn.HUMANOID_ROCKET, 2), of(FactoryGolemSpawn.HUMANOID_TIPPED, 2))
+		);
+
+		// MIXED: 全兵种混合
+		col.add(GolemDungeons.TRIAL, MINESHAFT_ROOM_MIXED, new TrialConfig().setReward(MazeRoomLootGen.MINESHAFT_ROOM_MIXED)
+				.add(of(FactoryGolemSpawn.LARGE_1, 1), of(FactoryGolemSpawn.HUMANOID_MELEE, 2), of(EARLY_RANGED, 2))
+				.add(of(FactoryGolemSpawn.HUMANOID_ROCKET, 1), of(FactoryGolemSpawn.HUMANOID_TIPPED, 2), of(FactoryGolemSpawn.LARGE_2, 1))
 		);
 
 		// --- COPPER 铜制级（基准难度，铜装备）---
@@ -135,6 +152,12 @@ public class GolemSpawnData extends AbstractGolemSpawn {
 				.add(of(FactoryGolemSpawn.HUMANOID_ROCKET, 2), of(FactoryGolemSpawn.HUMANOID_TIPPED, 1), of(FactoryGolemSpawn.LARGE_2, 1))
 		);
 
+		// MIXED: 全兵种混合
+		col.add(GolemDungeons.TRIAL, COPPER_ROOM_MIXED, new TrialConfig().setReward(MazeRoomLootGen.COPPER_ROOM_MIXED)
+				.add(of(FactoryGolemSpawn.LARGE_2, 1), of(FactoryGolemSpawn.HUMANOID_RANGED, 2), of(FactoryGolemSpawn.HUMANOID_TIPPED, 1))
+				.add(of(FactoryGolemSpawn.HUMANOID_ROCKET, 2), of(FactoryGolemSpawn.HUMANOID_MELEE, 2), of(FactoryGolemSpawn.LARGE_2, 1))
+		);
+
 		// --- DEEPSLATE 深板岩级（工厂+猪灵混编）---
 		// BASIC: 猪灵近战+工厂基础
 		col.add(GolemDungeons.TRIAL, DEEPSLATE_ROOM_BASIC, new TrialConfig().setReward(MazeRoomLootGen.DEEPSLATE_ROOM_BASIC)
@@ -154,6 +177,12 @@ public class GolemSpawnData extends AbstractGolemSpawn {
 		// RIDER: 肩炮大型+火箭骑兵
 		col.add(GolemDungeons.TRIAL, DEEPSLATE_ROOM_RIDER, new TrialConfig().setReward(MazeRoomLootGen.DEEPSLATE_ROOM_RIDER)
 				.add(of(PiglinGolemSpawn.LARGE_SHOULDER, 1), of(FactoryGolemSpawn.HUMANOID_ROCKET, 2))
+		);
+
+		// MIXED: 猪灵+工厂全兵种混合
+		col.add(GolemDungeons.TRIAL, DEEPSLATE_ROOM_MIXED, new TrialConfig().setReward(MazeRoomLootGen.DEEPSLATE_ROOM_MIXED)
+				.add(of(PiglinGolemSpawn.LARGE, 1), of(PiglinGolemSpawn.HUMANOID_RANGED, 2), of(FactoryGolemSpawn.HUMANOID_ROCKET, 1))
+				.add(of(PiglinGolemSpawn.LARGE_BOW, 1), of(PiglinGolemSpawn.HUMANOID_MELEE, 2), of(FactoryGolemSpawn.HUMANOID_TIPPED, 1))
 		);
 
 		// --- SCULK 幽匿级（最高难度，钻石装备）---
@@ -177,7 +206,13 @@ public class GolemSpawnData extends AbstractGolemSpawn {
 				.add(of(SculkGolemSpawn.SCULK_ALL, 2), of(SculkGolemSpawn.SCULK_BETTER, 1))
 		);
 
-		// ========== QUAD & BOSS（保持不变）==========
+		// MIXED: 幽匿全兵种混合
+		col.add(GolemDungeons.TRIAL, SCULK_ROOM_MIXED, new TrialConfig().setReward(MazeRoomLootGen.SCULK_ROOM_MIXED)
+				.add(of(SculkGolemSpawn.LARGE, 1), of(SculkGolemSpawn.HUMANOID_RANGED, 2), of(SculkGolemSpawn.SCULK_ALL, 1))
+				.add(of(SculkGolemSpawn.SCULK_BETTER, 1), of(SculkGolemSpawn.HUMANOID_MELEE, 2), of(SculkGolemSpawn.HUMANOID_RANGED, 1))
+		);
+
+		// ========== QUAD & BOSS ==========
 
 		col.add(GolemDungeons.TRIAL, STONE_QUAD, new TrialConfig().setReward(MazeRoomLootGen.STONE_QUAD)
 				.add(of(FactoryGolemSpawn.HUMANOID_BASIC, 1), of(EARLY_RANGED, 1))

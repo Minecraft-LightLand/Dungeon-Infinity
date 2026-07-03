@@ -1,0 +1,20 @@
+{
+  "generateChest": false,
+  "list": [
+    [
+      {
+        "num": 2,
+        "target": "golemdungeons:sculk_infestation"
+      },
+      {
+        "num": 1,
+        "target": "golemdungeons:sculk_full"
+      }
+    ]
+  ],
+  "maxY": 6,
+  "minY": -4,
+  "reward": "dungeon_infinity:maze/sculk/room/rider",
+  "spawnCost": 1000,
+  "triggerRange": 12
+}

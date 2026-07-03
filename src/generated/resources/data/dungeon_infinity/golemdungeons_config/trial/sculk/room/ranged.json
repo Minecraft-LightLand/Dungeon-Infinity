@@ -1,0 +1,20 @@
+{
+  "generateChest": false,
+  "list": [
+    [
+      {
+        "num": 3,
+        "target": "golemdungeons:sculk_humanoid_ranged"
+      },
+      {
+        "num": 1,
+        "target": "golemdungeons:sculk_infestation"
+      }
+    ]
+  ],
+  "maxY": 6,
+  "minY": -4,
+  "reward": "dungeon_infinity:maze/sculk/room/ranged",
+  "spawnCost": 1000,
+  "triggerRange": 12
+}
