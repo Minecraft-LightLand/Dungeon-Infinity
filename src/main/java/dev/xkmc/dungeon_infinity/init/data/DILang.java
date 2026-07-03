@@ -1,6 +1,7 @@
 package dev.xkmc.dungeon_infinity.init.data;
 
 import com.tterrag.registrate.providers.RegistrateLangProvider;
+import dev.xkmc.dungeon_infinity.init.DungeonInfinity;
 import dev.xkmc.modulargolems.init.ModularGolems;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
@@ -15,6 +16,7 @@ public enum DILang {
 	TOMB("tooltip.tomb", "Retrieve items from previous death in the maze", 0, ChatFormatting.GRAY),
 	TOMB_ITEM_COUNT("tooltip.tomb_item_count", "You have %s items to be retrieved", 1, ChatFormatting.GRAY),
 	ACCESS("tooltip.access", "Teleport into or out of the maze", 0, ChatFormatting.GRAY),
+	WAYPOINT("tooltip.waypoint", "Teleport", 0, null),
 
 	DEPTH("legend.depth", "Depth: %s", 1, null),
 	BATTLE("legend.battle", "Battle Room", 0, null),
@@ -63,5 +65,8 @@ public enum DILang {
 		for (DILang lang : DILang.values()) {
 			pvd.add(lang.key, lang.def);
 		}
+		pvd.add(DungeonInfinity.MODID + ".merchant.groceries", "Grocery Vendor");
+		pvd.add(DungeonInfinity.MODID + ".merchant.blacksmith", "Black Smith");
+		pvd.add(DungeonInfinity.MODID + ".merchant.recycler", "Metal Scrapper");
 	}
 }

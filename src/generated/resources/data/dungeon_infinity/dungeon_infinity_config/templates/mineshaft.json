@@ -1,4 +1,80 @@
 {
+  "spawn": {
+    "mineshaft:mineshaft/boss": {
+      "depthScale": 0,
+      "list": [
+        {
+          "id": "dungeon_infinity:mineshaft/boss",
+          "point": {
+            "size": 0,
+            "y": 0
+          },
+          "weight": 100
+        }
+      ],
+      "sizeScale": 0
+    },
+    "mineshaft:mineshaft/quad": {
+      "depthScale": 0,
+      "list": [
+        {
+          "id": "dungeon_infinity:mineshaft/quad",
+          "point": {
+            "size": 0,
+            "y": 0
+          },
+          "weight": 100
+        }
+      ],
+      "sizeScale": 0
+    },
+    "mineshaft:room": {
+      "depthScale": 0,
+      "list": [
+        {
+          "id": "dungeon_infinity:mineshaft/room/basic",
+          "point": {
+            "size": 1,
+            "y": 0
+          },
+          "weight": 100
+        },
+        {
+          "id": "dungeon_infinity:mineshaft/room/large",
+          "point": {
+            "size": 3,
+            "y": 0
+          },
+          "weight": 100
+        },
+        {
+          "id": "dungeon_infinity:mineshaft/room/rider",
+          "point": {
+            "size": 3,
+            "y": 0
+          },
+          "weight": 100
+        },
+        {
+          "id": "dungeon_infinity:mineshaft/room/ranged",
+          "point": {
+            "size": 3,
+            "y": 0
+          },
+          "weight": 100
+        },
+        {
+          "id": "dungeon_infinity:mineshaft/room/mixed",
+          "point": {
+            "size": 5,
+            "y": 0
+          },
+          "weight": 100
+        }
+      ],
+      "sizeScale": 1
+    }
+  },
   "templates": {
     "boss": {
       "mineshaft:": {
@@ -22,7 +98,11 @@
     "path/cross": {
       "mineshaft:": {
         "path": "mineshaft/path/cross",
-        "weight": 100
+        "weight": 90
+      },
+      "mineshaft:_waypoint": {
+        "path": "mineshaft/path/cross_waypoint",
+        "weight": 10
       }
     },
     "path/end": {
@@ -48,7 +128,11 @@
     "path/t_way": {
       "mineshaft:": {
         "path": "mineshaft/path/t_way",
-        "weight": 100
+        "weight": 80
+      },
+      "mineshaft:_waypoint": {
+        "path": "mineshaft/path/t_way_waypoint",
+        "weight": 20
       }
     },
     "quad": {
@@ -61,35 +145,35 @@
     "room/corner": {
       "mineshaft:": {
         "path": "mineshaft/room/corner",
-        "spawn": "dungeon_infinity:mineshaft/room",
+        "spawn": "mineshaft:room",
         "weight": 100
       }
     },
     "room/cross": {
       "mineshaft:": {
         "path": "mineshaft/room/cross",
-        "spawn": "dungeon_infinity:mineshaft/room",
+        "spawn": "mineshaft:room",
         "weight": 100
       }
     },
     "room/end": {
       "mineshaft:": {
         "path": "mineshaft/room/end",
-        "spawn": "dungeon_infinity:mineshaft/room",
+        "spawn": "mineshaft:room",
         "weight": 100
       }
     },
     "room/straight": {
       "mineshaft:": {
         "path": "mineshaft/room/straight",
-        "spawn": "dungeon_infinity:mineshaft/room",
+        "spawn": "mineshaft:room",
         "weight": 100
       }
     },
     "room/t_way": {
       "mineshaft:": {
         "path": "mineshaft/room/t_way",
-        "spawn": "dungeon_infinity:mineshaft/room",
+        "spawn": "mineshaft:room",
         "weight": 100
       }
     },

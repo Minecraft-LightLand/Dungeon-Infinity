@@ -27,6 +27,9 @@
   "dungeon_infinity.configuration.section.l2configs.dungeon.infinity.server.toml": "uoıʇɐɹnbıɟuoƆ ɹǝʌɹǝS ʎʇıuıɟuI uoǝbunᗡ",
   "dungeon_infinity.configuration.section.l2configs.dungeon.infinity.server.toml.title": "uoıʇɐɹnbıɟuoƆ ɹǝʌɹǝS ʎʇıuıɟuI uoǝbunᗡ",
   "dungeon_infinity.configuration.title": "uoıʇɐɹnbıɟuoƆ ʎʇıuıɟuI uoǝbunᗡ",
+  "dungeon_infinity.merchant.blacksmith": "ɥʇıɯS ʞɔɐןᗺ",
+  "dungeon_infinity.merchant.groceries": "ɹopuǝΛ ʎɹǝɔoɹ⅁",
+  "dungeon_infinity.merchant.recycler": "ɹǝddɐɹɔS ןɐʇǝW",
   "dungeon_infinity.title": "ʎʇıuıɟuI uoǝbunᗡ",
   "item.dungeon_infinity.key_of_access": "ssǝɔɔⱯ ɟO ʎǝʞ",
   "item.dungeon_infinity.key_of_tomb": "qɯo⟘ ɟO ʎǝʞ",
@@ -43,5 +46,6 @@
   "modulargolems.legend.workshop": "ɯooᴚ doɥsʞɹoM",
   "modulargolems.tooltip.access": "ǝzɐɯ ǝɥʇ ɟo ʇno ɹo oʇuı ʇɹodǝןǝ⟘",
   "modulargolems.tooltip.tomb": "ǝzɐɯ ǝɥʇ uı ɥʇɐǝp snoıʌǝɹd ɯoɹɟ sɯǝʇı ǝʌǝıɹʇǝᴚ",
-  "modulargolems.tooltip.tomb_item_count": "pǝʌǝıɹʇǝɹ ǝq oʇ sɯǝʇı %1$s ǝʌɐɥ noʎ"
+  "modulargolems.tooltip.tomb_item_count": "pǝʌǝıɹʇǝɹ ǝq oʇ sɯǝʇı %1$s ǝʌɐɥ noʎ",
+  "modulargolems.tooltip.waypoint": "ʇɹodǝןǝ⟘"
 }

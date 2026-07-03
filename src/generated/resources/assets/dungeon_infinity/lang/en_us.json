@@ -27,6 +27,9 @@
   "dungeon_infinity.configuration.section.l2configs.dungeon.infinity.server.toml": "Dungeon Infinity Server Configuration",
   "dungeon_infinity.configuration.section.l2configs.dungeon.infinity.server.toml.title": "Dungeon Infinity Server Configuration",
   "dungeon_infinity.configuration.title": "Dungeon Infinity Configuration",
+  "dungeon_infinity.merchant.blacksmith": "Black Smith",
+  "dungeon_infinity.merchant.groceries": "Grocery Vendor",
+  "dungeon_infinity.merchant.recycler": "Metal Scrapper",
   "dungeon_infinity.title": "Dungeon Infinity",
   "item.dungeon_infinity.key_of_access": "Key Of Access",
   "item.dungeon_infinity.key_of_tomb": "Key Of Tomb",
@@ -43,5 +46,6 @@
   "modulargolems.legend.workshop": "Workshop Room",
   "modulargolems.tooltip.access": "Teleport into or out of the maze",
   "modulargolems.tooltip.tomb": "Retrieve items from previous death in the maze",
-  "modulargolems.tooltip.tomb_item_count": "You have %s items to be retrieved"
+  "modulargolems.tooltip.tomb_item_count": "You have %s items to be retrieved",
+  "modulargolems.tooltip.waypoint": "Teleport"
 }

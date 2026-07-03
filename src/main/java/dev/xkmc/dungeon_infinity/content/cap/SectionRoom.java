@@ -205,7 +205,7 @@ public class SectionRoom {
 
 	public MobRoomTicker createSpawner(@Nullable SectionRoom[][][] rooms, List<BlockPos> spawns) {
 		var ans = new MobRoomTicker();
-		ans.spawner = SpawnHelper.createTickerFromTemplate(info, rooms, spawns);
+		ans.spawner = SpawnHelper.createTickerFromTemplate(info, rooms, spawns, level().getRandom());
 		return ans;
 	}
 

@@ -43,7 +43,7 @@ public class GolemSpawnTicker implements TrialTicker, MobSpawnTicker {
 	@SerialField
 	private final TrialData data = new TrialData();
 	@SerialField
-	public Identifier trial = null;
+	public @Nullable Identifier trial = null;
 	@SerialField
 	public final List<BlockPos> targets = new ArrayList<>();
 	@SerialField
@@ -75,6 +75,7 @@ public class GolemSpawnTicker implements TrialTicker, MobSpawnTicker {
 	@Override
 	public void start(ServerLevel level, MobRoomHolder ins) {
 		active = true;
+		if (trial == null) return;
 		TrialConfig config = GolemDungeons.TRIAL.getEntry(this.trial);
 		if (config == null) return;
 		if (this.bar == null) {

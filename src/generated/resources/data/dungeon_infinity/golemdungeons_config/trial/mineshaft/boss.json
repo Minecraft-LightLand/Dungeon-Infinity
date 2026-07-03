@@ -1,5 +1,5 @@
 {
-  "generateChest": true,
+  "generateChest": false,
   "list": [
     [
       {
@@ -8,12 +8,12 @@
       },
       {
         "num": 1,
-        "target": "golemdungeons:factory_humanoid_melee"
+        "target": "golemdungeons:factory_humanoid_basic"
       }
     ],
     [
       {
-        "num": 2,
+        "num": 1,
         "target": "golemdungeons:factory_large_1"
       },
       {
@@ -23,20 +23,20 @@
     ],
     [
       {
-        "num": 4,
+        "num": 2,
         "target": "golemdungeons:factory_large_1"
       },
       {
         "num": 1,
         "target": "dungeon_infinity:early_ranged"
-      },
-      {
-        "num": 1,
-        "target": "golemdungeons:factory_humanoid_tipped"
       },
       {
         "num": 1,
         "target": "golemdungeons:factory_large_2"
+      },
+      {
+        "num": 1,
+        "target": "golemdungeons:factory_humanoid_rocket"
       }
     ]
   ],

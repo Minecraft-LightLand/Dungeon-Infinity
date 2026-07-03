@@ -40,6 +40,10 @@ public class TemplateConfig extends BaseConfig {
 	@SerialField
 	public final LinkedHashMap<String, LinkedHashMap<Identifier, TemplateData>> templates = new LinkedHashMap<>();
 
+	@ConfigCollect(CollectType.MAP_OVERWRITE)
+	@SerialField
+	public final LinkedHashMap<Identifier, SpawnPool> spawn = new LinkedHashMap<>();
+
 	private final LinkedHashMap<String, CompiledSet> cache = new LinkedHashMap<>();
 	private CompiledSet[] indexed;
 	private String[] ids;
@@ -89,6 +93,54 @@ public class TemplateConfig extends BaseConfig {
 
 		public TemplateData() {
 			this(100, "", null);
+		}
+
+	}
+
+	public record SpawnContext(int size, int y) {
+
+	}
+
+	public record SpawnPool(int sizeScale, int depthScale, ArrayList<Entry> list) {
+
+		public record Entry(SpawnContext point, Identifier id, int weight) {
+		}
+
+		public SpawnPool() {
+			this(0, 0, new ArrayList<>());
+		}
+
+		public SpawnPool(Identifier id) {
+			this(0, 0, new ArrayList<>(List.of(new Entry(new SpawnContext(0, 0), id, 100))));
+		}
+
+		private int dist(SpawnContext ctx, SpawnContext point) {
+			int ds = ctx.size - point.size;
+			int dy = ctx.y - point.y;
+			return ds * ds * sizeScale + dy * dy * depthScale;
+		}
+
+		public @Nullable Identifier fetch(SpawnContext ctx, RandomSource rand) {
+			List<Entry> candidates = new ArrayList<>();
+			int score = Integer.MAX_VALUE;
+			for (var e : list) {
+				int sc = dist(ctx, e.point);
+				if (sc < score) {
+					candidates.clear();
+					score = sc;
+				}
+				if (sc == score) {
+					candidates.add(e);
+				}
+			}
+			if (candidates.isEmpty()) return null;
+			WeightedList.Builder<Entry> builder = new WeightedList.Builder<>();
+			for (var e : candidates) {
+				builder.add(e, e.weight);
+			}
+			var opt = builder.build().getRandom(rand);
+			if (opt.isEmpty()) return null;
+			return opt.get().id();
 		}
 
 	}
@@ -179,6 +231,8 @@ public class TemplateConfig extends BaseConfig {
 
 		private String root;
 
+		private @Nullable Identifier defaultSpawn = null;
+
 		private StyleBuilder(TemplateConfig config, String style) {
 			this.config = config;
 			this.style = style;
@@ -198,6 +252,17 @@ public class TemplateConfig extends BaseConfig {
 			return this;
 		}
 
+		public StyleBuilder spawn(String id, SpawnPool pool) {
+			defaultSpawn = Identifier.fromNamespaceAndPath(style, id);
+			config.spawn.put(defaultSpawn, pool);
+			return this;
+		}
+
+		public StyleBuilder endSpawn() {
+			defaultSpawn = null;
+			return this;
+		}
+
 	}
 
 	public static class VariantBuilder {
@@ -211,11 +276,14 @@ public class TemplateConfig extends BaseConfig {
 		}
 
 		public VariantBuilder variant(String suffix, int weight) {
-			return variant(suffix, weight, room + suffix, null);
+			return variant(suffix, weight, room + suffix, parent.defaultSpawn);
 		}
 
-		public VariantBuilder variant(String suffix, int weight, @Nullable Identifier id) {
-			return variant(suffix, weight, room + suffix, id);
+		public VariantBuilder variant(String suffix, int weight, Identifier id) {
+			parent.spawn(id.getPath(), new SpawnPool(id));
+			variant(suffix, weight, room + suffix, id);
+			parent.endSpawn();
+			return this;
 		}
 
 		public VariantBuilder variant(String suffix, int weight, String path) {

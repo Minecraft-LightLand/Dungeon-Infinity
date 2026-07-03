@@ -1,7 +1,6 @@
 package dev.xkmc.dungeon_infinity.compat;
 
 import dev.xkmc.dungeon_infinity.init.DungeonInfinity;
-import dev.xkmc.dungeon_infinity.init.data.DILootGen;
 import dev.xkmc.golemdungeons.content.config.SpawnConfig;
 import dev.xkmc.golemdungeons.content.config.TrialConfig;
 import dev.xkmc.golemdungeons.content.faction.DungeonFactionRegistry;
@@ -18,51 +17,57 @@ import net.minecraft.resources.Identifier;
 public class GolemSpawnData extends AbstractGolemSpawn {
 
 	// ==================== 共用远程兵 =====================
-	// 白板弓箭手，无甲无升级，用于前期层
 	public static final Identifier EARLY_RANGED = DungeonInfinity.loc("early_ranged");
 
-	// ==================== STONE 石制级（最低难度）====================
-	// 使用 FactoryGolemSpawn 的配置，金材料由战利品表产出
-	public static final Identifier STONE_ROOM = DungeonInfinity.loc("stone/room");
+	// ==================== STONE 石制级 ====================
+	public static final Identifier STONE_ROOM_BASIC = DungeonInfinity.loc("stone/room/basic");
+	public static final Identifier STONE_ROOM_LARGE = DungeonInfinity.loc("stone/room/large");
+	public static final Identifier STONE_ROOM_RANGED = DungeonInfinity.loc("stone/room/ranged");
+	public static final Identifier STONE_ROOM_RIDER = DungeonInfinity.loc("stone/room/rider");
+	public static final Identifier STONE_ROOM_MIXED = DungeonInfinity.loc("stone/room/mixed");
 	public static final Identifier STONE_QUAD = DungeonInfinity.loc("stone/quad");
-	public static final Identifier STONE_STAIR = DungeonInfinity.loc("stone/stair");//TODO remove
+	public static final Identifier STONE_BOSS = DungeonInfinity.loc("stone/boss");
 
-	// ==================== MINESHAFT 矿道级（次低难度）====================
-	// 使用 FactoryGolemSpawn 的配置，铜/铁材料由战利品表产出
-
-	public static final Identifier MINESHAFT_ROOM = DungeonInfinity.loc("mineshaft/room");
+	// ==================== MINESHAFT 矿道级 ====================
+	public static final Identifier MINESHAFT_ROOM_BASIC = DungeonInfinity.loc("mineshaft/room/basic");
+	public static final Identifier MINESHAFT_ROOM_LARGE = DungeonInfinity.loc("mineshaft/room/large");
+	public static final Identifier MINESHAFT_ROOM_RANGED = DungeonInfinity.loc("mineshaft/room/ranged");
+	public static final Identifier MINESHAFT_ROOM_RIDER = DungeonInfinity.loc("mineshaft/room/rider");
+	public static final Identifier MINESHAFT_ROOM_MIXED = DungeonInfinity.loc("mineshaft/room/mixed");
 	public static final Identifier MINESHAFT_QUAD = DungeonInfinity.loc("mineshaft/quad");
-	public static final Identifier MINESHAFT_STAIR = DungeonInfinity.loc("mineshaft/stair");//TODO remove
 	public static final Identifier MINESHAFT_BOSS = DungeonInfinity.loc("mineshaft/boss");
 
-	// ==================== COPPER 铜制级（基准难度）====================
-	// 傀儡地牢废弃工厂配置
-
-	public static final Identifier COPPER_ROOM = DungeonInfinity.loc("copper/room");
+	// ==================== COPPER 铜制级 ====================
+	public static final Identifier COPPER_ROOM_BASIC = DungeonInfinity.loc("copper/room/basic");
+	public static final Identifier COPPER_ROOM_LARGE = DungeonInfinity.loc("copper/room/large");
+	public static final Identifier COPPER_ROOM_RANGED = DungeonInfinity.loc("copper/room/ranged");
+	public static final Identifier COPPER_ROOM_RIDER = DungeonInfinity.loc("copper/room/rider");
+	public static final Identifier COPPER_ROOM_MIXED = DungeonInfinity.loc("copper/room/mixed");
 	public static final Identifier COPPER_QUAD = DungeonInfinity.loc("copper/quad");
-	public static final Identifier COPPER_STAIR = DungeonInfinity.loc("copper/stair");//TODO remove
 	public static final Identifier COPPER_BOSS = DungeonInfinity.loc("copper/boss");
 
-	// ==================== DEEPSLATE 深板岩级（工厂+猪灵混编，线性难度）====================
-
-	public static final Identifier DEEPSLATE_ROOM = DungeonInfinity.loc("deepslate/room");
+	// ==================== DEEPSLATE 深板岩级 ====================
+	public static final Identifier DEEPSLATE_ROOM_BASIC = DungeonInfinity.loc("deepslate/room/basic");
+	public static final Identifier DEEPSLATE_ROOM_LARGE = DungeonInfinity.loc("deepslate/room/large");
+	public static final Identifier DEEPSLATE_ROOM_RANGED = DungeonInfinity.loc("deepslate/room/ranged");
+	public static final Identifier DEEPSLATE_ROOM_RIDER = DungeonInfinity.loc("deepslate/room/rider");
+	public static final Identifier DEEPSLATE_ROOM_MIXED = DungeonInfinity.loc("deepslate/room/mixed");
 	public static final Identifier DEEPSLATE_QUAD = DungeonInfinity.loc("deepslate/quad");
-	public static final Identifier DEEPSLATE_STAIR = DungeonInfinity.loc("deepslate/stair");//TODO remove
 	public static final Identifier DEEPSLATE_BOSS = DungeonInfinity.loc("deepslate/boss");
 
-	// ==================== SCULK 幽匿级（最高难度）====================
-	// 照搬傀儡地牢 SculkGolemSpawn，钻石装备+幽匿材料
-
-	public static final Identifier SCULK_ROOM = DungeonInfinity.loc("sculk/room");
+	// ==================== SCULK 幽匿级 ====================
+	public static final Identifier SCULK_ROOM_BASIC = DungeonInfinity.loc("sculk/room/basic");
+	public static final Identifier SCULK_ROOM_LARGE = DungeonInfinity.loc("sculk/room/large");
+	public static final Identifier SCULK_ROOM_RANGED = DungeonInfinity.loc("sculk/room/ranged");
+	public static final Identifier SCULK_ROOM_RIDER = DungeonInfinity.loc("sculk/room/rider");
+	public static final Identifier SCULK_ROOM_MIXED = DungeonInfinity.loc("sculk/room/mixed");
 	public static final Identifier SCULK_QUAD = DungeonInfinity.loc("sculk/quad");
-	public static final Identifier SCULK_STAIR = DungeonInfinity.loc("sculk/stair");//TODO remove
 	public static final Identifier SCULK_BOSS = DungeonInfinity.loc("sculk/boss");
 
 	public static void gen(ConfigDataProvider.Collector col) {
 
 		// ========== SPAWN CONFIGS ==========
 
-		// EARLY_RANGED: 白板远程兵，铜材料 + 弓 + 箭，无护甲无升级
 		col.add(GolemDungeons.SPAWN, EARLY_RANGED, new SpawnConfig(DungeonFactionRegistry.REMNANT)
 				.type(GolemTypes.TYPE_HUMANOID.get(), new SpawnConfig.GolemTypeEntry(40, 0))
 				.mat(ModularGolems.loc("copper"), 100)
@@ -72,43 +77,149 @@ public class GolemSpawnData extends AbstractGolemSpawn {
 
 		// ========== TRIAL CONFIGS ==========
 
-		// --- STONE 石制级（纯工厂人形兵）---
-		col.add(GolemDungeons.TRIAL, STONE_ROOM, new TrialConfig().setReward(DILootGen.STONE_ROOM).genChest()
-				.add(of(FactoryGolemSpawn.HUMANOID_BASIC, 1))
+		// --- STONE 石制级（纯工厂人形兵，金材料）---
+		// BASIC: 基础兵种混编，近战+远程
+		col.add(GolemDungeons.TRIAL, STONE_ROOM_BASIC, new TrialConfig().setReward(MazeRoomLootGen.STONE_ROOM_BASIC)
+				.add(of(FactoryGolemSpawn.HUMANOID_BASIC, 2), of(EARLY_RANGED, 1))
 		);
 
-		col.add(GolemDungeons.TRIAL, STONE_QUAD, new TrialConfig().setReward(DILootGen.STONE_QUAD).genChest()
+		// LARGE: 大型兵为主，带基础护卫
+		col.add(GolemDungeons.TRIAL, STONE_ROOM_LARGE, new TrialConfig().setReward(MazeRoomLootGen.STONE_ROOM_LARGE)
+				.add(of(FactoryGolemSpawn.LARGE_1, 1), of(FactoryGolemSpawn.HUMANOID_BASIC, 2))
+		);
+
+		// RANGED: 远程火力为主，近战肉盾
+		col.add(GolemDungeons.TRIAL, STONE_ROOM_RANGED, new TrialConfig().setReward(MazeRoomLootGen.STONE_ROOM_RANGED)
+				.add(of(FactoryGolemSpawn.HUMANOID_MELEE, 2), of(EARLY_RANGED, 3))
+		);
+
+		// RIDER: 骑兵机动为主，药水debuff
+		col.add(GolemDungeons.TRIAL, STONE_ROOM_RIDER, new TrialConfig().setReward(MazeRoomLootGen.STONE_ROOM_RIDER)
+				.add(of(FactoryGolemSpawn.HUMANOID_TIPPED, 2), of(FactoryGolemSpawn.HUMANOID_ROCKET, 1))
+		);
+
+		// MIXED: 混合兵种，近战+远程+大型+骑兵
+		col.add(GolemDungeons.TRIAL, STONE_ROOM_MIXED, new TrialConfig().setReward(MazeRoomLootGen.STONE_ROOM_MIXED)
+				.add(of(FactoryGolemSpawn.HUMANOID_MELEE, 2), of(EARLY_RANGED, 2), of(FactoryGolemSpawn.HUMANOID_ROCKET, 1))
+				.add(of(FactoryGolemSpawn.LARGE_1, 1), of(FactoryGolemSpawn.HUMANOID_TIPPED, 1), of(EARLY_RANGED, 1))
+		);
+
+		// --- MINESHAFT 矿道级（工厂兵，铜铁装备）---
+		// BASIC: 基础混编
+		col.add(GolemDungeons.TRIAL, MINESHAFT_ROOM_BASIC, new TrialConfig().setReward(MazeRoomLootGen.MINESHAFT_ROOM_BASIC)
+				.add(of(FactoryGolemSpawn.HUMANOID_MELEE, 2), of(EARLY_RANGED, 2))
+		);
+
+		// LARGE: 大型兵+远程护卫
+		col.add(GolemDungeons.TRIAL, MINESHAFT_ROOM_LARGE, new TrialConfig().setReward(MazeRoomLootGen.MINESHAFT_ROOM_LARGE)
+				.add(of(FactoryGolemSpawn.LARGE_1, 2), of(EARLY_RANGED, 2))
+		);
+
+		// RANGED: 远程火力网+火箭兵
+		col.add(GolemDungeons.TRIAL, MINESHAFT_ROOM_RANGED, new TrialConfig().setReward(MazeRoomLootGen.MINESHAFT_ROOM_RANGED)
+				.add(of(FactoryGolemSpawn.HUMANOID_MELEE, 2), of(EARLY_RANGED, 3), of(FactoryGolemSpawn.HUMANOID_ROCKET, 1))
+		);
+
+		// RIDER: 火箭骑兵+药水兵
+		col.add(GolemDungeons.TRIAL, MINESHAFT_ROOM_RIDER, new TrialConfig().setReward(MazeRoomLootGen.MINESHAFT_ROOM_RIDER)
+				.add(of(FactoryGolemSpawn.HUMANOID_ROCKET, 2), of(FactoryGolemSpawn.HUMANOID_TIPPED, 2))
+		);
+
+		// MIXED: 全兵种混合
+		col.add(GolemDungeons.TRIAL, MINESHAFT_ROOM_MIXED, new TrialConfig().setReward(MazeRoomLootGen.MINESHAFT_ROOM_MIXED)
+				.add(of(FactoryGolemSpawn.LARGE_1, 1), of(FactoryGolemSpawn.HUMANOID_MELEE, 2), of(EARLY_RANGED, 2))
+				.add(of(FactoryGolemSpawn.HUMANOID_ROCKET, 1), of(FactoryGolemSpawn.HUMANOID_TIPPED, 2), of(FactoryGolemSpawn.LARGE_2, 1))
+		);
+
+		// --- COPPER 铜制级（基准难度，铜装备）---
+		// BASIC: 铜制近战+远程混编
+		col.add(GolemDungeons.TRIAL, COPPER_ROOM_BASIC, new TrialConfig().setReward(MazeRoomLootGen.COPPER_ROOM_BASIC)
+				.add(of(FactoryGolemSpawn.HUMANOID_MELEE, 2), of(FactoryGolemSpawn.HUMANOID_RANGED, 2))
+		);
+
+		// LARGE: 大型兵主力
+		col.add(GolemDungeons.TRIAL, COPPER_ROOM_LARGE, new TrialConfig().setReward(MazeRoomLootGen.COPPER_ROOM_LARGE)
+				.add(of(FactoryGolemSpawn.LARGE_2, 2), of(FactoryGolemSpawn.HUMANOID_MELEE, 1))
+		);
+
+		// RANGED: 远程火力+药水支援
+		col.add(GolemDungeons.TRIAL, COPPER_ROOM_RANGED, new TrialConfig().setReward(MazeRoomLootGen.COPPER_ROOM_RANGED)
+				.add(of(FactoryGolemSpawn.HUMANOID_RANGED, 3), of(FactoryGolemSpawn.HUMANOID_TIPPED, 1))
+		);
+
+		// RIDER: 火箭骑兵突击
+		col.add(GolemDungeons.TRIAL, COPPER_ROOM_RIDER, new TrialConfig().setReward(MazeRoomLootGen.COPPER_ROOM_RIDER)
+				.add(of(FactoryGolemSpawn.HUMANOID_ROCKET, 2), of(FactoryGolemSpawn.HUMANOID_TIPPED, 1), of(FactoryGolemSpawn.LARGE_2, 1))
+		);
+
+		// MIXED: 全兵种混合
+		col.add(GolemDungeons.TRIAL, COPPER_ROOM_MIXED, new TrialConfig().setReward(MazeRoomLootGen.COPPER_ROOM_MIXED)
+				.add(of(FactoryGolemSpawn.LARGE_2, 1), of(FactoryGolemSpawn.HUMANOID_RANGED, 2), of(FactoryGolemSpawn.HUMANOID_TIPPED, 1))
+				.add(of(FactoryGolemSpawn.HUMANOID_ROCKET, 2), of(FactoryGolemSpawn.HUMANOID_MELEE, 2), of(FactoryGolemSpawn.LARGE_2, 1))
+		);
+
+		// --- DEEPSLATE 深板岩级（工厂+猪灵混编）---
+		// BASIC: 猪灵近战+工厂基础
+		col.add(GolemDungeons.TRIAL, DEEPSLATE_ROOM_BASIC, new TrialConfig().setReward(MazeRoomLootGen.DEEPSLATE_ROOM_BASIC)
+				.add(of(PiglinGolemSpawn.HUMANOID_MELEE, 2), of(FactoryGolemSpawn.HUMANOID_BASIC, 2))
+		);
+
+		// LARGE: 双方大型兵混编
+		col.add(GolemDungeons.TRIAL, DEEPSLATE_ROOM_LARGE, new TrialConfig().setReward(MazeRoomLootGen.DEEPSLATE_ROOM_LARGE)
+				.add(of(PiglinGolemSpawn.LARGE, 1), of(FactoryGolemSpawn.LARGE_2, 1), of(PiglinGolemSpawn.HUMANOID_MELEE, 1))
+		);
+
+		// RANGED: 远程火力网
+		col.add(GolemDungeons.TRIAL, DEEPSLATE_ROOM_RANGED, new TrialConfig().setReward(MazeRoomLootGen.DEEPSLATE_ROOM_RANGED)
+				.add(of(PiglinGolemSpawn.HUMANOID_RANGED, 3), of(FactoryGolemSpawn.HUMANOID_ROCKET, 2))
+		);
+
+		// RIDER: 肩炮大型+火箭骑兵
+		col.add(GolemDungeons.TRIAL, DEEPSLATE_ROOM_RIDER, new TrialConfig().setReward(MazeRoomLootGen.DEEPSLATE_ROOM_RIDER)
+				.add(of(PiglinGolemSpawn.LARGE_SHOULDER, 1), of(FactoryGolemSpawn.HUMANOID_ROCKET, 2))
+		);
+
+		// MIXED: 猪灵+工厂全兵种混合
+		col.add(GolemDungeons.TRIAL, DEEPSLATE_ROOM_MIXED, new TrialConfig().setReward(MazeRoomLootGen.DEEPSLATE_ROOM_MIXED)
+				.add(of(PiglinGolemSpawn.LARGE, 1), of(PiglinGolemSpawn.HUMANOID_RANGED, 2), of(FactoryGolemSpawn.HUMANOID_ROCKET, 1))
+				.add(of(PiglinGolemSpawn.LARGE_BOW, 1), of(PiglinGolemSpawn.HUMANOID_MELEE, 2), of(FactoryGolemSpawn.HUMANOID_TIPPED, 1))
+		);
+
+		// --- SCULK 幽匿级（最高难度，钻石装备）---
+		// BASIC: 幽匿近战+远程基础
+		col.add(GolemDungeons.TRIAL, SCULK_ROOM_BASIC, new TrialConfig().setReward(MazeRoomLootGen.SCULK_ROOM_BASIC)
+				.add(of(SculkGolemSpawn.HUMANOID_MELEE, 2), of(SculkGolemSpawn.HUMANOID_RANGED, 2))
+		);
+
+		// LARGE: 大型幽匿兵
+		col.add(GolemDungeons.TRIAL, SCULK_ROOM_LARGE, new TrialConfig().setReward(MazeRoomLootGen.SCULK_ROOM_LARGE)
+				.add(of(SculkGolemSpawn.LARGE, 2), of(SculkGolemSpawn.HUMANOID_MELEE, 1))
+		);
+
+		// RANGED: 远程+精英
+		col.add(GolemDungeons.TRIAL, SCULK_ROOM_RANGED, new TrialConfig().setReward(MazeRoomLootGen.SCULK_ROOM_RANGED)
+				.add(of(SculkGolemSpawn.HUMANOID_RANGED, 3), of(SculkGolemSpawn.SCULK_ALL, 1))
+		);
+
+		// RIDER: 精英骑兵
+		col.add(GolemDungeons.TRIAL, SCULK_ROOM_RIDER, new TrialConfig().setReward(MazeRoomLootGen.SCULK_ROOM_RIDER)
+				.add(of(SculkGolemSpawn.SCULK_ALL, 2), of(SculkGolemSpawn.SCULK_BETTER, 1))
+		);
+
+		// MIXED: 幽匿全兵种混合
+		col.add(GolemDungeons.TRIAL, SCULK_ROOM_MIXED, new TrialConfig().setReward(MazeRoomLootGen.SCULK_ROOM_MIXED)
+				.add(of(SculkGolemSpawn.LARGE, 1), of(SculkGolemSpawn.HUMANOID_RANGED, 2), of(SculkGolemSpawn.SCULK_ALL, 1))
+				.add(of(SculkGolemSpawn.SCULK_BETTER, 1), of(SculkGolemSpawn.HUMANOID_MELEE, 2), of(SculkGolemSpawn.HUMANOID_RANGED, 1))
+		);
+
+		// ========== QUAD & BOSS ==========
+
+		col.add(GolemDungeons.TRIAL, STONE_QUAD, new TrialConfig().setReward(MazeRoomLootGen.STONE_QUAD)
 				.add(of(FactoryGolemSpawn.HUMANOID_BASIC, 1), of(EARLY_RANGED, 1))
 				.add(of(FactoryGolemSpawn.HUMANOID_BASIC, 2), of(EARLY_RANGED, 1))
 		);
 
-		col.add(GolemDungeons.TRIAL, STONE_STAIR, new TrialConfig().setReward(DILootGen.STONE_STAIR).genChest()
-				.add(of(FactoryGolemSpawn.HUMANOID_BASIC, 1), of(EARLY_RANGED, 1))
-				.add(of(FactoryGolemSpawn.HUMANOID_BASIC, 2), of(EARLY_RANGED, 1))
-		);
-
-		// --- MINESHAFT 矿道级（工厂兵，混入大型怪）---
-		col.add(GolemDungeons.TRIAL, MINESHAFT_ROOM, new TrialConfig().setReward(DILootGen.MINESHAFT_ROOM).genChest()
-				.add(of(FactoryGolemSpawn.HUMANOID_BASIC, 1))
-				.add(of(FactoryGolemSpawn.HUMANOID_BASIC, 1), of(EARLY_RANGED, 1))
-		);
-
-		col.add(GolemDungeons.TRIAL, MINESHAFT_QUAD, new TrialConfig().setReward(DILootGen.MINESHAFT_QUAD).genChest()
-				.add(of(FactoryGolemSpawn.LARGE_1, 1), of(FactoryGolemSpawn.HUMANOID_BASIC, 1))
-				.add(of(FactoryGolemSpawn.LARGE_1, 1), of(EARLY_RANGED, 2))
-				.add(of(FactoryGolemSpawn.LARGE_1, 2),
-						of(EARLY_RANGED, 1),
-						of(FactoryGolemSpawn.LARGE_2, 1),
-						of(FactoryGolemSpawn.HUMANOID_ROCKET, 1))
-		);
-
-		col.add(GolemDungeons.TRIAL, MINESHAFT_STAIR, new TrialConfig().setReward(DILootGen.MINESHAFT_STAIR).genChest()
-				.add(of(FactoryGolemSpawn.HUMANOID_BASIC, 2), of(EARLY_RANGED, 1))
-				.add(of(FactoryGolemSpawn.HUMANOID_BASIC, 3), of(EARLY_RANGED, 1))
-				.add(of(FactoryGolemSpawn.HUMANOID_BASIC, 4), of(EARLY_RANGED, 2))
-		);
-
-		col.add(GolemDungeons.TRIAL, MINESHAFT_BOSS, new TrialConfig().setReward(DILootGen.MINESHAFT_BOSS).genChest()
+		col.add(GolemDungeons.TRIAL, MINESHAFT_QUAD, new TrialConfig().setReward(MazeRoomLootGen.MINESHAFT_QUAD)
 				.add(of(FactoryGolemSpawn.LARGE_1, 1), of(FactoryGolemSpawn.HUMANOID_MELEE, 1))
 				.add(of(FactoryGolemSpawn.LARGE_1, 2), of(EARLY_RANGED, 2))
 				.add(of(FactoryGolemSpawn.LARGE_1, 4),
@@ -117,68 +228,40 @@ public class GolemSpawnData extends AbstractGolemSpawn {
 						of(FactoryGolemSpawn.LARGE_2, 1))
 		);
 
-		// --- COPPER 铜制级（基准，原 STONE）---
-		col.add(GolemDungeons.TRIAL, COPPER_ROOM, new TrialConfig().setReward(DILootGen.COPPER_ROOM).genChest()
-				.add(of(FactoryGolemSpawn.HUMANOID_MELEE, 1), of(FactoryGolemSpawn.HUMANOID_RANGED, 1))
+		col.add(GolemDungeons.TRIAL, MINESHAFT_BOSS, new TrialConfig().setReward(MazeRoomLootGen.MINESHAFT_BOSS)
+				.add(of(FactoryGolemSpawn.LARGE_1, 1), of(FactoryGolemSpawn.HUMANOID_BASIC, 1))
+				.add(of(FactoryGolemSpawn.LARGE_1, 1), of(EARLY_RANGED, 2))
+				.add(of(FactoryGolemSpawn.LARGE_1, 2),
+						of(EARLY_RANGED, 1),
+						of(FactoryGolemSpawn.LARGE_2, 1),
+						of(FactoryGolemSpawn.HUMANOID_ROCKET, 1))
 		);
 
-		col.add(GolemDungeons.TRIAL, COPPER_QUAD, new TrialConfig().setReward(DILootGen.COPPER_QUAD).genChest()
+		col.add(GolemDungeons.TRIAL, COPPER_QUAD, new TrialConfig().setReward(MazeRoomLootGen.COPPER_QUAD)
+				.add(of(FactoryGolemSpawn.LARGE_2, 1),
+						of(FactoryGolemSpawn.HUMANOID_MELEE, 1),
+						of(FactoryGolemSpawn.HUMANOID_TIPPED, 1),
+						of(FactoryGolemSpawn.HUMANOID_ROCKET, 1))
+				.add(of(FactoryGolemSpawn.LARGE_2, 2), of(FactoryGolemSpawn.HUMANOID_MELEE, 2),
+						of(FactoryGolemSpawn.HUMANOID_RANGED, 2),
+						of(FactoryGolemSpawn.HUMANOID_TIPPED, 1),
+						of(FactoryGolemSpawn.HUMANOID_ROCKET, 1))
+				.add(of(FactoryGolemSpawn.LARGE_3, 1), of(FactoryGolemSpawn.HUMANOID_MELEE, 2),
+						of(FactoryGolemSpawn.HUMANOID_RANGED, 2),
+						of(FactoryGolemSpawn.HUMANOID_TIPPED, 2),
+						of(FactoryGolemSpawn.HUMANOID_ROCKET, 2))
+		);
+
+		col.add(GolemDungeons.TRIAL, COPPER_BOSS, new TrialConfig().setReward(MazeRoomLootGen.COPPER_BOSS)
 				.add(of(FactoryGolemSpawn.LARGE_1, 1), of(FactoryGolemSpawn.HUMANOID_MELEE, 1))
-				.add(of(FactoryGolemSpawn.LARGE_1, 1), of(FactoryGolemSpawn.HUMANOID_RANGED, 2))
-				.add(of(FactoryGolemSpawn.LARGE_1, 2),
+				.add(of(FactoryGolemSpawn.LARGE_2, 1), of(FactoryGolemSpawn.HUMANOID_RANGED, 2))
+				.add(of(FactoryGolemSpawn.LARGE_2, 2),
 						of(FactoryGolemSpawn.HUMANOID_RANGED, 1),
 						of(FactoryGolemSpawn.HUMANOID_TIPPED, 1),
 						of(FactoryGolemSpawn.HUMANOID_ROCKET, 1))
 		);
 
-		col.add(GolemDungeons.TRIAL, COPPER_STAIR, new TrialConfig().setReward(DILootGen.COPPER_STAIR).genChest()
-				.add(of(FactoryGolemSpawn.LARGE_1, 1), of(FactoryGolemSpawn.HUMANOID_MELEE, 1), of(FactoryGolemSpawn.HUMANOID_RANGED, 2))
-				.add(of(FactoryGolemSpawn.LARGE_2, 2), of(FactoryGolemSpawn.HUMANOID_MELEE, 2),
-						of(FactoryGolemSpawn.HUMANOID_RANGED, 2),
-						of(FactoryGolemSpawn.HUMANOID_TIPPED, 1),
-						of(FactoryGolemSpawn.HUMANOID_ROCKET, 1))
-				.add(of(FactoryGolemSpawn.LARGE_2, 3), of(FactoryGolemSpawn.HUMANOID_MELEE, 2),
-						of(FactoryGolemSpawn.HUMANOID_RANGED, 2),
-						of(FactoryGolemSpawn.HUMANOID_TIPPED, 2),
-						of(FactoryGolemSpawn.HUMANOID_ROCKET, 2))
-		);
-
-		col.add(GolemDungeons.TRIAL, COPPER_BOSS, new TrialConfig().setReward(DILootGen.COPPER_BOSS).genChest()
-				.add(of(FactoryGolemSpawn.LARGE_2, 1),
-						of(FactoryGolemSpawn.HUMANOID_MELEE, 1),
-						of(FactoryGolemSpawn.HUMANOID_TIPPED, 1),
-						of(FactoryGolemSpawn.HUMANOID_ROCKET, 1))
-				.add(of(FactoryGolemSpawn.LARGE_3, 2), of(FactoryGolemSpawn.HUMANOID_MELEE, 2),
-						of(FactoryGolemSpawn.HUMANOID_RANGED, 2),
-						of(FactoryGolemSpawn.HUMANOID_TIPPED, 1),
-						of(FactoryGolemSpawn.HUMANOID_ROCKET, 1))
-				.add(of(FactoryGolemSpawn.LARGE_3, 4), of(FactoryGolemSpawn.HUMANOID_MELEE, 2),
-						of(FactoryGolemSpawn.HUMANOID_RANGED, 2),
-						of(FactoryGolemSpawn.HUMANOID_TIPPED, 2),
-						of(FactoryGolemSpawn.HUMANOID_ROCKET, 2))
-		);
-
-		// --- DEEPSLATE 深板岩级（工厂+猪灵混编）---
-		col.add(GolemDungeons.TRIAL, DEEPSLATE_ROOM, new TrialConfig().setReward(DILootGen.DEEPSLATE_ROOM).genChest()
-				.add(of(FactoryGolemSpawn.HUMANOID_TIPPED, 1))
-				.add(of(FactoryGolemSpawn.HUMANOID_MELEE, 1), of(FactoryGolemSpawn.HUMANOID_RANGED, 1))
-		);
-
-		col.add(GolemDungeons.TRIAL, DEEPSLATE_QUAD, new TrialConfig().setReward(DILootGen.DEEPSLATE_QUAD).genChest()
-				.add(of(FactoryGolemSpawn.LARGE_1, 1), of(PiglinGolemSpawn.HUMANOID_MELEE, 1))
-				.add(of(FactoryGolemSpawn.LARGE_1, 1), of(PiglinGolemSpawn.HUMANOID_MELEE, 1), of(PiglinGolemSpawn.HUMANOID_RANGED, 1))
-				.add(of(FactoryGolemSpawn.LARGE_2, 1), of(PiglinGolemSpawn.HUMANOID_MELEE, 1), of(FactoryGolemSpawn.HUMANOID_ROCKET, 1))
-		);
-
-		col.add(GolemDungeons.TRIAL, DEEPSLATE_STAIR, new TrialConfig().setReward(DILootGen.DEEPSLATE_STAIR).genChest()
-				.add(of(FactoryGolemSpawn.LARGE_2, 1), of(PiglinGolemSpawn.HUMANOID_MELEE, 1), of(PiglinGolemSpawn.HUMANOID_RANGED, 1))
-				.add(of(FactoryGolemSpawn.LARGE_2, 1), of(PiglinGolemSpawn.HUMANOID_MELEE, 2),
-						of(FactoryGolemSpawn.HUMANOID_TIPPED, 1), of(FactoryGolemSpawn.HUMANOID_ROCKET, 1))
-				.add(of(PiglinGolemSpawn.LARGE, 1), of(PiglinGolemSpawn.HUMANOID_MELEE, 2),
-						of(PiglinGolemSpawn.HUMANOID_RANGED, 2), of(FactoryGolemSpawn.HUMANOID_ROCKET, 1))
-		);
-
-		col.add(GolemDungeons.TRIAL, DEEPSLATE_BOSS, new TrialConfig().setReward(DILootGen.DEEPSLATE_BOSS).genChest()
+		col.add(GolemDungeons.TRIAL, DEEPSLATE_QUAD, new TrialConfig().setReward(MazeRoomLootGen.DEEPSLATE_QUAD)
 				.add(of(PiglinGolemSpawn.LARGE, 1), of(PiglinGolemSpawn.HUMANOID_MELEE, 2),
 						of(FactoryGolemSpawn.HUMANOID_TIPPED, 1))
 				.add(of(PiglinGolemSpawn.LARGE_BOW, 1), of(PiglinGolemSpawn.LARGE, 1),
@@ -187,29 +270,22 @@ public class GolemSpawnData extends AbstractGolemSpawn {
 						of(PiglinGolemSpawn.HUMANOID_MELEE, 2), of(PiglinGolemSpawn.HUMANOID_RANGED, 2))
 		);
 
-		// --- SCULK 幽匿级（钻石装备，最高难度）---
-		col.add(GolemDungeons.TRIAL, SCULK_ROOM, new TrialConfig().setReward(DILootGen.SCULK_ROOM).genChest()
-				.add(of(SculkGolemSpawn.HUMANOID_MELEE, 1))
-				.add(of(SculkGolemSpawn.HUMANOID_MELEE, 1), of(SculkGolemSpawn.HUMANOID_RANGED, 1))
+		col.add(GolemDungeons.TRIAL, DEEPSLATE_BOSS, new TrialConfig().setReward(MazeRoomLootGen.DEEPSLATE_BOSS)
+				.add(of(FactoryGolemSpawn.LARGE_2, 2), of(PiglinGolemSpawn.HUMANOID_MELEE, 1))
+				.add(of(FactoryGolemSpawn.LARGE_3, 1), of(PiglinGolemSpawn.HUMANOID_MELEE, 2), of(PiglinGolemSpawn.HUMANOID_RANGED, 1))
+				.add(of(PiglinGolemSpawn.LARGE, 2), of(PiglinGolemSpawn.HUMANOID_MELEE, 3), of(PiglinGolemSpawn.HUMANOID_RANGED, 2))
 		);
 
-		col.add(GolemDungeons.TRIAL, SCULK_QUAD, new TrialConfig().setReward(DILootGen.SCULK_QUAD).genChest()
+		col.add(GolemDungeons.TRIAL, SCULK_QUAD, new TrialConfig().setReward(MazeRoomLootGen.SCULK_QUAD)
+				.add(of(SculkGolemSpawn.LARGE, 1), of(SculkGolemSpawn.HUMANOID_MELEE, 2), of(SculkGolemSpawn.HUMANOID_RANGED, 2))
+				.add(of(SculkGolemSpawn.SCULK_ALL, 1), of(SculkGolemSpawn.LARGE, 2), of(SculkGolemSpawn.HUMANOID_RANGED, 3))
+				.add(of(SculkGolemSpawn.SCULK_ALL, 3), of(SculkGolemSpawn.SCULK_BETTER, 1))
+		);
+
+		col.add(GolemDungeons.TRIAL, SCULK_BOSS, new TrialConfig().setReward(MazeRoomLootGen.SCULK_BOSS)
 				.add(of(SculkGolemSpawn.HUMANOID_MELEE, 1), of(SculkGolemSpawn.HUMANOID_RANGED, 1))
 				.add(of(SculkGolemSpawn.LARGE, 1), of(SculkGolemSpawn.HUMANOID_RANGED, 2))
 				.add(of(SculkGolemSpawn.LARGE, 2), of(SculkGolemSpawn.HUMANOID_MELEE, 2), of(SculkGolemSpawn.HUMANOID_RANGED, 2))
-		);
-
-		col.add(GolemDungeons.TRIAL, SCULK_STAIR, new TrialConfig().setReward(DILootGen.SCULK_STAIR).genChest()
-				.add(of(SculkGolemSpawn.HUMANOID_MELEE, 1), of(SculkGolemSpawn.HUMANOID_RANGED, 2))
-				.add(of(SculkGolemSpawn.LARGE, 1), of(SculkGolemSpawn.HUMANOID_MELEE, 2), of(SculkGolemSpawn.HUMANOID_RANGED, 2))
-				.add(of(SculkGolemSpawn.LARGE, 2), of(SculkGolemSpawn.HUMANOID_MELEE, 2), of(SculkGolemSpawn.HUMANOID_RANGED, 2),
-						of(SculkGolemSpawn.SCULK_ALL, 1))
-		);
-
-		col.add(GolemDungeons.TRIAL, SCULK_BOSS, new TrialConfig().setReward(DILootGen.SCULK_BOSS).genChest()
-				.add(of(SculkGolemSpawn.LARGE, 1), of(SculkGolemSpawn.HUMANOID_MELEE, 2), of(SculkGolemSpawn.HUMANOID_RANGED, 2))
-				.add(of(SculkGolemSpawn.SCULK_ALL, 1), of(SculkGolemSpawn.LARGE, 2), of(SculkGolemSpawn.HUMANOID_RANGED, 3))
-				.add(of(SculkGolemSpawn.SCULK_ALL, 8), of(SculkGolemSpawn.SCULK_BETTER, 1))
 		);
 	}
 

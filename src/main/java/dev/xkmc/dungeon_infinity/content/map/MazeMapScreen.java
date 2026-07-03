@@ -21,10 +21,15 @@ import net.minecraft.world.entity.player.Player;
 import org.joml.Matrix3x2f;
 import org.joml.Matrix3x2fc;
 import org.jspecify.annotations.Nullable;
+import java.util.List;
 
 public class MazeMapScreen extends Screen {
 
 	private final long seed;
+
+	private int layerY, diffY;
+
+	private int btnUpX, btnUpY, btnDownX, btnDownY;
 
 	protected MazeMapScreen(long seed) {
 		super(Component.literal("Maze Map"));
@@ -35,19 +40,35 @@ public class MazeMapScreen extends Screen {
 	public boolean mouseClicked(MouseButtonEvent event, boolean doubleClick) {
 		int mx = (int) event.x();
 		int my = (int) event.y();
-		int x0 = width/2, y0 = height/2;
+		int x0 = width / 2, y0 = height / 2;
 		float rate = Math.min(x0 / 64f, y0 / 64f) / 1.5f;
 		int cmx = (int) (((mx - x0) / rate + 63) / 5);
 		int cmz = (int) (((my - y0) / rate + 63) / 5);
 		Player player = Minecraft.getInstance().player;
 		if (player != null) {
 			var pos = MazePos.map(player.blockPosition());
+			var layerY = pos.y();
+			pos = pos.atLayer(Mth.clamp(pos.y() + diffY, 0, 15));
 			var visit = DIMeta.HISTORY.type().getOrCreate(player).getOrCreate(pos);
 			for (int wp : visit.getAllWaypoints()) {
 				int x = wp / 400 % 400;
 				int z = wp % 400;
 				if (x / 16 == cmx && z / 16 == cmz) {
 					DungeonInfinity.HANDLER.toServer(new UseWaypointPacket(pos.at(x, z)));
+					diffY = 0;
+					return true;
+				}
+			}
+			var font = getFont();
+			if (mx >= btnUpX && mx <= btnUpX + font.width("↑") && my >= btnUpY && my <= btnUpY + font.lineHeight) {
+				if (Mth.clamp(layerY + diffY + 1, 0, 15) != diffY + layerY) {
+					diffY++;
+					return true;
+				}
+			}
+			if (mx >= btnDownX && mx <= btnDownX + font.width("↓") && my >= btnDownY && my <= btnDownY + font.lineHeight) {
+				if (Mth.clamp(layerY + diffY - 1, 0, 15) != diffY + layerY) {
+					diffY--;
 					return true;
 				}
 			}
@@ -61,6 +82,10 @@ public class MazeMapScreen extends Screen {
 		Player player = Minecraft.getInstance().player;
 		if (player == null) return;
 		var pos = MazePos.map(player.blockPosition());
+		layerY = pos.y();
+		var mpy = Mth.clamp(layerY + diffY, 0, 15);
+		diffY = mpy - layerY;
+		pos = pos.atLayer(mpy);
 		var tex = MazeMapTextureManager.get().getDetail(seed, pos);
 		var fog = MazeMapTextureManager.get().getFog(seed, pos);
 		var visit = DIMeta.HISTORY.type().getOrCreate(player).getOrCreate(pos);
@@ -81,37 +106,42 @@ public class MazeMapScreen extends Screen {
 			g.blit(RenderPipelines.GUI_TEXTURED, fog.id, 0, 0, 0, 0, 25, 25, 32, 32);
 		g.pose().popMatrix();
 
-		g.pose().pushMatrix();
-		g.pose().translate(pos.px() / 16f * 5f, pos.pz() / 16f * 5f);
-		g.pose().scale(2, 2);
-		var yrot = player.getYRot();
-		g.pose().rotate(yrot * Mth.DEG_TO_RAD);
+		if (diffY == 0) {
+			g.pose().pushMatrix();
+			g.pose().translate(pos.px() / 16f * 5f, pos.pz() / 16f * 5f);
+			g.pose().scale(2, 2);
+			var yrot = player.getYRot();
+			g.pose().rotate(yrot * Mth.DEG_TO_RAD);
+			float r = (Mth.sin(((int) (System.currentTimeMillis() % 2000)) / 2000f * Math.PI * 2) + 1) / 2;
+			float pulse = 1 + r * 0.2f;
+			g.pose().scale(pulse, pulse);
+			int col = 0xffffffff;
+			g.pose().pushMatrix();
+			g.pose().scale(1.5f, 1.5f);
+			g.submitGuiElementRenderState(Arrow.of(g, 1, 0xff000000));
+			g.pose().popMatrix();
+			g.submitGuiElementRenderState(Arrow.of(g, 1, col));
+			g.pose().popMatrix();
+		}
 
-		float r = (Mth.sin(((int) (System.currentTimeMillis() % 2000)) / 2000f * Math.PI * 2) + 1) / 2;
-		float pulse = 1 + r * 0.2f;
-		g.pose().scale(pulse, pulse);
-		int col = 0xffffffff;
-
-		g.pose().pushMatrix();
-		g.pose().scale(1.5f, 1.5f);
-		g.submitGuiElementRenderState(Arrow.of(g, 1, 0xff000000));
-		g.pose().popMatrix();
-		g.submitGuiElementRenderState(Arrow.of(g, 1, col));
-		g.pose().popMatrix();
-
+		boolean hoverWaypoint = false;
 		for (int wp : visit.getAllWaypoints()) {
 			int x = wp / 400 % 400;
 			int z = wp % 400;
-			x = x & -0xF | 0x8;
-			z = z & -0xF | 0x8;
-			col = MazeMapColors.P;
+			x = x / 16 * 16 + 8;
+			z = z / 16 * 16 + 8;
+			int col = MazeMapColors.P;
 			g.pose().pushMatrix();
 			g.pose().translate(x / 16f * 5f, z / 16f * 5f);
 			if (x / 16 == cmx && z / 16 == cmz) {
 				g.pose().scale(2, 2);
+				hoverWaypoint = true;
 			}
 			g.submitGuiElementRenderState(Waypoint.of(g, 1, col));
 			g.pose().popMatrix();
+		}
+		if (hoverWaypoint) {
+			g.setComponentTooltipForNextFrame(getFont(), List.of(DILang.WAYPOINT.get()), mx, my);
 		}
 		g.pose().popMatrix();
 
@@ -119,6 +149,16 @@ public class MazeMapScreen extends Screen {
 		int y1 = (int) (y0 - rate * 64);
 		var font = getFont();
 		int h = font.lineHeight + 3;
+
+		int bx = x1 + 50;
+		int by = y1;
+		btnUpX = bx;
+		btnUpY = by;
+		btnDownX = bx;
+		btnDownY = by + h;
+		g.text(font, "↑", bx, by, -1);
+		g.text(font, "↓", bx, by + h, -1);
+
 		y1 -= h - 5;
 
 		g.text(font, DILang.DEPTH.get(16 - pos.y()), x1, y1 += h, -1);

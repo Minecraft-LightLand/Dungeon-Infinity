@@ -18,7 +18,7 @@ public class DIAdvGen {
 		var tab = gen.new TabBuilder("main");
 		var helper = new CriterionBuilder.Provider(pvd.getProvider());
 		var root = tab.root("visit", DIItems.KEY_OF_ACCESS.asItem(), one(EnterRoomTrigger.none().build()),
-				"Welcome to Dungeon Infinity", "Visit the maze");
+				"Welcome to Dungeon Infinity", "Visit the maze").add(new RewardBuilder(0, DILootProvider.ENTRY));
 		root.create("visit_100", Items.STONE, one(EnterRoomTrigger.total(100).build()),
 				"Explorer", "Explorer 100 maze cells");
 		var defeat = root.create("defeat_room", Items.CRACKED_STONE_BRICKS, one(DefeatRoomTrigger.none().build()),
