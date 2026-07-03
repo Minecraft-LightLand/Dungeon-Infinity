@@ -284,7 +284,8 @@ public class TemplateConfig extends BaseConfig {
 		}
 
 		public VariantBuilder variant(String suffix, int weight, Identifier id) {
-			parent.spawn(id.getPath(), new SpawnPool(id));
+			parent.defaultSpawn = id;
+			parent.config.spawn.put(id, new SpawnPool(id));
 			variant(suffix, weight, room + suffix, id);
 			parent.endSpawn();
 			return this;

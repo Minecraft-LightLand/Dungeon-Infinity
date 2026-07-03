@@ -1,6 +1,6 @@
 {
   "spawn": {
-    "mineshaft:mineshaft/boss": {
+    "dungeon_infinity:mineshaft/boss": {
       "depthScale": 0,
       "list": [
         {
@@ -14,7 +14,7 @@
       ],
       "sizeScale": 0
     },
-    "mineshaft:mineshaft/quad": {
+    "dungeon_infinity:mineshaft/quad": {
       "depthScale": 0,
       "list": [
         {
