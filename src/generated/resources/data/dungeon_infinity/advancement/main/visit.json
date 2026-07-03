@@ -30,5 +30,10 @@
       "0"
     ]
   ],
+  "rewards": {
+    "loot": [
+      "dungeon_infinity:advancement/entry"
+    ]
+  },
   "sends_telemetry_event": true
 }

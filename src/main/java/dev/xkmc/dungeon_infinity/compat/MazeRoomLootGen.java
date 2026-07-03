@@ -1,4 +1,4 @@
-package dev.xkmc.dungeon_infinity.init.data;
+package dev.xkmc.dungeon_infinity.compat;
 
 import com.tterrag.registrate.providers.loot.RegistrateLootTableProvider;
 import dev.xkmc.dungeon_infinity.init.DungeonInfinity;
@@ -14,49 +14,54 @@ import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
 
-public class DILootGen {
+@SuppressWarnings("deprecation")
+public class MazeRoomLootGen {
+
+	private static ResourceKey<LootTable> loot(String path) {
+		return ResourceKey.create(Registries.LOOT_TABLE, DungeonInfinity.loc(path));
+	}
 
 	private static ResourceKey<LootTable> maze(String path) {
-		return ResourceKey.create(Registries.LOOT_TABLE, DungeonInfinity.loc("maze/" + path));
+		return loot("maze/" + path);
 	}
 
 	// ===== STONE 石制级 =====
-	public static final ResourceKey<LootTable> STONE_ROOM_BASIC = maze("stone/room");
-	public static final ResourceKey<LootTable> STONE_ROOM_LARGE = maze("stone/room");
-	public static final ResourceKey<LootTable> STONE_ROOM_RANGED = maze("stone/room");
-	public static final ResourceKey<LootTable> STONE_ROOM_RIDER = maze("stone/room");
+	public static final ResourceKey<LootTable> STONE_ROOM_BASIC = maze("stone/room_basic");
+	public static final ResourceKey<LootTable> STONE_ROOM_LARGE = maze("stone/room_large");
+	public static final ResourceKey<LootTable> STONE_ROOM_RANGED = maze("stone/room_range");
+	public static final ResourceKey<LootTable> STONE_ROOM_RIDER = maze("stone/room_rider");
 	public static final ResourceKey<LootTable> STONE_QUAD = maze("stone/quad");
 	public static final ResourceKey<LootTable> STONE_BOSS = maze("stone/boss");
 
 	// ===== MINESHAFT 矿道级 =====
-	public static final ResourceKey<LootTable> MINESHAFT_ROOM_BASIC = maze("mineshaft/room");
-	public static final ResourceKey<LootTable> MINESHAFT_ROOM_LARGE = maze("mineshaft/room");
-	public static final ResourceKey<LootTable> MINESHAFT_ROOM_RANGED = maze("mineshaft/room");
-	public static final ResourceKey<LootTable> MINESHAFT_ROOM_RIDER = maze("mineshaft/room");
+	public static final ResourceKey<LootTable> MINESHAFT_ROOM_BASIC = maze("mineshaft/room_basic");
+	public static final ResourceKey<LootTable> MINESHAFT_ROOM_LARGE = maze("mineshaft/room_large");
+	public static final ResourceKey<LootTable> MINESHAFT_ROOM_RANGED = maze("mineshaft/room_range");
+	public static final ResourceKey<LootTable> MINESHAFT_ROOM_RIDER = maze("mineshaft/room_rider");
 	public static final ResourceKey<LootTable> MINESHAFT_QUAD = maze("mineshaft/quad");
 	public static final ResourceKey<LootTable> MINESHAFT_BOSS = maze("mineshaft/boss");
 
 	// ===== COPPER 铜制级 =====
-	public static final ResourceKey<LootTable> COPPER_ROOM_BASIC = maze("copper/room");
-	public static final ResourceKey<LootTable> COPPER_ROOM_LARGE = maze("copper/room");
-	public static final ResourceKey<LootTable> COPPER_ROOM_RANGED = maze("copper/room");
-	public static final ResourceKey<LootTable> COPPER_ROOM_RIDER = maze("copper/room");
+	public static final ResourceKey<LootTable> COPPER_ROOM_BASIC = maze("copper/room_basic");
+	public static final ResourceKey<LootTable> COPPER_ROOM_LARGE = maze("copper/room_large");
+	public static final ResourceKey<LootTable> COPPER_ROOM_RANGED = maze("copper/room_range");
+	public static final ResourceKey<LootTable> COPPER_ROOM_RIDER = maze("copper/room_rider");
 	public static final ResourceKey<LootTable> COPPER_QUAD = maze("copper/quad");
 	public static final ResourceKey<LootTable> COPPER_BOSS = maze("copper/boss");
 
 	// ===== DEEPSLATE 深板岩级 =====
-	public static final ResourceKey<LootTable> DEEPSLATE_ROOM_BASIC = maze("deepslate/room");
-	public static final ResourceKey<LootTable> DEEPSLATE_ROOM_LARGE = maze("deepslate/room");
-	public static final ResourceKey<LootTable> DEEPSLATE_ROOM_RANGED = maze("deepslate/room");
-	public static final ResourceKey<LootTable> DEEPSLATE_ROOM_RIDER = maze("deepslate/room");
+	public static final ResourceKey<LootTable> DEEPSLATE_ROOM_BASIC = maze("deepslate/room_basic");
+	public static final ResourceKey<LootTable> DEEPSLATE_ROOM_LARGE = maze("deepslate/room_large");
+	public static final ResourceKey<LootTable> DEEPSLATE_ROOM_RANGED = maze("deepslate/room_range");
+	public static final ResourceKey<LootTable> DEEPSLATE_ROOM_RIDER = maze("deepslate/room_rider");
 	public static final ResourceKey<LootTable> DEEPSLATE_QUAD = maze("deepslate/quad");
 	public static final ResourceKey<LootTable> DEEPSLATE_BOSS = maze("deepslate/boss");
 
 	// ===== SCULK 幽匿级 =====
-	public static final ResourceKey<LootTable> SCULK_ROOM_BASIC = maze("sculk/room");
-	public static final ResourceKey<LootTable> SCULK_ROOM_LARGE = maze("sculk/room");
-	public static final ResourceKey<LootTable> SCULK_ROOM_RANGED = maze("sculk/room");
-	public static final ResourceKey<LootTable> SCULK_ROOM_RIDER = maze("sculk/room");
+	public static final ResourceKey<LootTable> SCULK_ROOM_BASIC = maze("sculk/room_basic");
+	public static final ResourceKey<LootTable> SCULK_ROOM_LARGE = maze("sculk/room_large");
+	public static final ResourceKey<LootTable> SCULK_ROOM_RANGED = maze("sculk/room_range");
+	public static final ResourceKey<LootTable> SCULK_ROOM_RIDER = maze("sculk/room_rider");
 	public static final ResourceKey<LootTable> SCULK_QUAD = maze("sculk/quad");
 	public static final ResourceKey<LootTable> SCULK_BOSS = maze("sculk/boss");
 
