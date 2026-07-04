@@ -26,6 +26,26 @@
       "entries": [
         {
           "type": "minecraft:item",
+          "name": "dungeon_infinity:maze_map"
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "dungeon_infinity:key_of_tomb"
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
           "functions": [
             {
               "components": {
@@ -69,7 +89,8 @@
                 "minecraft:can_break": {
                   "blocks": [
                     "minecraft:raw_copper_block",
-                    "minecraft:raw_iron_block"
+                    "minecraft:raw_iron_block",
+                    "minecraft:coal_block"
                   ]
                 }
               },
@@ -116,7 +137,7 @@
               "function": "minecraft:set_components"
             }
           ],
-          "name": "minecraft:iron_axe"
+          "name": "minecraft:iron_shovel"
         }
       ],
       "rolls": 1.0

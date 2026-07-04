@@ -3,6 +3,7 @@ package dev.xkmc.dungeon_infinity.init.data;
 import com.tterrag.registrate.providers.loot.RegistrateLootTableProvider;
 import dev.xkmc.dungeon_infinity.compat.MazeRoomLootGen;
 import dev.xkmc.dungeon_infinity.init.DungeonInfinity;
+import dev.xkmc.dungeon_infinity.init.reg.DIItems;
 import dev.xkmc.l2core.serial.loot.LootTableTemplate;
 import dev.xkmc.modulargolems.content.item.data.GolemHolderMaterial;
 import dev.xkmc.modulargolems.content.item.golem.GolemHolder;
@@ -15,7 +16,6 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
-import net.minecraft.util.context.ContextKeySet;
 import net.minecraft.world.item.AdventureModePredicate;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
@@ -68,11 +68,13 @@ public class DILootProvider {
 		pvd.addLootAction(LootContextParamSets.ADVANCEMENT_REWARD, sub -> sub.accept(ENTRY, LootTable.lootTable()
 				.withPool(LootPool.lootPool().add(LootItem.lootTableItem(GolemItems.TABLE.asItem())))
 				.withPool(LootPool.lootPool().add(LootItem.lootTableItem(GolemItems.OMNI_COMMAND.asItem())))
+				.withPool(LootPool.lootPool().add(LootItem.lootTableItem(DIItems.MAP.asItem())))
+				.withPool(LootPool.lootPool().add(LootItem.lootTableItem(DIItems.KEY_OF_TOMB.asItem())))
 				.withPool(LootPool.lootPool().add(getGolem(GolemItems.HOLDER_GOLEM.get(), ModularGolems.loc("iron"))))
-				.withPool(LootPool.lootPool().add(mineable(pvd, Items.IRON_PICKAXE, Blocks.RAW_COPPER_BLOCK, Blocks.RAW_IRON_BLOCK)))
+				.withPool(LootPool.lootPool().add(mineable(pvd, Items.IRON_PICKAXE, Blocks.RAW_COPPER_BLOCK, Blocks.RAW_IRON_BLOCK, Blocks.COAL_BLOCK)))
 				.withPool(LootPool.lootPool().add(mineable(pvd, Items.IRON_AXE, BlockTags.LOGS)))
-				.withPool(LootPool.lootPool().add(mineable(pvd, Items.IRON_AXE, Blocks.CLAY)))
-				.withPool(LootPool.lootPool().add( mineable(pvd, Items.IRON_SWORD, Blocks.COBWEB)))
+				.withPool(LootPool.lootPool().add(mineable(pvd, Items.IRON_SHOVEL, Blocks.CLAY)))
+				.withPool(LootPool.lootPool().add(mineable(pvd, Items.IRON_SWORD, Blocks.COBWEB)))
 				.withPool(LootPool.lootPool().add(LootItem.lootTableItem(Items.IRON_HELMET)))
 				.withPool(LootPool.lootPool().add(LootItem.lootTableItem(Items.IRON_CHESTPLATE)))
 				.withPool(LootPool.lootPool().add(LootItem.lootTableItem(Items.IRON_LEGGINGS)))
