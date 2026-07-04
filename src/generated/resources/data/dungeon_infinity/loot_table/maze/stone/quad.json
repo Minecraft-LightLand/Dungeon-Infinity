@@ -11,8 +11,8 @@
               "add": false,
               "count": {
                 "type": "minecraft:uniform",
-                "max": 10.0,
-                "min": 4.0
+                "max": 4.0,
+                "min": 2.0
               },
               "function": "minecraft:set_count"
             }
@@ -27,21 +27,6 @@
               "count": {
                 "type": "minecraft:uniform",
                 "max": 6.0,
-                "min": 3.0
-              },
-              "function": "minecraft:set_count"
-            }
-          ],
-          "name": "minecraft:diamond"
-        },
-        {
-          "type": "minecraft:item",
-          "functions": [
-            {
-              "add": false,
-              "count": {
-                "type": "minecraft:uniform",
-                "max": 10.0,
                 "min": 4.0
               },
               "function": "minecraft:set_count"
@@ -62,13 +47,34 @@
               "add": false,
               "count": {
                 "type": "minecraft:uniform",
-                "max": 4.0,
-                "min": 2.0
+                "max": 5.0,
+                "min": 3.0
               },
               "function": "minecraft:set_count"
             }
           ],
-          "name": "minecraft:cooked_porkchop"
+          "name": "minecraft:cooked_beef"
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 6.0,
+                "min": 3.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "minecraft:oak_log"
         },
         {
           "type": "minecraft:item",
@@ -83,21 +89,34 @@
               "function": "minecraft:set_count"
             }
           ],
-          "name": "minecraft:bread"
+          "name": "minecraft:clay"
         }
       ],
       "rolls": 1.0
     },
     {
       "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "chance": 0.4375,
+          "condition": "minecraft:random_chance"
+        }
+      ],
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "modulargolems:slow"
+          "name": "modulargolems:gold",
+          "weight": 2
         },
         {
           "type": "minecraft:item",
-          "name": "modulargolems:pickup"
+          "name": "modulargolems:diamond",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "modulargolems:pickup",
+          "weight": 3
         }
       ],
       "rolls": 1.0
@@ -112,7 +131,7 @@
               "add": false,
               "count": {
                 "type": "minecraft:uniform",
-                "max": 8.0,
+                "max": 6.0,
                 "min": 4.0
               },
               "function": "minecraft:set_count"
@@ -133,8 +152,8 @@
               "add": false,
               "count": {
                 "type": "minecraft:uniform",
-                "max": 12.0,
-                "min": 6.0
+                "max": 6.0,
+                "min": 4.0
               },
               "function": "minecraft:set_count"
             }
