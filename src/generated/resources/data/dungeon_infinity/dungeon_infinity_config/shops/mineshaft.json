@@ -96,7 +96,16 @@
         "result": {
           "id": "minecraft:stone_sword"
         },
-        "weight": 100
+        "weight": 200
+      },
+      {
+        "cost": "minecraft:emerald",
+        "count": 1,
+        "limit": 4,
+        "result": {
+          "id": "minecraft:stone_axe"
+        },
+        "weight": 200
       },
       {
         "cost": "minecraft:emerald",

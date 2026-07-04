@@ -11,13 +11,13 @@
               "add": false,
               "count": {
                 "type": "minecraft:uniform",
-                "max": 16.0,
-                "min": 8.0
+                "max": 12.0,
+                "min": 6.0
               },
               "function": "minecraft:set_count"
             }
           ],
-          "name": "minecraft:echo_shard"
+          "name": "minecraft:diamond"
         }
       ],
       "rolls": 1.0
@@ -32,8 +32,8 @@
               "add": false,
               "count": {
                 "type": "minecraft:uniform",
-                "max": 2.0,
-                "min": 1.0
+                "max": 8.0,
+                "min": 4.0
               },
               "function": "minecraft:set_count"
             }
@@ -59,7 +59,7 @@
               "function": "minecraft:set_count"
             }
           ],
-          "name": "minecraft:enchanted_golden_apple"
+          "name": "minecraft:netherite_upgrade_smithing_template"
         }
       ],
       "rolls": 1.0
@@ -69,11 +69,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "golemdungeons:flame_sword"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "modulargolems:netherite"
+          "name": "modulargolems:golem_slicing_axe"
         }
       ],
       "rolls": 1.0
@@ -98,13 +94,13 @@
               "add": false,
               "count": {
                 "type": "minecraft:uniform",
-                "max": 4.0,
-                "min": 2.0
+                "max": 12.0,
+                "min": 8.0
               },
               "function": "minecraft:set_count"
             }
           ],
-          "name": "minecraft:netherite_upgrade_smithing_template"
+          "name": "minecraft:cooked_beef"
         },
         {
           "type": "minecraft:item",
@@ -113,8 +109,8 @@
               "add": false,
               "count": {
                 "type": "minecraft:uniform",
-                "max": 3.0,
-                "min": 2.0
+                "max": 2.0,
+                "min": 1.0
               },
               "function": "minecraft:set_count"
             }
@@ -129,11 +125,32 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "modulargolems:netherite_expansion_template"
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 4.0,
+                "min": 2.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "minecraft:netherite_upgrade_smithing_template"
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "modulargolems:beacon_boots"
         },
         {
           "type": "minecraft:item",
-          "name": "modulargolems:talented"
+          "name": "modulargolems:beacon_cannon"
         }
       ],
       "rolls": 1.0
@@ -148,8 +165,8 @@
               "add": false,
               "count": {
                 "type": "minecraft:uniform",
-                "max": 24.0,
-                "min": 16.0
+                "max": 20.0,
+                "min": 14.0
               },
               "function": "minecraft:set_count"
             }
@@ -169,8 +186,8 @@
               "add": false,
               "count": {
                 "type": "minecraft:uniform",
-                "max": 20.0,
-                "min": 10.0
+                "max": 12.0,
+                "min": 6.0
               },
               "function": "minecraft:set_count"
             }

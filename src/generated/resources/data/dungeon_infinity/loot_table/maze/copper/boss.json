@@ -11,65 +11,49 @@
               "add": false,
               "count": {
                 "type": "minecraft:uniform",
-                "max": 12.0,
-                "min": 6.0
+                "max": 20.0,
+                "min": 10.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "minecraft:iron_ingot"
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 16.0,
+                "min": 8.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "minecraft:gold_ingot"
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 6.0,
+                "min": 4.0
               },
               "function": "minecraft:set_count"
             }
           ],
           "name": "minecraft:diamond"
-        }
-      ],
-      "rolls": 1.0
-    },
-    {
-      "bonus_rolls": 0.0,
-      "entries": [
-        {
-          "type": "minecraft:item",
-          "functions": [
-            {
-              "add": false,
-              "count": {
-                "type": "minecraft:uniform",
-                "max": 4.0,
-                "min": 2.0
-              },
-              "function": "minecraft:set_count"
-            }
-          ],
-          "name": "minecraft:golden_apple"
-        }
-      ],
-      "rolls": 1.0
-    },
-    {
-      "bonus_rolls": 0.0,
-      "entries": [
-        {
-          "type": "minecraft:item",
-          "functions": [
-            {
-              "add": false,
-              "count": {
-                "type": "minecraft:uniform",
-                "max": 2.0,
-                "min": 1.0
-              },
-              "function": "minecraft:set_count"
-            }
-          ],
-          "name": "minecraft:netherite_upgrade_smithing_template"
-        }
-      ],
-      "rolls": 1.0
-    },
-    {
-      "bonus_rolls": 0.0,
-      "entries": [
-        {
-          "type": "minecraft:item",
-          "name": "golemdungeons:flame_sword"
         }
       ],
       "rolls": 1.0
@@ -100,7 +84,7 @@
               "function": "minecraft:set_count"
             }
           ],
-          "name": "minecraft:blaze_rod"
+          "name": "minecraft:ender_pearl"
         },
         {
           "type": "minecraft:item",
@@ -109,13 +93,13 @@
               "add": false,
               "count": {
                 "type": "minecraft:uniform",
-                "max": 6.0,
-                "min": 3.0
+                "max": 4.0,
+                "min": 2.0
               },
               "function": "minecraft:set_count"
             }
           ],
-          "name": "minecraft:ender_pearl"
+          "name": "minecraft:golden_apple"
         }
       ],
       "rolls": 1.0
@@ -125,11 +109,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "modulargolems:diamond_expansion_template"
+          "name": "modulargolems:diamond"
         },
         {
           "type": "minecraft:item",
-          "name": "modulargolems:cauldron"
+          "name": "modulargolems:size_upgrade"
         }
       ],
       "rolls": 1.0
@@ -139,7 +123,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "modulargolems:weak"
+          "name": "modulargolems:slow"
         }
       ],
       "rolls": 1.0
@@ -154,8 +138,8 @@
               "add": false,
               "count": {
                 "type": "minecraft:uniform",
-                "max": 18.0,
-                "min": 12.0
+                "max": 16.0,
+                "min": 10.0
               },
               "function": "minecraft:set_count"
             }
@@ -175,8 +159,8 @@
               "add": false,
               "count": {
                 "type": "minecraft:uniform",
-                "max": 10.0,
-                "min": 5.0
+                "max": 12.0,
+                "min": 8.0
               },
               "function": "minecraft:set_count"
             }
