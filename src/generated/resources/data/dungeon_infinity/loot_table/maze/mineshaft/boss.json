@@ -18,7 +18,13 @@
             }
           ],
           "name": "minecraft:gold_ingot"
-        },
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
         {
           "type": "minecraft:item",
           "functions": [

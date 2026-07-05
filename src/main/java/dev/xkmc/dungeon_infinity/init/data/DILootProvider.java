@@ -16,6 +16,7 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.util.Unit;
 import net.minecraft.world.item.AdventureModePredicate;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
@@ -44,14 +45,14 @@ public class DILootProvider {
 		var blockReg = pvd.getProvider().lookup(Registries.BLOCK).orElseThrow();
 		return LootItem.lootTableItem(item).apply(SetComponentsFunction.setComponent(DataComponents.CAN_BREAK, new AdventureModePredicate(List.of(
 				BlockPredicate.Builder.block().of(blockReg, blocks).build()
-		))));
+		)))).apply(SetComponentsFunction.setComponent(DataComponents.UNBREAKABLE, Unit.INSTANCE));
 	}
 
 	private static LootPoolEntryContainer.Builder<?> mineable(RegistrateLootTableProvider pvd, Item item, TagKey<Block> blocks) {
 		var blockReg = pvd.getProvider().lookup(Registries.BLOCK).orElseThrow();
 		return LootItem.lootTableItem(item).apply(SetComponentsFunction.setComponent(DataComponents.CAN_BREAK, new AdventureModePredicate(List.of(
 				BlockPredicate.Builder.block().of(blockReg, blocks).build()
-		))));
+		)))).apply(SetComponentsFunction.setComponent(DataComponents.UNBREAKABLE, Unit.INSTANCE));
 	}
 
 	public static LootPoolEntryContainer.Builder<?> getGolem(GolemHolder<?, ?> holder, Identifier rl) {
@@ -71,7 +72,7 @@ public class DILootProvider {
 				.withPool(LootPool.lootPool().add(LootItem.lootTableItem(DIItems.MAP.asItem())))
 				.withPool(LootPool.lootPool().add(LootItem.lootTableItem(DIItems.KEY_OF_TOMB.asItem())))
 				.withPool(LootPool.lootPool().add(getGolem(GolemItems.HOLDER_GOLEM.get(), ModularGolems.loc("iron"))))
-				.withPool(LootPool.lootPool().add(mineable(pvd, Items.IRON_PICKAXE, Blocks.RAW_COPPER_BLOCK, Blocks.RAW_IRON_BLOCK, Blocks.COAL_BLOCK)))
+				.withPool(LootPool.lootPool().add(mineable(pvd, Items.IRON_PICKAXE, Blocks.RAW_COPPER_BLOCK, Blocks.RAW_IRON_BLOCK, Blocks.RAW_GOLD_BLOCK, Blocks.COAL_BLOCK)))
 				.withPool(LootPool.lootPool().add(mineable(pvd, Items.IRON_AXE, BlockTags.LOGS)))
 				.withPool(LootPool.lootPool().add(mineable(pvd, Items.IRON_SHOVEL, Blocks.CLAY)))
 				.withPool(LootPool.lootPool().add(mineable(pvd, Items.IRON_SWORD, Blocks.COBWEB)))

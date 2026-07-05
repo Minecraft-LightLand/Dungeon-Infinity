@@ -90,9 +90,16 @@
                   "blocks": [
                     "minecraft:raw_copper_block",
                     "minecraft:raw_iron_block",
+                    "minecraft:raw_gold_block",
                     "minecraft:coal_block"
                   ]
                 }
+              },
+              "function": "minecraft:set_components"
+            },
+            {
+              "components": {
+                "minecraft:unbreakable": {}
               },
               "function": "minecraft:set_components"
             }
@@ -115,6 +122,12 @@
                 }
               },
               "function": "minecraft:set_components"
+            },
+            {
+              "components": {
+                "minecraft:unbreakable": {}
+              },
+              "function": "minecraft:set_components"
             }
           ],
           "name": "minecraft:iron_axe"
@@ -135,6 +148,12 @@
                 }
               },
               "function": "minecraft:set_components"
+            },
+            {
+              "components": {
+                "minecraft:unbreakable": {}
+              },
+              "function": "minecraft:set_components"
             }
           ],
           "name": "minecraft:iron_shovel"
@@ -153,6 +172,12 @@
                 "minecraft:can_break": {
                   "blocks": "minecraft:cobweb"
                 }
+              },
+              "function": "minecraft:set_components"
+            },
+            {
+              "components": {
+                "minecraft:unbreakable": {}
               },
               "function": "minecraft:set_components"
             }
