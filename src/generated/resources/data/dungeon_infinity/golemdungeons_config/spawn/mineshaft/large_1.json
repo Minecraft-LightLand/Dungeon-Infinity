@@ -1,0 +1,39 @@
+{
+  "equipments": [],
+  "faction": "golemdungeons:factory_remnant",
+  "materials": {
+    "modulargolems:copper": {
+      "bonus": [],
+      "forbid": [],
+      "weight": 60
+    },
+    "modulargolems:gold": {
+      "bonus": [],
+      "forbid": [
+        "modulargolems:metal_golem_arm",
+        "modulargolems:humanoid_golem_arms"
+      ],
+      "weight": 20
+    },
+    "modulargolems:iron": {
+      "bonus": [],
+      "forbid": [],
+      "weight": 20
+    }
+  },
+  "types": {
+    "modulargolems:metal_golem": {
+      "bonus": [],
+      "mountChance": 0.0,
+      "mounts": [],
+      "weight": 30
+    }
+  },
+  "upgradeChance": [
+    0.5,
+    0.5,
+    0.20000000298023224,
+    0.20000000298023224
+  ],
+  "upgrades": []
+}

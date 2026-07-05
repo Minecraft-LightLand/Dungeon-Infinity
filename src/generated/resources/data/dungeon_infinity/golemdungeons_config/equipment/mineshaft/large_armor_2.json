@@ -1,0 +1,50 @@
+{
+  "additional": {},
+  "items": {
+    "CHEST": [
+      {
+        "dropChance": 0.0,
+        "enchantLevel": 0,
+        "weight": 50
+      },
+      {
+        "dropChance": 0.085,
+        "enchantLevel": 30,
+        "stack": {
+          "id": "modulargolems:roman_guard_chestplate"
+        },
+        "weight": 100
+      }
+    ],
+    "HEAD": [
+      {
+        "dropChance": 0.0,
+        "enchantLevel": 0,
+        "weight": 50
+      },
+      {
+        "dropChance": 0.085,
+        "enchantLevel": 30,
+        "stack": {
+          "id": "modulargolems:roman_guard_helmet"
+        },
+        "weight": 100
+      }
+    ],
+    "LEGS": [
+      {
+        "dropChance": 0.0,
+        "enchantLevel": 0,
+        "weight": 50
+      },
+      {
+        "dropChance": 0.085,
+        "enchantLevel": 30,
+        "stack": {
+          "id": "modulargolems:roman_guard_shinguard"
+        },
+        "weight": 100
+      }
+    ]
+  }
+}

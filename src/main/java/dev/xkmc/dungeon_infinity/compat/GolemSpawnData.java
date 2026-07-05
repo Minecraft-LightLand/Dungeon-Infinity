@@ -64,11 +64,11 @@ public class GolemSpawnData extends AbstractGolemSpawn {
 	public static final Identifier SCULK_QUAD = DungeonInfinity.loc("sculk/quad");
 	public static final Identifier SCULK_BOSS = DungeonInfinity.loc("sculk/boss");
 
-	public static void gen(ConfigDataProvider.Collector col) {
+	public static void gen(ConfigDataProvider.Collector map) {
 
 		// ========== SPAWN CONFIGS ==========
 
-		col.add(GolemDungeons.SPAWN, EARLY_RANGED, new SpawnConfig(DungeonFactionRegistry.REMNANT)
+		map.add(GolemDungeons.SPAWN, EARLY_RANGED, new SpawnConfig(DungeonFactionRegistry.REMNANT)
 				.type(GolemTypes.TYPE_HUMANOID.get(), new SpawnConfig.GolemTypeEntry(40, 0))
 				.mat(ModularGolems.loc("copper"), 100)
 				.equipments(new SpawnConfig.EquipmentGroup(GolemTypes.ENTITY_HUMANOID.get())
@@ -79,165 +79,67 @@ public class GolemSpawnData extends AbstractGolemSpawn {
 
 		// --- STONE 石制级（纯工厂人形兵，金材料）---
 		// BASIC: 基础兵种混编，近战+远程
-		col.add(GolemDungeons.TRIAL, STONE_ROOM_BASIC, new TrialConfig().setReward(MazeRoomLootGen.STONE_ROOM_BASIC)
+		map.add(GolemDungeons.TRIAL, STONE_ROOM_BASIC, new TrialConfig().setReward(MazeRoomLootGen.STONE_ROOM_BASIC)
 				.add(of(FactoryGolemSpawn.HUMANOID_BASIC, 2), of(EARLY_RANGED, 1))
 		);
 
 		// LARGE: 大型兵为主，带基础护卫
-		col.add(GolemDungeons.TRIAL, STONE_ROOM_LARGE, new TrialConfig().setReward(MazeRoomLootGen.STONE_ROOM_LARGE)
+		map.add(GolemDungeons.TRIAL, STONE_ROOM_LARGE, new TrialConfig().setReward(MazeRoomLootGen.STONE_ROOM_LARGE)
 				.add(of(FactoryGolemSpawn.LARGE_1, 1), of(FactoryGolemSpawn.HUMANOID_BASIC, 2))
 		);
 
 		// RANGED: 远程火力为主，近战肉盾
-		col.add(GolemDungeons.TRIAL, STONE_ROOM_RANGED, new TrialConfig().setReward(MazeRoomLootGen.STONE_ROOM_RANGED)
+		map.add(GolemDungeons.TRIAL, STONE_ROOM_RANGED, new TrialConfig().setReward(MazeRoomLootGen.STONE_ROOM_RANGED)
 				.add(of(FactoryGolemSpawn.HUMANOID_MELEE, 2), of(EARLY_RANGED, 3))
 		);
 
 		// RIDER: 骑兵机动为主，药水debuff
-		col.add(GolemDungeons.TRIAL, STONE_ROOM_RIDER, new TrialConfig().setReward(MazeRoomLootGen.STONE_ROOM_RIDER)
+		map.add(GolemDungeons.TRIAL, STONE_ROOM_RIDER, new TrialConfig().setReward(MazeRoomLootGen.STONE_ROOM_RIDER)
 				.add(of(FactoryGolemSpawn.HUMANOID_TIPPED, 2), of(FactoryGolemSpawn.HUMANOID_ROCKET, 1))
 		);
 
 		// MIXED: 混合兵种，近战+远程+大型+骑兵
-		col.add(GolemDungeons.TRIAL, STONE_ROOM_MIXED, new TrialConfig().setReward(MazeRoomLootGen.STONE_ROOM_MIXED)
+		map.add(GolemDungeons.TRIAL, STONE_ROOM_MIXED, new TrialConfig().setReward(MazeRoomLootGen.STONE_ROOM_MIXED)
 				.add(of(FactoryGolemSpawn.HUMANOID_MELEE, 2), of(EARLY_RANGED, 2), of(FactoryGolemSpawn.HUMANOID_ROCKET, 1))
 				.add(of(FactoryGolemSpawn.LARGE_1, 1), of(FactoryGolemSpawn.HUMANOID_TIPPED, 1), of(EARLY_RANGED, 1))
 		);
 
-		// --- MINESHAFT 矿道级（工厂兵，铜铁装备）---
-		// BASIC: 基础混编
-		col.add(GolemDungeons.TRIAL, MINESHAFT_ROOM_BASIC, new TrialConfig().setReward(MazeRoomLootGen.MINESHAFT_ROOM_BASIC)
-				.add(of(FactoryGolemSpawn.HUMANOID_MELEE, 2), of(EARLY_RANGED, 2))
-		);
-
-		// LARGE: 大型兵+远程护卫
-		col.add(GolemDungeons.TRIAL, MINESHAFT_ROOM_LARGE, new TrialConfig().setReward(MazeRoomLootGen.MINESHAFT_ROOM_LARGE)
-				.add(of(FactoryGolemSpawn.LARGE_1, 2), of(EARLY_RANGED, 2))
-		);
-
-		// RANGED: 远程火力网+火箭兵
-		col.add(GolemDungeons.TRIAL, MINESHAFT_ROOM_RANGED, new TrialConfig().setReward(MazeRoomLootGen.MINESHAFT_ROOM_RANGED)
-				.add(of(FactoryGolemSpawn.HUMANOID_MELEE, 2), of(EARLY_RANGED, 3), of(FactoryGolemSpawn.HUMANOID_ROCKET, 1))
-		);
-
-		// RIDER: 火箭骑兵+药水兵
-		col.add(GolemDungeons.TRIAL, MINESHAFT_ROOM_RIDER, new TrialConfig().setReward(MazeRoomLootGen.MINESHAFT_ROOM_RIDER)
-				.add(of(FactoryGolemSpawn.HUMANOID_ROCKET, 2), of(FactoryGolemSpawn.HUMANOID_TIPPED, 2))
-		);
-
-		// MIXED: 全兵种混合
-		col.add(GolemDungeons.TRIAL, MINESHAFT_ROOM_MIXED, new TrialConfig().setReward(MazeRoomLootGen.MINESHAFT_ROOM_MIXED)
-				.add(of(FactoryGolemSpawn.LARGE_1, 1), of(FactoryGolemSpawn.HUMANOID_MELEE, 2), of(EARLY_RANGED, 2))
-				.add(of(FactoryGolemSpawn.HUMANOID_ROCKET, 1), of(FactoryGolemSpawn.HUMANOID_TIPPED, 2), of(FactoryGolemSpawn.LARGE_2, 1))
-		);
-
-		// --- COPPER 铜制级（基准难度，铜装备）---
-		// BASIC: 铜制近战+远程混编
-		col.add(GolemDungeons.TRIAL, COPPER_ROOM_BASIC, new TrialConfig().setReward(MazeRoomLootGen.COPPER_ROOM_BASIC)
-				.add(of(FactoryGolemSpawn.HUMANOID_MELEE, 2), of(FactoryGolemSpawn.HUMANOID_RANGED, 2))
-		);
-
-		// LARGE: 大型兵主力
-		col.add(GolemDungeons.TRIAL, COPPER_ROOM_LARGE, new TrialConfig().setReward(MazeRoomLootGen.COPPER_ROOM_LARGE)
-				.add(of(FactoryGolemSpawn.LARGE_2, 2), of(FactoryGolemSpawn.HUMANOID_MELEE, 1))
-		);
-
-		// RANGED: 远程火力+药水支援
-		col.add(GolemDungeons.TRIAL, COPPER_ROOM_RANGED, new TrialConfig().setReward(MazeRoomLootGen.COPPER_ROOM_RANGED)
-				.add(of(FactoryGolemSpawn.HUMANOID_RANGED, 3), of(FactoryGolemSpawn.HUMANOID_TIPPED, 1))
-		);
-
-		// RIDER: 火箭骑兵突击
-		col.add(GolemDungeons.TRIAL, COPPER_ROOM_RIDER, new TrialConfig().setReward(MazeRoomLootGen.COPPER_ROOM_RIDER)
-				.add(of(FactoryGolemSpawn.HUMANOID_ROCKET, 2), of(FactoryGolemSpawn.HUMANOID_TIPPED, 1), of(FactoryGolemSpawn.LARGE_2, 1))
-		);
-
-		// MIXED: 全兵种混合
-		col.add(GolemDungeons.TRIAL, COPPER_ROOM_MIXED, new TrialConfig().setReward(MazeRoomLootGen.COPPER_ROOM_MIXED)
-				.add(of(FactoryGolemSpawn.LARGE_2, 1), of(FactoryGolemSpawn.HUMANOID_RANGED, 2), of(FactoryGolemSpawn.HUMANOID_TIPPED, 1))
-				.add(of(FactoryGolemSpawn.HUMANOID_ROCKET, 2), of(FactoryGolemSpawn.HUMANOID_MELEE, 2), of(FactoryGolemSpawn.LARGE_2, 1))
-		);
-
-		// --- DEEPSLATE 深板岩级（工厂+猪灵混编）---
-		// BASIC: 猪灵近战+工厂基础
-		col.add(GolemDungeons.TRIAL, DEEPSLATE_ROOM_BASIC, new TrialConfig().setReward(MazeRoomLootGen.DEEPSLATE_ROOM_BASIC)
-				.add(of(PiglinGolemSpawn.HUMANOID_MELEE, 2), of(FactoryGolemSpawn.HUMANOID_BASIC, 2))
-		);
-
-		// LARGE: 双方大型兵混编
-		col.add(GolemDungeons.TRIAL, DEEPSLATE_ROOM_LARGE, new TrialConfig().setReward(MazeRoomLootGen.DEEPSLATE_ROOM_LARGE)
-				.add(of(PiglinGolemSpawn.LARGE, 1), of(FactoryGolemSpawn.LARGE_2, 1), of(PiglinGolemSpawn.HUMANOID_MELEE, 1))
-		);
-
-		// RANGED: 远程火力网
-		col.add(GolemDungeons.TRIAL, DEEPSLATE_ROOM_RANGED, new TrialConfig().setReward(MazeRoomLootGen.DEEPSLATE_ROOM_RANGED)
-				.add(of(PiglinGolemSpawn.HUMANOID_RANGED, 3), of(FactoryGolemSpawn.HUMANOID_ROCKET, 2))
-		);
-
-		// RIDER: 肩炮大型+火箭骑兵
-		col.add(GolemDungeons.TRIAL, DEEPSLATE_ROOM_RIDER, new TrialConfig().setReward(MazeRoomLootGen.DEEPSLATE_ROOM_RIDER)
-				.add(of(PiglinGolemSpawn.LARGE_SHOULDER, 1), of(FactoryGolemSpawn.HUMANOID_ROCKET, 2))
-		);
-
-		// MIXED: 猪灵+工厂全兵种混合
-		col.add(GolemDungeons.TRIAL, DEEPSLATE_ROOM_MIXED, new TrialConfig().setReward(MazeRoomLootGen.DEEPSLATE_ROOM_MIXED)
-				.add(of(PiglinGolemSpawn.LARGE, 1), of(PiglinGolemSpawn.HUMANOID_RANGED, 2), of(FactoryGolemSpawn.HUMANOID_ROCKET, 1))
-				.add(of(PiglinGolemSpawn.LARGE_BOW, 1), of(PiglinGolemSpawn.HUMANOID_MELEE, 2), of(FactoryGolemSpawn.HUMANOID_TIPPED, 1))
-		);
-
-		// --- SCULK 幽匿级（最高难度，钻石装备）---
-		// BASIC: 幽匿近战+远程基础
-		col.add(GolemDungeons.TRIAL, SCULK_ROOM_BASIC, new TrialConfig().setReward(MazeRoomLootGen.SCULK_ROOM_BASIC)
-				.add(of(SculkGolemSpawn.HUMANOID_MELEE, 2), of(SculkGolemSpawn.HUMANOID_RANGED, 2))
-		);
-
-		// LARGE: 大型幽匿兵
-		col.add(GolemDungeons.TRIAL, SCULK_ROOM_LARGE, new TrialConfig().setReward(MazeRoomLootGen.SCULK_ROOM_LARGE)
-				.add(of(SculkGolemSpawn.LARGE, 2), of(SculkGolemSpawn.HUMANOID_MELEE, 1))
-		);
-
-		// RANGED: 远程+精英
-		col.add(GolemDungeons.TRIAL, SCULK_ROOM_RANGED, new TrialConfig().setReward(MazeRoomLootGen.SCULK_ROOM_RANGED)
-				.add(of(SculkGolemSpawn.HUMANOID_RANGED, 3), of(SculkGolemSpawn.SCULK_ALL, 1))
-		);
-
-		// RIDER: 精英骑兵
-		col.add(GolemDungeons.TRIAL, SCULK_ROOM_RIDER, new TrialConfig().setReward(MazeRoomLootGen.SCULK_ROOM_RIDER)
-				.add(of(SculkGolemSpawn.SCULK_ALL, 2), of(SculkGolemSpawn.SCULK_BETTER, 1))
-		);
-
-		// MIXED: 幽匿全兵种混合
-		col.add(GolemDungeons.TRIAL, SCULK_ROOM_MIXED, new TrialConfig().setReward(MazeRoomLootGen.SCULK_ROOM_MIXED)
-				.add(of(SculkGolemSpawn.LARGE, 1), of(SculkGolemSpawn.HUMANOID_RANGED, 2), of(SculkGolemSpawn.SCULK_ALL, 1))
-				.add(of(SculkGolemSpawn.SCULK_BETTER, 1), of(SculkGolemSpawn.HUMANOID_MELEE, 2), of(SculkGolemSpawn.HUMANOID_RANGED, 1))
-		);
-
-		// ========== QUAD & BOSS ==========
-
-		col.add(GolemDungeons.TRIAL, STONE_QUAD, new TrialConfig().setReward(MazeRoomLootGen.STONE_QUAD)
+		map.add(GolemDungeons.TRIAL, STONE_QUAD, new TrialConfig().setReward(MazeRoomLootGen.STONE_QUAD)
 				.add(of(FactoryGolemSpawn.HUMANOID_BASIC, 1), of(EARLY_RANGED, 1))
 				.add(of(FactoryGolemSpawn.HUMANOID_BASIC, 2), of(EARLY_RANGED, 1))
 		);
 
-		col.add(GolemDungeons.TRIAL, MINESHAFT_QUAD, new TrialConfig().setReward(MazeRoomLootGen.MINESHAFT_QUAD)
-				.add(of(FactoryGolemSpawn.LARGE_1, 1), of(FactoryGolemSpawn.HUMANOID_MELEE, 1))
-				.add(of(FactoryGolemSpawn.LARGE_1, 2), of(EARLY_RANGED, 2))
-				.add(of(FactoryGolemSpawn.LARGE_1, 4),
-						of(EARLY_RANGED, 1),
-						of(FactoryGolemSpawn.HUMANOID_TIPPED, 1),
-						of(FactoryGolemSpawn.LARGE_2, 1))
+		// --- MINESHAFT 矿道级（工厂兵，铜铁装备）---
+		MineshaftGolemSpawn.add(map);
+
+		// --- COPPER 铜制级（基准难度，铜装备）---
+		// BASIC: 铜制近战+远程混编
+		map.add(GolemDungeons.TRIAL, COPPER_ROOM_BASIC, new TrialConfig().setReward(MazeRoomLootGen.COPPER_ROOM_BASIC)
+				.add(of(FactoryGolemSpawn.HUMANOID_MELEE, 2), of(FactoryGolemSpawn.HUMANOID_RANGED, 2))
 		);
 
-		col.add(GolemDungeons.TRIAL, MINESHAFT_BOSS, new TrialConfig().setReward(MazeRoomLootGen.MINESHAFT_BOSS)
-				.add(of(FactoryGolemSpawn.LARGE_1, 1), of(FactoryGolemSpawn.HUMANOID_BASIC, 1))
-				.add(of(FactoryGolemSpawn.LARGE_1, 1), of(EARLY_RANGED, 2))
-				.add(of(FactoryGolemSpawn.LARGE_1, 2),
-						of(EARLY_RANGED, 1),
-						of(FactoryGolemSpawn.LARGE_2, 1),
-						of(FactoryGolemSpawn.HUMANOID_ROCKET, 1))
+		// LARGE: 大型兵主力
+		map.add(GolemDungeons.TRIAL, COPPER_ROOM_LARGE, new TrialConfig().setReward(MazeRoomLootGen.COPPER_ROOM_LARGE)
+				.add(of(FactoryGolemSpawn.LARGE_2, 2), of(FactoryGolemSpawn.HUMANOID_MELEE, 1))
 		);
 
-		col.add(GolemDungeons.TRIAL, COPPER_QUAD, new TrialConfig().setReward(MazeRoomLootGen.COPPER_QUAD)
+		// RANGED: 远程火力+药水支援
+		map.add(GolemDungeons.TRIAL, COPPER_ROOM_RANGED, new TrialConfig().setReward(MazeRoomLootGen.COPPER_ROOM_RANGED)
+				.add(of(FactoryGolemSpawn.HUMANOID_RANGED, 3), of(FactoryGolemSpawn.HUMANOID_TIPPED, 1))
+		);
+
+		// RIDER: 火箭骑兵突击
+		map.add(GolemDungeons.TRIAL, COPPER_ROOM_RIDER, new TrialConfig().setReward(MazeRoomLootGen.COPPER_ROOM_RIDER)
+				.add(of(FactoryGolemSpawn.HUMANOID_ROCKET, 2), of(FactoryGolemSpawn.HUMANOID_TIPPED, 1), of(FactoryGolemSpawn.LARGE_2, 1))
+		);
+
+		// MIXED: 全兵种混合
+		map.add(GolemDungeons.TRIAL, COPPER_ROOM_MIXED, new TrialConfig().setReward(MazeRoomLootGen.COPPER_ROOM_MIXED)
+				.add(of(FactoryGolemSpawn.LARGE_2, 1), of(FactoryGolemSpawn.HUMANOID_RANGED, 2), of(FactoryGolemSpawn.HUMANOID_TIPPED, 1))
+				.add(of(FactoryGolemSpawn.HUMANOID_ROCKET, 2), of(FactoryGolemSpawn.HUMANOID_MELEE, 2), of(FactoryGolemSpawn.LARGE_2, 1))
+		);
+
+		map.add(GolemDungeons.TRIAL, COPPER_QUAD, new TrialConfig().setReward(MazeRoomLootGen.COPPER_QUAD)
 				.add(of(FactoryGolemSpawn.LARGE_2, 1),
 						of(FactoryGolemSpawn.HUMANOID_MELEE, 1),
 						of(FactoryGolemSpawn.HUMANOID_TIPPED, 1),
@@ -252,7 +154,7 @@ public class GolemSpawnData extends AbstractGolemSpawn {
 						of(FactoryGolemSpawn.HUMANOID_ROCKET, 2))
 		);
 
-		col.add(GolemDungeons.TRIAL, COPPER_BOSS, new TrialConfig().setReward(MazeRoomLootGen.COPPER_BOSS)
+		map.add(GolemDungeons.TRIAL, COPPER_BOSS, new TrialConfig().setReward(MazeRoomLootGen.COPPER_BOSS)
 				.add(of(FactoryGolemSpawn.LARGE_1, 1), of(FactoryGolemSpawn.HUMANOID_MELEE, 1))
 				.add(of(FactoryGolemSpawn.LARGE_2, 1), of(FactoryGolemSpawn.HUMANOID_RANGED, 2))
 				.add(of(FactoryGolemSpawn.LARGE_2, 2),
@@ -261,7 +163,34 @@ public class GolemSpawnData extends AbstractGolemSpawn {
 						of(FactoryGolemSpawn.HUMANOID_ROCKET, 1))
 		);
 
-		col.add(GolemDungeons.TRIAL, DEEPSLATE_QUAD, new TrialConfig().setReward(MazeRoomLootGen.DEEPSLATE_QUAD)
+		// --- DEEPSLATE 深板岩级（工厂+猪灵混编）---
+		// BASIC: 猪灵近战+工厂基础
+		map.add(GolemDungeons.TRIAL, DEEPSLATE_ROOM_BASIC, new TrialConfig().setReward(MazeRoomLootGen.DEEPSLATE_ROOM_BASIC)
+				.add(of(PiglinGolemSpawn.HUMANOID_MELEE, 2), of(FactoryGolemSpawn.HUMANOID_BASIC, 2))
+		);
+
+		// LARGE: 双方大型兵混编
+		map.add(GolemDungeons.TRIAL, DEEPSLATE_ROOM_LARGE, new TrialConfig().setReward(MazeRoomLootGen.DEEPSLATE_ROOM_LARGE)
+				.add(of(PiglinGolemSpawn.LARGE, 1), of(FactoryGolemSpawn.LARGE_2, 1), of(PiglinGolemSpawn.HUMANOID_MELEE, 1))
+		);
+
+		// RANGED: 远程火力网
+		map.add(GolemDungeons.TRIAL, DEEPSLATE_ROOM_RANGED, new TrialConfig().setReward(MazeRoomLootGen.DEEPSLATE_ROOM_RANGED)
+				.add(of(PiglinGolemSpawn.HUMANOID_RANGED, 3), of(FactoryGolemSpawn.HUMANOID_ROCKET, 2))
+		);
+
+		// RIDER: 肩炮大型+火箭骑兵
+		map.add(GolemDungeons.TRIAL, DEEPSLATE_ROOM_RIDER, new TrialConfig().setReward(MazeRoomLootGen.DEEPSLATE_ROOM_RIDER)
+				.add(of(PiglinGolemSpawn.LARGE_SHOULDER, 1), of(FactoryGolemSpawn.HUMANOID_ROCKET, 2))
+		);
+
+		// MIXED: 猪灵+工厂全兵种混合
+		map.add(GolemDungeons.TRIAL, DEEPSLATE_ROOM_MIXED, new TrialConfig().setReward(MazeRoomLootGen.DEEPSLATE_ROOM_MIXED)
+				.add(of(PiglinGolemSpawn.LARGE, 1), of(PiglinGolemSpawn.HUMANOID_RANGED, 2), of(FactoryGolemSpawn.HUMANOID_ROCKET, 1))
+				.add(of(PiglinGolemSpawn.LARGE_BOW, 1), of(PiglinGolemSpawn.HUMANOID_MELEE, 2), of(FactoryGolemSpawn.HUMANOID_TIPPED, 1))
+		);
+
+		map.add(GolemDungeons.TRIAL, DEEPSLATE_QUAD, new TrialConfig().setReward(MazeRoomLootGen.DEEPSLATE_QUAD)
 				.add(of(PiglinGolemSpawn.LARGE, 1), of(PiglinGolemSpawn.HUMANOID_MELEE, 2),
 						of(FactoryGolemSpawn.HUMANOID_TIPPED, 1))
 				.add(of(PiglinGolemSpawn.LARGE_BOW, 1), of(PiglinGolemSpawn.LARGE, 1),
@@ -270,19 +199,47 @@ public class GolemSpawnData extends AbstractGolemSpawn {
 						of(PiglinGolemSpawn.HUMANOID_MELEE, 2), of(PiglinGolemSpawn.HUMANOID_RANGED, 2))
 		);
 
-		col.add(GolemDungeons.TRIAL, DEEPSLATE_BOSS, new TrialConfig().setReward(MazeRoomLootGen.DEEPSLATE_BOSS)
+		map.add(GolemDungeons.TRIAL, DEEPSLATE_BOSS, new TrialConfig().setReward(MazeRoomLootGen.DEEPSLATE_BOSS)
 				.add(of(FactoryGolemSpawn.LARGE_2, 2), of(PiglinGolemSpawn.HUMANOID_MELEE, 1))
 				.add(of(FactoryGolemSpawn.LARGE_3, 1), of(PiglinGolemSpawn.HUMANOID_MELEE, 2), of(PiglinGolemSpawn.HUMANOID_RANGED, 1))
 				.add(of(PiglinGolemSpawn.LARGE, 2), of(PiglinGolemSpawn.HUMANOID_MELEE, 3), of(PiglinGolemSpawn.HUMANOID_RANGED, 2))
 		);
 
-		col.add(GolemDungeons.TRIAL, SCULK_QUAD, new TrialConfig().setReward(MazeRoomLootGen.SCULK_QUAD)
+		// --- SCULK 幽匿级（最高难度，钻石装备）---
+		// BASIC: 幽匿近战+远程基础
+		map.add(GolemDungeons.TRIAL, SCULK_ROOM_BASIC, new TrialConfig().setReward(MazeRoomLootGen.SCULK_ROOM_BASIC)
+				.add(of(SculkGolemSpawn.HUMANOID_MELEE, 2), of(SculkGolemSpawn.HUMANOID_RANGED, 2))
+		);
+
+		// LARGE: 大型幽匿兵
+		map.add(GolemDungeons.TRIAL, SCULK_ROOM_LARGE, new TrialConfig().setReward(MazeRoomLootGen.SCULK_ROOM_LARGE)
+				.add(of(SculkGolemSpawn.LARGE, 2), of(SculkGolemSpawn.HUMANOID_MELEE, 1))
+		);
+
+		// RANGED: 远程+精英
+		map.add(GolemDungeons.TRIAL, SCULK_ROOM_RANGED, new TrialConfig().setReward(MazeRoomLootGen.SCULK_ROOM_RANGED)
+				.add(of(SculkGolemSpawn.HUMANOID_RANGED, 3), of(SculkGolemSpawn.SCULK_ALL, 1))
+		);
+
+		// RIDER: 精英骑兵
+		map.add(GolemDungeons.TRIAL, SCULK_ROOM_RIDER, new TrialConfig().setReward(MazeRoomLootGen.SCULK_ROOM_RIDER)
+				.add(of(SculkGolemSpawn.SCULK_ALL, 2), of(SculkGolemSpawn.SCULK_BETTER, 1))
+		);
+
+		// MIXED: 幽匿全兵种混合
+		map.add(GolemDungeons.TRIAL, SCULK_ROOM_MIXED, new TrialConfig().setReward(MazeRoomLootGen.SCULK_ROOM_MIXED)
+				.add(of(SculkGolemSpawn.LARGE, 1), of(SculkGolemSpawn.HUMANOID_RANGED, 2), of(SculkGolemSpawn.SCULK_ALL, 1))
+				.add(of(SculkGolemSpawn.SCULK_BETTER, 1), of(SculkGolemSpawn.HUMANOID_MELEE, 2), of(SculkGolemSpawn.HUMANOID_RANGED, 1))
+		);
+
+
+		map.add(GolemDungeons.TRIAL, SCULK_QUAD, new TrialConfig().setReward(MazeRoomLootGen.SCULK_QUAD)
 				.add(of(SculkGolemSpawn.LARGE, 1), of(SculkGolemSpawn.HUMANOID_MELEE, 2), of(SculkGolemSpawn.HUMANOID_RANGED, 2))
 				.add(of(SculkGolemSpawn.SCULK_ALL, 1), of(SculkGolemSpawn.LARGE, 2), of(SculkGolemSpawn.HUMANOID_RANGED, 3))
 				.add(of(SculkGolemSpawn.SCULK_ALL, 3), of(SculkGolemSpawn.SCULK_BETTER, 1))
 		);
 
-		col.add(GolemDungeons.TRIAL, SCULK_BOSS, new TrialConfig().setReward(MazeRoomLootGen.SCULK_BOSS)
+		map.add(GolemDungeons.TRIAL, SCULK_BOSS, new TrialConfig().setReward(MazeRoomLootGen.SCULK_BOSS)
 				.add(of(SculkGolemSpawn.HUMANOID_MELEE, 1), of(SculkGolemSpawn.HUMANOID_RANGED, 1))
 				.add(of(SculkGolemSpawn.LARGE, 1), of(SculkGolemSpawn.HUMANOID_RANGED, 2))
 				.add(of(SculkGolemSpawn.LARGE, 2), of(SculkGolemSpawn.HUMANOID_MELEE, 2), of(SculkGolemSpawn.HUMANOID_RANGED, 2))

@@ -1,0 +1,78 @@
+{
+  "additional": {},
+  "items": {
+    "MAINHAND": [
+      {
+        "dropChance": 0.085,
+        "enchantLevel": 10,
+        "stack": {
+          "id": "minecraft:stone_axe"
+        },
+        "weight": 200
+      },
+      {
+        "dropChance": 0.085,
+        "enchantLevel": 20,
+        "stack": {
+          "id": "minecraft:stone_sword"
+        },
+        "weight": 200
+      },
+      {
+        "dropChance": 0.085,
+        "enchantLevel": 10,
+        "stack": {
+          "id": "minecraft:stone_pickaxe"
+        },
+        "weight": 100
+      },
+      {
+        "dropChance": 0.085,
+        "enchantLevel": 10,
+        "stack": {
+          "id": "minecraft:iron_axe"
+        },
+        "weight": 100
+      },
+      {
+        "dropChance": 0.085,
+        "enchantLevel": 20,
+        "stack": {
+          "id": "minecraft:iron_sword"
+        },
+        "weight": 100
+      },
+      {
+        "dropChance": 0.085,
+        "enchantLevel": 10,
+        "stack": {
+          "id": "minecraft:iron_pickaxe"
+        },
+        "weight": 50
+      },
+      {
+        "dropChance": 0.085,
+        "enchantLevel": 10,
+        "stack": {
+          "id": "minecraft:trident"
+        },
+        "weight": 150
+      }
+    ],
+    "OFFHAND": [
+      {
+        "dropChance": 0.085,
+        "enchantLevel": 10,
+        "stack": {
+          "id": "minecraft:shield"
+        },
+        "weight": 100
+      },
+      {
+        "dropChance": 0.0,
+        "enchantLevel": 0,
+        "weight": 100
+      }
+    ]
+  }
+}

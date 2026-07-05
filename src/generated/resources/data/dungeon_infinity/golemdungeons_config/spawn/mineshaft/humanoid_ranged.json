@@ -1,0 +1,124 @@
+{
+  "equipments": [
+    {
+      "type": "minecraft:horse",
+      "sets": [
+        {
+          "target": "dungeon_infinity:mineshaft/horse_armor",
+          "weight": 20
+        }
+      ]
+    },
+    {
+      "type": "minecraft:skeleton_horse",
+      "sets": [
+        {
+          "target": "dungeon_infinity:mineshaft/horse_armor",
+          "weight": 20
+        }
+      ]
+    },
+    {
+      "type": "modulargolems:humanoid_golem",
+      "sets": [
+        {
+          "target": "dungeon_infinity:mineshaft/humanoid_armor_misc",
+          "weight": 20
+        }
+      ]
+    },
+    {
+      "type": "modulargolems:humanoid_golem",
+      "sets": [
+        {
+          "target": "dungeon_infinity:mineshaft/humanoid_weapon_bow",
+          "weight": 30
+        }
+      ]
+    }
+  ],
+  "faction": "golemdungeons:factory_remnant",
+  "materials": {
+    "modulargolems:copper": {
+      "bonus": [],
+      "forbid": [],
+      "weight": 50
+    },
+    "modulargolems:gold": {
+      "bonus": [],
+      "forbid": [
+        "modulargolems:metal_golem_arm",
+        "modulargolems:humanoid_golem_arms"
+      ],
+      "weight": 10
+    },
+    "modulargolems:iron": {
+      "bonus": [],
+      "forbid": [],
+      "weight": 40
+    }
+  },
+  "types": {
+    "modulargolems:dog_golem": {
+      "bonus": [
+        {
+          "chance": 0.75,
+          "upgrade": "modulargolems:diamond"
+        },
+        {
+          "chance": 0.5,
+          "upgrade": "modulargolems:size_upgrade"
+        }
+      ],
+      "mountChance": 0.0,
+      "mounts": [],
+      "weight": 0
+    },
+    "modulargolems:humanoid_golem": {
+      "bonus": [],
+      "mountChance": 0.3,
+      "mounts": [
+        {
+          "mount": "minecraft:horse",
+          "weight": 50
+        },
+        {
+          "mount": "minecraft:skeleton_horse",
+          "weight": 50
+        },
+        {
+          "mount": "modulargolems:dog_golem",
+          "weight": 100
+        }
+      ],
+      "weight": 40
+    }
+  },
+  "upgradeChance": [
+    0.5,
+    0.5,
+    0.20000000298023224
+  ],
+  "upgrades": [
+    {
+      "upgrade": "minecraft:air",
+      "weight": 170
+    },
+    {
+      "upgrade": "modulargolems:quartz",
+      "weight": 100
+    },
+    {
+      "upgrade": "modulargolems:gold",
+      "weight": 30
+    },
+    {
+      "upgrade": "modulargolems:speed",
+      "weight": 100
+    },
+    {
+      "upgrade": "modulargolems:diamond",
+      "weight": 50
+    }
+  ]
+}
