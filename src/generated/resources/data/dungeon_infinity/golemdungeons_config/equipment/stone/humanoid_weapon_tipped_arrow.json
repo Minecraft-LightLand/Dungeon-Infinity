@@ -1,0 +1,77 @@
+{
+  "additional": {},
+  "items": {
+    "MAINHAND": [
+      {
+        "dropChance": 0.085,
+        "enchantLevel": 0,
+        "stack": {
+          "id": "minecraft:bow"
+        },
+        "weight": 100
+      },
+      {
+        "dropChance": 0.085,
+        "enchantLevel": 0,
+        "stack": {
+          "id": "minecraft:crossbow"
+        },
+        "weight": 100
+      }
+    ],
+    "OFFHAND": [
+      {
+        "dropChance": 0.085,
+        "enchantLevel": 0,
+        "stack": {
+          "components": {
+            "minecraft:potion_contents": {
+              "potion": "minecraft:infested"
+            }
+          },
+          "id": "minecraft:tipped_arrow"
+        },
+        "weight": 50
+      },
+      {
+        "dropChance": 0.085,
+        "enchantLevel": 0,
+        "stack": {
+          "components": {
+            "minecraft:potion_contents": {
+              "potion": "minecraft:oozing"
+            }
+          },
+          "id": "minecraft:tipped_arrow"
+        },
+        "weight": 50
+      },
+      {
+        "dropChance": 0.085,
+        "enchantLevel": 0,
+        "stack": {
+          "components": {
+            "minecraft:potion_contents": {
+              "potion": "minecraft:slowness"
+            }
+          },
+          "id": "minecraft:tipped_arrow"
+        },
+        "weight": 100
+      },
+      {
+        "dropChance": 0.085,
+        "enchantLevel": 0,
+        "stack": {
+          "components": {
+            "minecraft:potion_contents": {
+              "potion": "minecraft:weakness"
+            }
+          },
+          "id": "minecraft:tipped_arrow"
+        },
+        "weight": 100
+      }
+    ]
+  }
+}

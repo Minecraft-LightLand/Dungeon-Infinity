@@ -4,7 +4,7 @@
     "MAINHAND": [
       {
         "dropChance": 0.085,
-        "enchantLevel": 30,
+        "enchantLevel": 15,
         "stack": {
           "id": "minecraft:crossbow"
         },

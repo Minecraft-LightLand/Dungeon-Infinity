@@ -4,7 +4,7 @@
       "type": "minecraft:horse",
       "sets": [
         {
-          "target": "dungeon_infinity:mineshaft/horse_armor",
+          "target": "dungeon_infinity:stone/horse_armor",
           "weight": 20
         }
       ]
@@ -13,42 +13,7 @@
       "type": "minecraft:skeleton_horse",
       "sets": [
         {
-          "target": "dungeon_infinity:mineshaft/horse_armor",
-          "weight": 20
-        }
-      ]
-    },
-    {
-      "type": "modulargolems:metal_golem",
-      "sets": [
-        {
-          "target": "dungeon_infinity:mineshaft/large_armor_2",
-          "weight": 100
-        }
-      ]
-    },
-    {
-      "type": "modulargolems:metal_golem",
-      "sets": [
-        {
-          "target": "dungeon_infinity:mineshaft/large_weapon_2",
-          "weight": 100
-        }
-      ]
-    },
-    {
-      "type": "modulargolems:humanoid_golem",
-      "sets": [
-        {
-          "target": "dungeon_infinity:mineshaft/humanoid_armor_misc",
-          "weight": 100
-        },
-        {
-          "target": "dungeon_infinity:mineshaft/humanoid_armor_chain",
-          "weight": 20
-        },
-        {
-          "target": "dungeon_infinity:mineshaft/humanoid_armor_gold",
+          "target": "dungeon_infinity:stone/horse_armor",
           "weight": 20
         }
       ]
@@ -57,24 +22,17 @@
       "type": "modulargolems:humanoid_golem",
       "sets": [
         {
-          "target": "dungeon_infinity:mineshaft/humanoid_weapon_melee",
+          "target": "dungeon_infinity:stone/humanoid_armor_misc",
           "weight": 100
-        },
+        }
+      ]
+    },
+    {
+      "type": "modulargolems:humanoid_golem",
+      "sets": [
         {
-          "target": "dungeon_infinity:mineshaft/humanoid_weapon_rider_melee",
-          "weight": 30
-        },
-        {
-          "target": "dungeon_infinity:mineshaft/humanoid_weapon_bow",
-          "weight": 30
-        },
-        {
-          "target": "dungeon_infinity:mineshaft/humanoid_weapon_tipped_arrow",
-          "weight": 50
-        },
-        {
-          "target": "dungeon_infinity:mineshaft/humanoid_weapon_rocket_crossbow",
-          "weight": 20
+          "target": "dungeon_infinity:stone/humanoid_weapon_melee",
+          "weight": 100
         }
       ]
     }
@@ -100,7 +58,6 @@
       "weight": 40
     }
   },
-  "targetTrial": "dungeon_infinity:mineshaft/boss",
   "types": {
     "modulargolems:dog_golem": {
       "bonus": [
@@ -135,23 +92,10 @@
         }
       ],
       "weight": 40
-    },
-    "modulargolems:metal_golem": {
-      "bonus": [
-        {
-          "chance": 0.5,
-          "upgrade": "modulargolems:speed"
-        }
-      ],
-      "mountChance": 0.0,
-      "mounts": [],
-      "weight": 30
     }
   },
   "upgradeChance": [
-    0.5,
-    0.5,
-    0.20000000298023224
+    0.30000001192092896
   ],
   "upgrades": [
     {

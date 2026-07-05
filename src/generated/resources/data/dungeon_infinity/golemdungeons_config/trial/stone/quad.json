@@ -3,28 +3,74 @@
   "list": [
     [
       {
-        "num": 1,
-        "target": "golemdungeons:factory_humanoid_basic"
+        "num": 2,
+        "target": "dungeon_infinity:stone/large_2"
       },
       {
         "num": 1,
-        "target": "dungeon_infinity:early_ranged"
+        "target": "dungeon_infinity:stone/humanoid_melee"
+      },
+      {
+        "num": 1,
+        "target": "dungeon_infinity:stone/humanoid_ranged"
+      },
+      {
+        "num": 1,
+        "target": "dungeon_infinity:stone/humanoid_rocket"
       }
     ],
     [
       {
         "num": 2,
-        "target": "golemdungeons:factory_humanoid_basic"
+        "target": "dungeon_infinity:stone/large_2"
       },
       {
         "num": 1,
-        "target": "dungeon_infinity:early_ranged"
+        "target": "dungeon_infinity:stone/humanoid_melee"
+      },
+      {
+        "num": 1,
+        "target": "dungeon_infinity:stone/humanoid_rider_melee"
+      },
+      {
+        "num": 2,
+        "target": "dungeon_infinity:stone/humanoid_rider_ranged"
+      },
+      {
+        "num": 1,
+        "target": "dungeon_infinity:stone/humanoid_tipped"
+      }
+    ],
+    [
+      {
+        "num": 3,
+        "target": "dungeon_infinity:stone/large_2"
+      },
+      {
+        "num": 2,
+        "target": "dungeon_infinity:stone/humanoid_melee"
+      },
+      {
+        "num": 2,
+        "target": "dungeon_infinity:stone/humanoid_rider_melee"
+      },
+      {
+        "num": 3,
+        "target": "dungeon_infinity:stone/humanoid_rider_ranged"
+      },
+      {
+        "num": 1,
+        "target": "dungeon_infinity:stone/humanoid_rocket"
+      },
+      {
+        "num": 1,
+        "target": "dungeon_infinity:stone/humanoid_tipped"
       }
     ]
   ],
   "maxY": 6,
   "minY": -4,
-  "reward": "dungeon_infinity:maze/stone/quad",
+  "reward": "dungeon_infinity:maze/mineshaft/quad",
   "spawnCost": 1000,
   "triggerRange": 12
 }

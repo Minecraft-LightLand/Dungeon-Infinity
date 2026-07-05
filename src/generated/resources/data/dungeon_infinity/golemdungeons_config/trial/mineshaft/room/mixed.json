@@ -22,6 +22,10 @@
       },
       {
         "num": 1,
+        "target": "dungeon_infinity:mineshaft/humanoid_melee"
+      },
+      {
+        "num": 1,
         "target": "dungeon_infinity:mineshaft/humanoid_rider_melee"
       },
       {
@@ -37,6 +41,10 @@
       {
         "num": 2,
         "target": "dungeon_infinity:mineshaft/large_2"
+      },
+      {
+        "num": 1,
+        "target": "dungeon_infinity:mineshaft/humanoid_melee"
       },
       {
         "num": 1,

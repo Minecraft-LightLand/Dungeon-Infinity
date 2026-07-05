@@ -21,13 +21,26 @@
       "weight": 40
     }
   },
-  "types": {
-    "modulargolems:humanoid_golem": {
-      "bonus": [],
-      "mountChance": 0.0,
-      "mounts": [],
-      "weight": 40
+  "types": {},
+  "upgradeChance": [
+    0.10000000149011612
+  ],
+  "upgrades": [
+    {
+      "upgrade": "modulargolems:quartz",
+      "weight": 100
+    },
+    {
+      "upgrade": "modulargolems:gold",
+      "weight": 30
+    },
+    {
+      "upgrade": "modulargolems:speed",
+      "weight": 100
+    },
+    {
+      "upgrade": "modulargolems:diamond",
+      "weight": 50
     }
-  },
-  "upgrades": []
+  ]
 }

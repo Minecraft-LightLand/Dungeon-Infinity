@@ -1,0 +1,20 @@
+{
+  "additional": {},
+  "items": {
+    "BODY": [
+      {
+        "dropChance": 0.0,
+        "enchantLevel": 0,
+        "weight": 100
+      },
+      {
+        "dropChance": 0.085,
+        "enchantLevel": 0,
+        "stack": {
+          "id": "minecraft:wolf_armor"
+        },
+        "weight": 30
+      }
+    ]
+  }
+}

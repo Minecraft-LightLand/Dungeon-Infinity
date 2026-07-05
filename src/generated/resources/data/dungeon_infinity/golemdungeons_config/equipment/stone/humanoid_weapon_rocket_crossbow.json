@@ -4,19 +4,19 @@
     "MAINHAND": [
       {
         "dropChance": 0.085,
-        "enchantLevel": 15,
+        "enchantLevel": 0,
         "stack": {
-          "id": "minecraft:bow"
+          "id": "minecraft:crossbow"
         },
         "weight": 100
       }
     ],
     "OFFHAND": [
       {
-        "dropChance": 0.085,
-        "enchantLevel": 0,
+        "dropChance": 0.0,
+        "enchantLevel": 2,
         "stack": {
-          "id": "minecraft:arrow"
+          "id": "minecraft:firework_rocket"
         },
         "weight": 100
       }

@@ -1,0 +1,70 @@
+{
+  "additional": {},
+  "items": {
+    "MAINHAND": [
+      {
+        "dropChance": 0.085,
+        "enchantLevel": 0,
+        "stack": {
+          "id": "minecraft:wooden_axe"
+        },
+        "weight": 100
+      },
+      {
+        "dropChance": 0.085,
+        "enchantLevel": 0,
+        "stack": {
+          "id": "minecraft:wooden_sword"
+        },
+        "weight": 100
+      },
+      {
+        "dropChance": 0.085,
+        "enchantLevel": 0,
+        "stack": {
+          "id": "minecraft:stone_axe"
+        },
+        "weight": 100
+      },
+      {
+        "dropChance": 0.085,
+        "enchantLevel": 0,
+        "stack": {
+          "id": "minecraft:stone_sword"
+        },
+        "weight": 100
+      },
+      {
+        "dropChance": 0.085,
+        "enchantLevel": 0,
+        "stack": {
+          "id": "minecraft:stone_shovel"
+        },
+        "weight": 200
+      },
+      {
+        "dropChance": 0.085,
+        "enchantLevel": 0,
+        "stack": {
+          "id": "minecraft:stone_pickaxe"
+        },
+        "weight": 200
+      }
+    ],
+    "OFFHAND": [
+      {
+        "dropChance": 0.085,
+        "enchantLevel": 0,
+        "stack": {
+          "id": "minecraft:shield"
+        },
+        "weight": 20
+      },
+      {
+        "dropChance": 0.0,
+        "enchantLevel": 0,
+        "weight": 100
+      }
+    ]
+  }
+}

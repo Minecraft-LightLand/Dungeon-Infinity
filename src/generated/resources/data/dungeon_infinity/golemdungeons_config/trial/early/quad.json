@@ -1,0 +1,64 @@
+{
+  "generateChest": false,
+  "list": [
+    [
+      {
+        "num": 1,
+        "target": "dungeon_infinity:early/large_1"
+      },
+      {
+        "num": 1,
+        "target": "dungeon_infinity:early/humanoid_melee"
+      },
+      {
+        "num": 1,
+        "target": "dungeon_infinity:early/humanoid_ranged"
+      }
+    ],
+    [
+      {
+        "num": 2,
+        "target": "dungeon_infinity:early/large_1"
+      },
+      {
+        "num": 1,
+        "target": "dungeon_infinity:early/humanoid_melee"
+      },
+      {
+        "num": 1,
+        "target": "dungeon_infinity:early/humanoid_rider_melee"
+      },
+      {
+        "num": 2,
+        "target": "dungeon_infinity:early/humanoid_ranged"
+      }
+    ],
+    [
+      {
+        "num": 2,
+        "target": "dungeon_infinity:early/large_1"
+      },
+      {
+        "num": 1,
+        "target": "dungeon_infinity:early/humanoid_melee"
+      },
+      {
+        "num": 1,
+        "target": "dungeon_infinity:early/humanoid_rider_melee"
+      },
+      {
+        "num": 2,
+        "target": "dungeon_infinity:early/humanoid_ranged"
+      },
+      {
+        "num": 1,
+        "target": "dungeon_infinity:early/humanoid_rider_ranged"
+      }
+    ]
+  ],
+  "maxY": 6,
+  "minY": -4,
+  "reward": "dungeon_infinity:maze/mineshaft/quad",
+  "spawnCost": 1000,
+  "triggerRange": 12
+}

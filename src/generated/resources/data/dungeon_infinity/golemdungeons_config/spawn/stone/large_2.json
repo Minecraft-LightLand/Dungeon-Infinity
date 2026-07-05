@@ -4,7 +4,7 @@
       "type": "modulargolems:metal_golem",
       "sets": [
         {
-          "target": "dungeon_infinity:mineshaft/large_armor_2",
+          "target": "dungeon_infinity:stone/large_armor",
           "weight": 100
         }
       ]
@@ -13,7 +13,7 @@
       "type": "modulargolems:metal_golem",
       "sets": [
         {
-          "target": "dungeon_infinity:mineshaft/large_weapon_2",
+          "target": "dungeon_infinity:stone/large_weapon",
           "weight": 100
         }
       ]
@@ -40,24 +40,9 @@
       "weight": 40
     }
   },
-  "types": {
-    "modulargolems:metal_golem": {
-      "bonus": [
-        {
-          "chance": 0.5,
-          "upgrade": "modulargolems:speed"
-        }
-      ],
-      "mountChance": 0.0,
-      "mounts": [],
-      "weight": 30
-    }
-  },
+  "types": {},
   "upgradeChance": [
-    1.0,
-    0.699999988079071,
-    0.5,
-    0.5
+    0.30000001192092896
   ],
   "upgrades": [
     {

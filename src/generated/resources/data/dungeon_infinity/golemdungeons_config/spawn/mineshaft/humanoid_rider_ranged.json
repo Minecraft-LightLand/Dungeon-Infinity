@@ -118,10 +118,6 @@
   ],
   "upgrades": [
     {
-      "upgrade": "minecraft:air",
-      "weight": 170
-    },
-    {
       "upgrade": "modulargolems:quartz",
       "weight": 100
     },

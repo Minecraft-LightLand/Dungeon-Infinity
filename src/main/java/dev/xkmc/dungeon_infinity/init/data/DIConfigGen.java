@@ -61,12 +61,17 @@ public class DIConfigGen extends ConfigDataProvider {
 				.room("path/straight").variant("", 100).end()
 				.room("path/t_way").variant("", 80).variant("_waypoint", 20).end()
 				.room("path/cross").variant("", 90).variant("_waypoint", 10).end()
-				.spawn("room", 1, 0,
-						entry(1, 0, GolemSpawnData.STONE_ROOM_BASIC, 100),
-						entry(3, 0, GolemSpawnData.STONE_ROOM_LARGE, 100),
-						entry(3, 0, GolemSpawnData.STONE_ROOM_RIDER, 100),
-						entry(3, 0, GolemSpawnData.STONE_ROOM_RANGED, 100),
-						entry(5, 0, GolemSpawnData.STONE_ROOM_MIXED, 100)
+				.spawn("room", 1, 1,
+						entry(1, 15, GolemSpawnData.EARLY_ROOM_BASIC, 100),
+						entry(3, 15, GolemSpawnData.EARLY_ROOM_LARGE, 100),
+						entry(3, 15, GolemSpawnData.EARLY_ROOM_RIDER, 100),
+						entry(3, 15, GolemSpawnData.EARLY_ROOM_RANGED, 100),
+						entry(5, 15, GolemSpawnData.EARLY_ROOM_MIXED, 100),
+						entry(1, 14, GolemSpawnData.STONE_ROOM_BASIC, 100),
+						entry(3, 14, GolemSpawnData.STONE_ROOM_LARGE, 100),
+						entry(3, 14, GolemSpawnData.STONE_ROOM_RIDER, 100),
+						entry(3, 14, GolemSpawnData.STONE_ROOM_RANGED, 100),
+						entry(5, 14, GolemSpawnData.STONE_ROOM_MIXED, 100)
 				)
 				.room("room/end").variant("", 100).end()
 				.room("room/corner").variant("", 100).end()
@@ -78,7 +83,10 @@ public class DIConfigGen extends ConfigDataProvider {
 				.room("cross_stairs").variant("", 100).end()
 				.root("test")
 				.room("boss").variant("", 100).end()
-				.room("quad").variant("", 100, GolemSpawnData.STONE_QUAD).end()
+				.spawn("quad", 0, 1,
+						entry(4, 15, GolemSpawnData.EARLY_QUAD, 100),
+						entry(4, 14, GolemSpawnData.STONE_QUAD, 100)
+				).room("quad").variant("", 100).end().endSpawn()
 				.room("path/end").variants("workshop", "warehouse", "shop").end()
 				.end());
 

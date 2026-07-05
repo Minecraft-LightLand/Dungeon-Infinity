@@ -4,27 +4,19 @@
     "MAINHAND": [
       {
         "dropChance": 0.085,
-        "enchantLevel": 20,
+        "enchantLevel": 0,
+        "stack": {
+          "id": "minecraft:wooden_spear"
+        },
+        "weight": 200
+      },
+      {
+        "dropChance": 0.085,
+        "enchantLevel": 0,
         "stack": {
           "id": "minecraft:stone_spear"
         },
         "weight": 200
-      },
-      {
-        "dropChance": 0.085,
-        "enchantLevel": 20,
-        "stack": {
-          "id": "minecraft:iron_spear"
-        },
-        "weight": 200
-      },
-      {
-        "dropChance": 0.085,
-        "enchantLevel": 10,
-        "stack": {
-          "id": "minecraft:trident"
-        },
-        "weight": 100
       }
     ],
     "OFFHAND": [
@@ -39,7 +31,7 @@
       {
         "dropChance": 0.0,
         "enchantLevel": 0,
-        "weight": 50
+        "weight": 100
       }
     ]
   }
