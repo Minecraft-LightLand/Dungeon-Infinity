@@ -1,6 +1,8 @@
 {
   "advancements.dungeon_infinity.main.clear.description": "Defeat all rooms in a layer",
   "advancements.dungeon_infinity.main.clear.title": "The Collector",
+  "advancements.dungeon_infinity.main.conquerer.description": "Defeat a large cell of the bottom layer",
+  "advancements.dungeon_infinity.main.conquerer.title": "The Conquerer",
   "advancements.dungeon_infinity.main.defeat_100.description": "Defeat 100 rooms",
   "advancements.dungeon_infinity.main.defeat_100.title": "Experienced Adventurer",
   "advancements.dungeon_infinity.main.defeat_boss.description": "Defeat a boss room and unlock the next layer",

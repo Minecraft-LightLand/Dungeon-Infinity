@@ -10,7 +10,7 @@
   ],
   "maxY": 6,
   "minY": -4,
-  "reward": "dungeon_infinity:maze/mineshaft/room/basic",
+  "reward": "dungeon_infinity:maze/stone/room/basic",
   "spawnCost": 1000,
   "triggerRange": 12
 }

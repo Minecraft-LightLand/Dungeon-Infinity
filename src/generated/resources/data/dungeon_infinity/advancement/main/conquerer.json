@@ -1,0 +1,32 @@
+{
+  "parent": "dungeon_infinity:main/last",
+  "criteria": {
+    "0": {
+      "conditions": {
+        "height": 0,
+        "isBoss": false,
+        "isQuad": true,
+        "total": 0,
+        "wholeGraph": false
+      },
+      "trigger": "dungeon_infinity:defeat"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.dungeon_infinity.main.conquerer.description"
+    },
+    "icon": {
+      "id": "minecraft:sculk_shrieker"
+    },
+    "title": {
+      "translate": "advancements.dungeon_infinity.main.conquerer.title"
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

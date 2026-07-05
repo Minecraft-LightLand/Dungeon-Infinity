@@ -33,6 +33,8 @@ public class DIAdvGen {
 				"The Central Command", "Defeat a boss room and unlock the next layer");
 		var last = boss.create("last", Items.SCULK, one(EnterRoomTrigger.height(0).build()),
 				"The Bottom", "Enter the bottom layer of the maze");
+		last.create("conquerer", Items.SCULK_SHRIEKER, one(DefeatRoomTrigger.quad(0).build()),
+				"The Conquerer", "Defeat a large cell of the bottom layer");
 		root.build();
 	}
 
