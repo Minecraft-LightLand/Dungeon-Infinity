@@ -3,40 +3,82 @@
   "list": [
     [
       {
-        "num": 2,
-        "target": "golemdungeons:factory_large_2"
+        "num": 1,
+        "target": "dungeon_infinity:deepslate/large_1"
       },
       {
         "num": 1,
-        "target": "golemdungeons:piglin_humanoid_melee"
-      }
-    ],
-    [
-      {
-        "num": 1,
-        "target": "golemdungeons:factory_large_3"
+        "target": "dungeon_infinity:deepslate/humanoid_melee"
       },
       {
         "num": 2,
-        "target": "golemdungeons:piglin_humanoid_melee"
-      },
-      {
-        "num": 1,
-        "target": "golemdungeons:piglin_humanoid_ranged"
+        "target": "dungeon_infinity:deepslate/humanoid_ranged"
       }
     ],
     [
       {
         "num": 2,
-        "target": "golemdungeons:piglin_large_melee"
+        "target": "dungeon_infinity:deepslate/large_1"
       },
       {
-        "num": 3,
-        "target": "golemdungeons:piglin_humanoid_melee"
+        "num": 1,
+        "target": "dungeon_infinity:deepslate/humanoid_melee"
       },
+      {
+        "num": 1,
+        "target": "dungeon_infinity:deepslate/humanoid_rider_ranged"
+      },
+      {
+        "num": 1,
+        "target": "dungeon_infinity:deepslate/humanoid_ranged"
+      }
+    ],
+    [
       {
         "num": 2,
-        "target": "golemdungeons:piglin_humanoid_ranged"
+        "target": "dungeon_infinity:deepslate/large_2"
+      },
+      {
+        "num": 1,
+        "target": "dungeon_infinity:deepslate/humanoid_melee"
+      },
+      {
+        "num": 1,
+        "target": "dungeon_infinity:deepslate/humanoid_rider_melee"
+      },
+      {
+        "num": 1,
+        "target": "dungeon_infinity:deepslate/humanoid_rider_ranged"
+      },
+      {
+        "num": 1,
+        "target": "dungeon_infinity:deepslate/humanoid_tipped"
+      }
+    ],
+    [
+      {
+        "num": 2,
+        "target": "dungeon_infinity:deepslate/large_2"
+      },
+      {
+        "num": 1,
+        "target": "dungeon_infinity:deepslate/large_bow"
+      },
+      {
+        "num": 1,
+        "target": "dungeon_infinity:deepslate/humanoid_melee"
+      },
+      {
+        "num": 1,
+        "target": "dungeon_infinity:deepslate/humanoid_rider_melee"
+      },
+      {
+        "num": 1,
+        "target": "dungeon_infinity:deepslate/humanoid_rider_ranged"
+      },
+      {
+        "num": 1,
+        "target": "dungeon_infinity:deepslate/humanoid_tipped"
       }
     ]
   ],

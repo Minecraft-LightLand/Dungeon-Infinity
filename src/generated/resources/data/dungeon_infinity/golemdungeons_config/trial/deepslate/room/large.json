@@ -3,16 +3,44 @@
   "list": [
     [
       {
-        "num": 1,
-        "target": "golemdungeons:piglin_large_melee"
+        "num": 2,
+        "target": "dungeon_infinity:deepslate/large_1"
       },
       {
         "num": 1,
-        "target": "golemdungeons:factory_large_2"
+        "target": "dungeon_infinity:deepslate/humanoid_ranged"
+      }
+    ],
+    [
+      {
+        "num": 2,
+        "target": "dungeon_infinity:deepslate/large_2"
       },
       {
         "num": 1,
-        "target": "golemdungeons:piglin_humanoid_melee"
+        "target": "dungeon_infinity:deepslate/humanoid_ranged"
+      },
+      {
+        "num": 1,
+        "target": "dungeon_infinity:deepslate/humanoid_rocket"
+      }
+    ],
+    [
+      {
+        "num": 2,
+        "target": "dungeon_infinity:deepslate/large_2"
+      },
+      {
+        "num": 1,
+        "target": "dungeon_infinity:deepslate/large_3"
+      },
+      {
+        "num": 2,
+        "target": "dungeon_infinity:deepslate/humanoid_ranged"
+      },
+      {
+        "num": 1,
+        "target": "dungeon_infinity:deepslate/humanoid_rocket"
       }
     ]
   ],

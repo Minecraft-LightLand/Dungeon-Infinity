@@ -1,0 +1,35 @@
+{
+  "additional": {},
+  "items": {
+    "CHEST": [
+      {
+        "dropChance": 0.085,
+        "enchantLevel": 20,
+        "stack": {
+          "id": "modulargolems:wind_spirit_chestplate"
+        },
+        "weight": 20
+      }
+    ],
+    "HEAD": [
+      {
+        "dropChance": 0.085,
+        "enchantLevel": 20,
+        "stack": {
+          "id": "modulargolems:wind_spirit_helmet"
+        },
+        "weight": 20
+      }
+    ],
+    "LEGS": [
+      {
+        "dropChance": 0.085,
+        "enchantLevel": 20,
+        "stack": {
+          "id": "modulargolems:wind_spirit_shinguard"
+        },
+        "weight": 20
+      }
+    ]
+  }
+}

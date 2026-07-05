@@ -4,11 +4,31 @@
     [
       {
         "num": 1,
-        "target": "golemdungeons:piglin_large_shoulder"
+        "target": "dungeon_infinity:deepslate/humanoid_rider_melee"
+      },
+      {
+        "num": 1,
+        "target": "dungeon_infinity:deepslate/humanoid_rider_ranged"
+      }
+    ],
+    [
+      {
+        "num": 2,
+        "target": "dungeon_infinity:deepslate/humanoid_rider_melee"
       },
       {
         "num": 2,
-        "target": "golemdungeons:factory_humanoid_rocket"
+        "target": "dungeon_infinity:deepslate/humanoid_rider_ranged"
+      }
+    ],
+    [
+      {
+        "num": 3,
+        "target": "dungeon_infinity:deepslate/humanoid_rider_melee"
+      },
+      {
+        "num": 3,
+        "target": "dungeon_infinity:deepslate/humanoid_rider_ranged"
       }
     ]
   ],

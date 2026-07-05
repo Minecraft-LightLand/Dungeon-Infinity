@@ -3,64 +3,76 @@
   "list": [
     [
       {
-        "num": 1,
-        "target": "golemdungeons:factory_large_2"
+        "num": 2,
+        "target": "dungeon_infinity:copper/large_2"
       },
       {
         "num": 1,
-        "target": "golemdungeons:factory_humanoid_melee"
+        "target": "dungeon_infinity:copper/humanoid_melee"
       },
       {
         "num": 1,
-        "target": "golemdungeons:factory_humanoid_tipped"
+        "target": "dungeon_infinity:copper/humanoid_ranged"
       },
       {
         "num": 1,
-        "target": "golemdungeons:factory_humanoid_rocket"
+        "target": "dungeon_infinity:copper/humanoid_rocket"
       }
     ],
     [
       {
         "num": 2,
-        "target": "golemdungeons:factory_large_2"
-      },
-      {
-        "num": 2,
-        "target": "golemdungeons:factory_humanoid_melee"
-      },
-      {
-        "num": 2,
-        "target": "golemdungeons:factory_humanoid_ranged"
+        "target": "dungeon_infinity:copper/large_3"
       },
       {
         "num": 1,
-        "target": "golemdungeons:factory_humanoid_tipped"
+        "target": "dungeon_infinity:copper/large_bow"
       },
       {
         "num": 1,
-        "target": "golemdungeons:factory_humanoid_rocket"
+        "target": "dungeon_infinity:copper/humanoid_melee"
+      },
+      {
+        "num": 1,
+        "target": "dungeon_infinity:copper/humanoid_rider_melee"
+      },
+      {
+        "num": 2,
+        "target": "dungeon_infinity:copper/humanoid_rider_ranged"
+      },
+      {
+        "num": 1,
+        "target": "dungeon_infinity:copper/humanoid_tipped"
       }
     ],
     [
       {
+        "num": 3,
+        "target": "dungeon_infinity:copper/large_3"
+      },
+      {
+        "num": 2,
+        "target": "dungeon_infinity:copper/large_bow"
+      },
+      {
         "num": 1,
-        "target": "golemdungeons:factory_large_3"
+        "target": "dungeon_infinity:copper/humanoid_melee"
       },
       {
         "num": 2,
-        "target": "golemdungeons:factory_humanoid_melee"
+        "target": "dungeon_infinity:copper/humanoid_rider_melee"
       },
       {
         "num": 2,
-        "target": "golemdungeons:factory_humanoid_ranged"
+        "target": "dungeon_infinity:copper/humanoid_rider_ranged"
       },
       {
-        "num": 2,
-        "target": "golemdungeons:factory_humanoid_tipped"
+        "num": 1,
+        "target": "dungeon_infinity:copper/humanoid_rocket"
       },
       {
-        "num": 2,
-        "target": "golemdungeons:factory_humanoid_rocket"
+        "num": 1,
+        "target": "dungeon_infinity:copper/humanoid_tipped"
       }
     ]
   ],

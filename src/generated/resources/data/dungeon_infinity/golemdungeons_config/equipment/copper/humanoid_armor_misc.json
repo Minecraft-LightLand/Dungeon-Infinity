@@ -1,0 +1,109 @@
+{
+  "additional": {},
+  "items": {
+    "CHEST": [
+      {
+        "dropChance": 0.085,
+        "enchantLevel": 30,
+        "stack": {
+          "id": "minecraft:iron_chestplate"
+        },
+        "weight": 50
+      },
+      {
+        "dropChance": 0.085,
+        "enchantLevel": 30,
+        "stack": {
+          "id": "minecraft:golden_chestplate"
+        },
+        "weight": 50
+      },
+      {
+        "dropChance": 0.085,
+        "enchantLevel": 20,
+        "stack": {
+          "id": "minecraft:copper_chestplate"
+        },
+        "weight": 50
+      }
+    ],
+    "FEET": [
+      {
+        "dropChance": 0.085,
+        "enchantLevel": 30,
+        "stack": {
+          "id": "minecraft:iron_boots"
+        },
+        "weight": 50
+      },
+      {
+        "dropChance": 0.085,
+        "enchantLevel": 30,
+        "stack": {
+          "id": "minecraft:golden_boots"
+        },
+        "weight": 50
+      },
+      {
+        "dropChance": 0.085,
+        "enchantLevel": 20,
+        "stack": {
+          "id": "minecraft:copper_boots"
+        },
+        "weight": 50
+      }
+    ],
+    "HEAD": [
+      {
+        "dropChance": 0.085,
+        "enchantLevel": 30,
+        "stack": {
+          "id": "minecraft:iron_helmet"
+        },
+        "weight": 50
+      },
+      {
+        "dropChance": 0.085,
+        "enchantLevel": 30,
+        "stack": {
+          "id": "minecraft:golden_helmet"
+        },
+        "weight": 50
+      },
+      {
+        "dropChance": 0.085,
+        "enchantLevel": 20,
+        "stack": {
+          "id": "minecraft:copper_helmet"
+        },
+        "weight": 50
+      }
+    ],
+    "LEGS": [
+      {
+        "dropChance": 0.085,
+        "enchantLevel": 30,
+        "stack": {
+          "id": "minecraft:iron_leggings"
+        },
+        "weight": 50
+      },
+      {
+        "dropChance": 0.085,
+        "enchantLevel": 30,
+        "stack": {
+          "id": "minecraft:golden_leggings"
+        },
+        "weight": 50
+      },
+      {
+        "dropChance": 0.085,
+        "enchantLevel": 20,
+        "stack": {
+          "id": "minecraft:copper_leggings"
+        },
+        "weight": 50
+      }
+    ]
+  }
+}

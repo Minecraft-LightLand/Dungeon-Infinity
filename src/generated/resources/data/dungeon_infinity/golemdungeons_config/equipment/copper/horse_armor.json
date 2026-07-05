@@ -1,0 +1,31 @@
+{
+  "additional": {},
+  "items": {
+    "BODY": [
+      {
+        "dropChance": 0.085,
+        "enchantLevel": 0,
+        "stack": {
+          "id": "minecraft:iron_horse_armor"
+        },
+        "weight": 40
+      },
+      {
+        "dropChance": 0.085,
+        "enchantLevel": 0,
+        "stack": {
+          "id": "minecraft:golden_horse_armor"
+        },
+        "weight": 30
+      },
+      {
+        "dropChance": 0.085,
+        "enchantLevel": 0,
+        "stack": {
+          "id": "minecraft:diamond_horse_armor"
+        },
+        "weight": 20
+      }
+    ]
+  }
+}

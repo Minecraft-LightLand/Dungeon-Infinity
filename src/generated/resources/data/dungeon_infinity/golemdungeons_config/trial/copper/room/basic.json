@@ -3,12 +3,16 @@
   "list": [
     [
       {
-        "num": 2,
-        "target": "golemdungeons:factory_humanoid_melee"
+        "num": 1,
+        "target": "dungeon_infinity:copper/large_1"
       },
       {
-        "num": 2,
-        "target": "golemdungeons:factory_humanoid_ranged"
+        "num": 1,
+        "target": "dungeon_infinity:copper/humanoid_melee"
+      },
+      {
+        "num": 1,
+        "target": "dungeon_infinity:copper/humanoid_ranged"
       }
     ]
   ],

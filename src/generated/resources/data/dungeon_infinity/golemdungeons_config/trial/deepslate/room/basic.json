@@ -3,12 +3,16 @@
   "list": [
     [
       {
-        "num": 2,
-        "target": "golemdungeons:piglin_humanoid_melee"
+        "num": 1,
+        "target": "dungeon_infinity:deepslate/large_1"
       },
       {
-        "num": 2,
-        "target": "golemdungeons:factory_humanoid_basic"
+        "num": 1,
+        "target": "dungeon_infinity:deepslate/humanoid_melee"
+      },
+      {
+        "num": 1,
+        "target": "dungeon_infinity:deepslate/humanoid_ranged"
       }
     ]
   ],

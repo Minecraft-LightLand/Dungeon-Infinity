@@ -1,0 +1,47 @@
+{
+  "additional": {},
+  "items": {
+    "MAINHAND": [
+      {
+        "dropChance": 0.085,
+        "enchantLevel": 30,
+        "stack": {
+          "id": "modulargolems:netherite_golem_axe"
+        },
+        "weight": 100
+      },
+      {
+        "dropChance": 0.085,
+        "enchantLevel": 30,
+        "stack": {
+          "id": "modulargolems:netherite_golem_sword"
+        },
+        "weight": 100
+      },
+      {
+        "dropChance": 0.085,
+        "enchantLevel": 30,
+        "stack": {
+          "id": "modulargolems:netherite_golem_spear"
+        },
+        "weight": 100
+      },
+      {
+        "dropChance": 0.085,
+        "enchantLevel": 20,
+        "stack": {
+          "id": "golemdungeons:ancient_forge"
+        },
+        "weight": 50
+      },
+      {
+        "dropChance": 0.085,
+        "enchantLevel": 20,
+        "stack": {
+          "id": "golemdungeons:flame_sword"
+        },
+        "weight": 50
+      }
+    ]
+  }
+}

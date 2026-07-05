@@ -1,0 +1,24 @@
+{
+  "generateChest": false,
+  "list": [
+    [
+      {
+        "num": 1,
+        "target": "dungeon_infinity:deepest/large_3"
+      },
+      {
+        "num": 1,
+        "target": "dungeon_infinity:deepest/humanoid_melee"
+      },
+      {
+        "num": 1,
+        "target": "dungeon_infinity:deepest/humanoid_ranged"
+      }
+    ]
+  ],
+  "maxY": 6,
+  "minY": -4,
+  "reward": "dungeon_infinity:maze/sculk/room/basic",
+  "spawnCost": 1000,
+  "triggerRange": 12
+}

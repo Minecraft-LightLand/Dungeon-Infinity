@@ -14,13 +14,21 @@
       ],
       "sizeScale": 0
     },
-    "dungeon_infinity:sculk/quad": {
-      "depthScale": 0,
+    "sculk:quad": {
+      "depthScale": 1,
       "list": [
         {
           "id": "dungeon_infinity:sculk/quad",
           "point": {
-            "size": 0,
+            "size": 4,
+            "y": 1
+          },
+          "weight": 100
+        },
+        {
+          "id": "dungeon_infinity:deepest/quad",
+          "point": {
+            "size": 4,
             "y": 0
           },
           "weight": 100
@@ -29,13 +37,13 @@
       "sizeScale": 0
     },
     "sculk:room": {
-      "depthScale": 0,
+      "depthScale": 1,
       "list": [
         {
           "id": "dungeon_infinity:sculk/room/basic",
           "point": {
             "size": 1,
-            "y": 0
+            "y": 1
           },
           "weight": 100
         },
@@ -43,7 +51,7 @@
           "id": "dungeon_infinity:sculk/room/large",
           "point": {
             "size": 3,
-            "y": 0
+            "y": 1
           },
           "weight": 100
         },
@@ -51,7 +59,7 @@
           "id": "dungeon_infinity:sculk/room/rider",
           "point": {
             "size": 3,
-            "y": 0
+            "y": 1
           },
           "weight": 100
         },
@@ -59,12 +67,52 @@
           "id": "dungeon_infinity:sculk/room/ranged",
           "point": {
             "size": 3,
-            "y": 0
+            "y": 1
           },
           "weight": 100
         },
         {
           "id": "dungeon_infinity:sculk/room/mixed",
+          "point": {
+            "size": 5,
+            "y": 1
+          },
+          "weight": 100
+        },
+        {
+          "id": "dungeon_infinity:deepest/room/basic",
+          "point": {
+            "size": 1,
+            "y": 0
+          },
+          "weight": 100
+        },
+        {
+          "id": "dungeon_infinity:deepest/room/large",
+          "point": {
+            "size": 3,
+            "y": 0
+          },
+          "weight": 100
+        },
+        {
+          "id": "dungeon_infinity:deepest/room/rider",
+          "point": {
+            "size": 3,
+            "y": 0
+          },
+          "weight": 100
+        },
+        {
+          "id": "dungeon_infinity:deepest/room/ranged",
+          "point": {
+            "size": 3,
+            "y": 0
+          },
+          "weight": 100
+        },
+        {
+          "id": "dungeon_infinity:deepest/room/mixed",
           "point": {
             "size": 5,
             "y": 0
@@ -138,7 +186,7 @@
     "quad": {
       "sculk:": {
         "path": "test/quad",
-        "spawn": "dungeon_infinity:sculk/quad",
+        "spawn": "sculk:quad",
         "weight": 100
       }
     },
