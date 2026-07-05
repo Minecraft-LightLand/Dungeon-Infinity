@@ -43,6 +43,14 @@ public class DefeatRoomTrigger extends BaseCriterion<DefeatRoomTrigger.Ins, Defe
 		return ans;
 	}
 
+
+	public static Ins quad(int h) {
+		Ins ans = new Ins();
+		ans.isQuad = true;
+		ans.height = h;
+		return ans;
+	}
+
 	public static Ins whole() {
 		Ins ans = new Ins();
 		ans.wholeGraph = true;

@@ -226,39 +226,39 @@ public class StoneGolemSpawn extends AbstractGolemSpawn {
 		{
 
 			// BASIC: 基础混编
-			map.add(GolemDungeons.TRIAL, GolemSpawnData.STONE_ROOM_BASIC, new TrialConfig().setReward(MazeRoomLootGen.MINESHAFT_ROOM_BASIC)
+			map.add(GolemDungeons.TRIAL, GolemSpawnData.STONE_ROOM_BASIC, new TrialConfig().setReward(MazeRoomLootGen.STONE_ROOM_BASIC)
 					.add(of(LARGE_1, 1), of(HUMANOID_MELEE, 1), of(HUMANOID_RANGED, 1))
 			);
 
 			// LARGE: 大型兵+远程护卫
-			map.add(GolemDungeons.TRIAL, GolemSpawnData.STONE_ROOM_LARGE, new TrialConfig().setReward(MazeRoomLootGen.MINESHAFT_ROOM_LARGE)
+			map.add(GolemDungeons.TRIAL, GolemSpawnData.STONE_ROOM_LARGE, new TrialConfig().setReward(MazeRoomLootGen.STONE_ROOM_LARGE)
 					.add(of(LARGE_1, 2), of(HUMANOID_RANGED, 1))
 					.add(of(LARGE_2, 2), of(HUMANOID_RANGED, 1), of(HUMANOID_ROCKET, 1))
 					.add(of(LARGE_2, 3), of(HUMANOID_RANGED, 2), of(HUMANOID_ROCKET, 1))
 			);
 
 			// RANGED: 远程火力网+火箭兵
-			map.add(GolemDungeons.TRIAL, GolemSpawnData.STONE_ROOM_RANGED, new TrialConfig().setReward(MazeRoomLootGen.MINESHAFT_ROOM_RANGED)
+			map.add(GolemDungeons.TRIAL, GolemSpawnData.STONE_ROOM_RANGED, new TrialConfig().setReward(MazeRoomLootGen.STONE_ROOM_RANGED)
 					.add(of(LARGE_1, 1), of(HUMANOID_RANGED, 2))
 					.add(of(LARGE_2, 1), of(HUMANOID_RANGED, 1), of(HUMANOID_ROCKET, 1), of(HUMANOID_TIPPED, 1))
 					.add(of(LARGE_2, 2), of(HUMANOID_RIDER_RANGED, 2), of(HUMANOID_ROCKET, 1), of(HUMANOID_TIPPED, 1))
 			);
 
 			// RIDER: 火箭骑兵+药水兵
-			map.add(GolemDungeons.TRIAL, GolemSpawnData.STONE_ROOM_RIDER, new TrialConfig().setReward(MazeRoomLootGen.MINESHAFT_ROOM_RIDER)
+			map.add(GolemDungeons.TRIAL, GolemSpawnData.STONE_ROOM_RIDER, new TrialConfig().setReward(MazeRoomLootGen.STONE_ROOM_RIDER)
 					.add(of(HUMANOID_RIDER_MELEE, 1), of(HUMANOID_RIDER_RANGED, 1))
 					.add(of(HUMANOID_RIDER_MELEE, 2), of(HUMANOID_RIDER_RANGED, 2))
 					.add(of(HUMANOID_RIDER_MELEE, 3), of(HUMANOID_RIDER_RANGED, 3))
 			);
 
 			// MIXED: 全兵种混合
-			map.add(GolemDungeons.TRIAL, GolemSpawnData.STONE_ROOM_MIXED, new TrialConfig().setReward(MazeRoomLootGen.MINESHAFT_ROOM_MIXED)
+			map.add(GolemDungeons.TRIAL, GolemSpawnData.STONE_ROOM_MIXED, new TrialConfig().setReward(MazeRoomLootGen.STONE_ROOM_MIXED)
 					.add(of(LARGE_1, 1), of(HUMANOID_MELEE, 1), of(HUMANOID_RANGED, 1))
 					.add(of(LARGE_2, 1), of(HUMANOID_RIDER_MELEE, 1), of(HUMANOID_RANGED, 1), of(HUMANOID_ROCKET, 1))
 					.add(of(LARGE_2, 2), of(HUMANOID_MELEE, 1), of(HUMANOID_RIDER_MELEE, 1), of(HUMANOID_RIDER_RANGED, 2), of(HUMANOID_TIPPED, 1))
 			);
 
-			map.add(GolemDungeons.TRIAL, GolemSpawnData.STONE_QUAD, new TrialConfig().setReward(MazeRoomLootGen.MINESHAFT_QUAD)
+			map.add(GolemDungeons.TRIAL, GolemSpawnData.STONE_QUAD, new TrialConfig().setReward(MazeRoomLootGen.STONE_QUAD)
 					.add(of(LARGE_2, 2), of(HUMANOID_MELEE, 1), of(HUMANOID_RANGED, 1), of(HUMANOID_ROCKET, 1))
 					.add(of(LARGE_2, 2), of(HUMANOID_MELEE, 1), of(HUMANOID_RIDER_MELEE, 1), of(HUMANOID_RIDER_RANGED, 2), of(HUMANOID_TIPPED, 1))
 					.add(of(LARGE_2, 3), of(HUMANOID_MELEE, 2), of(HUMANOID_RIDER_MELEE, 2), of(HUMANOID_RIDER_RANGED, 3), of(HUMANOID_ROCKET, 1), of(HUMANOID_TIPPED, 1))
