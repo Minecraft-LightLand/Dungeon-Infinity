@@ -1,0 +1,88 @@
+{
+  "equipments": [
+    {
+      "type": "modulargolems:humanoid_golem",
+      "sets": [
+        {
+          "target": "dungeon_infinity:early/humanoid_armor_misc",
+          "weight": 20
+        }
+      ]
+    },
+    {
+      "type": "modulargolems:humanoid_golem",
+      "sets": [
+        {
+          "target": "dungeon_infinity:early/humanoid_weapon_melee",
+          "weight": 20
+        },
+        {
+          "target": "dungeon_infinity:early/humanoid_weapon_rider_melee",
+          "weight": 40
+        }
+      ]
+    }
+  ],
+  "faction": "golemdungeons:factory_remnant",
+  "materials": {
+    "modulargolems:copper": {
+      "bonus": [],
+      "forbid": [],
+      "weight": 60
+    },
+    "modulargolems:iron": {
+      "bonus": [],
+      "forbid": [],
+      "weight": 30
+    }
+  },
+  "types": {
+    "modulargolems:dog_golem": {
+      "bonus": [
+        {
+          "chance": 0.5,
+          "upgrade": "modulargolems:speed"
+        },
+        {
+          "chance": 1.0,
+          "upgrade": "modulargolems:size_upgrade"
+        }
+      ],
+      "mountChance": 0.0,
+      "mounts": [],
+      "weight": 0
+    },
+    "modulargolems:humanoid_golem": {
+      "bonus": [],
+      "mountChance": 1.0,
+      "mounts": [
+        {
+          "mount": "minecraft:horse",
+          "weight": 50
+        },
+        {
+          "mount": "minecraft:skeleton_horse",
+          "weight": 50
+        },
+        {
+          "mount": "modulargolems:dog_golem",
+          "weight": 100
+        }
+      ],
+      "weight": 40
+    }
+  },
+  "upgradeChance": [
+    0.10000000149011612
+  ],
+  "upgrades": [
+    {
+      "upgrade": "modulargolems:quartz",
+      "weight": 100
+    },
+    {
+      "upgrade": "modulargolems:speed",
+      "weight": 100
+    }
+  ]
+}

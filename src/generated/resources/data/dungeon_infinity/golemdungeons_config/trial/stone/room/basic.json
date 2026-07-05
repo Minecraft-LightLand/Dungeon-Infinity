@@ -3,18 +3,22 @@
   "list": [
     [
       {
-        "num": 2,
-        "target": "golemdungeons:factory_humanoid_basic"
+        "num": 1,
+        "target": "dungeon_infinity:stone/large_1"
       },
       {
         "num": 1,
-        "target": "dungeon_infinity:early_ranged"
+        "target": "dungeon_infinity:stone/humanoid_melee"
+      },
+      {
+        "num": 1,
+        "target": "dungeon_infinity:stone/humanoid_ranged"
       }
     ]
   ],
   "maxY": 6,
   "minY": -4,
-  "reward": "dungeon_infinity:maze/stone/room/basic",
+  "reward": "dungeon_infinity:maze/mineshaft/room/basic",
   "spawnCost": 1000,
   "triggerRange": 12
 }

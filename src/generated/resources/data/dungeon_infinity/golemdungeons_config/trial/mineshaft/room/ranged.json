@@ -3,16 +3,48 @@
   "list": [
     [
       {
-        "num": 2,
-        "target": "golemdungeons:factory_humanoid_melee"
+        "num": 1,
+        "target": "dungeon_infinity:mineshaft/large_1"
       },
       {
-        "num": 3,
-        "target": "dungeon_infinity:early_ranged"
+        "num": 2,
+        "target": "dungeon_infinity:mineshaft/humanoid_ranged"
+      }
+    ],
+    [
+      {
+        "num": 1,
+        "target": "dungeon_infinity:mineshaft/large_2"
       },
       {
         "num": 1,
-        "target": "golemdungeons:factory_humanoid_rocket"
+        "target": "dungeon_infinity:mineshaft/humanoid_ranged"
+      },
+      {
+        "num": 1,
+        "target": "dungeon_infinity:mineshaft/humanoid_rocket"
+      },
+      {
+        "num": 1,
+        "target": "dungeon_infinity:mineshaft/humanoid_tipped"
+      }
+    ],
+    [
+      {
+        "num": 2,
+        "target": "dungeon_infinity:mineshaft/large_2"
+      },
+      {
+        "num": 2,
+        "target": "dungeon_infinity:mineshaft/humanoid_rider_ranged"
+      },
+      {
+        "num": 1,
+        "target": "dungeon_infinity:mineshaft/humanoid_rocket"
+      },
+      {
+        "num": 1,
+        "target": "dungeon_infinity:mineshaft/humanoid_tipped"
       }
     ]
   ],

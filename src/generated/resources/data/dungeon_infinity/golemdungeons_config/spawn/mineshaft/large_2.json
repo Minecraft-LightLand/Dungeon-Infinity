@@ -1,0 +1,63 @@
+{
+  "equipments": [
+    {
+      "type": "modulargolems:metal_golem",
+      "sets": [
+        {
+          "target": "dungeon_infinity:mineshaft/large_armor_1",
+          "weight": 100
+        }
+      ]
+    },
+    {
+      "type": "modulargolems:metal_golem",
+      "sets": [
+        {
+          "target": "dungeon_infinity:mineshaft/large_weapon_1",
+          "weight": 100
+        }
+      ]
+    }
+  ],
+  "faction": "golemdungeons:factory_remnant",
+  "materials": {
+    "modulargolems:copper": {
+      "bonus": [],
+      "forbid": [],
+      "weight": 50
+    },
+    "modulargolems:gold": {
+      "bonus": [
+        {
+          "chance": 1.0,
+          "upgrade": "modulargolems:speed"
+        }
+      ],
+      "forbid": [
+        "modulargolems:metal_golem_arm",
+        "modulargolems:humanoid_golem_arms"
+      ],
+      "weight": 10
+    },
+    "modulargolems:iron": {
+      "bonus": [],
+      "forbid": [],
+      "weight": 40
+    }
+  },
+  "types": {
+    "modulargolems:metal_golem": {
+      "bonus": [],
+      "mountChance": 0.0,
+      "mounts": [],
+      "weight": 30
+    }
+  },
+  "upgradeChance": [
+    0.699999988079071,
+    0.5,
+    0.5,
+    0.5
+  ],
+  "upgrades": []
+}

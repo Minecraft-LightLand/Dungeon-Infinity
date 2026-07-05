@@ -3,18 +3,38 @@
   "list": [
     [
       {
-        "num": 2,
-        "target": "golemdungeons:factory_humanoid_tipped"
+        "num": 1,
+        "target": "dungeon_infinity:stone/humanoid_rider_melee"
       },
       {
         "num": 1,
-        "target": "golemdungeons:factory_humanoid_rocket"
+        "target": "dungeon_infinity:stone/humanoid_rider_ranged"
+      }
+    ],
+    [
+      {
+        "num": 2,
+        "target": "dungeon_infinity:stone/humanoid_rider_melee"
+      },
+      {
+        "num": 2,
+        "target": "dungeon_infinity:stone/humanoid_rider_ranged"
+      }
+    ],
+    [
+      {
+        "num": 3,
+        "target": "dungeon_infinity:stone/humanoid_rider_melee"
+      },
+      {
+        "num": 3,
+        "target": "dungeon_infinity:stone/humanoid_rider_ranged"
       }
     ]
   ],
   "maxY": 6,
   "minY": -4,
-  "reward": "dungeon_infinity:maze/stone/room/rider",
+  "reward": "dungeon_infinity:maze/mineshaft/room/rider",
   "spawnCost": 1000,
   "triggerRange": 12
 }

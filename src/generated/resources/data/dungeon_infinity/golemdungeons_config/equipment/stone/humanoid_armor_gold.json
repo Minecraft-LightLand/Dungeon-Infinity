@@ -1,0 +1,45 @@
+{
+  "additional": {},
+  "items": {
+    "CHEST": [
+      {
+        "dropChance": 0.085,
+        "enchantLevel": 15,
+        "stack": {
+          "id": "minecraft:golden_chestplate"
+        },
+        "weight": 50
+      }
+    ],
+    "FEET": [
+      {
+        "dropChance": 0.085,
+        "enchantLevel": 15,
+        "stack": {
+          "id": "minecraft:golden_boots"
+        },
+        "weight": 50
+      }
+    ],
+    "HEAD": [
+      {
+        "dropChance": 0.085,
+        "enchantLevel": 15,
+        "stack": {
+          "id": "minecraft:golden_helmet"
+        },
+        "weight": 50
+      }
+    ],
+    "LEGS": [
+      {
+        "dropChance": 0.085,
+        "enchantLevel": 15,
+        "stack": {
+          "id": "minecraft:golden_leggings"
+        },
+        "weight": 50
+      }
+    ]
+  }
+}

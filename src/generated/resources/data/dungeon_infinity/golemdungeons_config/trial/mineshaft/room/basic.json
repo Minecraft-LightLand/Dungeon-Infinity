@@ -3,12 +3,16 @@
   "list": [
     [
       {
-        "num": 2,
-        "target": "golemdungeons:factory_humanoid_melee"
+        "num": 1,
+        "target": "dungeon_infinity:mineshaft/large_1"
       },
       {
-        "num": 2,
-        "target": "dungeon_infinity:early_ranged"
+        "num": 1,
+        "target": "dungeon_infinity:mineshaft/humanoid_melee"
+      },
+      {
+        "num": 1,
+        "target": "dungeon_infinity:mineshaft/humanoid_ranged"
       }
     ]
   ],

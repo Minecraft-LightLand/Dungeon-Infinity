@@ -1,0 +1,31 @@
+{
+  "additional": {},
+  "items": {
+    "MAINHAND": [
+      {
+        "dropChance": 0.085,
+        "enchantLevel": 20,
+        "stack": {
+          "id": "modulargolems:iron_golem_axe"
+        },
+        "weight": 50
+      },
+      {
+        "dropChance": 0.085,
+        "enchantLevel": 20,
+        "stack": {
+          "id": "modulargolems:iron_golem_sword"
+        },
+        "weight": 50
+      },
+      {
+        "dropChance": 0.085,
+        "enchantLevel": 20,
+        "stack": {
+          "id": "modulargolems:iron_golem_spear"
+        },
+        "weight": 50
+      }
+    ]
+  }
+}
