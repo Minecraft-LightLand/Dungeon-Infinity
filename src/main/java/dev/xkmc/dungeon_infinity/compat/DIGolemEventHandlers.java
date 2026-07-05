@@ -57,6 +57,7 @@ public class DIGolemEventHandlers {
 	@SubscribeEvent
 	public static void onBattleStart(MazeRoomBattleStartEvent event) {
 		var pl = event.getEntity();
+		var center = event.getIns().holder.getSpawns().getFirst();
 		for (var e : pl.level().getEntities(pl, pl.getBoundingBox().inflate(35, 16, 35))) {
 			if (e instanceof AbstractGolemEntity<?, ?> g) {
 				if (g.getOwnerPlayer() == pl) {
@@ -69,7 +70,7 @@ public class DIGolemEventHandlers {
 					} else root = g;
 					if (root != null) {
 						var r = pl.getRandom();
-						var pos = pl.position().add(r.nextFloat() * 2 - 1, 0, r.nextFloat() * 2 - 1);
+						var pos = center.getCenter().add(r.nextFloat() * 2 - 1, 0, r.nextFloat() * 2 - 1);
 						root.teleportTo(pos.x, pos.y, pos.z);
 					}
 				}

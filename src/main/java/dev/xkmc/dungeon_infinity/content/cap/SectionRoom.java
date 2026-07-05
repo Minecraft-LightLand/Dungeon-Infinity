@@ -91,7 +91,7 @@ public class SectionRoom {
 	public MobRoomHolder getOrCreateActiveMobRoomInstance() {
 		if (ins != null) return ins;
 		var room = findRoom();
-		ins = new MobRoomHolder(room);
+		ins = new MobRoomHolder(this, room);
 		return ins;
 	}
 
