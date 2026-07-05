@@ -18,7 +18,7 @@ public class MobRoomHolder {
 	public final List<SectionRoom> list = new ArrayList<>();
 	public final SectionRoom holder;
 
-	public MobRoomHolder(@Nullable SectionRoom[][][] rooms) {
+	public MobRoomHolder(SectionRoom root, @Nullable SectionRoom[][][] rooms) {
 		this.rooms = rooms;
 		for (SectionRoom[][] ess : rooms) {
 			for (SectionRoom[] es : ess) {
@@ -29,18 +29,12 @@ public class MobRoomHolder {
 				}
 			}
 		}
-		SectionRoom spawner = null;
+		SectionRoom spawner;
 		if (rooms[0].length > 1) {
 			spawner = rooms[1][0][1];
 			holder = rooms[1][1][1];
 		} else {
-			for (var e : list) {
-				if ((e.getCell() & 32) != 0) {
-					spawner = e;
-					break;
-				}
-			}
-			if (spawner == null) spawner = list.getFirst();
+			spawner = root;
 			holder = spawner;
 		}
 		if (holder.data == null) {
