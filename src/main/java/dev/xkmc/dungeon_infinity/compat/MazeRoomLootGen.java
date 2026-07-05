@@ -84,6 +84,10 @@ public class MazeRoomLootGen {
 		return LootItem.lootTableItem(item).setWeight(weight);
 	}
 
+	private static LootPoolSingletonContainer.Builder<?> weight(ItemLike item, int min, int max, int weight) {
+		return LootTableTemplate.getItem(item.asItem(), min, max).setWeight(weight);
+	}
+
 	public static void genLoot(RegistrateLootTableProvider pvd) {
 
 		// ==================== STONE ====================
@@ -92,8 +96,8 @@ public class MazeRoomLootGen {
 		pvd.addLootAction(LootContextParamSets.CHEST, sub -> sub.accept(STONE_ROOM_BASIC,
 				LootTable.lootTable()
 						.withPool(LootPool.lootPool()
-								.add(LootTableTemplate.getItem(Items.GOLD_INGOT, 1))
-								.add(LootTableTemplate.getItem(Items.IRON_INGOT, 1, 3))
+								.add(weight(Items.GOLD_INGOT, 1, 1, 10))
+								.add(weight(Items.IRON_INGOT, 1, 3, 90))
 						)
 						.withPool(single(Items.BREAD, 1, 3))
 						.withPool(single(Items.OAK_LOG, 2, 4))
@@ -109,8 +113,8 @@ public class MazeRoomLootGen {
 		pvd.addLootAction(LootContextParamSets.CHEST, sub -> sub.accept(STONE_ROOM_LARGE,
 				LootTable.lootTable()
 						.withPool(LootPool.lootPool()
-								.add(LootTableTemplate.getItem(Items.GOLD_INGOT, 1, 2))
-								.add(LootTableTemplate.getItem(Items.IRON_INGOT, 2, 3))
+								.add(weight(Items.GOLD_INGOT, 1, 2, 20))
+								.add(weight(Items.IRON_INGOT, 2, 3, 80))
 						)
 						.withPool(single(Items.BAKED_POTATO, 2, 4))
 						.withPool(LootPool.lootPool()
@@ -131,8 +135,8 @@ public class MazeRoomLootGen {
 		pvd.addLootAction(LootContextParamSets.CHEST, sub -> sub.accept(STONE_ROOM_RANGED,
 				LootTable.lootTable()
 						.withPool(LootPool.lootPool()
-								.add(LootTableTemplate.getItem(Items.GOLD_INGOT, 1, 2))
-								.add(LootTableTemplate.getItem(Items.IRON_INGOT, 2, 3))
+								.add(weight(Items.GOLD_INGOT, 1, 2, 20))
+								.add(weight(Items.IRON_INGOT, 2, 3, 80))
 						)
 						.withPool(single(Items.BAKED_POTATO, 2, 4))
 						.withPool(LootPool.lootPool()
@@ -156,8 +160,8 @@ public class MazeRoomLootGen {
 		pvd.addLootAction(LootContextParamSets.CHEST, sub -> sub.accept(STONE_ROOM_RIDER,
 				LootTable.lootTable()
 						.withPool(LootPool.lootPool()
-								.add(LootTableTemplate.getItem(Items.GOLD_INGOT, 1, 2))
-								.add(LootTableTemplate.getItem(Items.IRON_INGOT, 2, 3))
+								.add(weight(Items.GOLD_INGOT, 1, 2, 20))
+								.add(weight(Items.IRON_INGOT, 2, 3, 80))
 						)
 						.withPool(single(Items.GOLDEN_CARROT, 1, 2))
 						.withPool(LootPool.lootPool()
@@ -178,8 +182,8 @@ public class MazeRoomLootGen {
 		pvd.addLootAction(LootContextParamSets.CHEST, sub -> sub.accept(STONE_ROOM_MIXED,
 				LootTable.lootTable()
 						.withPool(LootPool.lootPool()
-								.add(LootTableTemplate.getItem(Items.GOLD_INGOT, 1, 3))
-								.add(LootTableTemplate.getItem(Items.IRON_INGOT, 3, 5))
+								.add(weight(Items.GOLD_INGOT, 1, 3, 20))
+								.add(weight(Items.IRON_INGOT, 3, 5, 80))
 						)
 						.withPool(single(Items.COOKED_BEEF, 3, 5))
 						.withPool(LootPool.lootPool()
@@ -200,8 +204,8 @@ public class MazeRoomLootGen {
 		pvd.addLootAction(LootContextParamSets.CHEST, sub -> sub.accept(STONE_QUAD,
 				LootTable.lootTable()
 						.withPool(LootPool.lootPool()
-								.add(LootTableTemplate.getItem(Items.GOLD_INGOT, 2, 4))
-								.add(LootTableTemplate.getItem(Items.IRON_INGOT, 4, 6))
+								.add(weight(Items.GOLD_INGOT, 2, 4, 50))
+								.add(weight(Items.IRON_INGOT, 6, 8, 50))
 						)
 						.withPool(single(Items.COOKED_BEEF, 3, 5))
 						.withPool(LootPool.lootPool()
@@ -220,10 +224,8 @@ public class MazeRoomLootGen {
 
 		pvd.addLootAction(LootContextParamSets.CHEST, sub -> sub.accept(MINESHAFT_BOSS,
 				LootTable.lootTable()
-						.withPool(LootPool.lootPool()
-								.add(LootTableTemplate.getItem(Items.GOLD_INGOT, 4, 6))
-								.add(LootTableTemplate.getItem(Items.IRON_INGOT, 6, 10))
-						)
+						.withPool(single(Items.GOLD_INGOT, 4, 6))
+						.withPool(single(Items.IRON_INGOT, 6, 10))
 						.withPool(single(Items.DIAMOND, 2, 3))
 						.withPool(single(Items.COOKED_BEEF, 3, 5))
 						.withPool(single(Items.LAPIS_LAZULI, 3, 5))

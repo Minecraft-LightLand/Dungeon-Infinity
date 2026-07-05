@@ -76,8 +76,8 @@ public class EarlyGolemSpawn extends AbstractGolemSpawn {
 
 		// metal golem wave
 		{
-			map.add(GolemDungeons.SPAWN, LARGE_1, createBase()
-					.type(GolemTypes.TYPE_GOLEM.get(), new SpawnConfig.GolemTypeEntry(1000, 0))
+			map.add(GolemDungeons.SPAWN, LARGE_1, createGolem()
+					.type(GolemTypes.TYPE_GOLEM.get(), new SpawnConfig.GolemTypeEntry(100, 0))
 					.upgradeChance(0.1f)
 			);
 
@@ -159,9 +159,17 @@ public class EarlyGolemSpawn extends AbstractGolemSpawn {
 		}
 	}
 
+	private static SpawnConfig createGolem() {
+		return new SpawnConfig(DungeonFactionRegistry.REMNANT)
+				.mat(ModularGolems.loc("copper"), 70)
+				.mat(ModularGolems.loc("iron"), noArm(30))
+				.upgrade(GolemItems.QUARTZ.asItem(), 100)
+				.upgrade(GolemItems.SPEED.asItem(), 100);
+	}
+
 	private static SpawnConfig createBase() {
 		return new SpawnConfig(DungeonFactionRegistry.REMNANT)
-				.mat(ModularGolems.loc("copper"), 60)
+				.mat(ModularGolems.loc("copper"), 70)
 				.mat(ModularGolems.loc("iron"), 30)
 				.upgrade(GolemItems.QUARTZ.asItem(), 100)
 				.upgrade(GolemItems.SPEED.asItem(), 100);

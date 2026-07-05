@@ -5,11 +5,14 @@
     "modulargolems:copper": {
       "bonus": [],
       "forbid": [],
-      "weight": 60
+      "weight": 70
     },
     "modulargolems:iron": {
       "bonus": [],
-      "forbid": [],
+      "forbid": [
+        "modulargolems:metal_golem_arm",
+        "modulargolems:humanoid_golem_arms"
+      ],
       "weight": 30
     }
   },
@@ -18,7 +21,7 @@
       "bonus": [],
       "mountChance": 0.0,
       "mounts": [],
-      "weight": 1000
+      "weight": 100
     }
   },
   "upgradeChance": [
