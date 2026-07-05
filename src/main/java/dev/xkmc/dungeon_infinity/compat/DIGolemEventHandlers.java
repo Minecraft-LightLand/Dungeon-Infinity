@@ -57,7 +57,8 @@ public class DIGolemEventHandlers {
 	@SubscribeEvent
 	public static void onBattleStart(MazeRoomBattleStartEvent event) {
 		var pl = event.getEntity();
-		var center = event.getIns().holder.getSpawns().getFirst();
+		var list = event.getIns().holder.getSpawns();
+		var center = list.isEmpty() ? event.getIns().holder.getBlockPos().offset(8, 3, 8) : list.getFirst();
 		for (var e : pl.level().getEntities(pl, pl.getBoundingBox().inflate(35, 16, 35))) {
 			if (e instanceof AbstractGolemEntity<?, ?> g) {
 				if (g.getOwnerPlayer() == pl) {
