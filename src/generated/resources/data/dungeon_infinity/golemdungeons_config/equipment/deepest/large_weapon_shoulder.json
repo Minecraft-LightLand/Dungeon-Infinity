@@ -1,0 +1,70 @@
+{
+  "additional": {
+    "ARROW": [
+      {
+        "dropChance": 0.085,
+        "enchantLevel": 0,
+        "stack": {
+          "id": "minecraft:fire_charge"
+        },
+        "weight": 50
+      },
+      {
+        "dropChance": 0.085,
+        "enchantLevel": 0,
+        "stack": {
+          "id": "minecraft:tnt"
+        },
+        "weight": 50
+      }
+    ],
+    "LEFT_SHOULDER": [
+      {
+        "dropChance": 0.085,
+        "enchantLevel": 0,
+        "stack": {
+          "id": "modulargolems:flame_thrower"
+        },
+        "weight": 100
+      }
+    ],
+    "RIGHT_SHOULDER": [
+      {
+        "dropChance": 0.085,
+        "enchantLevel": 0,
+        "stack": {
+          "id": "modulargolems:beacon_cannon"
+        },
+        "weight": 100
+      }
+    ]
+  },
+  "items": {
+    "MAINHAND": [
+      {
+        "dropChance": 0.085,
+        "enchantLevel": 0,
+        "stack": {
+          "components": {
+            "minecraft:enchantments": {
+              "minecraft:multishot": 1,
+              "minecraft:power": 5
+            }
+          },
+          "id": "modulargolems:netherite_mecha_bow"
+        },
+        "weight": 100
+      }
+    ],
+    "OFFHAND": [
+      {
+        "dropChance": 0.085,
+        "enchantLevel": 0,
+        "stack": {
+          "id": "minecraft:arrow"
+        },
+        "weight": 100
+      }
+    ]
+  }
+}

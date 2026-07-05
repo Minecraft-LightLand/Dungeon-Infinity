@@ -4,11 +4,43 @@
     [
       {
         "num": 2,
-        "target": "golemdungeons:sculk_large_1"
+        "target": "dungeon_infinity:sculk/large_1"
       },
       {
         "num": 1,
-        "target": "golemdungeons:sculk_humanoid_melee"
+        "target": "dungeon_infinity:sculk/humanoid_ranged"
+      }
+    ],
+    [
+      {
+        "num": 2,
+        "target": "dungeon_infinity:sculk/large_2"
+      },
+      {
+        "num": 1,
+        "target": "dungeon_infinity:sculk/humanoid_ranged"
+      },
+      {
+        "num": 1,
+        "target": "dungeon_infinity:sculk/humanoid_rocket"
+      }
+    ],
+    [
+      {
+        "num": 2,
+        "target": "dungeon_infinity:sculk/large_2"
+      },
+      {
+        "num": 1,
+        "target": "dungeon_infinity:sculk/large_3"
+      },
+      {
+        "num": 2,
+        "target": "dungeon_infinity:sculk/humanoid_ranged"
+      },
+      {
+        "num": 1,
+        "target": "dungeon_infinity:sculk/humanoid_rocket"
       }
     ]
   ],

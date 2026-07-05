@@ -1,0 +1,64 @@
+{
+  "generateChest": false,
+  "list": [
+    [
+      {
+        "num": 1,
+        "target": "dungeon_infinity:deepest/large_3"
+      },
+      {
+        "num": 2,
+        "target": "dungeon_infinity:deepest/humanoid_ranged"
+      }
+    ],
+    [
+      {
+        "num": 1,
+        "target": "dungeon_infinity:deepest/large_3"
+      },
+      {
+        "num": 1,
+        "target": "dungeon_infinity:deepest/large_shoulder"
+      },
+      {
+        "num": 1,
+        "target": "dungeon_infinity:deepest/humanoid_ranged"
+      },
+      {
+        "num": 1,
+        "target": "dungeon_infinity:deepest/humanoid_rocket"
+      },
+      {
+        "num": 1,
+        "target": "dungeon_infinity:deepest/humanoid_tipped"
+      }
+    ],
+    [
+      {
+        "num": 1,
+        "target": "dungeon_infinity:deepest/large_3"
+      },
+      {
+        "num": 2,
+        "target": "dungeon_infinity:deepest/large_shoulder"
+      },
+      {
+        "num": 1,
+        "target": "dungeon_infinity:deepest/large_shoulder"
+      },
+      {
+        "num": 1,
+        "target": "dungeon_infinity:deepest/humanoid_rocket"
+      },
+      {
+        "num": 1,
+        "target": "dungeon_infinity:deepest/humanoid_tipped"
+      }
+    ]
+  ],
+  "maxY": 6,
+  "minY": -4,
+  "reward": "dungeon_infinity:maze/sculk/room/ranged",
+  "spawnCost": 1000,
+  "triggerRange": 12
+}

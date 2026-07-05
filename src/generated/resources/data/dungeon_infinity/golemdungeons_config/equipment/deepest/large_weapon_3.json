@@ -1,0 +1,31 @@
+{
+  "additional": {},
+  "items": {
+    "MAINHAND": [
+      {
+        "dropChance": 0.085,
+        "enchantLevel": 30,
+        "stack": {
+          "id": "golemdungeons:ancient_forge"
+        },
+        "weight": 100
+      },
+      {
+        "dropChance": 0.085,
+        "enchantLevel": 30,
+        "stack": {
+          "id": "golemdungeons:flame_sword"
+        },
+        "weight": 100
+      },
+      {
+        "dropChance": 0.085,
+        "enchantLevel": 30,
+        "stack": {
+          "id": "golemdungeons:sculk_golem_scythe"
+        },
+        "weight": 200
+      }
+    ]
+  }
+}

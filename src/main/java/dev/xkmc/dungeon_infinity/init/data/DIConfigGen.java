@@ -9,6 +9,7 @@ import dev.xkmc.l2core.serial.config.ConfigDataProvider;
 import dev.xkmc.modulargolems.init.material.GolemWeaponType;
 import dev.xkmc.modulargolems.init.material.VanillaGolemWeaponMaterial;
 import dev.xkmc.modulargolems.init.registrate.GolemItems;
+import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.component.DataComponentPatch;
 import net.minecraft.core.component.DataComponents;
@@ -28,11 +29,19 @@ import java.util.concurrent.CompletableFuture;
 
 public class DIConfigGen extends ConfigDataProvider {
 
-	private final CompletableFuture<HolderLookup.Provider> pvd;
+	private static CompletableFuture<HolderLookup.Provider> pvd;
 
 	public DIConfigGen(DataGenerator generator, CompletableFuture<HolderLookup.Provider> pvd) {
 		super(generator, pvd, "Golem Spawn Config");
 		this.pvd = pvd;
+	}
+
+	public static <T> Holder<T> resolve(ResourceKey<T> key) {
+		try {
+			return pvd.get().holderOrThrow(key);
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 	private ItemStackTemplate ench(ResourceKey<Enchantment> key, int lv) {
@@ -177,12 +186,17 @@ public class DIConfigGen extends ConfigDataProvider {
 				.room("path/straight").variant("", 100).end()
 				.room("path/t_way").variant("", 80).variant("_waypoint", 20).end()
 				.room("path/cross").variant("", 90).variant("_waypoint", 10).end()
-				.spawn("room", 1, 0,
-						entry(1, 0, GolemSpawnData.SCULK_ROOM_BASIC, 100),
-						entry(3, 0, GolemSpawnData.SCULK_ROOM_LARGE, 100),
-						entry(3, 0, GolemSpawnData.SCULK_ROOM_RIDER, 100),
-						entry(3, 0, GolemSpawnData.SCULK_ROOM_RANGED, 100),
-						entry(5, 0, GolemSpawnData.SCULK_ROOM_MIXED, 100)
+				.spawn("room", 1, 1,
+						entry(1, 1, GolemSpawnData.SCULK_ROOM_BASIC, 100),
+						entry(3, 1, GolemSpawnData.SCULK_ROOM_LARGE, 100),
+						entry(3, 1, GolemSpawnData.SCULK_ROOM_RIDER, 100),
+						entry(3, 1, GolemSpawnData.SCULK_ROOM_RANGED, 100),
+						entry(5, 1, GolemSpawnData.SCULK_ROOM_MIXED, 100),
+						entry(1, 0, GolemSpawnData.DEEPEST_ROOM_BASIC, 100),
+						entry(3, 0, GolemSpawnData.DEEPEST_ROOM_LARGE, 100),
+						entry(3, 0, GolemSpawnData.DEEPEST_ROOM_RIDER, 100),
+						entry(3, 0, GolemSpawnData.DEEPEST_ROOM_RANGED, 100),
+						entry(5, 0, GolemSpawnData.DEEPEST_ROOM_MIXED, 100)
 				)
 				.room("room/end").variant("", 100).end()
 				.room("room/corner").variant("", 100).end()
@@ -194,7 +208,10 @@ public class DIConfigGen extends ConfigDataProvider {
 				.room("cross_stairs").variant("", 100).end()
 				.root("test")
 				.room("boss").variant("", 100, GolemSpawnData.SCULK_BOSS).end()
-				.room("quad").variant("", 100, GolemSpawnData.SCULK_QUAD).end()
+				.spawn("quad", 0, 1,
+						entry(4, 1, GolemSpawnData.SCULK_QUAD, 100),
+						entry(4, 0, GolemSpawnData.DEEPEST_QUAD, 100)
+				).room("quad").variant("", 100).end().endSpawn()
 				.room("path/end").variants("workshop", "warehouse", "shop").end()
 				.end());
 

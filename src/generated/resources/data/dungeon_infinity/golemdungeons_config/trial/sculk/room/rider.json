@@ -3,12 +3,32 @@
   "list": [
     [
       {
-        "num": 2,
-        "target": "golemdungeons:sculk_infestation"
+        "num": 1,
+        "target": "dungeon_infinity:sculk/humanoid_rider_melee"
       },
       {
         "num": 1,
-        "target": "golemdungeons:sculk_full"
+        "target": "dungeon_infinity:sculk/humanoid_rider_ranged"
+      }
+    ],
+    [
+      {
+        "num": 2,
+        "target": "dungeon_infinity:sculk/humanoid_rider_melee"
+      },
+      {
+        "num": 2,
+        "target": "dungeon_infinity:sculk/humanoid_rider_ranged"
+      }
+    ],
+    [
+      {
+        "num": 3,
+        "target": "dungeon_infinity:sculk/humanoid_rider_melee"
+      },
+      {
+        "num": 3,
+        "target": "dungeon_infinity:sculk/humanoid_rider_ranged"
       }
     ]
   ],

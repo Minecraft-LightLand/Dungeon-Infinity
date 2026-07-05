@@ -3,12 +3,56 @@
   "list": [
     [
       {
-        "num": 3,
-        "target": "golemdungeons:sculk_humanoid_ranged"
+        "num": 1,
+        "target": "dungeon_infinity:sculk/large_1"
+      },
+      {
+        "num": 2,
+        "target": "dungeon_infinity:sculk/humanoid_ranged"
+      }
+    ],
+    [
+      {
+        "num": 1,
+        "target": "dungeon_infinity:sculk/large_2"
       },
       {
         "num": 1,
-        "target": "golemdungeons:sculk_infestation"
+        "target": "dungeon_infinity:sculk/large_bow"
+      },
+      {
+        "num": 1,
+        "target": "dungeon_infinity:sculk/humanoid_ranged"
+      },
+      {
+        "num": 1,
+        "target": "dungeon_infinity:sculk/humanoid_rocket"
+      },
+      {
+        "num": 1,
+        "target": "dungeon_infinity:sculk/humanoid_tipped"
+      }
+    ],
+    [
+      {
+        "num": 1,
+        "target": "dungeon_infinity:sculk/large_2"
+      },
+      {
+        "num": 1,
+        "target": "dungeon_infinity:sculk/large_bow"
+      },
+      {
+        "num": 1,
+        "target": "dungeon_infinity:sculk/large_shoulder"
+      },
+      {
+        "num": 1,
+        "target": "dungeon_infinity:sculk/humanoid_rocket"
+      },
+      {
+        "num": 1,
+        "target": "dungeon_infinity:sculk/humanoid_tipped"
       }
     ]
   ],

@@ -3,16 +3,32 @@
   "list": [
     [
       {
+        "num": 1,
+        "target": "dungeon_infinity:copper/humanoid_rider_melee"
+      },
+      {
+        "num": 1,
+        "target": "dungeon_infinity:copper/humanoid_rider_ranged"
+      }
+    ],
+    [
+      {
         "num": 2,
-        "target": "golemdungeons:factory_humanoid_rocket"
+        "target": "dungeon_infinity:copper/humanoid_rider_melee"
       },
       {
-        "num": 1,
-        "target": "golemdungeons:factory_humanoid_tipped"
+        "num": 2,
+        "target": "dungeon_infinity:copper/humanoid_rider_ranged"
+      }
+    ],
+    [
+      {
+        "num": 3,
+        "target": "dungeon_infinity:copper/humanoid_rider_melee"
       },
       {
-        "num": 1,
-        "target": "golemdungeons:factory_large_2"
+        "num": 3,
+        "target": "dungeon_infinity:copper/humanoid_rider_ranged"
       }
     ]
   ],

@@ -1,0 +1,58 @@
+{
+  "equipments": [
+    {
+      "type": "modulargolems:metal_golem",
+      "sets": [
+        {
+          "target": "dungeon_infinity:deepest/large_armor_2",
+          "weight": 100
+        }
+      ]
+    },
+    {
+      "type": "modulargolems:metal_golem",
+      "sets": [
+        {
+          "target": "dungeon_infinity:deepest/large_weapon_3",
+          "weight": 100
+        }
+      ]
+    }
+  ],
+  "faction": "golemdungeons:factory_remnant",
+  "materials": {
+    "modulargolems:sculk": {
+      "bonus": [],
+      "forbid": [],
+      "weight": 100
+    }
+  },
+  "types": {
+    "modulargolems:metal_golem": {
+      "bonus": [],
+      "mountChance": 0.0,
+      "mounts": [],
+      "weight": 30
+    }
+  },
+  "upgradeChance": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+  ],
+  "upgrades": [
+    {
+      "upgrade": "modulargolems:gold",
+      "weight": 200
+    },
+    {
+      "upgrade": "modulargolems:speed",
+      "weight": 100
+    },
+    {
+      "upgrade": "modulargolems:netherite",
+      "weight": 100
+    }
+  ]
+}

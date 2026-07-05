@@ -3,40 +3,76 @@
   "list": [
     [
       {
+        "num": 2,
+        "target": "dungeon_infinity:sculk/large_2"
+      },
+      {
         "num": 1,
-        "target": "golemdungeons:sculk_large_1"
+        "target": "dungeon_infinity:sculk/humanoid_melee"
       },
       {
-        "num": 2,
-        "target": "golemdungeons:sculk_humanoid_melee"
+        "num": 1,
+        "target": "dungeon_infinity:sculk/humanoid_ranged"
       },
       {
-        "num": 2,
-        "target": "golemdungeons:sculk_humanoid_ranged"
+        "num": 1,
+        "target": "dungeon_infinity:sculk/humanoid_rocket"
       }
     ],
     [
       {
-        "num": 1,
-        "target": "golemdungeons:sculk_infestation"
+        "num": 2,
+        "target": "dungeon_infinity:sculk/large_3"
       },
       {
         "num": 2,
-        "target": "golemdungeons:sculk_large_1"
+        "target": "dungeon_infinity:sculk/large_bow"
       },
       {
-        "num": 3,
-        "target": "golemdungeons:sculk_humanoid_ranged"
+        "num": 1,
+        "target": "dungeon_infinity:sculk/humanoid_melee"
+      },
+      {
+        "num": 1,
+        "target": "dungeon_infinity:sculk/humanoid_rider_melee"
+      },
+      {
+        "num": 2,
+        "target": "dungeon_infinity:sculk/humanoid_rider_ranged"
+      },
+      {
+        "num": 1,
+        "target": "dungeon_infinity:sculk/humanoid_tipped"
       }
     ],
     [
       {
         "num": 3,
-        "target": "golemdungeons:sculk_infestation"
+        "target": "dungeon_infinity:sculk/large_3"
+      },
+      {
+        "num": 3,
+        "target": "dungeon_infinity:sculk/large_shoulder"
       },
       {
         "num": 1,
-        "target": "golemdungeons:sculk_full"
+        "target": "dungeon_infinity:sculk/humanoid_melee"
+      },
+      {
+        "num": 2,
+        "target": "dungeon_infinity:sculk/humanoid_rider_melee"
+      },
+      {
+        "num": 1,
+        "target": "dungeon_infinity:sculk/humanoid_rider_ranged"
+      },
+      {
+        "num": 1,
+        "target": "dungeon_infinity:sculk/humanoid_rocket"
+      },
+      {
+        "num": 1,
+        "target": "dungeon_infinity:sculk/humanoid_tipped"
       }
     ]
   ],

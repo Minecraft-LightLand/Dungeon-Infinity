@@ -1,0 +1,25 @@
+{
+  "additional": {},
+  "items": {
+    "MAINHAND": [
+      {
+        "dropChance": 0.085,
+        "enchantLevel": 30,
+        "stack": {
+          "id": "minecraft:crossbow"
+        },
+        "weight": 100
+      }
+    ],
+    "OFFHAND": [
+      {
+        "dropChance": 0.0,
+        "enchantLevel": 20,
+        "stack": {
+          "id": "minecraft:firework_rocket"
+        },
+        "weight": 100
+      }
+    ]
+  }
+}

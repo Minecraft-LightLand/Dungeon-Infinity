@@ -1,0 +1,30 @@
+{
+  "additional": {},
+  "items": {
+    "MAINHAND": [
+      {
+        "dropChance": 0.085,
+        "enchantLevel": 0,
+        "stack": {
+          "components": {
+            "minecraft:enchantments": {
+              "minecraft:power": 3
+            }
+          },
+          "id": "modulargolems:iron_mecha_bow"
+        },
+        "weight": 100
+      }
+    ],
+    "OFFHAND": [
+      {
+        "dropChance": 0.085,
+        "enchantLevel": 0,
+        "stack": {
+          "id": "minecraft:arrow"
+        },
+        "weight": 100
+      }
+    ]
+  }
+}

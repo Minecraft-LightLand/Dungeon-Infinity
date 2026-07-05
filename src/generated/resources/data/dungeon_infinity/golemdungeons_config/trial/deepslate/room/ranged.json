@@ -3,12 +3,56 @@
   "list": [
     [
       {
-        "num": 3,
-        "target": "golemdungeons:piglin_humanoid_ranged"
+        "num": 1,
+        "target": "dungeon_infinity:deepslate/large_1"
       },
       {
         "num": 2,
-        "target": "golemdungeons:factory_humanoid_rocket"
+        "target": "dungeon_infinity:deepslate/humanoid_ranged"
+      }
+    ],
+    [
+      {
+        "num": 1,
+        "target": "dungeon_infinity:deepslate/large_2"
+      },
+      {
+        "num": 1,
+        "target": "dungeon_infinity:deepslate/large_bow"
+      },
+      {
+        "num": 1,
+        "target": "dungeon_infinity:deepslate/humanoid_ranged"
+      },
+      {
+        "num": 1,
+        "target": "dungeon_infinity:deepslate/humanoid_rocket"
+      },
+      {
+        "num": 1,
+        "target": "dungeon_infinity:deepslate/humanoid_tipped"
+      }
+    ],
+    [
+      {
+        "num": 1,
+        "target": "dungeon_infinity:deepslate/large_2"
+      },
+      {
+        "num": 1,
+        "target": "dungeon_infinity:deepslate/large_bow"
+      },
+      {
+        "num": 1,
+        "target": "dungeon_infinity:deepslate/large_shoulder"
+      },
+      {
+        "num": 1,
+        "target": "dungeon_infinity:deepslate/humanoid_rocket"
+      },
+      {
+        "num": 1,
+        "target": "dungeon_infinity:deepslate/humanoid_tipped"
       }
     ]
   ],
