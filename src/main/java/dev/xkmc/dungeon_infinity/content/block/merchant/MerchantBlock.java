@@ -57,6 +57,7 @@ public class MerchantBlock implements UseItemOnBlockMethod {
 		trader.setCustomName(Component.translatable(DungeonInfinity.MODID + ".merchant." + type));
 		trader.setCustomNameVisible(true);
 		trader.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0);
+		trader.setInvulnerable(true);
 		return trader;
 	}
 

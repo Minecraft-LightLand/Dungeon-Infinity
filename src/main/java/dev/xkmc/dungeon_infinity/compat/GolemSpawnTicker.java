@@ -48,6 +48,8 @@ public class GolemSpawnTicker implements TrialTicker, MobSpawnTicker {
 	public final List<BlockPos> targets = new ArrayList<>();
 	@SerialField
 	public boolean active = false;
+	@SerialField
+	public boolean completed = false;
 
 	private @Nullable CustomBossEvent bar;
 
@@ -74,6 +76,7 @@ public class GolemSpawnTicker implements TrialTicker, MobSpawnTicker {
 
 	@Override
 	public void start(ServerLevel level, MobRoomHolder ins) {
+		completed = false;
 		active = true;
 		if (trial == null) return;
 		TrialConfig config = GolemDungeons.TRIAL.getEntry(this.trial);
@@ -87,6 +90,9 @@ public class GolemSpawnTicker implements TrialTicker, MobSpawnTicker {
 
 	@Override
 	public void tick(ServerLevel level, MobRoomHolder ins) {
+		if (completed && active) {
+			ins.healAll(level, 0.02f);
+		}
 		this.data.tickTrial(this, level, level.getGameTime());
 		if (this.bar != null) {
 			this.data.updateBar(this.bar, level, level.getGameTime());
@@ -98,6 +104,7 @@ public class GolemSpawnTicker implements TrialTicker, MobSpawnTicker {
 	}
 
 	public void stop() {
+		completed = false;
 		active = false;
 		if (this.bar != null) {
 			this.bar.removeAllPlayers();
@@ -106,6 +113,7 @@ public class GolemSpawnTicker implements TrialTicker, MobSpawnTicker {
 	}
 
 	public void complete(ServerLevel level, TrialConfig config, long time) {
+		completed = true;
 		BlockPos pos = targets.getFirst();
 
 		if (config.reward == null) return;

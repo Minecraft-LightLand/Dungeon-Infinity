@@ -7,7 +7,7 @@ import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 
 import java.util.Arrays;
 
-public class MazeMapPixelMapper extends MazeMapColors{
+public class MazeMapPixelMapper extends MazeMapColors {
 
 	private static final Int2ObjectMap<int[][]> CACHE = new Int2ObjectOpenHashMap<>();
 
@@ -60,7 +60,7 @@ public class MazeMapPixelMapper extends MazeMapColors{
 		int flag = cell & 0x1FFF;
 		defeated |= CellInterpreter.isHallway(cell);
 		if (!defeated) flag |= 0x2000;
-		boolean special = CellInterpreter.isHallway(flag) && CellInterpreter.getTemplateType(flag) == 1;
+		boolean special = CellInterpreter.isSpecial(flag);
 		if (special)
 			flag = cell;
 		if (CACHE.containsKey(flag))
