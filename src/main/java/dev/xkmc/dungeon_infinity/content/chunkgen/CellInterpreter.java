@@ -138,6 +138,10 @@ public class CellInterpreter {
 	private static final CellInstance CROSS_STAIRS = new CellInstance("cross_stairs");
 	private static final CellInstance QUAD = new CellInstance("quad", 16, 0);
 
+	public static boolean isSpecial(int cell) {
+		return isHallway(cell) && getTemplateType(cell) == 1;
+	}
+
 	public static boolean isHallway(int cell) {
 		return getRoomType(cell) == 1;
 	}

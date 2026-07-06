@@ -16,6 +16,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.SectionPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.chunk.LevelChunk;
@@ -190,10 +191,9 @@ public class SectionRoom {
 
 	public void tick(MazeHistory.Visit visit, MazePos pos, ServerPlayer sp) {
 		int cell = maze[x][z];
-		if (visit.isDefeated(pos)) return;
-		if (CellInterpreter.isBossRoom(cell) ||
+		if (!visit.isDefeated(pos) && (CellInterpreter.isBossRoom(cell) ||
 				CellInterpreter.isQuadRoom(cell) ||
-				!CellInterpreter.isHallway(cell)) {
+				!CellInterpreter.isHallway(cell))) {
 			var origin = new Vec3(this.pos.origin());
 			var box = new AABB(origin.add(2, 2, 2), origin.add(14, 14, 14));
 			if (box.contains(sp.position().add(sp.getBbHeight() / 2))) {
@@ -201,12 +201,30 @@ public class SectionRoom {
 				ins.tick(sp);
 			}
 		}
+		roomTick();
 	}
 
 	public MobRoomTicker createSpawner(@Nullable SectionRoom[][][] rooms, List<BlockPos> spawns) {
 		var ans = new MobRoomTicker();
 		ans.spawner = SpawnHelper.createTickerFromTemplate(info, rooms, spawns, level().getRandom());
 		return ans;
+	}
+
+	private long lastTick = -1;
+
+	private void roomTick() {
+		if (lastTick >= level().getGameTime()) return;
+		lastTick = level().getGameTime();
+		if (CellInterpreter.isSpecial(getCell())) {
+			if (lastTick % 20 == 0) {
+				var origin = new Vec3(getBlockPos());
+				var box = new AABB(origin, origin.add(16, 16, 16));
+				var list = level().getEntitiesOfClass(LivingEntity.class, box);
+				for (var e : list) {
+					e.heal(2);
+				}
+			}
+		}
 	}
 
 }

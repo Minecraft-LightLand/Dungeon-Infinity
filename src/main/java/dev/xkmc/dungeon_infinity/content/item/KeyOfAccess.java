@@ -61,7 +61,7 @@ public class KeyOfAccess extends Item {
 				for (int cx = 0; cx < 25; cx++) {
 					for (int cz = 0; cz < 25; cz++) {
 						int cell = maze[cx][cz];
-						if (!CellInterpreter.isHallway(cell) || CellInterpreter.getTemplateType(cell) != 1)
+						if (!CellInterpreter.isSpecial(cell))
 							continue;
 						int style = CellInterpreter.getStyle(maze[0][0]);
 						int variant = TemplateConfig.of(cell).variantIndex(style, "workshop");

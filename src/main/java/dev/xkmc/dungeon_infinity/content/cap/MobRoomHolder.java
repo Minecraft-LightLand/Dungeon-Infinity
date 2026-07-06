@@ -1,6 +1,7 @@
 package dev.xkmc.dungeon_infinity.content.cap;
 
 import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.phys.AABB;
@@ -93,6 +94,17 @@ public class MobRoomHolder {
 	public void markUnsaved() {
 		for (var e : list)
 			e.markUnsaved();
+	}
+
+	public void healAll(ServerLevel level, float rate) {
+		for (var e : list) {
+			var origin = new Vec3(e.getBlockPos());
+			var box = new AABB(origin, origin.add(16, 16, 16));
+			var all = level.getEntitiesOfClass(LivingEntity.class, box);
+			for (var le : all) {
+				le.heal(le.getMaxHealth() * rate);
+			}
+		}
 	}
 
 }
