@@ -178,15 +178,7 @@ public class EarlyGolemSpawn extends AbstractGolemSpawn {
 	private static SpawnConfig createBaseHumanoid() {
 		return createBase()
 				.upgradeChance(0.1f)
-				.type(GolemTypes.TYPE_HUMANOID.get(), new SpawnConfig.GolemTypeEntry(40, 0.3)
-						.addMount(EntityType.HORSE, 50)
-						.addMount(EntityType.SKELETON_HORSE, 50)
-						.addMount(GolemTypes.ENTITY_DOG.get(), 100)
-				)
-				.type(GolemTypes.TYPE_DOG.get(), new SpawnConfig.GolemTypeEntry(0, 0)
-						.add(GolemItems.DIAMOND.get(), 0.75f)
-						.add(GolemItems.SIZE_UPGRADE.get(), 0.5f)
-				);
+				.type(GolemTypes.TYPE_HUMANOID.get(), new SpawnConfig.GolemTypeEntry(40, 0));
 	}
 
 	private static SpawnConfig createRider() {
@@ -197,10 +189,7 @@ public class EarlyGolemSpawn extends AbstractGolemSpawn {
 						.addMount(EntityType.SKELETON_HORSE, 50)
 						.addMount(GolemTypes.ENTITY_DOG.get(), 100)
 				)
-				.type(GolemTypes.TYPE_DOG.get(), new SpawnConfig.GolemTypeEntry(0, 0)
-						.add(GolemItems.SPEED.get(), 0.5f)
-						.add(GolemItems.SIZE_UPGRADE.get(), 1f)
-				);
+				.type(GolemTypes.TYPE_DOG.get(), new SpawnConfig.GolemTypeEntry(0, 0));
 	}
 
 }

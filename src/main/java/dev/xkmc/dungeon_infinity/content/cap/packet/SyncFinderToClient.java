@@ -1,17 +1,16 @@
-package dev.xkmc.dungeon_infinity.content.cap;
+package dev.xkmc.dungeon_infinity.content.cap.packet;
 
+import dev.xkmc.dungeon_infinity.content.cap.RoomFinder;
 import dev.xkmc.dungeon_infinity.init.reg.DIMeta;
 import dev.xkmc.l2serial.network.SerialPacketBase;
 import net.minecraft.world.entity.player.Player;
 
-import java.util.ArrayList;
-
-public record SetRadiusPacket(int rad) implements SerialPacketBase<SetRadiusPacket> {
+public record SyncFinderToClient(RoomFinder finder) implements SerialPacketBase<SyncFinderToClient> {
 
 	@Override
 	public void handle(Player player) {
 		var data = DIMeta.HISTORY.type().getOrCreate(player);
-		data.setRadius(rad);
+		data.finder = finder;
 	}
 
 }

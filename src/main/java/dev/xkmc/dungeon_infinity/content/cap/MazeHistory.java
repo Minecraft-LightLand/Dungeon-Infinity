@@ -1,5 +1,7 @@
 package dev.xkmc.dungeon_infinity.content.cap;
 
+import dev.xkmc.dungeon_infinity.content.cap.packet.AddWaypointToClient;
+import dev.xkmc.dungeon_infinity.content.cap.packet.SetRadiusToClient;
 import dev.xkmc.dungeon_infinity.content.chunkgen.CellInterpreter;
 import dev.xkmc.dungeon_infinity.content.chunkgen.MazeChunkGenerator;
 import dev.xkmc.dungeon_infinity.content.item.KeyOfAccess;
@@ -49,6 +51,9 @@ public class MazeHistory extends PlayerCapabilityTemplate<MazeHistory> {
 
 	@SerialField
 	public final Map<Long, Visit> data = new Long2ObjectOpenHashMap<>();
+
+	@SerialField
+	public RoomFinder finder = new RoomFinder();
 
 	@SerialField
 	public @Nullable BlockPos activeMobRoom = null;
@@ -104,7 +109,7 @@ public class MazeHistory extends PlayerCapabilityTemplate<MazeHistory> {
 			var pmp = MazePos.map(sp.blockPosition());
 			if (mp.key() == pmp.key()) {
 				if (getOrCreate(mp).addWaypoint(mp.px(), pos.getY() % 16, mp.pz())) {
-					DungeonInfinity.HANDLER.toClientPlayer(new AddWaypointPacket(pos), sp);
+					DungeonInfinity.HANDLER.toClientPlayer(new AddWaypointToClient(pos), sp);
 				}
 			}
 
@@ -154,7 +159,7 @@ public class MazeHistory extends PlayerCapabilityTemplate<MazeHistory> {
 				var dim = maze.getMaze(sp.level().getChunkSource().randomState());
 				int rad = dim.getVisibility(pos) / 2 + 1;
 				if (rad != radius) {
-					DungeonInfinity.HANDLER.toClientPlayer(new SetRadiusPacket(rad), sp);
+					DungeonInfinity.HANDLER.toClientPlayer(new SetRadiusToClient(rad), sp);
 				}
 				radius = rad;
 			}
@@ -188,11 +193,12 @@ public class MazeHistory extends PlayerCapabilityTemplate<MazeHistory> {
 			total += e.defeat;
 		for (var e : mazes.entrySet()) {
 			var p = e.getValue();
-			var maze = holder.dim.getRegion(p.x(), p.y(), p.z());
+			var maze = holder.getAccess().getMaze();
 			var visit = getOrCreate(p);
 			int max = visit.getTotalRoom(maze);
 			DITriggers.DEFEAT.get().trigger(sp, p.y(), total, holder.isBoss(), holder.isQuad(), visit.defeat == max);
 		}
+		finder.accumulate(sp, points.size());
 	}
 
 	public Visit getOrCreate(MazePos pos) {
@@ -265,6 +271,15 @@ public class MazeHistory extends PlayerCapabilityTemplate<MazeHistory> {
 					if (ix < 0 || iz < 0 || ix >= R || iz >= R) continue;
 					markVisible(ix, iz);
 				}
+			}
+			if (visible != old)
+				revision++;
+		}
+
+		public void markAllVisible(int[] list) {
+			int old = visible;
+			for (var p : list) {
+				markVisible(p >> 5, p & 31);
 			}
 			if (visible != old)
 				revision++;
