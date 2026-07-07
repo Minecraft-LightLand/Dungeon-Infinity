@@ -2,6 +2,7 @@ package dev.xkmc.dungeon_infinity.content.map;
 
 import dev.xkmc.dungeon_infinity.content.cap.MazeHistory;
 import dev.xkmc.dungeon_infinity.content.cap.MazePos;
+import dev.xkmc.dungeon_infinity.content.cap.RoomFinder;
 import dev.xkmc.dungeon_infinity.content.cap.packet.UseFinderToServer;
 import dev.xkmc.dungeon_infinity.init.DungeonInfinity;
 import dev.xkmc.dungeon_infinity.init.data.DILang;
@@ -23,14 +24,17 @@ public class MazeMapScreen extends Screen implements MapUI {
 
 	private int layerY, diffY;
 
-	private final FakeBtn up, down, findStair, findShop;
+	private final FakeBtn up, down, findQuad, findStair, findWarehouse, findWorkshop, findShop;
 
 	protected MazeMapScreen(long seed) {
 		super(Component.literal("Maze Map"));
 		this.seed = seed;
 		up = new FakeBtn();
 		down = new FakeBtn();
+		findQuad = new FakeBtn();
 		findStair = new FakeBtn();
+		findWarehouse = new FakeBtn();
+		findWorkshop = new FakeBtn();
 		findShop = new FakeBtn();
 	}
 
@@ -69,12 +73,24 @@ public class MazeMapScreen extends Screen implements MapUI {
 					return true;
 				}
 			}
+			if (findQuad.contains(mx, my)) {
+				DungeonInfinity.HANDLER.toServer(new UseFinderToServer(RoomFinder.Type.QUAD));
+				return true;
+			}
 			if (findStair.contains(mx, my)) {
-				DungeonInfinity.HANDLER.toServer(new UseFinderToServer(false, true));
+				DungeonInfinity.HANDLER.toServer(new UseFinderToServer(RoomFinder.Type.STAIR));
+				return true;
+			}
+			if (findWarehouse.contains(mx, my)) {
+				DungeonInfinity.HANDLER.toServer(new UseFinderToServer(RoomFinder.Type.WAREHOUSE));
+				return true;
+			}
+			if (findWorkshop.contains(mx, my)) {
+				DungeonInfinity.HANDLER.toServer(new UseFinderToServer(RoomFinder.Type.WORKSHOP));
 				return true;
 			}
 			if (findShop.contains(mx, my)) {
-				DungeonInfinity.HANDLER.toServer(new UseFinderToServer(true, false));
+				DungeonInfinity.HANDLER.toServer(new UseFinderToServer(RoomFinder.Type.SHOP));
 				return true;
 			}
 		}
@@ -113,25 +129,23 @@ public class MazeMapScreen extends Screen implements MapUI {
 		y1 -= h - 5;
 
 		var data = DIMeta.HISTORY.type().getOrCreate(player);
+		var findable = diffY == 0 && (data.finder.finder > 0 || player.isCreative());
 
 		g.text(font, DILang.DEPTH.get(16 - pos.y()), x1, y1 += h, -1);
 		y1 += h;
 		g.text(font, DILang.BATTLE.get(), x1, y1 += h, MazeMapColors.F);
 		g.text(font, DILang.QUAD.get(), x1, y1 += h, MazeMapColors.Q);
+		findQuad.update(g, findable, x1 + font.width(DILang.QUAD.get()), y1, font, "\uD83D\uDD0E");
 		g.text(font, DILang.BOSS.get(), x1, y1 += h, MazeMapColors.R);
 		g.text(font, DILang.DOWN.get(), x1, y1 += h, MazeMapColors.G);
-
-		findStair.update(g, diffY == 0 && (data.finder.findStair > 0 || player.isCreative()),
-				x1 + font.width(DILang.DOWN.get()), y1, font, "\uD83D\uDD0E");
-
+		findStair.update(g, findable, x1 + font.width(DILang.DOWN.get()), y1, font, "\uD83D\uDD0E");
 		g.text(font, DILang.UP.get(), x1, y1 += h, MazeMapColors.Y);
 		g.text(font, DILang.WORKSHOP.get(), x1, y1 += h, MazeMapColors.K);
+		findWorkshop.update(g, findable, x1 + font.width(DILang.WORKSHOP.get()), y1, font, "\uD83D\uDD0E");
 		g.text(font, DILang.SHOP.get(), x1, y1 += h, MazeMapColors.S);
-
-		findShop.update(g, diffY == 0 && (data.finder.findShop > 0 || player.isCreative()),
-				x1 + font.width(DILang.SHOP.get()), y1, font, "\uD83D\uDD0E");
-
+		findShop.update(g, findable, x1 + font.width(DILang.SHOP.get()), y1, font, "\uD83D\uDD0E");
 		g.text(font, DILang.WAREHOUSE.get(), x1, y1 += h, MazeMapColors.H);
+		findWarehouse.update(g, findable, x1 + font.width(DILang.WAREHOUSE.get()), y1, font, "\uD83D\uDD0E");
 	}
 
 	public void renderWaypoints(GuiGraphicsExtractor g, MazeHistory.Visit visit) {
