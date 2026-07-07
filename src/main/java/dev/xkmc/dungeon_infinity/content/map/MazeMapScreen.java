@@ -108,8 +108,8 @@ public class MazeMapScreen extends Screen implements MapUI {
 
 		int bx = x1 + 50;
 		int by = y1;
-		up.update(g, mpy > 0, bx, by, font, "↑");
-		down.update(g, mpy < 15, bx, by + h, font, "↓");
+		up.update(g, mpy < 15, bx, by, font, "↑");
+		down.update(g, mpy > 0, bx, by + h, font, "↓");
 		y1 -= h - 5;
 
 		var data = DIMeta.HISTORY.type().getOrCreate(player);
@@ -121,14 +121,14 @@ public class MazeMapScreen extends Screen implements MapUI {
 		g.text(font, DILang.BOSS.get(), x1, y1 += h, MazeMapColors.R);
 		g.text(font, DILang.DOWN.get(), x1, y1 += h, MazeMapColors.G);
 
-		findStair.update(g, data.finder.findStair > 0 || player.isCreative(),
+		findStair.update(g, diffY == 0 && (data.finder.findStair > 0 || player.isCreative()),
 				x1 + font.width(DILang.DOWN.get()), y1, font, "\uD83D\uDD0E");
 
 		g.text(font, DILang.UP.get(), x1, y1 += h, MazeMapColors.Y);
 		g.text(font, DILang.WORKSHOP.get(), x1, y1 += h, MazeMapColors.K);
 		g.text(font, DILang.SHOP.get(), x1, y1 += h, MazeMapColors.S);
 
-		findShop.update(g, data.finder.findShop > 0 || player.isCreative(),
+		findShop.update(g, diffY == 0 && (data.finder.findShop > 0 || player.isCreative()),
 				x1 + font.width(DILang.SHOP.get()), y1, font, "\uD83D\uDD0E");
 
 		g.text(font, DILang.WAREHOUSE.get(), x1, y1 += h, MazeMapColors.H);
