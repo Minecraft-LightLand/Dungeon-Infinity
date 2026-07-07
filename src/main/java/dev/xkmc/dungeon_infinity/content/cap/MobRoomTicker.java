@@ -1,5 +1,6 @@
 package dev.xkmc.dungeon_infinity.content.cap;
 
+import dev.xkmc.dungeon_infinity.content.cap.packet.DefeatRoomToClient;
 import dev.xkmc.dungeon_infinity.content.spawn.MobSpawnTicker;
 import dev.xkmc.dungeon_infinity.events.MazeRoomBattleStartEvent;
 import dev.xkmc.dungeon_infinity.init.DungeonInfinity;
@@ -82,7 +83,7 @@ public class MobRoomTicker {
 					data.getOrCreate(MazePos.map(ins.holder.getBlockPos())).markVisible(0, 0, 25, 25);
 				}
 				data.activeMobRoom = null;
-				DungeonInfinity.HANDLER.toClientPlayer(new DefeatRoomPacket(points, ins.holder.isLarge()), e);
+				DungeonInfinity.HANDLER.toClientPlayer(new DefeatRoomToClient(points, ins.holder.isLarge()), e);
 			}
 			for (var r : ins.list) {
 				r.ins = null;

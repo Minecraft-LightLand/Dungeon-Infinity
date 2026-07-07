@@ -2,10 +2,12 @@ package dev.xkmc.dungeon_infinity.content.map;
 
 import dev.xkmc.dungeon_infinity.content.cap.MazeHistory;
 import dev.xkmc.dungeon_infinity.content.cap.MazePos;
+import dev.xkmc.dungeon_infinity.content.cap.packet.UseFinderToServer;
 import dev.xkmc.dungeon_infinity.init.DungeonInfinity;
 import dev.xkmc.dungeon_infinity.init.data.DILang;
 import dev.xkmc.dungeon_infinity.init.reg.DIMeta;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.input.MouseButtonEvent;
@@ -21,11 +23,15 @@ public class MazeMapScreen extends Screen implements MapUI {
 
 	private int layerY, diffY;
 
-	private int btnUpX, btnUpY, btnDownX, btnDownY;
+	private final FakeBtn up, down, findStair, findShop;
 
 	protected MazeMapScreen(long seed) {
 		super(Component.literal("Maze Map"));
 		this.seed = seed;
+		up = new FakeBtn();
+		down = new FakeBtn();
+		findStair = new FakeBtn();
+		findShop = new FakeBtn();
 	}
 
 	@Override
@@ -51,18 +57,25 @@ public class MazeMapScreen extends Screen implements MapUI {
 					return true;
 				}
 			}
-			var font = getFont();
-			if (mx >= btnUpX && mx <= btnUpX + font.width("↑") && my >= btnUpY && my <= btnUpY + font.lineHeight) {
+			if (up.contains(mx, my)) {
 				if (Mth.clamp(layerY + diffY + 1, 0, 15) != diffY + layerY) {
 					diffY++;
 					return true;
 				}
 			}
-			if (mx >= btnDownX && mx <= btnDownX + font.width("↓") && my >= btnDownY && my <= btnDownY + font.lineHeight) {
+			if (down.contains(mx, my)) {
 				if (Mth.clamp(layerY + diffY - 1, 0, 15) != diffY + layerY) {
 					diffY--;
 					return true;
 				}
+			}
+			if (findStair.contains(mx, my)) {
+				DungeonInfinity.HANDLER.toServer(new UseFinderToServer(false, true));
+				return true;
+			}
+			if (findShop.contains(mx, my)) {
+				DungeonInfinity.HANDLER.toServer(new UseFinderToServer(true, false));
+				return true;
 			}
 		}
 		return super.mouseClicked(event, doubleClick);
@@ -95,14 +108,11 @@ public class MazeMapScreen extends Screen implements MapUI {
 
 		int bx = x1 + 50;
 		int by = y1;
-		btnUpX = bx;
-		btnUpY = by;
-		btnDownX = bx;
-		btnDownY = by + h;
-		g.text(font, "↑", bx, by, -1);
-		g.text(font, "↓", bx, by + h, -1);
-
+		up.update(g, mpy > 0, bx, by, font, "↑");
+		down.update(g, mpy < 15, bx, by + h, font, "↓");
 		y1 -= h - 5;
+
+		var data = DIMeta.HISTORY.type().getOrCreate(player);
 
 		g.text(font, DILang.DEPTH.get(16 - pos.y()), x1, y1 += h, -1);
 		y1 += h;
@@ -110,9 +120,17 @@ public class MazeMapScreen extends Screen implements MapUI {
 		g.text(font, DILang.QUAD.get(), x1, y1 += h, MazeMapColors.Q);
 		g.text(font, DILang.BOSS.get(), x1, y1 += h, MazeMapColors.R);
 		g.text(font, DILang.DOWN.get(), x1, y1 += h, MazeMapColors.G);
+
+		findStair.update(g, data.finder.findStair > 0 || player.isCreative(),
+				x1 + font.width(DILang.DOWN.get()), y1, font, "\uD83D\uDD0E");
+
 		g.text(font, DILang.UP.get(), x1, y1 += h, MazeMapColors.Y);
 		g.text(font, DILang.WORKSHOP.get(), x1, y1 += h, MazeMapColors.K);
 		g.text(font, DILang.SHOP.get(), x1, y1 += h, MazeMapColors.S);
+
+		findShop.update(g, data.finder.findShop > 0 || player.isCreative(),
+				x1 + font.width(DILang.SHOP.get()), y1, font, "\uD83D\uDD0E");
+
 		g.text(font, DILang.WAREHOUSE.get(), x1, y1 += h, MazeMapColors.H);
 	}
 
@@ -138,5 +156,34 @@ public class MazeMapScreen extends Screen implements MapUI {
 		}
 	}
 
+	private class FakeBtn {
+
+		private boolean enabled;
+
+		private int x, y, w, h;
+
+		public void set(int x, int y, int w, int h) {
+			this.x = x;
+			this.y = y;
+			this.w = w;
+			this.h = h;
+			enabled = true;
+		}
+
+		public void disable() {
+			enabled = false;
+		}
+
+		public boolean contains(int mx, int my) {
+			return enabled && mx >= x && my >= y && mx <= x + w && my <= y + h;
+		}
+
+		public void update(GuiGraphicsExtractor g, boolean enable, int x, int y, Font font, String s) {
+			if (enable) {
+				set(x, y, font.width(s), font.lineHeight);
+				g.text(font, s, x, y, contains(mx, my) ? 0xFFFFAA00 : 0xFFFFFFFF);
+			} else disable();
+		}
+	}
 
 }

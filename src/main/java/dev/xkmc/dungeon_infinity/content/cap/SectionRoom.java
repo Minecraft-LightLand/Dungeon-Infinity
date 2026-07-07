@@ -227,4 +227,27 @@ public class SectionRoom {
 		}
 	}
 
+	public MazeAccess getAccess() {
+		return new Access();
+	}
+
+	public class Access implements MazeAccess {
+
+		@Override
+		public int[][] getMaze() {
+			return maze;
+		}
+
+		@Override
+		public int getX() {
+			return x;
+		}
+
+		@Override
+		public int getZ() {
+			return z;
+		}
+
+	}
+
 }
