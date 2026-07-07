@@ -6,7 +6,6 @@ import dev.xkmc.dungeon_infinity.init.reg.DIItems;
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.util.Mth;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.client.gui.GuiLayer;
 
@@ -14,6 +13,8 @@ public class MapOverlay implements GuiLayer, MapUI {
 
 	@Override
 	public void render(GuiGraphicsExtractor g, DeltaTracker pt) {
+		int margin = 10;
+
 		var player = Minecraft.getInstance().player;
 		if (player == null) return;
 		if (!MazeHistory.inMazeDim(player)) return;
@@ -31,8 +32,8 @@ public class MapOverlay implements GuiLayer, MapUI {
 		int w = g.guiWidth();
 		int h = g.guiHeight();
 		int r = Math.min(w / 4, h / 4);
-		int x0 = w - r / 2;
-		int y0 = r / 2;
+		int x0 = w - r / 2 - margin;
+		int y0 = r / 2 + margin;
 		float rate = r / 128f;
 		g.enableScissor(w - r, 0, w, r);
 		g.fill(w - r, 0, w, r, 0xaf7f7f7f);

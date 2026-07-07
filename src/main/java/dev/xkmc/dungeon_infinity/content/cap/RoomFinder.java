@@ -20,55 +20,55 @@ public class RoomFinder {
 
 	private static final int R = 25;
 
-	private static boolean isShop(int cell) {
-		return CellInterpreter.isSpecial(cell) && CellInterpreter.getVariant(cell) ==
-				TemplateConfig.of(cell).variantIndex(CellInterpreter.getStyle(cell), "shop");
+	private static IntPredicate isShop(String str) {
+		return cell -> CellInterpreter.isSpecial(cell) && CellInterpreter.getVariant(cell) ==
+				TemplateConfig.of(cell).variantIndex(CellInterpreter.getStyle(cell), str);
 	}
 
 	private static boolean isStair(int cell) {
 		return (cell & 32) != 0 || CellInterpreter.isBossRoom(cell) && CellInterpreter.getBossRoom(cell) >= 9;
 	}
 
+	public enum Type {
+		WAREHOUSE(RoomFinder.isShop("warehouse")),
+		WORKSHOP(RoomFinder.isShop("workshop")),
+		SHOP(RoomFinder.isShop("shop")),
+		QUAD(CellInterpreter::isQuadRoom),
+		STAIR(RoomFinder::isStair);
+
+		final IntPredicate pred;
+
+		Type(IntPredicate pred) {
+			this.pred = pred;
+		}
+	}
+
 	@SerialField
-	public int findShop, findStair;
+	public int finder;
 	@SerialField
 	public int defeated;
 
 	public void accumulate(ServerPlayer sp, int size) {
-		defeated += size;
 		int points = 10;
 		int max = 3;
+		if (finder >= max) {
+			return;
+		}
+		defeated += size;
 		if (defeated >= points) {
-			if (findShop >= max && findStair >= max) {
-				defeated = points;
-				return;
-			}
 			defeated -= points;
-			if (findShop < findStair)
-				findShop++;
-			else findStair++;
+			finder++;
 			DungeonInfinity.HANDLER.toClientPlayer(new SyncFinderToClient(this), sp);
 		}
 	}
 
-	public void findShop(ServerPlayer sp, MazeHistory data) {
+	public void find(ServerPlayer sp, MazeHistory data, Type type) {
 		var room = MazeRoomData.get(sp.level(), SectionPos.of(sp.blockPosition()));
 		if (room == null) return;
 		var pos = MazePos.map(sp.blockPosition());
 		MazeHistory.Visit visit = data.getOrCreate(pos);
-		if (findPathTo(sp, pos, room.getAccess(), visit, RoomFinder::isShop, sp.getRandom())) {
-			if (!sp.isCreative()) findShop--;
-			DungeonInfinity.HANDLER.toClientPlayer(new SyncFinderToClient(this), sp);
-		}
-	}
-
-	public void findStair(ServerPlayer sp, MazeHistory data) {
-		var room = MazeRoomData.get(sp.level(), SectionPos.of(sp.blockPosition()));
-		if (room == null) return;
-		var pos = MazePos.map(sp.blockPosition());
-		MazeHistory.Visit visit = data.getOrCreate(pos);
-		if (findPathTo(sp, pos, room.getAccess(), visit, RoomFinder::isStair, sp.getRandom())) {
-			if (!sp.isCreative()) findStair--;
+		if (findPathTo(sp, pos, room.getAccess(), visit, type.pred, sp.getRandom())) {
+			if (!sp.isCreative()) finder--;
 			DungeonInfinity.HANDLER.toClientPlayer(new SyncFinderToClient(this), sp);
 		}
 	}
