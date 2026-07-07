@@ -11,6 +11,7 @@ import dev.xkmc.l2serial.serialization.marker.SerialField;
 import net.minecraft.core.SectionPos;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.RandomSource;
+import org.jspecify.annotations.Nullable;
 
 import java.util.*;
 import java.util.function.IntPredicate;
@@ -48,6 +49,11 @@ public class RoomFinder {
 	@SerialField
 	public int defeated;
 
+	@SerialField
+	public int[] path = new int[0];
+	@SerialField
+	public @Nullable Type prevType = null;
+
 	public void accumulate(ServerPlayer sp, int size) {
 		int points = 10;
 		int max = 3;
@@ -67,13 +73,13 @@ public class RoomFinder {
 		if (room == null) return;
 		var pos = MazePos.map(sp.blockPosition());
 		MazeHistory.Visit visit = data.getOrCreate(pos);
-		if (findPathTo(sp, pos, room.getAccess(), visit, type.pred, sp.getRandom())) {
+		if (findPathTo(sp, pos, room.getAccess(), visit, type, sp.getRandom())) {
 			if (!sp.isCreative()) finder--;
 			DungeonInfinity.HANDLER.toClientPlayer(new SyncFinderToClient(this), sp);
 		}
 	}
 
-	private boolean findPathTo(ServerPlayer sp, MazePos mp, MazeAccess access, MazeHistory.Visit visit, IntPredicate pred, RandomSource rand) {
+	private boolean findPathTo(ServerPlayer sp, MazePos mp, MazeAccess access, MazeHistory.Visit visit, Type type, RandomSource rand) {
 		int[][] maze = access.getMaze();
 		var bfs = new BFS(maze, visit, access.getX(), access.getZ()).run();
 		List<Pair<Integer, Integer>> candidates = new ArrayList<>();
@@ -82,7 +88,7 @@ public class RoomFinder {
 		for (int x = 0; x < R; x++) {
 			for (int z = 0; z < R; z++) {
 				int cell = maze[x][z];
-				if (pred.test(cell)) {
+				if (type.pred.test(cell)) {
 					if (bfs.unlock[x][z] > 0) {
 						int cost = bfs.ans[x][z];
 						if (cost > cmin) continue;
@@ -103,21 +109,16 @@ public class RoomFinder {
 				}
 			}
 		}
-		if (!candidates.isEmpty()) {
-			var pair = candidates.get(rand.nextInt(candidates.size()));
-			int pos = pair.getSecond();
-			var list = bfs.getPath(pos);
-			visit.markAllVisible(list);
-			DungeonInfinity.HANDLER.toClientPlayer(new RevealPathToClient(mp, list), sp);
-			return true;
-		}
-		if (!found.isEmpty()) {
-			var pair = found.get(rand.nextInt(found.size()));
-			int pos = pair.getSecond();
-			var list = bfs.getPath(pos);
-			DungeonInfinity.HANDLER.toClientPlayer(new RevealPathToClient(mp, list), sp);
-		}
-		return false;
+		boolean findNew = cmin < fmin || prevType == type;
+		prevType = type;
+		var target = findNew && !candidates.isEmpty() ? candidates : !found.isEmpty() ? found : null;
+		if (target == null) return false;
+		var pair = target.get(rand.nextInt(target.size()));
+		int pos = pair.getSecond();
+		path = bfs.getPath(pos);
+		visit.markPath(path);
+		DungeonInfinity.HANDLER.toClientPlayer(new RevealPathToClient(mp, path), sp);
+		return target == candidates;
 	}
 
 	private static class BFS {

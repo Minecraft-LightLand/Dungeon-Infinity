@@ -11,7 +11,7 @@ public record RevealPathToClient(MazePos mp, int[] list) implements SerialPacket
 	public void handle(Player player) {
 		var data = DIMeta.HISTORY.type().getOrCreate(player);
 		var visit = data.getOrCreate(mp);
-		visit.markAllVisible(list);
+		visit.markPath(list);
 	}
 
 }

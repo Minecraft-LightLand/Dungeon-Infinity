@@ -22,9 +22,11 @@ public interface MapUI {
 	default void renderMap(Player player, GuiGraphicsExtractor g, long seed, MazePos pos, float x0, float y0, float rate, boolean renderPlayer) {
 
 		var tex = MazeMapTextureManager.get().getDetail(seed, pos);
+		var path = MazeMapTextureManager.get().getPath(seed, pos);
 		var fog = MazeMapTextureManager.get().getFog(seed, pos);
 		var visit = DIMeta.HISTORY.type().getOrCreate(player).getOrCreate(pos);
 		tex.update(visit);
+		path.update(visit);
 		fog.update(visit);
 		g.pose().pushMatrix();
 		g.pose().translate(x0, y0);
@@ -32,6 +34,7 @@ public interface MapUI {
 		g.pose().translate(-63, -63);
 		doCustomTransform(g, pos);
 		g.blit(RenderPipelines.GUI_TEXTURED, tex.id, 0, 0, 0, 0, 125, 125, 128, 128);
+		g.blit(RenderPipelines.GUI_TEXTURED, path.id, 0, 0, 0, 0, 125, 125, 128, 128);
 		g.pose().pushMatrix();
 		g.pose().scale(5, 5);
 		if (!player.isCreative() || !TooltipHelper.hasShiftDown())
@@ -43,7 +46,7 @@ public interface MapUI {
 		g.pose().popMatrix();
 	}
 
-	default void doCustomTransform(GuiGraphicsExtractor g, MazePos pos){
+	default void doCustomTransform(GuiGraphicsExtractor g, MazePos pos) {
 
 	}
 

@@ -13,6 +13,7 @@ public class MazeMapRenderer {
 	public static void renderMap(long seed, Player player, PoseStack pose, SubmitNodeCollector col, int light) {
 		var pos = MazePos.map(player.blockPosition());
 		var tex = MazeMapTextureManager.get().getDetail(seed, pos);
+		var path = MazeMapTextureManager.get().getPath(seed, pos);
 		var fog = MazeMapTextureManager.get().getFog(seed, pos);
 		var visit = DIMeta.HISTORY.type().getOrCreate(player).getOrCreate(pos);
 		tex.update(visit);
@@ -25,6 +26,13 @@ public class MazeMapRenderer {
 			buffer.addVertex(mat, 125, 125, -0.01F).setColor(-1).setUv(m, m).setLight(light);
 			buffer.addVertex(mat, 125, 0, -0.01F).setColor(-1).setUv(m, 0).setLight(light);
 			buffer.addVertex(mat, 0, 0, -0.01F).setColor(-1).setUv(0, 0).setLight(light);
+		});
+		col.submitCustomGeometry(pose, RenderTypes.text(path.id), (mat, buffer) -> {
+			float m = 125 / 128f;
+			buffer.addVertex(mat, 0, 125, -0.02F).setColor(-1).setUv(0, m).setLight(light);
+			buffer.addVertex(mat, 125, 125, -0.02F).setColor(-1).setUv(m, m).setLight(light);
+			buffer.addVertex(mat, 125, 0, -0.02F).setColor(-1).setUv(m, 0).setLight(light);
+			buffer.addVertex(mat, 0, 0, -0.02F).setColor(-1).setUv(0, 0).setLight(light);
 		});
 		pose.pushPose();
 		pose.scale(5, 5, 1);

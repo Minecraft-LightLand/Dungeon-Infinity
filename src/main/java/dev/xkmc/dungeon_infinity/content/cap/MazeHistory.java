@@ -225,6 +225,9 @@ public class MazeHistory extends PlayerCapabilityTemplate<MazeHistory> {
 		@SerialField
 		private final TreeSet<Integer> waypoints = new TreeSet<>();
 
+		@SerialField
+		private int[] path = new int[0];
+
 		public int getVer() {
 			return revision;
 		}
@@ -276,7 +279,8 @@ public class MazeHistory extends PlayerCapabilityTemplate<MazeHistory> {
 				revision++;
 		}
 
-		public void markAllVisible(int[] list) {
+		public void markPath(int[] list) {
+			this.path = list;
 			int old = visible;
 			for (var p : list) {
 				markVisible(p >> 5, p & 31);
@@ -343,6 +347,10 @@ public class MazeHistory extends PlayerCapabilityTemplate<MazeHistory> {
 
 		public Collection<Integer> getAllWaypoints() {
 			return waypoints;
+		}
+
+		public int[] getPath() {
+			return path;
 		}
 
 	}

@@ -25,6 +25,11 @@ public class MazeMapTextureManager implements AutoCloseable {
 		return dim.getDetail(pos);
 	}
 
+	public PathTextureData getPath(long seed, MazePos pos) {
+		var dim = dims.computeIfAbsent(seed, MazeLevelMapSet::new);
+		return dim.getPath(pos);
+	}
+
 	public FogTextureData getFog(long seed, MazePos pos) {
 		var dim = dims.computeIfAbsent(seed, MazeLevelMapSet::new);
 		return dim.getFog(pos);
@@ -41,6 +46,7 @@ public class MazeMapTextureManager implements AutoCloseable {
 
 		private final MazeDimHolder dim;
 		private final Long2ObjectMap<MapTextureData> detail = new Long2ObjectOpenHashMap<>();
+		private final Long2ObjectMap<PathTextureData> path = new Long2ObjectOpenHashMap<>();
 		private final Long2ObjectMap<FogTextureData> fog = new Long2ObjectOpenHashMap<>();
 
 		public MazeLevelMapSet(long seed) {
@@ -49,6 +55,10 @@ public class MazeMapTextureManager implements AutoCloseable {
 
 		public MapTextureData getDetail(MazePos pos) {
 			return detail.computeIfAbsent(pos.key(), _ -> new MapTextureData(dim, pos));
+		}
+
+		public PathTextureData getPath(MazePos pos) {
+			return path.computeIfAbsent(pos.key(), _ -> new PathTextureData(pos));
 		}
 
 		public FogTextureData getFog(MazePos pos) {
@@ -108,6 +118,69 @@ public class MazeMapTextureManager implements AutoCloseable {
 			}
 
 			data[127][127] = 0xffffffff;
+
+			for (int y = 0; y < 128; y++) {
+				for (int x = 0; x < 128; x++) {
+					pixels.setPixel(x, y, data[x][y]);
+				}
+			}
+
+			this.texture.upload();
+		}
+
+		@Override
+		public void close() {
+			texture.close();
+		}
+	}
+
+	public static class PathTextureData implements AutoCloseable {
+
+		private final DynamicTexture texture;
+		private final Vec3i pos;
+
+		public final Identifier id;
+
+		public int w, h;
+		public int[][] data;
+
+		private int[] path = new int[0];
+
+		public PathTextureData(MazePos pos) {
+			this.pos = pos.toVec3i();
+			w = 25;
+			h = 25;
+			data = new int[128][128];
+			this.texture = new DynamicTexture(() -> "Path Map " + pos, 128, 128, true);
+			this.id = DungeonInfinity.loc("path_map/" + Long.toUnsignedString(pos.key(), 16));
+			Minecraft.getInstance().getTextureManager().register(id, texture);
+		}
+
+		public void update(MazeHistory.Visit visit) {
+			if (visit.getPath() == path) return;
+			path = visit.getPath();
+			fill();
+		}
+
+		public void fill() {
+			data = new int[128][128];
+			NativeImage pixels = this.texture.getPixels();
+			for (int i = 0; i < path.length - 1; i++) {
+				int p0 = path[i];
+				int p1 = path[i + 1];
+				int x0 = p0 >> 5, z0 = p0 & 31, x1 = p1 >> 5, z1 = p1 & 31;
+				x0 = x0 * 5 + 2;
+				z0 = z0 * 5 + 2;
+				x1 = x1 * 5 + 2;
+				z1 = z1 * 5 + 2;
+				int px0 = Math.min(x0, x1), px1 = Math.max(x0, x1);
+				int pz0 = Math.min(z0, z1), pz1 = Math.max(z0, z1);
+				for (int ix = px0; ix <= px1; ix++) {
+					for (int iz = pz0; iz <= pz1; iz++) {
+						data[ix][iz] = 0xffffaa00;
+					}
+				}
+			}
 
 			for (int y = 0; y < 128; y++) {
 				for (int x = 0; x < 128; x++) {
