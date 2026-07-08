@@ -36,7 +36,7 @@ public class ExtraRewardBuff extends MazeBuff {
 		for (ItemStackTemplate item : items)
 			ans.add(Component.literal("- ").append(Component.translatable("item.container.item_count",
 					item.create().getHoverName(), item.count() * lv)));
-		ans.add(Component.literal("- ").append(DILang.EXP.get(exp)));
+		ans.add(Component.literal("- ").append(DILang.EXP.get(exp * lv)));
 		return ans;
 	}
 

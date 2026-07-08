@@ -31,7 +31,7 @@ public class ItemBuff extends MazeBuff {
 		List<Component> ans = new ArrayList<>();
 		for (ItemStackTemplate item : items)
 			ans.add(Component.literal("- ").append(Component.translatable("item.container.item_count",
-					item.create().getHoverName(), item.count())));
+					item.create().getHoverName(), item.count() * lv)));
 		return ans;
 	}
 

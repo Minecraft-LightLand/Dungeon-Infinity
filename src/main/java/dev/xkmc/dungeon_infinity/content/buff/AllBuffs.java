@@ -46,7 +46,7 @@ public class AllBuffs {
 			new ItemStackTemplate(Items.EMERALD, 16)
 	));
 
-	public static final ExtraRewardBuff REWARD = new ExtraRewardBuff(DungeonInfinity.loc("reward"), 12, 3, List.of(
+	public static final ExtraRewardBuff REWARD = new ExtraRewardBuff(DungeonInfinity.loc("reward"), 12, 7, List.of(
 			new ItemStackTemplate(Items.EMERALD, 1)
 	));
 
