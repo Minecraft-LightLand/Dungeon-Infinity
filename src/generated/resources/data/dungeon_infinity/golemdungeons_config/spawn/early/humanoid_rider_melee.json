@@ -38,16 +38,7 @@
   },
   "types": {
     "modulargolems:dog_golem": {
-      "bonus": [
-        {
-          "chance": 0.5,
-          "upgrade": "modulargolems:speed"
-        },
-        {
-          "chance": 1.0,
-          "upgrade": "modulargolems:size_upgrade"
-        }
-      ],
+      "bonus": [],
       "mountChance": 0.0,
       "mounts": [],
       "weight": 0

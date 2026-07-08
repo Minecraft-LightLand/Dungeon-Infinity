@@ -1,6 +1,7 @@
 package dev.xkmc.dungeon_infinity.init.data;
 
 import com.tterrag.registrate.providers.RegistrateLangProvider;
+import dev.xkmc.dungeon_infinity.content.buff.AllBuffs;
 import dev.xkmc.dungeon_infinity.init.DungeonInfinity;
 import dev.xkmc.modulargolems.init.ModularGolems;
 import net.minecraft.ChatFormatting;
@@ -19,14 +20,20 @@ public enum DILang {
 	WAYPOINT("tooltip.waypoint", "Teleport", 0, null),
 
 	DEPTH("legend.depth", "Depth: %s", 1, null),
+	FINDER("legend.finder", "Finders left: %s", 1, null),
+	UP("legend.up", "↑", 0, null),
+	DOWN("legend.down", "↓", 0, null),
+	MAGNIFIER("legend.magnifier", "\uD83D\uDD0E\uFE0E", 0, null),
 	BATTLE("legend.battle", "Battle Room", 0, null),
 	QUAD("legend.quad", "Large Battle Room", 0, null),
 	BOSS("legend.boss", "Boss Room", 0, null),
-	DOWN("legend.down", "Downward Stairs", 0, null),
-	UP("legend.up", "Upward Stairs", 0, null),
+	DOWN_STAIR("legend.down_stair", "Downward Stairs", 0, null),
+	UP_STAIR("legend.up_stair", "Upward Stairs", 0, null),
 	WORKSHOP("legend.workshop", "Workshop Room", 0, null),
 	SHOP("legend.shop", "Merchant Room", 0, null),
-	WAREHOUSE("legend.warehouse", "Warehouse Room", 0, null);
+	WAREHOUSE("legend.warehouse", "Warehouse Room", 0, null),
+
+	EXP("info.exp", "%s Xp", 1, null);
 
 	private final String key, def;
 	private final int arg;
@@ -65,6 +72,7 @@ public enum DILang {
 		for (DILang lang : DILang.values()) {
 			pvd.add(lang.key, lang.def);
 		}
+		AllBuffs.genLang(pvd);
 		pvd.add(DungeonInfinity.MODID + ".merchant.groceries", "Grocery Vendor");
 		pvd.add(DungeonInfinity.MODID + ".merchant.blacksmith", "Black Smith");
 		pvd.add(DungeonInfinity.MODID + ".merchant.recycler", "Metal Scrapper");

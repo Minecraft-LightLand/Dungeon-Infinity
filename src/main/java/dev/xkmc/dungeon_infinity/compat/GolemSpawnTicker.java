@@ -91,7 +91,7 @@ public class GolemSpawnTicker implements TrialTicker, MobSpawnTicker {
 	@Override
 	public void tick(ServerLevel level, MobRoomHolder ins) {
 		if (completed && active) {
-			ins.healAll(level, 0.02f);
+			ins.healAll(level, 0.01f);
 		}
 		this.data.tickTrial(this, level, level.getGameTime());
 		if (this.bar != null) {

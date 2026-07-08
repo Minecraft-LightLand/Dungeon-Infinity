@@ -17,6 +17,7 @@ public class MazeMapRenderer {
 		var fog = MazeMapTextureManager.get().getFog(seed, pos);
 		var visit = DIMeta.HISTORY.type().getOrCreate(player).getOrCreate(pos);
 		tex.update(visit);
+		path.update(visit);
 		fog.update(visit);
 		pose.pushPose();
 		pose.translate(1.5f, 1.5f, 0);

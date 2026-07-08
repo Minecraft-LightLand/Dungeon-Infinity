@@ -1,8 +1,10 @@
 package dev.xkmc.dungeon_infinity.content.map;
 
+import dev.xkmc.dungeon_infinity.content.buff.BuffSelScreen;
 import dev.xkmc.dungeon_infinity.content.chunkgen.MazeChunkGenerator;
 import dev.xkmc.dungeon_infinity.init.data.DIDimensionGen;
 import dev.xkmc.dungeon_infinity.init.reg.DIItems;
+import dev.xkmc.dungeon_infinity.init.reg.DIMeta;
 import net.minecraft.client.Minecraft;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
@@ -48,6 +50,17 @@ public class MazeMapItem extends Item {
 
 		public static void openScreen(long seed) {
 			Minecraft.getInstance().setScreen(new MazeMapScreen(seed));
+		}
+
+		public static void checkBuffScreen() {
+			var player = Minecraft.getInstance().player;
+			if (player == null) return;
+			var data = DIMeta.HISTORY.type().getOrCreate(player).buff;
+			if (data.largeBuff > 0) {
+				Minecraft.getInstance().setScreen(new BuffSelScreen(true));
+			} else if (data.smallBuff > 0) {
+				Minecraft.getInstance().setScreen(new BuffSelScreen(false));
+			}
 		}
 
 	}
