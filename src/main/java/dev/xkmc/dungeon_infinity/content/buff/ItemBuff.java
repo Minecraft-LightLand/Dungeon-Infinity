@@ -28,7 +28,7 @@ public class ItemBuff extends MazeBuff {
 
 	@Override
 	public List<Component> getDetail(int lv) {
-		List<Component> ans = new ArrayList<>(super.getDetail(lv));
+		List<Component> ans = new ArrayList<>();
 		for (ItemStackTemplate item : items)
 			ans.add(Component.literal("- ").append(Component.translatable("item.container.item_count",
 					item.create().getHoverName(), item.count())));

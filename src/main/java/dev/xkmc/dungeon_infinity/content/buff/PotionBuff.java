@@ -55,7 +55,7 @@ public class PotionBuff extends MazeBuff {
 
 	@Override
 	public List<Component> getDetail(int lv) {
-		List<Component> ans = new ArrayList<>(super.getDetail(lv));
+		List<Component> ans = new ArrayList<>();
 		for (var e : effs)
 			ans.add(Component.literal("- ").append(e.getDesc(lv)));
 		return ans;

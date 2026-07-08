@@ -1,5 +1,6 @@
 package dev.xkmc.dungeon_infinity.content.map;
 
+import dev.xkmc.dungeon_infinity.content.buff.MazeBuff;
 import dev.xkmc.dungeon_infinity.content.cap.MazeHistory;
 import dev.xkmc.dungeon_infinity.content.cap.MazePos;
 import dev.xkmc.dungeon_infinity.content.cap.RoomFinder;
@@ -116,7 +117,11 @@ public class MazeMapScreen extends Screen implements MapUI {
 		this.mx = mx;
 		this.my = my;
 		renderMap(player, g, seed, pos, x0, y0, rate, diffY == 0);
+		extractLegend(player, g, x0, y0, rate, pos);
+		extractBuff(player, g, x0, y0, rate);
+	}
 
+	public void extractLegend(Player player, GuiGraphicsExtractor g, int x0, int y0, float rate, MazePos pos) {
 		int x1 = (int) (x0 + rate * 64);
 		int y1 = (int) (y0 - rate * 64);
 		var font = getFont();
@@ -124,28 +129,52 @@ public class MazeMapScreen extends Screen implements MapUI {
 
 		int bx = x1 + 50;
 		int by = y1;
-		up.update(g, mpy < 15, bx, by, font, "↑");
-		down.update(g, mpy > 0, bx, by + h, font, "↓");
+		up.update(g, pos.y() < 15, bx, by, font, DILang.UP.get());
+		down.update(g, pos.y() > 0, bx, by + h, font, DILang.DOWN.get());
 		y1 -= h - 5;
 
 		var data = DIMeta.HISTORY.type().getOrCreate(player);
 		var findable = diffY == 0 && (data.finder.finder > 0 || player.isCreative());
+		var mag = DILang.MAGNIFIER.get();
 
 		g.text(font, DILang.DEPTH.get(16 - pos.y()), x1, y1 += h, -1);
+		if (findable) {
+			g.text(font, DILang.FINDER.get(data.finder.finder), x1, y1 += h, -1);
+		}
 		y1 += h;
 		g.text(font, DILang.BATTLE.get(), x1, y1 += h, MazeMapColors.F);
 		g.text(font, DILang.QUAD.get(), x1, y1 += h, MazeMapColors.Q);
-		findQuad.update(g, findable, x1 + font.width(DILang.QUAD.get()), y1, font, "\uD83D\uDD0E");
+		findQuad.update(g, findable, x1 + font.width(DILang.QUAD.get()), y1, font, mag);
 		g.text(font, DILang.BOSS.get(), x1, y1 += h, MazeMapColors.R);
-		g.text(font, DILang.DOWN.get(), x1, y1 += h, MazeMapColors.G);
-		findStair.update(g, findable, x1 + font.width(DILang.DOWN.get()), y1, font, "\uD83D\uDD0E");
-		g.text(font, DILang.UP.get(), x1, y1 += h, MazeMapColors.Y);
+		g.text(font, DILang.DOWN_STAIR.get(), x1, y1 += h, MazeMapColors.G);
+		findStair.update(g, findable, x1 + font.width(DILang.DOWN_STAIR.get()), y1, font, mag);
+		g.text(font, DILang.UP_STAIR.get(), x1, y1 += h, MazeMapColors.Y);
 		g.text(font, DILang.WORKSHOP.get(), x1, y1 += h, MazeMapColors.K);
-		findWorkshop.update(g, findable, x1 + font.width(DILang.WORKSHOP.get()), y1, font, "\uD83D\uDD0E");
+		findWorkshop.update(g, findable, x1 + font.width(DILang.WORKSHOP.get()), y1, font, mag);
 		g.text(font, DILang.SHOP.get(), x1, y1 += h, MazeMapColors.S);
-		findShop.update(g, findable, x1 + font.width(DILang.SHOP.get()), y1, font, "\uD83D\uDD0E");
+		findShop.update(g, findable, x1 + font.width(DILang.SHOP.get()), y1, font, mag);
 		g.text(font, DILang.WAREHOUSE.get(), x1, y1 += h, MazeMapColors.H);
-		findWarehouse.update(g, findable, x1 + font.width(DILang.WAREHOUSE.get()), y1, font, "\uD83D\uDD0E");
+		findWarehouse.update(g, findable, x1 + font.width(DILang.WAREHOUSE.get()), y1, font, mag);
+	}
+
+	public void extractBuff(Player player, GuiGraphicsExtractor g, int x0, int y0, float rate) {
+		int x1 = (int) (x0 - rate * 64);
+		int y1 = (int) (y0 - rate * 64);
+		var font = getFont();
+		int h = font.lineHeight + 3;
+		y1 -= h - 5;
+		var data = DIMeta.HISTORY.type().getOrCreate(player).buff;
+		for (var e : data.buffs.entrySet()) {
+			var buff = MazeBuff.get(e.getKey());
+			var title = buff.getTitle(e.getValue());
+			int w = font.width(title);
+			int x2 = (x1 - w) / 2;
+			g.text(font, title, x2, y1 += h, -1);
+			if (x2 <= mx && mx <= x2 + w && y1 <= my && my <= y1 + h) {
+				g.setComponentTooltipForNextFrame(font, buff.getDetail(e.getValue()), mx, my);
+			}
+
+		}
 	}
 
 	public void renderWaypoints(GuiGraphicsExtractor g, MazeHistory.Visit visit) {
@@ -192,7 +221,7 @@ public class MazeMapScreen extends Screen implements MapUI {
 			return enabled && mx >= x && my >= y && mx <= x + w && my <= y + h;
 		}
 
-		public void update(GuiGraphicsExtractor g, boolean enable, int x, int y, Font font, String s) {
+		public void update(GuiGraphicsExtractor g, boolean enable, int x, int y, Font font, Component s) {
 			if (enable) {
 				set(x, y, font.width(s), font.lineHeight);
 				g.text(font, s, x, y, contains(mx, my) ? 0xFFFFAA00 : 0xFFFFFFFF);

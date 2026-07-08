@@ -16,11 +16,20 @@ import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.LivingDropsEvent;
+import net.neoforged.neoforge.event.entity.living.LivingHealEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 
 @EventBusSubscriber(modid = DungeonInfinity.MODID)
 public class DIGolemEventHandlers {
 
+	@SubscribeEvent
+	public static void onHeal(LivingHealEvent event) {
+		if (event.getEntity() instanceof AbstractGolemEntity<?, ?> e) {
+			if (e.isHostile() && MazeHistory.inMazeDim(e)) {
+				event.setAmount((float) (event.getAmount() * Math.pow(0.5, e.tickCount / 1200f)));
+			}
+		}
+	}
 
 	@SubscribeEvent(priority = EventPriority.HIGH)
 	public static void onInventoryDrop(LivingDropsEvent event) {

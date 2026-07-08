@@ -1,6 +1,7 @@
 package dev.xkmc.dungeon_infinity.content.buff;
 
 import com.tterrag.registrate.providers.RegistrateLangProvider;
+import dev.xkmc.dungeon_infinity.content.cap.MazeBuffData;
 import dev.xkmc.dungeon_infinity.init.reg.DIMeta;
 import dev.xkmc.l2damagetracker.contents.attack.DamageData;
 import net.minecraft.network.chat.Component;
@@ -14,9 +15,8 @@ public class MazeBuff {
 
 	public static final LinkedHashMap<Identifier, MazeBuff> MAP = new LinkedHashMap<>();
 
-	public static synchronized <T extends MazeBuff> T register(T val) {
+	public static synchronized <T extends MazeBuff> void register(T val) {
 		MAP.put(val.id, val);
-		return val;
 	}
 
 	public static MazeBuff get(Identifier id) {
@@ -29,6 +29,7 @@ public class MazeBuff {
 	public MazeBuff(Identifier id, int max) {
 		this.id = id;
 		this.max = max;
+		register(this);
 	}
 
 	public int getMaxLevel() {
@@ -65,6 +66,16 @@ public class MazeBuff {
 		return Component.translatable(id.getNamespace() + ".buff." + id.getPath());
 	}
 
+	public Component getTitle(int lv) {
+		var lvt = Component.literal(" ");
+		if (lv > 10) {
+			lv -= 10;
+			lvt = Component.literal(" X");
+		}
+		lvt.append(Component.translatable("potion.potency." + (lv - 1)));
+		return Component.translatable(id.getNamespace() + ".buff." + id.getPath()).append(lvt);
+	}
+
 	public List<Component> getDetail(int lv) {
 		return List.of(Component.translatable(id.getNamespace() + ".buff." + id.getPath() + ".desc"));
 	}
@@ -83,6 +94,10 @@ public class MazeBuff {
 	}
 
 	public void onDamage(ServerPlayer sp, int lv, DamageData.Defence data) {
+	}
+
+	public boolean fitsOn(MazeBuffData data, int lv) {
+		return data.buffs.getOrDefault(id, 0) + lv <= getMaxLevel();
 	}
 
 }

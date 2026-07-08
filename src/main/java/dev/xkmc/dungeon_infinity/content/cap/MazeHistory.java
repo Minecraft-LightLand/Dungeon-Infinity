@@ -6,6 +6,7 @@ import dev.xkmc.dungeon_infinity.content.cap.packet.SetRadiusToClient;
 import dev.xkmc.dungeon_infinity.content.chunkgen.CellInterpreter;
 import dev.xkmc.dungeon_infinity.content.chunkgen.MazeChunkGenerator;
 import dev.xkmc.dungeon_infinity.content.item.KeyOfAccess;
+import dev.xkmc.dungeon_infinity.content.map.MazeMapItem;
 import dev.xkmc.dungeon_infinity.init.DungeonInfinity;
 import dev.xkmc.dungeon_infinity.init.data.DIDimensionGen;
 import dev.xkmc.dungeon_infinity.init.data.DITriggers;
@@ -22,6 +23,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.storage.LevelData;
 import net.minecraft.world.phys.Vec3;
@@ -77,8 +79,8 @@ public class MazeHistory extends PlayerCapabilityTemplate<MazeHistory> {
 	@SerialField
 	public MazeBuffData buff = new MazeBuffData();
 
-	public static boolean inMazeDim(Player player) {
-		return player.level().dimension().identifier().equals(DIDimensionGen.LEVEL_MAZE.identifier());
+	public static boolean inMazeDim(LivingEntity e) {
+		return e.level().dimension().identifier().equals(DIDimensionGen.LEVEL_MAZE.identifier());
 	}
 
 	public static void markEntry(ServerPlayer sp) {
@@ -154,7 +156,7 @@ public class MazeHistory extends PlayerCapabilityTemplate<MazeHistory> {
 		if (player instanceof ServerPlayer sp) {
 			if (inMazeDim(sp)) intoDim(sp);
 			else outOfDim(sp);
-		}
+		} else MazeMapItem.ClientHandler.checkBuffScreen();
 		if (!inMazeDim(player)) {
 			activeMobRoom = null;
 			return;
@@ -217,7 +219,7 @@ public class MazeHistory extends PlayerCapabilityTemplate<MazeHistory> {
 		}
 		int factor = 1 + buff.buffs.getOrDefault(AllBuffs.SIGHT.id, 0);
 		finder.accumulate(sp, points.size() * factor);
-		buff.onDefeat(sp, points.size());
+		buff.onDefeat(sp, points.size(), holder);
 	}
 
 	public Visit getOrCreate(MazePos pos) {
@@ -253,6 +255,10 @@ public class MazeHistory extends PlayerCapabilityTemplate<MazeHistory> {
 
 		public int getDefeat() {
 			return defeat;
+		}
+
+		public int getVisible() {
+			return visible;
 		}
 
 		public boolean isVisited(int x, int z) {

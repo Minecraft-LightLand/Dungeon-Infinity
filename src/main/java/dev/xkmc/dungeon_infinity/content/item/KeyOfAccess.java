@@ -1,12 +1,14 @@
 package dev.xkmc.dungeon_infinity.content.item;
 
 import dev.xkmc.dungeon_infinity.content.cap.MazeHistory;
+import dev.xkmc.dungeon_infinity.content.cap.MazePos;
 import dev.xkmc.dungeon_infinity.content.chunkgen.CellInterpreter;
 import dev.xkmc.dungeon_infinity.content.chunkgen.MazeChunkGenerator;
 import dev.xkmc.dungeon_infinity.content.config.TemplateConfig;
 import dev.xkmc.dungeon_infinity.init.data.DIDimensionGen;
 import dev.xkmc.dungeon_infinity.init.data.DILang;
 import dev.xkmc.dungeon_infinity.init.reg.DIItems;
+import dev.xkmc.dungeon_infinity.init.reg.DIMeta;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -77,9 +79,17 @@ public class KeyOfAccess extends Item {
 			DIItems.POS.set(stack, pos);
 		}
 		var vec = pos.getCenter();
-		if (player instanceof ServerPlayer sp)
+		if (player instanceof ServerPlayer sp) {
 			MazeHistory.markEntry(sp);
-		performTeleport(player, target, vec.x, vec.y, vec.z);
+			performTeleport(player, target, vec.x, vec.y, vec.z);
+			var mp = MazePos.map(sp.blockPosition());
+			var data = DIMeta.HISTORY.type().getOrCreate(sp);
+			var ent = data.getOrCreate(mp);
+			if (mp.y() == 15 && ent.getVisible() == 0) {
+				data.buff.largeBuff++;
+				data.buff.sync(sp);
+			}
+		}
 		return InteractionResult.SUCCESS;
 	}
 

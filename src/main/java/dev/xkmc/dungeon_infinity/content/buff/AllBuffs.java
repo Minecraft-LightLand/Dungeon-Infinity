@@ -1,5 +1,6 @@
 package dev.xkmc.dungeon_infinity.content.buff;
 
+import com.mojang.datafixers.util.Pair;
 import com.tterrag.registrate.providers.RegistrateLangProvider;
 import dev.xkmc.dungeon_infinity.init.DungeonInfinity;
 import dev.xkmc.dungeon_infinity.init.reg.DIItems;
@@ -55,17 +56,41 @@ public class AllBuffs {
 
 	public static final MazeBuff SIGHT = new MazeBuff(DungeonInfinity.loc("sight"), 1);
 
+	public static final List<Pair<MazeBuff, Integer>> LARGE_BUFFS = List.of(
+			Pair.of(TREASURE, 3),
+			Pair.of(BLESS, 5),
+			Pair.of(INSURANCE, 5),
+			Pair.of(HEAL, 1),
+			Pair.of(REWARD, 4),
+			Pair.of(SHIELD, 5),
+			Pair.of(SIGHT, 1)
+	);
+	public static final List<Pair<MazeBuff, Integer>> SMALL_BUFFS = List.of(
+			Pair.of(TREASURE, 1),
+			Pair.of(BLESS, 1),
+			Pair.of(INSURANCE, 1),
+			Pair.of(REWARD, 1),
+			Pair.of(SHIELD, 1),
+			Pair.of(SPEED, 1),
+			Pair.of(REACH, 1),
+			Pair.of(ARMOR, 1)
+	);
+
 	public static void genLang(RegistrateLangProvider pvd) {
 		SPEED.genLang(pvd, "Talaria", "While player is in the maze, grant:");
 		REACH.genLang(pvd, "Spring Arm", "While player is in the maze, grant:");
 		ARMOR.genLang(pvd, "Bedrock Armor", "While player is in the maze, grant:");
-		TREASURE.genLang(pvd, "Treasure of Sanctity", "Reward with:");
-		BLESS.genLang(pvd, "Holy Blessing", "Grant player with:");
+		TREASURE.genLang(pvd, "Treasure of Sanctity", "");
+		BLESS.genLang(pvd, "Holy Blessing", "");
 		INSURANCE.genLang(pvd, "Maze Insurance", "When player dies and revives in maze, grant player:");
 		HEAL.genLang(pvd, "Medal of Victory", "Heal all your golems in maze or inventory by %s%%");
 		REWARD.genLang(pvd, "Treasure Chest", "For every unit cell of battle room player defeats:");
 		SHIELD.genLang(pvd, "Dungeon Forcefield", "Reduce damage taken by player by %s%%");
 		SIGHT.genLang(pvd, "Vision of Truth", "Double room finder rewards. +1 sight.");
+	}
+
+	public static void register() {
+
 	}
 
 }
