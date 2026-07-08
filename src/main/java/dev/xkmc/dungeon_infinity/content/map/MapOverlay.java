@@ -35,8 +35,8 @@ public class MapOverlay implements GuiLayer, MapUI {
 		int x0 = w - r / 2 - margin;
 		int y0 = r / 2 + margin;
 		float rate = r / 128f;
-		g.enableScissor(w - r, 0, w, r);
-		g.fill(w - r, 0, w, r, 0xaf7f7f7f);
+		g.enableScissor(x0 - r / 2, y0 - r / 2, x0 + r / 2, y0 + r / 2);
+		g.fill(x0 - r / 2, y0 - r / 2, x0 + r / 2, y0 + r / 2, 0xaf7f7f7f);
 		renderMap(player, g, seed, pos, x0, y0, rate, true);
 		g.disableScissor();
 	}
