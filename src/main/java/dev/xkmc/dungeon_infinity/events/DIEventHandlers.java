@@ -2,9 +2,15 @@ package dev.xkmc.dungeon_infinity.events;
 
 import dev.xkmc.dungeon_infinity.content.cap.MazeHistory;
 import dev.xkmc.dungeon_infinity.init.DungeonInfinity;
+import dev.xkmc.dungeon_infinity.init.data.DITagGen;
 import dev.xkmc.dungeon_infinity.init.reg.DIMeta;
+import dev.xkmc.modulargolems.init.data.MGTagGen;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -35,4 +41,9 @@ public class DIEventHandlers {
 		}
 	}
 
+	public static boolean canUseOn(ItemStack stack, BlockState state) {
+		if (stack.is(DITagGen.ALWAYS_KEEP)) return true;
+		if (stack.is(Items.GLOWSTONE) && state.getBlock() == Blocks.RESPAWN_ANCHOR) return true;
+		return false;
+	}
 }
