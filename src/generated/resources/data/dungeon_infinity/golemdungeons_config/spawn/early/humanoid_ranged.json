@@ -33,38 +33,10 @@
     }
   },
   "types": {
-    "modulargolems:dog_golem": {
-      "bonus": [
-        {
-          "chance": 0.75,
-          "upgrade": "modulargolems:diamond"
-        },
-        {
-          "chance": 0.5,
-          "upgrade": "modulargolems:size_upgrade"
-        }
-      ],
-      "mountChance": 0.0,
-      "mounts": [],
-      "weight": 0
-    },
     "modulargolems:humanoid_golem": {
       "bonus": [],
-      "mountChance": 0.3,
-      "mounts": [
-        {
-          "mount": "minecraft:horse",
-          "weight": 50
-        },
-        {
-          "mount": "minecraft:skeleton_horse",
-          "weight": 50
-        },
-        {
-          "mount": "modulargolems:dog_golem",
-          "weight": 100
-        }
-      ],
+      "mountChance": 0.0,
+      "mounts": [],
       "weight": 40
     }
   },

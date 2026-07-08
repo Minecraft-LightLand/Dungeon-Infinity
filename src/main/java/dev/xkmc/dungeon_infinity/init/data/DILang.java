@@ -1,6 +1,7 @@
 package dev.xkmc.dungeon_infinity.init.data;
 
 import com.tterrag.registrate.providers.RegistrateLangProvider;
+import dev.xkmc.dungeon_infinity.content.buff.AllBuffs;
 import dev.xkmc.dungeon_infinity.init.DungeonInfinity;
 import dev.xkmc.modulargolems.init.ModularGolems;
 import net.minecraft.ChatFormatting;
@@ -26,7 +27,9 @@ public enum DILang {
 	UP("legend.up", "Upward Stairs", 0, null),
 	WORKSHOP("legend.workshop", "Workshop Room", 0, null),
 	SHOP("legend.shop", "Merchant Room", 0, null),
-	WAREHOUSE("legend.warehouse", "Warehouse Room", 0, null);
+	WAREHOUSE("legend.warehouse", "Warehouse Room", 0, null),
+
+	EXP("info.exp", "%s Xp", 1, null);
 
 	private final String key, def;
 	private final int arg;
@@ -65,6 +68,7 @@ public enum DILang {
 		for (DILang lang : DILang.values()) {
 			pvd.add(lang.key, lang.def);
 		}
+		AllBuffs.genLang(pvd);
 		pvd.add(DungeonInfinity.MODID + ".merchant.groceries", "Grocery Vendor");
 		pvd.add(DungeonInfinity.MODID + ".merchant.blacksmith", "Black Smith");
 		pvd.add(DungeonInfinity.MODID + ".merchant.recycler", "Metal Scrapper");

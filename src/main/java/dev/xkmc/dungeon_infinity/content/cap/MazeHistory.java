@@ -1,5 +1,6 @@
 package dev.xkmc.dungeon_infinity.content.cap;
 
+import dev.xkmc.dungeon_infinity.content.buff.AllBuffs;
 import dev.xkmc.dungeon_infinity.content.cap.packet.AddWaypointToClient;
 import dev.xkmc.dungeon_infinity.content.cap.packet.SetRadiusToClient;
 import dev.xkmc.dungeon_infinity.content.chunkgen.CellInterpreter;
@@ -73,6 +74,9 @@ public class MazeHistory extends PlayerCapabilityTemplate<MazeHistory> {
 	@Nullable
 	public RespawnData prevHome;
 
+	@SerialField
+	public MazeBuffData buff = new MazeBuffData();
+
 	public static boolean inMazeDim(Player player) {
 		return player.level().dimension().identifier().equals(DIDimensionGen.LEVEL_MAZE.identifier());
 	}
@@ -98,6 +102,7 @@ public class MazeHistory extends PlayerCapabilityTemplate<MazeHistory> {
 	}
 
 	private void intoDim(ServerPlayer sp) {
+		buff.intoDim(sp);
 		var config = sp.getRespawnConfig();
 		if (config == null) return;
 		if (!config.respawnData().dimension().identifier().equals(DIDimensionGen.LEVEL_MAZE.identifier())) {
@@ -112,11 +117,11 @@ public class MazeHistory extends PlayerCapabilityTemplate<MazeHistory> {
 					DungeonInfinity.HANDLER.toClientPlayer(new AddWaypointToClient(pos), sp);
 				}
 			}
-
 		}
 	}
 
 	private void outOfDim(ServerPlayer sp) {
+		buff.outOfDim(sp);
 		var respawn = sp.getRespawnConfig();
 		if (respawn != null) {
 			if (respawn.respawnData().dimension().identifier().equals(DIDimensionGen.LEVEL_MAZE.identifier())) {
@@ -126,10 +131,22 @@ public class MazeHistory extends PlayerCapabilityTemplate<MazeHistory> {
 		}
 	}
 
+	@Override
+	public void onClone(Player player, boolean isWasDeath) {
+		super.onClone(player, isWasDeath);
+		if (isWasDeath && inMazeDim(player) && player instanceof ServerPlayer sp) {
+			buff.onRevive(sp);
+		}
+	}
+
 	public void teleportToRoom(ServerPlayer sp, BlockPos fallback) {
 		if (activeMobRoom == null) activeMobRoom = fallback;
 		var vec = activeMobRoom.getBottomCenter();
 		sp.teleportTo(vec.x, vec.y, vec.z);
+	}
+
+	public int getRadius() {
+		return radius + buff.buffs.getOrDefault(AllBuffs.SIGHT.id, 0);
 	}
 
 	@Override
@@ -164,7 +181,7 @@ public class MazeHistory extends PlayerCapabilityTemplate<MazeHistory> {
 				radius = rad;
 			}
 		}
-		boolean visited = ent.visit(pos, radius);
+		boolean visited = ent.visit(pos, getRadius());
 		if (player instanceof ServerPlayer sp) {
 			var sec = MazeRoomData.get(sp.level(), SectionPos.of(sp.blockPosition()));
 			if (sec != null) {
@@ -198,7 +215,9 @@ public class MazeHistory extends PlayerCapabilityTemplate<MazeHistory> {
 			int max = visit.getTotalRoom(maze);
 			DITriggers.DEFEAT.get().trigger(sp, p.y(), total, holder.isBoss(), holder.isQuad(), visit.defeat == max);
 		}
-		finder.accumulate(sp, points.size());
+		int factor = 1 + buff.buffs.getOrDefault(AllBuffs.SIGHT.id, 0);
+		finder.accumulate(sp, points.size() * factor);
+		buff.onDefeat(sp, points.size());
 	}
 
 	public Visit getOrCreate(MazePos pos) {
