@@ -35,6 +35,7 @@ public enum DILang {
 	WAREHOUSE("legend.warehouse", "Warehouse Room", 0, null),
 
 	REROLL("info.reroll", "Reroll chance: %s", 1, null),
+	CONFIRM("info.confirm", "Confirm", 0, null),
 	EXP("info.exp", "%s Xp", 1, null);
 
 	private final String key, def;

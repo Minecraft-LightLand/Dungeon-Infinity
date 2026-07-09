@@ -268,7 +268,7 @@
       {
         "cost": "minecraft:emerald",
         "count": 4,
-        "limit": 4,
+        "limit": 8,
         "result": {
           "id": "minecraft:gold_ingot"
         },
@@ -277,7 +277,7 @@
       {
         "cost": "minecraft:emerald",
         "count": 8,
-        "limit": 1,
+        "limit": 8,
         "result": {
           "id": "minecraft:diamond"
         },
@@ -338,16 +338,12 @@
         "offer": "stone:food"
       },
       {
-        "count": 2,
+        "count": 3,
         "offer": "stone:consumable"
       },
       {
         "count": 2,
         "offer": "stone:ingredient"
-      },
-      {
-        "count": 1,
-        "offer": "stone:material"
       }
     ],
     "stone:recycler": [
