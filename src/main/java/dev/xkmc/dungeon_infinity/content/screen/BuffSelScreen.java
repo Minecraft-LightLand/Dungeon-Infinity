@@ -17,12 +17,16 @@ public class BuffSelScreen extends Screen {
 
 	private final boolean large;
 
+	private int sel = -1;
+
 	private final TextButton reroll;
+	private final TextButton confirm;
 
 	public BuffSelScreen(boolean large) {
 		super(Component.literal("Buff Selection"));
 		this.large = large;
 		reroll = new TextButton();
+		confirm = new TextButton();
 	}
 
 	public boolean mouseClicked(MouseButtonEvent event, boolean doubleClick) {
@@ -38,6 +42,12 @@ public class BuffSelScreen extends Screen {
 			DungeonInfinity.HANDLER.toServer(new RerollBuffToServer(1));
 			return true;
 		}
+		if (confirm.contains(mx, my)) {
+			if (large) data.largeBuff--;
+			else data.smallBuff--;
+			DungeonInfinity.HANDLER.toServer(new SelectBuffToServer(large, sel));
+			onClose();
+		}
 
 		var list = large ? data.getLargeBuffList() : data.getSmallBuffList();
 		int n = list.size();
@@ -51,10 +61,7 @@ public class BuffSelScreen extends Screen {
 			int xi = x0 + (pw + margin) * i;
 			boolean hover = mx >= xi && mx <= xi + pw && my >= yi && my <= yi + ph;
 			if (hover) {
-				if (large) data.largeBuff--;
-				else data.smallBuff--;
-				DungeonInfinity.HANDLER.toServer(new SelectBuffToServer(large, i));
-				onClose();
+				sel = i;
 				return true;
 			}
 		}
@@ -75,6 +82,8 @@ public class BuffSelScreen extends Screen {
 		int y0 = (h - ph) / 2;
 		Component text = DILang.REROLL.get(data.rerollChance);
 		reroll.update(g, data.rerollChance > 0, w / 2 - font.width(text) / 2, y0 / 2, font, text, mx, my);
+		text = DILang.CONFIRM.get();
+		confirm.update(g, sel >= 0, w / 2 - font.width(text) / 2, y0 / 2, font, text, mx, my);
 		int requiredWidth = 600;
 		float rate = w < requiredWidth ? 1f * w / requiredWidth : 1;
 		for (int i = 0; i < n; i++) {
@@ -82,7 +91,9 @@ public class BuffSelScreen extends Screen {
 			var buff = e.getFirst();
 			int xi = x0 + (pw + margin) * i;
 			boolean hover = mx >= xi && mx <= xi + pw && my >= y0 && my <= y0 + ph;
-			if (hover)
+			if (sel == i)
+				g.fill(xi - 2, y0 - 2, xi + pw + 2, y0 + ph + 2, 0xffffffff);
+			else if (hover)
 				g.fill(xi - 2, y0 - 2, xi + pw + 2, y0 + ph + 2, 0xffffaa00);
 			g.fill(xi, y0, xi + pw, y0 + ph, 0xffafafaf);
 			int x1 = xi + pw / 2;

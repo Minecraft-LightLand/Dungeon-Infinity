@@ -10,7 +10,7 @@
           "count": 16,
           "id": "minecraft:arrow"
         },
-        "weight": 400
+        "weight": 200
       },
       {
         "cost": "minecraft:emerald",
@@ -456,7 +456,7 @@
         "offer": "copper:food"
       },
       {
-        "count": 3,
+        "count": 4,
         "offer": "copper:consumable"
       },
       {

@@ -15,6 +15,8 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.EntitySpawnReason;
@@ -41,7 +43,7 @@ public class MerchantBlock implements UseItemOnBlockMethod {
 		var maze = MazeRoomData.get(level, SectionPos.of(pos));
 		if (maze == null) return null;
 		String style = TemplateConfig.get().styleName(CellInterpreter.getStyle(maze.getCell()));
-		var config = ShopConfig.build(Identifier.fromNamespaceAndPath(style, type), sp.getRandom());
+		var config = ShopConfig.build(Identifier.fromNamespaceAndPath(style, type), RandomSource.create(Mth.getSeed(pos)));
 		if (config.isEmpty()) return null;
 		WanderingTrader trader = EntityType.WANDERING_TRADER.spawn(level, pos, EntitySpawnReason.MOB_SUMMONED);
 		if (trader == null) return null;

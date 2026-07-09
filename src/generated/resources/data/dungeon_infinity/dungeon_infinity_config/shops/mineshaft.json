@@ -10,7 +10,7 @@
           "count": 4,
           "id": "minecraft:experience_bottle"
         },
-        "weight": 200
+        "weight": 400
       },
       {
         "cost": "minecraft:emerald",
@@ -30,7 +30,7 @@
           "count": 16,
           "id": "minecraft:arrow"
         },
-        "weight": 400
+        "weight": 200
       },
       {
         "cost": "minecraft:emerald",
@@ -362,7 +362,7 @@
       {
         "cost": "minecraft:emerald",
         "count": 8,
-        "limit": 4,
+        "limit": 16,
         "result": {
           "id": "minecraft:diamond"
         },
@@ -423,16 +423,12 @@
         "offer": "mineshaft:food"
       },
       {
-        "count": 2,
+        "count": 3,
         "offer": "mineshaft:consumable"
       },
       {
         "count": 3,
         "offer": "mineshaft:ingredient"
-      },
-      {
-        "count": 1,
-        "offer": "mineshaft:material"
       }
     ],
     "mineshaft:recycler": [
