@@ -47,8 +47,12 @@
     ],
     [
       {
-        "num": 3,
+        "num": 2,
         "target": "dungeon_infinity:copper/large_3"
+      },
+      {
+        "num": 1,
+        "target": "dungeon_infinity:copper/large_4"
       },
       {
         "num": 2,

@@ -4,11 +4,11 @@
     "MAINHAND": [
       {
         "dropChance": 1.0,
-        "enchantLevel": 30,
+        "enchantLevel": 20,
         "stack": {
-          "id": "golemdungeons:sculk_golem_scythe"
+          "id": "golemdungeons:ancient_forge"
         },
-        "weight": 100
+        "weight": 50
       }
     ]
   }

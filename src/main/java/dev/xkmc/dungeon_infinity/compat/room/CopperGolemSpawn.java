@@ -39,6 +39,7 @@ public class CopperGolemSpawn extends AbstractGolemSpawn {
 	public static final Identifier ITEM_LARGE_ARMOR_2 = loc("large_armor_2");
 	public static final Identifier ITEM_LARGE_WEAPON_1 = loc("large_weapon_1");
 	public static final Identifier ITEM_LARGE_WEAPON_2 = loc("large_weapon_2");
+	public static final Identifier ITEM_LARGE_WEAPON_3 = loc("large_weapon_3");
 	public static final Identifier ITEM_LARGE_BOW = loc("large_weapon_bow");
 	public static final Identifier ITEM_HUMANOID_ARMOR_MISC = loc("humanoid_armor_misc");
 	public static final Identifier ITEM_HUMANOID_MELEE = loc("humanoid_weapon_melee");
@@ -52,6 +53,7 @@ public class CopperGolemSpawn extends AbstractGolemSpawn {
 	public static final Identifier LARGE_1 = loc("large_1");
 	public static final Identifier LARGE_2 = loc("large_2");
 	public static final Identifier LARGE_3 = loc("large_3");
+	public static final Identifier LARGE_4 = loc("large_4");
 	public static final Identifier LARGE_BOW = loc("large_bow");
 
 	public static final Identifier HUMANOID_MELEE = loc("humanoid_melee");
@@ -92,7 +94,11 @@ public class CopperGolemSpawn extends AbstractGolemSpawn {
 					.add(EquipmentSlot.MAINHAND, 50, getWeapon(VanillaGolemWeaponMaterial.DIAMOND, GolemWeaponType.AXE), 20)
 					.add(EquipmentSlot.MAINHAND, 50, getWeapon(VanillaGolemWeaponMaterial.DIAMOND, GolemWeaponType.SWORD), 20)
 					.add(EquipmentSlot.MAINHAND, 50, getWeapon(VanillaGolemWeaponMaterial.DIAMOND, GolemWeaponType.SPEAR), 20)
-					.add(EquipmentSlot.MAINHAND, 50, GDItems.ANCIENT_FORGE.get(), 20)
+			);
+
+
+			map.add(GolemDungeons.ITEMS, ITEM_LARGE_WEAPON_3, new EquipmentConfig()
+					.add(EquipmentSlot.MAINHAND, 50, GDItems.ANCIENT_FORGE.get(), 20, 1)
 			);
 
 			var ench = new ItemEnchantments.Mutable(ItemEnchantments.EMPTY);
@@ -215,6 +221,15 @@ public class CopperGolemSpawn extends AbstractGolemSpawn {
 					.equipments(new SpawnConfig.EquipmentGroup(GolemTypes.ENTITY_GOLEM.get())
 							.add(100, ITEM_LARGE_WEAPON_2))
 			);
+
+			map.add(GolemDungeons.SPAWN, LARGE_4, createBase()
+					.upgradeChance(1f, 1f, 1f, 0.5f)
+					.type(GolemTypes.TYPE_GOLEM.get(), new SpawnConfig.GolemTypeEntry(30, 0))
+					.equipments(new SpawnConfig.EquipmentGroup(GolemTypes.ENTITY_GOLEM.get())
+							.add(100, ITEM_LARGE_ARMOR_2))
+					.equipments(new SpawnConfig.EquipmentGroup(GolemTypes.ENTITY_GOLEM.get())
+							.add(100, ITEM_LARGE_WEAPON_3))
+			);
 		}
 
 		// humanoid wave
@@ -329,7 +344,7 @@ public class CopperGolemSpawn extends AbstractGolemSpawn {
 			map.add(GolemDungeons.TRIAL, GolemSpawnData.COPPER_QUAD, new TrialConfig().setReward(MazeRoomLootGen.COPPER_QUAD)
 					.add(of(LARGE_2, 2), of(HUMANOID_MELEE, 1), of(HUMANOID_RANGED, 1), of(HUMANOID_ROCKET, 1))
 					.add(of(LARGE_3, 2), of(LARGE_BOW, 1), of(HUMANOID_MELEE, 1), of(HUMANOID_RIDER_MELEE, 1), of(HUMANOID_RIDER_RANGED, 2), of(HUMANOID_TIPPED, 1))
-					.add(of(LARGE_3, 3), of(LARGE_BOW, 2), of(HUMANOID_MELEE, 1), of(HUMANOID_RIDER_MELEE, 2), of(HUMANOID_RIDER_RANGED, 2), of(HUMANOID_ROCKET, 1), of(HUMANOID_TIPPED, 1))
+					.add(of(LARGE_3, 2), of(LARGE_4, 1), of(LARGE_BOW, 2), of(HUMANOID_MELEE, 1), of(HUMANOID_RIDER_MELEE, 2), of(HUMANOID_RIDER_RANGED, 2), of(HUMANOID_ROCKET, 1), of(HUMANOID_TIPPED, 1))
 			);
 
 			map.add(GolemDungeons.TRIAL, GolemSpawnData.COPPER_BOSS, new TrialConfig().setReward(MazeRoomLootGen.COPPER_BOSS)

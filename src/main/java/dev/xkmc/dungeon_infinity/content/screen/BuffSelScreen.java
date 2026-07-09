@@ -83,7 +83,7 @@ public class BuffSelScreen extends Screen {
 		Component text = DILang.REROLL.get(data.rerollChance);
 		reroll.update(g, data.rerollChance > 0, w / 2 - font.width(text) / 2, y0 / 2, font, text, mx, my);
 		text = DILang.CONFIRM.get();
-		confirm.update(g, sel >= 0, w / 2 - font.width(text) / 2, y0 / 2, font, text, mx, my);
+		confirm.update(g, sel >= 0, w / 2 - font.width(text) / 2, h - y0 / 2, font, text, mx, my);
 		int requiredWidth = 600;
 		float rate = w < requiredWidth ? 1f * w / requiredWidth : 1;
 		for (int i = 0; i < n; i++) {

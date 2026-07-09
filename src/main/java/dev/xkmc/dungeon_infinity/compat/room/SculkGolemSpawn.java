@@ -56,6 +56,7 @@ public class SculkGolemSpawn extends AbstractGolemSpawn {
 	public static final Identifier LARGE_1 = loc("large_1");
 	public static final Identifier LARGE_2 = loc("large_2");
 	public static final Identifier LARGE_3 = loc("large_3");
+	public static final Identifier LARGE_4 = loc("large_4");
 	public static final Identifier LARGE_BOW = loc("large_bow");
 	public static final Identifier LARGE_SHOULDER = loc("large_shoulder");
 
@@ -104,9 +105,7 @@ public class SculkGolemSpawn extends AbstractGolemSpawn {
 			);
 
 			map.add(GolemDungeons.ITEMS, ITEM_LARGE_WEAPON_3, new EquipmentConfig()
-					.add(EquipmentSlot.MAINHAND, 100, GDItems.ANCIENT_FORGE.get(), 30)
-					.add(EquipmentSlot.MAINHAND, 100, GDItems.FLAME_SWORD.get(), 30)
-					.add(EquipmentSlot.MAINHAND, 100, GDItems.SCULK_SCYTHE.get(), 30)
+					.add(EquipmentSlot.MAINHAND, 100, GDItems.SCULK_SCYTHE.get(), 30, 1)
 			);
 
 			var ench = new ItemEnchantments.Mutable(ItemEnchantments.EMPTY);
@@ -223,7 +222,7 @@ public class SculkGolemSpawn extends AbstractGolemSpawn {
 					.equipments(new SpawnConfig.EquipmentGroup(GolemTypes.ENTITY_GOLEM.get())
 							.add(100, ITEM_LARGE_ARMOR_1).add(100, ITEM_LARGE_ARMOR_2))
 					.equipments(new SpawnConfig.EquipmentGroup(GolemTypes.ENTITY_GOLEM.get())
-							.add(100, ITEM_LARGE_WEAPON_2))
+							.add(100, ITEM_LARGE_WEAPON_1).add(100, ITEM_LARGE_WEAPON_2))
 			);
 
 			map.add(GolemDungeons.SPAWN, LARGE_BOW, createLv2()
@@ -241,9 +240,17 @@ public class SculkGolemSpawn extends AbstractGolemSpawn {
 					.equipments(new SpawnConfig.EquipmentGroup(GolemTypes.ENTITY_GOLEM.get())
 							.add(100, ITEM_LARGE_ARMOR_2))
 					.equipments(new SpawnConfig.EquipmentGroup(GolemTypes.ENTITY_GOLEM.get())
-							.add(100, ITEM_LARGE_WEAPON_3))
+							.add(100, ITEM_LARGE_WEAPON_2))
 			);
 
+			map.add(GolemDungeons.SPAWN, LARGE_4, createLv3()
+					.upgradeChance(1f, 1f, 1f, 0.5f)
+					.type(GolemTypes.TYPE_GOLEM.get(), new SpawnConfig.GolemTypeEntry(30, 0))
+					.equipments(new SpawnConfig.EquipmentGroup(GolemTypes.ENTITY_GOLEM.get())
+							.add(100, ITEM_LARGE_ARMOR_2))
+					.equipments(new SpawnConfig.EquipmentGroup(GolemTypes.ENTITY_GOLEM.get())
+							.add(100, ITEM_LARGE_WEAPON_3))
+			);
 
 			map.add(GolemDungeons.SPAWN, LARGE_SHOULDER, createLv3()
 					.upgradeChance(1f, 1f, 1f, 0.5f)
@@ -369,7 +376,7 @@ public class SculkGolemSpawn extends AbstractGolemSpawn {
 			map.add(GolemDungeons.TRIAL, GolemSpawnData.SCULK_QUAD, new TrialConfig().setReward(MazeRoomLootGen.SCULK_QUAD)
 					.add(of(LARGE_2, 2), of(HUMANOID_MELEE, 1), of(HUMANOID_RANGED, 1), of(HUMANOID_ROCKET, 1))
 					.add(of(LARGE_3, 2), of(LARGE_BOW, 2), of(HUMANOID_MELEE, 1), of(HUMANOID_RIDER_MELEE, 1), of(HUMANOID_RIDER_RANGED, 2), of(HUMANOID_TIPPED, 1))
-					.add(of(LARGE_3, 3), of(LARGE_SHOULDER, 3), of(HUMANOID_MELEE, 1), of(HUMANOID_RIDER_MELEE, 2), of(HUMANOID_RIDER_RANGED, 1), of(HUMANOID_ROCKET, 1), of(HUMANOID_TIPPED, 1))
+					.add(of(LARGE_3, 2), of(LARGE_4, 1), of(LARGE_SHOULDER, 3), of(HUMANOID_MELEE, 1), of(HUMANOID_RIDER_MELEE, 2), of(HUMANOID_RIDER_RANGED, 1), of(HUMANOID_ROCKET, 1), of(HUMANOID_TIPPED, 1))
 			);
 
 			map.add(GolemDungeons.TRIAL, GolemSpawnData.SCULK_BOSS, new TrialConfig().setReward(MazeRoomLootGen.SCULK_BOSS)
