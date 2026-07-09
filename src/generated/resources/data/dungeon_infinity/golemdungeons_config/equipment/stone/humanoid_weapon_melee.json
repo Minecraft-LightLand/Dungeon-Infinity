@@ -22,20 +22,12 @@
         "dropChance": 0.085,
         "enchantLevel": 0,
         "stack": {
-          "id": "minecraft:stone_axe"
-        },
-        "weight": 100
-      },
-      {
-        "dropChance": 0.085,
-        "enchantLevel": 0,
-        "stack": {
           "id": "minecraft:stone_sword"
         },
         "weight": 100
       },
       {
-        "dropChance": 0.085,
+        "dropChance": 0.0,
         "enchantLevel": 0,
         "stack": {
           "id": "minecraft:stone_shovel"
@@ -43,7 +35,7 @@
         "weight": 200
       },
       {
-        "dropChance": 0.085,
+        "dropChance": 0.0,
         "enchantLevel": 0,
         "stack": {
           "id": "minecraft:stone_pickaxe"

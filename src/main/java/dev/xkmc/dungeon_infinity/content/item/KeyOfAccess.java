@@ -87,6 +87,7 @@ public class KeyOfAccess extends Item {
 			var ent = data.getOrCreate(mp);
 			if (mp.y() == 15 && ent.getVisible() == 0) {
 				data.buff.largeBuff++;
+				data.buff.rerollChance += 3;
 				data.buff.sync(sp);
 			}
 		}

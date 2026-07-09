@@ -1,4 +1,4 @@
-package dev.xkmc.dungeon_infinity.content.cap.packet;
+package dev.xkmc.dungeon_infinity.content.packet;
 
 import dev.xkmc.dungeon_infinity.content.cap.MazePos;
 import dev.xkmc.dungeon_infinity.init.reg.DIMeta;

@@ -293,7 +293,7 @@
       {
         "cost": "minecraft:emerald",
         "count": 1,
-        "limit": 32,
+        "limit": 16,
         "result": {
           "count": 4,
           "id": "minecraft:redstone"

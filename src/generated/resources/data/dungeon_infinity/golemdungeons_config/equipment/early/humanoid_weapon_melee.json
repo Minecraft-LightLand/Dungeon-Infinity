@@ -3,7 +3,7 @@
   "items": {
     "MAINHAND": [
       {
-        "dropChance": 0.085,
+        "dropChance": 0.0,
         "enchantLevel": 0,
         "stack": {
           "id": "minecraft:wooden_shovel"
@@ -11,7 +11,7 @@
         "weight": 200
       },
       {
-        "dropChance": 0.085,
+        "dropChance": 0.0,
         "enchantLevel": 0,
         "stack": {
           "id": "minecraft:wooden_pickaxe"
@@ -19,7 +19,7 @@
         "weight": 200
       },
       {
-        "dropChance": 0.085,
+        "dropChance": 0.0,
         "enchantLevel": 0,
         "stack": {
           "id": "minecraft:stone_shovel"
@@ -27,7 +27,7 @@
         "weight": 100
       },
       {
-        "dropChance": 0.085,
+        "dropChance": 0.0,
         "enchantLevel": 0,
         "stack": {
           "id": "minecraft:stone_pickaxe"

@@ -77,18 +77,18 @@ public class StoneGolemSpawn extends AbstractGolemSpawn {
 		// humanoid armors
 		{
 			map.add(GolemDungeons.ITEMS, ITEM_HUMANOID_ARMOR_MISC, new EquipmentConfig()
-					.add(EquipmentSlot.HEAD, 200)
-					.add(EquipmentSlot.CHEST, 200)
-					.add(EquipmentSlot.LEGS, 200)
-					.add(EquipmentSlot.FEET, 200)
+					.add(EquipmentSlot.HEAD, 500)
+					.add(EquipmentSlot.CHEST, 500)
+					.add(EquipmentSlot.LEGS, 500)
+					.add(EquipmentSlot.FEET, 500)
 					.add(EquipmentSlot.HEAD, 100, Items.COPPER_HELMET, 0)
 					.add(EquipmentSlot.CHEST, 100, Items.COPPER_CHESTPLATE, 0)
 					.add(EquipmentSlot.LEGS, 100, Items.COPPER_LEGGINGS, 0)
 					.add(EquipmentSlot.FEET, 100, Items.COPPER_BOOTS, 0)
-					.add(EquipmentSlot.HEAD, 20, Items.IRON_HELMET, 0)
-					.add(EquipmentSlot.CHEST, 20, Items.IRON_CHESTPLATE, 0)
-					.add(EquipmentSlot.LEGS, 20, Items.IRON_LEGGINGS, 0)
-					.add(EquipmentSlot.FEET, 20, Items.IRON_BOOTS, 0)
+					.add(EquipmentSlot.HEAD, 40, Items.IRON_HELMET, 0, 1)
+					.add(EquipmentSlot.CHEST, 40, Items.IRON_CHESTPLATE, 0, 1)
+					.add(EquipmentSlot.LEGS, 40, Items.IRON_LEGGINGS, 0, 1)
+					.add(EquipmentSlot.FEET, 40, Items.IRON_BOOTS, 0, 1)
 					.add(EquipmentSlot.HEAD, 20, Items.GOLDEN_HELMET, 15)
 					.add(EquipmentSlot.CHEST, 20, Items.GOLDEN_CHESTPLATE, 15)
 					.add(EquipmentSlot.LEGS, 20, Items.GOLDEN_LEGGINGS, 15)
@@ -121,10 +121,9 @@ public class StoneGolemSpawn extends AbstractGolemSpawn {
 			map.add(GolemDungeons.ITEMS, ITEM_HUMANOID_MELEE, new EquipmentConfig()
 					.add(EquipmentSlot.MAINHAND, 100, Items.WOODEN_AXE, 0)
 					.add(EquipmentSlot.MAINHAND, 100, Items.WOODEN_SWORD, 0)
-					.add(EquipmentSlot.MAINHAND, 100, Items.STONE_AXE, 0)
 					.add(EquipmentSlot.MAINHAND, 100, Items.STONE_SWORD, 0)
-					.add(EquipmentSlot.MAINHAND, 200, Items.STONE_SHOVEL, 0)
-					.add(EquipmentSlot.MAINHAND, 200, Items.STONE_PICKAXE, 0)
+					.add(EquipmentSlot.MAINHAND, 200, Items.STONE_SHOVEL, 0, 0)
+					.add(EquipmentSlot.MAINHAND, 200, Items.STONE_PICKAXE, 0, 0)
 					.add(EquipmentSlot.OFFHAND, 20, Items.SHIELD, 0)
 					.add(EquipmentSlot.OFFHAND, 100)
 			);
@@ -233,29 +232,29 @@ public class StoneGolemSpawn extends AbstractGolemSpawn {
 			// LARGE: 大型兵+远程护卫
 			map.add(GolemDungeons.TRIAL, GolemSpawnData.STONE_ROOM_LARGE, new TrialConfig().setReward(MazeRoomLootGen.STONE_ROOM_LARGE)
 					.add(of(LARGE_1, 2), of(HUMANOID_RANGED, 1))
+					.add(of(LARGE_2, 2), of(HUMANOID_RANGED, 1))
 					.add(of(LARGE_2, 2), of(HUMANOID_RANGED, 1), of(HUMANOID_ROCKET, 1))
-					.add(of(LARGE_2, 3), of(HUMANOID_RANGED, 2), of(HUMANOID_ROCKET, 1))
 			);
 
 			// RANGED: 远程火力网+火箭兵
 			map.add(GolemDungeons.TRIAL, GolemSpawnData.STONE_ROOM_RANGED, new TrialConfig().setReward(MazeRoomLootGen.STONE_ROOM_RANGED)
 					.add(of(LARGE_1, 1), of(HUMANOID_RANGED, 2))
-					.add(of(LARGE_2, 1), of(HUMANOID_RANGED, 1), of(HUMANOID_ROCKET, 1), of(HUMANOID_TIPPED, 1))
-					.add(of(LARGE_2, 2), of(HUMANOID_RIDER_RANGED, 2), of(HUMANOID_ROCKET, 1), of(HUMANOID_TIPPED, 1))
+					.add(of(LARGE_1, 1), of(HUMANOID_RANGED, 1), of(HUMANOID_TIPPED, 1))
+					.add(of(LARGE_2, 1), of(HUMANOID_RIDER_RANGED, 1), of(HUMANOID_ROCKET, 1), of(HUMANOID_TIPPED, 1))
 			);
 
 			// RIDER: 火箭骑兵+药水兵
 			map.add(GolemDungeons.TRIAL, GolemSpawnData.STONE_ROOM_RIDER, new TrialConfig().setReward(MazeRoomLootGen.STONE_ROOM_RIDER)
 					.add(of(HUMANOID_RIDER_MELEE, 1), of(HUMANOID_RIDER_RANGED, 1))
+					.add(of(HUMANOID_RIDER_MELEE, 2), of(HUMANOID_RIDER_RANGED, 1))
 					.add(of(HUMANOID_RIDER_MELEE, 2), of(HUMANOID_RIDER_RANGED, 2))
-					.add(of(HUMANOID_RIDER_MELEE, 3), of(HUMANOID_RIDER_RANGED, 3))
 			);
 
 			// MIXED: 全兵种混合
 			map.add(GolemDungeons.TRIAL, GolemSpawnData.STONE_ROOM_MIXED, new TrialConfig().setReward(MazeRoomLootGen.STONE_ROOM_MIXED)
 					.add(of(LARGE_1, 1), of(HUMANOID_MELEE, 1), of(HUMANOID_RANGED, 1))
 					.add(of(LARGE_2, 1), of(HUMANOID_RIDER_MELEE, 1), of(HUMANOID_RANGED, 1), of(HUMANOID_ROCKET, 1))
-					.add(of(LARGE_2, 2), of(HUMANOID_MELEE, 1), of(HUMANOID_RIDER_MELEE, 1), of(HUMANOID_RIDER_RANGED, 2), of(HUMANOID_TIPPED, 1))
+					.add(of(LARGE_2, 1), of(HUMANOID_MELEE, 1), of(HUMANOID_RIDER_MELEE, 1), of(HUMANOID_RIDER_RANGED, 1), of(HUMANOID_TIPPED, 1))
 			);
 
 			map.add(GolemDungeons.TRIAL, GolemSpawnData.STONE_QUAD, new TrialConfig().setReward(MazeRoomLootGen.STONE_QUAD)

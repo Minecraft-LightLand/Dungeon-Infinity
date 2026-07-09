@@ -1,6 +1,6 @@
 package dev.xkmc.dungeon_infinity.content.cap;
 
-import dev.xkmc.dungeon_infinity.content.cap.packet.DefeatRoomToClient;
+import dev.xkmc.dungeon_infinity.content.packet.DefeatRoomToClient;
 import dev.xkmc.dungeon_infinity.content.spawn.MobSpawnTicker;
 import dev.xkmc.dungeon_infinity.events.MazeRoomBattleStartEvent;
 import dev.xkmc.dungeon_infinity.init.DungeonInfinity;

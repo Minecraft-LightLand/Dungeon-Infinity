@@ -1,8 +1,8 @@
 package dev.xkmc.dungeon_infinity.content.cap;
 
 import dev.xkmc.dungeon_infinity.content.buff.AllBuffs;
-import dev.xkmc.dungeon_infinity.content.cap.packet.AddWaypointToClient;
-import dev.xkmc.dungeon_infinity.content.cap.packet.SetRadiusToClient;
+import dev.xkmc.dungeon_infinity.content.packet.AddWaypointToClient;
+import dev.xkmc.dungeon_infinity.content.packet.SetRadiusToClient;
 import dev.xkmc.dungeon_infinity.content.chunkgen.CellInterpreter;
 import dev.xkmc.dungeon_infinity.content.chunkgen.MazeChunkGenerator;
 import dev.xkmc.dungeon_infinity.content.item.KeyOfAccess;
