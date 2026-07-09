@@ -33,14 +33,6 @@
           "id": "golemdungeons:ancient_forge"
         },
         "weight": 50
-      },
-      {
-        "dropChance": 0.085,
-        "enchantLevel": 20,
-        "stack": {
-          "id": "golemdungeons:flame_sword"
-        },
-        "weight": 50
       }
     ]
   }

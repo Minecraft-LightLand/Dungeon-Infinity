@@ -13,7 +13,7 @@
       "type": "modulargolems:metal_golem",
       "sets": [
         {
-          "target": "dungeon_infinity:sculk/large_weapon_3",
+          "target": "dungeon_infinity:sculk/large_weapon_2",
           "weight": 100
         }
       ]

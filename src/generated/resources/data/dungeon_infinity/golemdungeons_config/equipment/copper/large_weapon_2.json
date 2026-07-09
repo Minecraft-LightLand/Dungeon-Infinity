@@ -25,14 +25,6 @@
           "id": "modulargolems:diamond_golem_spear"
         },
         "weight": 50
-      },
-      {
-        "dropChance": 0.085,
-        "enchantLevel": 20,
-        "stack": {
-          "id": "golemdungeons:ancient_forge"
-        },
-        "weight": 50
       }
     ]
   }
