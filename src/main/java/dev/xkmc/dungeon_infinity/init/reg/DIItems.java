@@ -13,7 +13,7 @@ import dev.xkmc.dungeon_infinity.content.block.wall.MazeFillerBlock;
 import dev.xkmc.dungeon_infinity.content.block.wall.MazeWallBlock;
 import dev.xkmc.dungeon_infinity.content.item.KeyOfAccess;
 import dev.xkmc.dungeon_infinity.content.item.KeyOfTomb;
-import dev.xkmc.dungeon_infinity.content.map.MazeMapItem;
+import dev.xkmc.dungeon_infinity.content.item.MazeMapItem;
 import dev.xkmc.dungeon_infinity.init.DungeonInfinity;
 import dev.xkmc.dungeon_infinity.init.data.DITagGen;
 import dev.xkmc.l2core.init.reg.registrate.SimpleEntry;

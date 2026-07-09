@@ -1,4 +1,4 @@
-package dev.xkmc.dungeon_infinity.content.map;
+package dev.xkmc.dungeon_infinity.content.item;
 
 import dev.xkmc.dungeon_infinity.content.chunkgen.MazeChunkGenerator;
 import dev.xkmc.dungeon_infinity.content.screen.BuffSelScreen;
