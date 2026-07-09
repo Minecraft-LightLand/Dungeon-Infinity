@@ -6,7 +6,7 @@ import dev.xkmc.dungeon_infinity.content.packet.SetRadiusToClient;
 import dev.xkmc.dungeon_infinity.content.chunkgen.CellInterpreter;
 import dev.xkmc.dungeon_infinity.content.chunkgen.MazeChunkGenerator;
 import dev.xkmc.dungeon_infinity.content.item.KeyOfAccess;
-import dev.xkmc.dungeon_infinity.content.map.MazeMapItem;
+import dev.xkmc.dungeon_infinity.content.item.MazeMapItem;
 import dev.xkmc.dungeon_infinity.init.DungeonInfinity;
 import dev.xkmc.dungeon_infinity.init.data.DIDimensionGen;
 import dev.xkmc.dungeon_infinity.init.data.DITriggers;

@@ -2,13 +2,17 @@ package dev.xkmc.dungeon_infinity.events;
 
 import dev.xkmc.dungeon_infinity.content.cap.MazeHistory;
 import dev.xkmc.dungeon_infinity.init.DungeonInfinity;
+import dev.xkmc.dungeon_infinity.init.reg.DIItems;
 import dev.xkmc.dungeon_infinity.init.reg.DIMeta;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.util.TriState;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.level.block.Blocks;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.LivingDropsEvent;
+import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.tick.LevelTickEvent;
 
 @EventBusSubscriber(modid = DungeonInfinity.MODID)
@@ -32,6 +36,15 @@ public class DIEventHandlers {
 			for (var e : event.getDrops())
 				data.add(e.getItem());
 			event.getDrops().clear();
+		}
+	}
+
+	@SubscribeEvent
+	public static void onItemUse(PlayerInteractEvent.RightClickBlock event) {
+		if (event.getItemStack().is(DIItems.MAP) &&
+				event.getLevel().getBlockState(event.getPos()).is(Blocks.RESPAWN_ANCHOR)) {
+			event.setUseItem(TriState.TRUE);
+			event.setUseBlock(TriState.FALSE);
 		}
 	}
 
