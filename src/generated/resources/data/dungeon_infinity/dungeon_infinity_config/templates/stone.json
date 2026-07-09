@@ -28,7 +28,7 @@
         {
           "id": "dungeon_infinity:early/room/basic",
           "point": {
-            "size": 1,
+            "size": 2,
             "y": 15
           },
           "weight": 100
@@ -68,7 +68,7 @@
         {
           "id": "dungeon_infinity:stone/room/basic",
           "point": {
-            "size": 1,
+            "size": 2,
             "y": 14
           },
           "weight": 100

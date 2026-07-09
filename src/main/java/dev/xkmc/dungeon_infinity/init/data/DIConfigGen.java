@@ -71,12 +71,12 @@ public class DIConfigGen extends ConfigDataProvider {
 				.room("path/t_way").variant("", 80).variant("_waypoint", 20).end()
 				.room("path/cross").variant("", 90).variant("_waypoint", 10).end()
 				.spawn("room", 1, 1,
-						entry(1, 15, GolemSpawnData.EARLY_ROOM_BASIC, 100),
+						entry(2, 15, GolemSpawnData.EARLY_ROOM_BASIC, 100),
 						entry(3, 15, GolemSpawnData.EARLY_ROOM_LARGE, 100),
 						entry(3, 15, GolemSpawnData.EARLY_ROOM_RIDER, 100),
 						entry(3, 15, GolemSpawnData.EARLY_ROOM_RANGED, 100),
 						entry(5, 15, GolemSpawnData.EARLY_ROOM_MIXED, 100),
-						entry(1, 14, GolemSpawnData.STONE_ROOM_BASIC, 100),
+						entry(2, 14, GolemSpawnData.STONE_ROOM_BASIC, 100),
 						entry(3, 14, GolemSpawnData.STONE_ROOM_LARGE, 100),
 						entry(3, 14, GolemSpawnData.STONE_ROOM_RIDER, 100),
 						entry(3, 14, GolemSpawnData.STONE_ROOM_RANGED, 100),
@@ -106,7 +106,7 @@ public class DIConfigGen extends ConfigDataProvider {
 				.room("path/t_way").variant("", 80).variant("_waypoint", 20).end()
 				.room("path/cross").variant("", 90).variant("_waypoint", 10).end()
 				.spawn("room", 1, 0,
-						entry(1, 0, GolemSpawnData.MINESHAFT_ROOM_BASIC, 100),
+						entry(2, 0, GolemSpawnData.MINESHAFT_ROOM_BASIC, 100),
 						entry(3, 0, GolemSpawnData.MINESHAFT_ROOM_LARGE, 100),
 						entry(3, 0, GolemSpawnData.MINESHAFT_ROOM_RIDER, 100),
 						entry(3, 0, GolemSpawnData.MINESHAFT_ROOM_RANGED, 100),
@@ -133,7 +133,7 @@ public class DIConfigGen extends ConfigDataProvider {
 				.room("path/t_way").variant("", 80).variant("_waypoint", 20).end()
 				.room("path/cross").variant("", 90).variant("_waypoint", 10).end()
 				.spawn("room", 1, 0,
-						entry(1, 0, GolemSpawnData.COPPER_ROOM_BASIC, 100),
+						entry(2, 0, GolemSpawnData.COPPER_ROOM_BASIC, 100),
 						entry(3, 0, GolemSpawnData.COPPER_ROOM_LARGE, 100),
 						entry(3, 0, GolemSpawnData.COPPER_ROOM_RIDER, 100),
 						entry(3, 0, GolemSpawnData.COPPER_ROOM_RANGED, 100),
@@ -160,7 +160,7 @@ public class DIConfigGen extends ConfigDataProvider {
 				.room("path/t_way").variant("", 80).variant("_waypoint", 20).end()
 				.room("path/cross").variant("", 90).variant("_waypoint", 10).end()
 				.spawn("room", 1, 0,
-						entry(1, 0, GolemSpawnData.DEEPSLATE_ROOM_BASIC, 100),
+						entry(2, 0, GolemSpawnData.DEEPSLATE_ROOM_BASIC, 100),
 						entry(3, 0, GolemSpawnData.DEEPSLATE_ROOM_LARGE, 100),
 						entry(3, 0, GolemSpawnData.DEEPSLATE_ROOM_RIDER, 100),
 						entry(3, 0, GolemSpawnData.DEEPSLATE_ROOM_RANGED, 100),
@@ -187,12 +187,12 @@ public class DIConfigGen extends ConfigDataProvider {
 				.room("path/t_way").variant("", 80).variant("_waypoint", 20).end()
 				.room("path/cross").variant("", 90).variant("_waypoint", 10).end()
 				.spawn("room", 1, 1,
-						entry(1, 1, GolemSpawnData.SCULK_ROOM_BASIC, 100),
+						entry(2, 1, GolemSpawnData.SCULK_ROOM_BASIC, 100),
 						entry(3, 1, GolemSpawnData.SCULK_ROOM_LARGE, 100),
 						entry(3, 1, GolemSpawnData.SCULK_ROOM_RIDER, 100),
 						entry(3, 1, GolemSpawnData.SCULK_ROOM_RANGED, 100),
 						entry(5, 1, GolemSpawnData.SCULK_ROOM_MIXED, 100),
-						entry(1, 0, GolemSpawnData.DEEPEST_ROOM_BASIC, 100),
+						entry(2, 0, GolemSpawnData.DEEPEST_ROOM_BASIC, 100),
 						entry(3, 0, GolemSpawnData.DEEPEST_ROOM_LARGE, 100),
 						entry(3, 0, GolemSpawnData.DEEPEST_ROOM_RIDER, 100),
 						entry(3, 0, GolemSpawnData.DEEPEST_ROOM_RANGED, 100),

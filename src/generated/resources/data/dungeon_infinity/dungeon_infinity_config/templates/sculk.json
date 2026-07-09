@@ -42,7 +42,7 @@
         {
           "id": "dungeon_infinity:sculk/room/basic",
           "point": {
-            "size": 1,
+            "size": 2,
             "y": 1
           },
           "weight": 100
@@ -82,7 +82,7 @@
         {
           "id": "dungeon_infinity:deepest/room/basic",
           "point": {
-            "size": 1,
+            "size": 2,
             "y": 0
           },
           "weight": 100
