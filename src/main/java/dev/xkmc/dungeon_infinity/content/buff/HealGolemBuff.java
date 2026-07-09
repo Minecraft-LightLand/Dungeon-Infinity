@@ -35,7 +35,7 @@ public class HealGolemBuff extends MazeBuff {
 
 	@Override
 	public List<Component> getDetail(int lv) {
-		return List.of(Component.translatable(id.getNamespace() + ".buff." + id.getPath() + ".desc", Math.round(0.25f * lv)));
+		return List.of(Component.translatable(id.getNamespace() + ".buff." + id.getPath() + ".desc", 25 * lv));
 	}
 
 }

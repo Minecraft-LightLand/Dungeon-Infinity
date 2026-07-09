@@ -114,7 +114,7 @@ public class MazeBuffData {
 		largeBuff--;
 		seed = RandomSource.create(seed).nextLong();
 		var pair = list.get(index);
-		pair.getFirst().addLevel(sp, pair.getSecond());
+		pair.getFirst().onApply(sp, pair.getSecond());
 	}
 
 	public void selSmallBuff(ServerPlayer sp, int index) {
@@ -124,7 +124,7 @@ public class MazeBuffData {
 		smallBuff--;
 		seed = RandomSource.create(seed).nextLong();
 		var pair = list.get(index);
-		pair.getFirst().addLevel(sp, pair.getSecond());
+		pair.getFirst().onApply(sp, pair.getSecond());
 	}
 
 }
