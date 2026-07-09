@@ -30,11 +30,15 @@ public class RoomFinder {
 		return (cell & 32) != 0 || CellInterpreter.isBossRoom(cell) && CellInterpreter.getBossRoom(cell) >= 9;
 	}
 
+	private static boolean isQuadEntry(int cell) {
+		return CellInterpreter.isQuadRoom(cell) && CellInterpreter.getTemplateType(cell) == 4;
+	}
+
 	public enum Type {
 		WAREHOUSE(RoomFinder.isShop("warehouse")),
 		WORKSHOP(RoomFinder.isShop("workshop")),
 		SHOP(RoomFinder.isShop("shop")),
-		QUAD(CellInterpreter::isQuadRoom),
+		QUAD(RoomFinder::isQuadEntry),
 		STAIR(RoomFinder::isStair);
 
 		final IntPredicate pred;
@@ -88,6 +92,7 @@ public class RoomFinder {
 		for (int x = 0; x < R; x++) {
 			for (int z = 0; z < R; z++) {
 				int cell = maze[x][z];
+				if (visit.isDefeated(x, z)) continue;
 				if (type.pred.test(cell)) {
 					if (bfs.unlock[x][z] > 0) {
 						int cost = bfs.ans[x][z];

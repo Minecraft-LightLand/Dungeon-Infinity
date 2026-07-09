@@ -21,7 +21,7 @@ public class ShieldBuff extends MazeBuff {
 
 	@Override
 	public List<Component> getDetail(int lv) {
-		return List.of(Component.translatable(id.getNamespace() + ".buff." + id.getPath() + ".desc", Math.round(0.05f * lv)));
+		return List.of(Component.translatable(id.getNamespace() + ".buff." + id.getPath() + ".desc", 5 * lv));
 	}
 
 }
