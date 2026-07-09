@@ -34,7 +34,7 @@
         {
           "id": "dungeon_infinity:mineshaft/room/basic",
           "point": {
-            "size": 1,
+            "size": 2,
             "y": 0
           },
           "weight": 100

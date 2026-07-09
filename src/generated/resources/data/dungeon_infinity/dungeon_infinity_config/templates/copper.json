@@ -6,7 +6,7 @@
         {
           "id": "dungeon_infinity:copper/room/basic",
           "point": {
-            "size": 1,
+            "size": 2,
             "y": 0
           },
           "weight": 100
