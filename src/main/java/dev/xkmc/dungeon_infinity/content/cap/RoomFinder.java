@@ -1,8 +1,8 @@
 package dev.xkmc.dungeon_infinity.content.cap;
 
 import com.mojang.datafixers.util.Pair;
-import dev.xkmc.dungeon_infinity.content.cap.packet.RevealPathToClient;
-import dev.xkmc.dungeon_infinity.content.cap.packet.SyncFinderToClient;
+import dev.xkmc.dungeon_infinity.content.packet.RevealPathToClient;
+import dev.xkmc.dungeon_infinity.content.packet.SyncFinderToClient;
 import dev.xkmc.dungeon_infinity.content.chunkgen.CellInterpreter;
 import dev.xkmc.dungeon_infinity.content.config.TemplateConfig;
 import dev.xkmc.dungeon_infinity.init.DungeonInfinity;

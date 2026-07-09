@@ -19,19 +19,15 @@
       {
         "num": 1,
         "target": "dungeon_infinity:stone/humanoid_ranged"
-      },
-      {
-        "num": 1,
-        "target": "dungeon_infinity:stone/humanoid_rocket"
       }
     ],
     [
       {
-        "num": 3,
+        "num": 2,
         "target": "dungeon_infinity:stone/large_2"
       },
       {
-        "num": 2,
+        "num": 1,
         "target": "dungeon_infinity:stone/humanoid_ranged"
       },
       {

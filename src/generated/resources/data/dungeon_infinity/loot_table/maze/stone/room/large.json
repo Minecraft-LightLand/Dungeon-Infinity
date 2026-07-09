@@ -85,13 +85,13 @@
               "add": false,
               "count": {
                 "type": "minecraft:uniform",
-                "max": 6.0,
-                "min": 3.0
+                "max": 20.0,
+                "min": 12.0
               },
               "function": "minecraft:set_count"
             }
           ],
-          "name": "minecraft:clay"
+          "name": "minecraft:clay_ball"
         }
       ],
       "rolls": 1.0

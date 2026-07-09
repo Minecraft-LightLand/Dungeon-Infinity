@@ -3,7 +3,7 @@ package dev.xkmc.dungeon_infinity.content.cap;
 import com.mojang.datafixers.util.Pair;
 import dev.xkmc.dungeon_infinity.content.buff.AllBuffs;
 import dev.xkmc.dungeon_infinity.content.buff.MazeBuff;
-import dev.xkmc.dungeon_infinity.content.cap.packet.SyncBuffToClient;
+import dev.xkmc.dungeon_infinity.content.packet.SyncBuffToClient;
 import dev.xkmc.dungeon_infinity.init.DungeonInfinity;
 import dev.xkmc.l2damagetracker.contents.attack.DamageData;
 import dev.xkmc.l2serial.serialization.marker.SerialClass;
@@ -23,7 +23,7 @@ public class MazeBuffData {
 	public final LinkedHashMap<Identifier, Integer> buffs = new LinkedHashMap<>();
 
 	@SerialField
-	public int largeBuff, smallBuff;
+	public int largeBuff, smallBuff, rerollChance;
 
 	@SerialField
 	public long seed;
@@ -68,9 +68,11 @@ public class MazeBuffData {
 		}
 		if (holder.isBoss()) {
 			largeBuff++;
+			rerollChance++;
 			sync(sp);
 		} else if (holder.isQuad()) {
 			smallBuff++;
+			rerollChance++;
 			sync(sp);
 		}
 	}
@@ -125,6 +127,12 @@ public class MazeBuffData {
 		seed = RandomSource.create(seed).nextLong();
 		var pair = list.get(index);
 		pair.getFirst().onApply(sp, pair.getSecond());
+	}
+
+	public void reroll() {
+		if (rerollChance <= 0) return;
+		rerollChance--;
+		seed = RandomSource.create(seed).nextLong();
 	}
 
 }

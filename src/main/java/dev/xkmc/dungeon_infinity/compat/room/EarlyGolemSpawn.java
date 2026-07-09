@@ -42,25 +42,25 @@ public class EarlyGolemSpawn extends AbstractGolemSpawn {
 		// humanoid equipments
 		{
 			map.add(GolemDungeons.ITEMS, ITEM_HUMANOID_ARMOR_MISC, new EquipmentConfig()
-					.add(EquipmentSlot.HEAD, 200)
-					.add(EquipmentSlot.CHEST, 200)
-					.add(EquipmentSlot.LEGS, 200)
-					.add(EquipmentSlot.FEET, 200)
+					.add(EquipmentSlot.HEAD, 500)
+					.add(EquipmentSlot.CHEST, 500)
+					.add(EquipmentSlot.LEGS, 500)
+					.add(EquipmentSlot.FEET, 500)
 					.add(EquipmentSlot.HEAD, 50, Items.COPPER_HELMET, 0)
 					.add(EquipmentSlot.CHEST, 50, Items.COPPER_CHESTPLATE, 0)
 					.add(EquipmentSlot.LEGS, 50, Items.COPPER_LEGGINGS, 0)
 					.add(EquipmentSlot.FEET, 50, Items.COPPER_BOOTS, 0)
-					.add(EquipmentSlot.HEAD, 10, Items.IRON_HELMET, 0)
-					.add(EquipmentSlot.CHEST, 10, Items.IRON_CHESTPLATE, 0)
-					.add(EquipmentSlot.LEGS, 10, Items.IRON_LEGGINGS, 0)
-					.add(EquipmentSlot.FEET, 10, Items.IRON_BOOTS, 0)
+					.add(EquipmentSlot.HEAD, 10, Items.IRON_HELMET, 0, 1)
+					.add(EquipmentSlot.CHEST, 10, Items.IRON_CHESTPLATE, 0, 1)
+					.add(EquipmentSlot.LEGS, 10, Items.IRON_LEGGINGS, 0, 1)
+					.add(EquipmentSlot.FEET, 10, Items.IRON_BOOTS, 0, 1)
 			);
 
 			map.add(GolemDungeons.ITEMS, ITEM_HUMANOID_MELEE, new EquipmentConfig()
-					.add(EquipmentSlot.MAINHAND, 200, Items.WOODEN_SHOVEL, 0)
-					.add(EquipmentSlot.MAINHAND, 200, Items.WOODEN_PICKAXE, 0)
-					.add(EquipmentSlot.MAINHAND, 100, Items.STONE_SHOVEL, 0)
-					.add(EquipmentSlot.MAINHAND, 100, Items.STONE_PICKAXE, 0)
+					.add(EquipmentSlot.MAINHAND, 200, Items.WOODEN_SHOVEL, 0, 0)
+					.add(EquipmentSlot.MAINHAND, 200, Items.WOODEN_PICKAXE, 0, 0)
+					.add(EquipmentSlot.MAINHAND, 100, Items.STONE_SHOVEL, 0, 0)
+					.add(EquipmentSlot.MAINHAND, 100, Items.STONE_PICKAXE, 0, 0)
 			);
 
 			map.add(GolemDungeons.ITEMS, ITEM_HUMANOID_RIDER_MELEE, new EquipmentConfig()

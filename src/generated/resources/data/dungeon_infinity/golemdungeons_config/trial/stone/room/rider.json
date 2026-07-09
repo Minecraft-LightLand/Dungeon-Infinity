@@ -17,17 +17,17 @@
         "target": "dungeon_infinity:stone/humanoid_rider_melee"
       },
       {
-        "num": 2,
+        "num": 1,
         "target": "dungeon_infinity:stone/humanoid_rider_ranged"
       }
     ],
     [
       {
-        "num": 3,
+        "num": 2,
         "target": "dungeon_infinity:stone/humanoid_rider_melee"
       },
       {
-        "num": 3,
+        "num": 2,
         "target": "dungeon_infinity:stone/humanoid_rider_ranged"
       }
     ]

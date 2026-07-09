@@ -20,6 +20,11 @@ public class InsuranceBuff extends MazeBuff {
 		this.items = items;
 	}
 
+	@Override
+	public Component getTitle(int lv) {
+		return Component.translatable(id.getNamespace() + ".buff." + id.getPath()).append(" (" + lv + ")");
+	}
+
 	public void onRevive(ServerPlayer sp, int lv) {
 		removeOne(sp);
 		sp.giveExperiencePoints(exp);

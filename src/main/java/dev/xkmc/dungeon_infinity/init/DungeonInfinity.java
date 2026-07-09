@@ -3,9 +3,10 @@ package dev.xkmc.dungeon_infinity.init;
 import com.tterrag.registrate.providers.ProviderType;
 import dev.xkmc.dungeon_infinity.content.block.merchant.TypeSelToServer;
 import dev.xkmc.dungeon_infinity.content.buff.AllBuffs;
-import dev.xkmc.dungeon_infinity.content.cap.packet.*;
 import dev.xkmc.dungeon_infinity.content.config.ShopConfig;
 import dev.xkmc.dungeon_infinity.content.config.TemplateConfig;
+import dev.xkmc.dungeon_infinity.content.packet.UseWaypointPacket;
+import dev.xkmc.dungeon_infinity.content.packet.*;
 import dev.xkmc.dungeon_infinity.content.map.UseWaypointPacket;
 import dev.xkmc.dungeon_infinity.events.ShulkerClick;
 import dev.xkmc.dungeon_infinity.init.data.*;
@@ -53,7 +54,8 @@ public class DungeonInfinity {
 			e -> e.create(UseFinderToServer.class, PacketHandler.NetDir.PLAY_TO_SERVER),
 			e -> e.create(RevealPathToClient.class, PacketHandler.NetDir.PLAY_TO_CLIENT),
 			e -> e.create(SyncBuffToClient.class, PacketHandler.NetDir.PLAY_TO_CLIENT),
-			e -> e.create(SelectBuffToServer.class, PacketHandler.NetDir.PLAY_TO_SERVER)
+			e -> e.create(SelectBuffToServer.class, PacketHandler.NetDir.PLAY_TO_SERVER),
+			e -> e.create(RerollBuffToServer.class, PacketHandler.NetDir.PLAY_TO_SERVER)
 	);
 
 	public static final ConfigTypeEntry<TemplateConfig> TEMPLATES = new ConfigTypeEntry<>(HANDLER, "templates", TemplateConfig.class);

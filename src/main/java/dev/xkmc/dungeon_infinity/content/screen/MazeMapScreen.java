@@ -1,15 +1,17 @@
-package dev.xkmc.dungeon_infinity.content.map;
+package dev.xkmc.dungeon_infinity.content.screen;
 
 import dev.xkmc.dungeon_infinity.content.buff.MazeBuff;
 import dev.xkmc.dungeon_infinity.content.cap.MazeHistory;
 import dev.xkmc.dungeon_infinity.content.cap.MazePos;
 import dev.xkmc.dungeon_infinity.content.cap.RoomFinder;
-import dev.xkmc.dungeon_infinity.content.cap.packet.UseFinderToServer;
+import dev.xkmc.dungeon_infinity.content.map.MapUI;
+import dev.xkmc.dungeon_infinity.content.map.MazeMapColors;
+import dev.xkmc.dungeon_infinity.content.packet.UseFinderToServer;
+import dev.xkmc.dungeon_infinity.content.packet.UseWaypointPacket;
 import dev.xkmc.dungeon_infinity.init.DungeonInfinity;
 import dev.xkmc.dungeon_infinity.init.data.DILang;
 import dev.xkmc.dungeon_infinity.init.reg.DIMeta;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.input.MouseButtonEvent;
@@ -22,21 +24,23 @@ import java.util.List;
 public class MazeMapScreen extends Screen implements MapUI {
 
 	private final long seed;
+	private final boolean canUseWaypoint;
 
 	private int layerY, diffY;
 
-	private final FakeBtn up, down, findQuad, findStair, findWarehouse, findWorkshop, findShop;
+	private final TextButton up, down, findQuad, findStair, findWarehouse, findWorkshop, findShop;
 
-	protected MazeMapScreen(long seed) {
+	public MazeMapScreen(long seed, boolean canUseWaypoint) {
 		super(Component.literal("Maze Map"));
 		this.seed = seed;
-		up = new FakeBtn();
-		down = new FakeBtn();
-		findQuad = new FakeBtn();
-		findStair = new FakeBtn();
-		findWarehouse = new FakeBtn();
-		findWorkshop = new FakeBtn();
-		findShop = new FakeBtn();
+		this.canUseWaypoint = canUseWaypoint;
+		up = new TextButton();
+		down = new TextButton();
+		findQuad = new TextButton();
+		findStair = new TextButton();
+		findWarehouse = new TextButton();
+		findWorkshop = new TextButton();
+		findShop = new TextButton();
 	}
 
 	@Override
@@ -49,17 +53,19 @@ public class MazeMapScreen extends Screen implements MapUI {
 		int cmz = (int) (((my - y0) / rate + 63) / 5);
 		Player player = Minecraft.getInstance().player;
 		if (player != null) {
-			var pos = MazePos.map(player.blockPosition());
-			var layerY = pos.y();
-			pos = pos.atLayer(Mth.clamp(pos.y() + diffY, 0, 15));
-			var visit = DIMeta.HISTORY.type().getOrCreate(player).getOrCreate(pos);
-			for (int wp : visit.getAllWaypoints()) {
-				int x = wp / 400 % 400;
-				int z = wp % 400;
-				if (x / 16 == cmx && z / 16 == cmz) {
-					DungeonInfinity.HANDLER.toServer(new UseWaypointPacket(pos.at(x, z)));
-					diffY = 0;
-					return true;
+			if (canUseWaypoint) {
+				var pos = MazePos.map(player.blockPosition());
+				var layerY = pos.y();
+				pos = pos.atLayer(Mth.clamp(pos.y() + diffY, 0, 15));
+				var visit = DIMeta.HISTORY.type().getOrCreate(player).getOrCreate(pos);
+				for (int wp : visit.getAllWaypoints()) {
+					int x = wp / 400 % 400;
+					int z = wp % 400;
+					if (x / 16 == cmx && z / 16 == cmz) {
+						DungeonInfinity.HANDLER.toServer(new UseWaypointPacket(pos.at(x, z)));
+						diffY = 0;
+						return true;
+					}
 				}
 			}
 			if (up.contains(mx, my)) {
@@ -129,8 +135,8 @@ public class MazeMapScreen extends Screen implements MapUI {
 
 		int bx = x1 + 50;
 		int by = y1;
-		up.update(g, pos.y() < 15, bx, by, font, DILang.UP.get());
-		down.update(g, pos.y() > 0, bx, by + h, font, DILang.DOWN.get());
+		up.update(g, pos.y() < 15, bx, by, font, DILang.UP.get(), mx, my);
+		down.update(g, pos.y() > 0, bx, by + h, font, DILang.DOWN.get(), mx, my);
 		y1 -= h - 5;
 
 		var data = DIMeta.HISTORY.type().getOrCreate(player);
@@ -138,23 +144,24 @@ public class MazeMapScreen extends Screen implements MapUI {
 		var mag = DILang.MAGNIFIER.get();
 
 		g.text(font, DILang.DEPTH.get(16 - pos.y()), x1, y1 += h, -1);
+		y1 += h;
 		if (findable) {
 			g.text(font, DILang.FINDER.get(data.finder.finder), x1, y1 += h, -1);
+			y1 += h;
 		}
-		y1 += h;
 		g.text(font, DILang.BATTLE.get(), x1, y1 += h, MazeMapColors.F);
 		g.text(font, DILang.QUAD.get(), x1, y1 += h, MazeMapColors.Q);
-		findQuad.update(g, findable, x1 + font.width(DILang.QUAD.get()), y1, font, mag);
+		findQuad.update(g, findable, x1 + font.width(DILang.QUAD.get()), y1, font, mag, mx, my);
 		g.text(font, DILang.BOSS.get(), x1, y1 += h, MazeMapColors.R);
 		g.text(font, DILang.DOWN_STAIR.get(), x1, y1 += h, MazeMapColors.G);
-		findStair.update(g, findable, x1 + font.width(DILang.DOWN_STAIR.get()), y1, font, mag);
+		findStair.update(g, findable, x1 + font.width(DILang.DOWN_STAIR.get()), y1, font, mag, mx, my);
 		g.text(font, DILang.UP_STAIR.get(), x1, y1 += h, MazeMapColors.Y);
 		g.text(font, DILang.WORKSHOP.get(), x1, y1 += h, MazeMapColors.K);
-		findWorkshop.update(g, findable, x1 + font.width(DILang.WORKSHOP.get()), y1, font, mag);
+		findWorkshop.update(g, findable, x1 + font.width(DILang.WORKSHOP.get()), y1, font, mag, mx, my);
 		g.text(font, DILang.SHOP.get(), x1, y1 += h, MazeMapColors.S);
-		findShop.update(g, findable, x1 + font.width(DILang.SHOP.get()), y1, font, mag);
+		findShop.update(g, findable, x1 + font.width(DILang.SHOP.get()), y1, font, mag, mx, my);
 		g.text(font, DILang.WAREHOUSE.get(), x1, y1 += h, MazeMapColors.H);
-		findWarehouse.update(g, findable, x1 + font.width(DILang.WAREHOUSE.get()), y1, font, mag);
+		findWarehouse.update(g, findable, x1 + font.width(DILang.WAREHOUSE.get()), y1, font, mag, mx, my);
 	}
 
 	public void extractBuff(Player player, GuiGraphicsExtractor g, int x0, int y0, float rate) {
@@ -187,7 +194,7 @@ public class MazeMapScreen extends Screen implements MapUI {
 			int col = MazeMapColors.P;
 			g.pose().pushMatrix();
 			g.pose().translate(x / 16f * 5f, z / 16f * 5f);
-			if (x / 16 == cmx && z / 16 == cmz) {
+			if (x / 16 == cmx && z / 16 == cmz && canUseWaypoint) {
 				g.pose().scale(2, 2);
 				hoverWaypoint = true;
 			}
@@ -196,36 +203,6 @@ public class MazeMapScreen extends Screen implements MapUI {
 		}
 		if (hoverWaypoint) {
 			g.setComponentTooltipForNextFrame(getFont(), List.of(DILang.WAYPOINT.get()), mx, my);
-		}
-	}
-
-	private class FakeBtn {
-
-		private boolean enabled;
-
-		private int x, y, w, h;
-
-		public void set(int x, int y, int w, int h) {
-			this.x = x;
-			this.y = y;
-			this.w = w;
-			this.h = h;
-			enabled = true;
-		}
-
-		public void disable() {
-			enabled = false;
-		}
-
-		public boolean contains(int mx, int my) {
-			return enabled && mx >= x && my >= y && mx <= x + w && my <= y + h;
-		}
-
-		public void update(GuiGraphicsExtractor g, boolean enable, int x, int y, Font font, Component s) {
-			if (enable) {
-				set(x, y, font.width(s), font.lineHeight);
-				g.text(font, s, x, y, contains(mx, my) ? 0xFFFFAA00 : 0xFFFFFFFF);
-			} else disable();
 		}
 	}
 

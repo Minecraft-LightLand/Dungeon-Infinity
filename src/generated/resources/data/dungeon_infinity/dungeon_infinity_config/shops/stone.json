@@ -227,6 +227,16 @@
       },
       {
         "cost": "minecraft:emerald",
+        "count": 1,
+        "limit": 8,
+        "result": {
+          "count": 4,
+          "id": "minecraft:redstone"
+        },
+        "weight": 100
+      },
+      {
+        "cost": "minecraft:emerald",
         "count": 8,
         "limit": 2,
         "result": {
