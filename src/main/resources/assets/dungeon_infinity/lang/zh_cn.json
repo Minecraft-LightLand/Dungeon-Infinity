@@ -79,7 +79,7 @@
   "modulargolems.legend.warehouse": "奖励",
   "modulargolems.legend.workshop": "休整",
   "modulargolems.tooltip.access": "传送进出迷宫",
-  "modulargolems.tooltip.map": "右键打开地图。点击重生锚可传送至其他锚点",
+  "modulargolems.tooltip.map": "右键打开地图。对重生锚右键时，可传送至其他重生锚",
   "modulargolems.tooltip.tomb": "取回在迷宫中上次死亡时最多9件物品",
   "modulargolems.tooltip.tomb_item_count": "你有%s件物品待取回",
   "modulargolems.tooltip.waypoint": "传送",
