@@ -44,7 +44,7 @@ public class MazeMapItem extends Item {
 
 	@Override
 	public void appendHoverText(ItemStack stack, TooltipContext context, TooltipDisplay display, Consumer<Component> list, TooltipFlag tooltipFlag) {
-		list.accept(DILang.MAGNIFIER.get());
+		list.accept(DILang.MAP.get());
 	}
 
 	@Override

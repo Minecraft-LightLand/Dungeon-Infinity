@@ -80,8 +80,8 @@ public class AllBuffs {
 		SPEED.genLang(pvd, "Talaria", "While player is in the maze, grant:");
 		REACH.genLang(pvd, "Spring Arm", "While player is in the maze, grant:");
 		ARMOR.genLang(pvd, "Bedrock Armor", "While player is in the maze, grant:");
-		TREASURE.genLang(pvd, "Treasure of Sanctity", "");
-		BLESS.genLang(pvd, "Holy Blessing", "");
+		TREASURE.genLang(pvd, "Treasure of Sanctity", "Immediately receive items:");
+		BLESS.genLang(pvd, "Holy Blessing", "Immediately gain effects:");
 		INSURANCE.genLang(pvd, "Maze Insurance", "When player dies and revives in maze, grant player:");
 		HEAL.genLang(pvd, "Medal of Victory", "Heal all your golems in maze or inventory by %s%%");
 		REWARD.genLang(pvd, "Treasure Chest", "For every unit cell of battle room player defeats:");
