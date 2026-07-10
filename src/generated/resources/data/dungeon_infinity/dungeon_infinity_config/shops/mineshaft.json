@@ -370,16 +370,6 @@
         "weight": 100
       },
       {
-        "cost": "modulargolems:empty_upgrade",
-        "count": 1,
-        "limit": 32,
-        "result": {
-          "count": 4,
-          "id": "minecraft:emerald"
-        },
-        "weight": 100
-      },
-      {
         "cost": "minecraft:copper_ingot",
         "count": 16,
         "limit": 32,
@@ -403,6 +393,108 @@
         "cost": "minecraft:gold_ingot",
         "count": 4,
         "limit": 16,
+        "result": {
+          "count": 8,
+          "id": "minecraft:emerald"
+        },
+        "weight": 100
+      }
+    ],
+    "mineshaft:recycle_upgrade": [
+      {
+        "cost": "modulargolems:quartz",
+        "count": 1,
+        "limit": 32,
+        "result": {
+          "count": 2,
+          "id": "minecraft:emerald"
+        },
+        "weight": 50
+      },
+      {
+        "cost": "modulargolems:speed",
+        "count": 1,
+        "limit": 32,
+        "result": {
+          "count": 2,
+          "id": "minecraft:emerald"
+        },
+        "weight": 50
+      },
+      {
+        "cost": "modulargolems:gold",
+        "count": 1,
+        "limit": 32,
+        "result": {
+          "count": 8,
+          "id": "minecraft:emerald"
+        },
+        "weight": 50
+      },
+      {
+        "cost": "modulargolems:weak",
+        "count": 1,
+        "limit": 32,
+        "result": {
+          "count": 2,
+          "id": "minecraft:emerald"
+        },
+        "weight": 50
+      },
+      {
+        "cost": "modulargolems:slow",
+        "count": 1,
+        "limit": 32,
+        "result": {
+          "count": 2,
+          "id": "minecraft:emerald"
+        },
+        "weight": 50
+      },
+      {
+        "cost": "modulargolems:wither",
+        "count": 1,
+        "limit": 32,
+        "result": {
+          "count": 2,
+          "id": "minecraft:emerald"
+        },
+        "weight": 50
+      },
+      {
+        "cost": "modulargolems:diamond",
+        "count": 1,
+        "limit": 32,
+        "result": {
+          "count": 8,
+          "id": "minecraft:emerald"
+        },
+        "weight": 100
+      },
+      {
+        "cost": "modulargolems:mount_upgrade",
+        "count": 1,
+        "limit": 32,
+        "result": {
+          "count": 8,
+          "id": "minecraft:emerald"
+        },
+        "weight": 100
+      },
+      {
+        "cost": "modulargolems:size_upgrade",
+        "count": 1,
+        "limit": 32,
+        "result": {
+          "count": 8,
+          "id": "minecraft:emerald"
+        },
+        "weight": 100
+      },
+      {
+        "cost": "modulargolems:pickup",
+        "count": 1,
+        "limit": 32,
         "result": {
           "count": 8,
           "id": "minecraft:emerald"
@@ -442,16 +534,12 @@
     ],
     "mineshaft:recycler": [
       {
-        "count": 1,
-        "offer": "mineshaft:consumable"
-      },
-      {
-        "count": 3,
-        "offer": "mineshaft:ingredient"
-      },
-      {
         "count": 4,
         "offer": "mineshaft:recycle"
+      },
+      {
+        "count": 5,
+        "offer": "mineshaft:recycle_upgrade"
       }
     ]
   }

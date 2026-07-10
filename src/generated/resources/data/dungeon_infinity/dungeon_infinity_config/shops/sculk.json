@@ -470,6 +470,68 @@
         },
         "weight": 100
       }
+    ],
+    "sculk:recycle_upgrade": [
+      {
+        "cost": "modulargolems:cauldron",
+        "count": 1,
+        "limit": 32,
+        "result": {
+          "count": 8,
+          "id": "minecraft:emerald"
+        },
+        "weight": 100
+      },
+      {
+        "cost": "modulargolems:netherite",
+        "count": 1,
+        "limit": 32,
+        "result": {
+          "count": 2,
+          "id": "minecraft:diamond"
+        },
+        "weight": 100
+      },
+      {
+        "cost": "modulargolems:talented",
+        "count": 1,
+        "limit": 32,
+        "result": {
+          "count": 2,
+          "id": "minecraft:diamond"
+        },
+        "weight": 100
+      },
+      {
+        "cost": "modulargolems:enchanted_gold",
+        "count": 1,
+        "limit": 32,
+        "result": {
+          "count": 2,
+          "id": "minecraft:diamond"
+        },
+        "weight": 100
+      },
+      {
+        "cost": "golemdungeons:reforge_upgrade",
+        "count": 1,
+        "limit": 32,
+        "result": {
+          "count": 2,
+          "id": "minecraft:diamond"
+        },
+        "weight": 100
+      },
+      {
+        "cost": "golemdungeons:resistance_upgrade",
+        "count": 1,
+        "limit": 32,
+        "result": {
+          "count": 2,
+          "id": "minecraft:diamond"
+        },
+        "weight": 100
+      }
     ]
   },
   "shops": {
@@ -507,12 +569,12 @@
     ],
     "sculk:recycler": [
       {
-        "count": 1,
-        "offer": "sculk:exchange"
+        "count": 6,
+        "offer": "sculk:recycle"
       },
       {
         "count": 6,
-        "offer": "sculk:recycle"
+        "offer": "sculk:recycle_upgrade"
       }
     ]
   }

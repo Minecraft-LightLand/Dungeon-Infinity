@@ -295,16 +295,6 @@
         "weight": 100
       },
       {
-        "cost": "modulargolems:empty_upgrade",
-        "count": 1,
-        "limit": 32,
-        "result": {
-          "count": 4,
-          "id": "minecraft:emerald"
-        },
-        "weight": 100
-      },
-      {
         "cost": "minecraft:copper_ingot",
         "count": 16,
         "limit": 32,
@@ -333,6 +323,48 @@
           "id": "minecraft:emerald"
         },
         "weight": 50
+      }
+    ],
+    "stone:recycle_upgrade": [
+      {
+        "cost": "modulargolems:quartz",
+        "count": 1,
+        "limit": 32,
+        "result": {
+          "count": 2,
+          "id": "minecraft:emerald"
+        },
+        "weight": 100
+      },
+      {
+        "cost": "modulargolems:speed",
+        "count": 1,
+        "limit": 32,
+        "result": {
+          "count": 2,
+          "id": "minecraft:emerald"
+        },
+        "weight": 100
+      },
+      {
+        "cost": "modulargolems:gold",
+        "count": 1,
+        "limit": 32,
+        "result": {
+          "count": 8,
+          "id": "minecraft:emerald"
+        },
+        "weight": 100
+      },
+      {
+        "cost": "modulargolems:diamond",
+        "count": 1,
+        "limit": 32,
+        "result": {
+          "count": 8,
+          "id": "minecraft:emerald"
+        },
+        "weight": 100
       }
     ]
   },
@@ -367,16 +399,12 @@
     ],
     "stone:recycler": [
       {
-        "count": 1,
-        "offer": "stone:consumable"
-      },
-      {
-        "count": 2,
-        "offer": "stone:ingredient"
+        "count": 4,
+        "offer": "stone:recycle"
       },
       {
         "count": 4,
-        "offer": "stone:recycle"
+        "offer": "stone:recycle_upgrade"
       }
     ]
   }

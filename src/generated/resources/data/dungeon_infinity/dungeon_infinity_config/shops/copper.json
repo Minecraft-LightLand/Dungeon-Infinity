@@ -429,6 +429,118 @@
         },
         "weight": 100
       }
+    ],
+    "copper:recycle_upgrade": [
+      {
+        "cost": "modulargolems:gold",
+        "count": 1,
+        "limit": 32,
+        "result": {
+          "count": 8,
+          "id": "minecraft:emerald"
+        },
+        "weight": 50
+      },
+      {
+        "cost": "modulargolems:weak",
+        "count": 1,
+        "limit": 32,
+        "result": {
+          "count": 2,
+          "id": "minecraft:emerald"
+        },
+        "weight": 50
+      },
+      {
+        "cost": "modulargolems:slow",
+        "count": 1,
+        "limit": 32,
+        "result": {
+          "count": 2,
+          "id": "minecraft:emerald"
+        },
+        "weight": 50
+      },
+      {
+        "cost": "modulargolems:wither",
+        "count": 1,
+        "limit": 32,
+        "result": {
+          "count": 2,
+          "id": "minecraft:emerald"
+        },
+        "weight": 50
+      },
+      {
+        "cost": "modulargolems:diamond",
+        "count": 1,
+        "limit": 32,
+        "result": {
+          "count": 8,
+          "id": "minecraft:emerald"
+        },
+        "weight": 50
+      },
+      {
+        "cost": "modulargolems:mount_upgrade",
+        "count": 1,
+        "limit": 32,
+        "result": {
+          "count": 8,
+          "id": "minecraft:emerald"
+        },
+        "weight": 50
+      },
+      {
+        "cost": "modulargolems:size_upgrade",
+        "count": 1,
+        "limit": 32,
+        "result": {
+          "count": 8,
+          "id": "minecraft:emerald"
+        },
+        "weight": 50
+      },
+      {
+        "cost": "modulargolems:pickup",
+        "count": 1,
+        "limit": 32,
+        "result": {
+          "count": 8,
+          "id": "minecraft:emerald"
+        },
+        "weight": 50
+      },
+      {
+        "cost": "modulargolems:cauldron",
+        "count": 1,
+        "limit": 32,
+        "result": {
+          "count": 8,
+          "id": "minecraft:emerald"
+        },
+        "weight": 100
+      },
+      {
+        "cost": "modulargolems:recycle",
+        "count": 1,
+        "limit": 32,
+        "result": {
+          "count": 2,
+          "id": "minecraft:diamond"
+        },
+        "weight": 100
+      },
+      {
+        "cost": "golemdungeons:reforge_upgrade",
+        "count": 1,
+        "limit": 32,
+        "result": {
+          "count": 2,
+          "id": "minecraft:diamond"
+        },
+        "weight": 100
+      }
     ]
   },
   "shops": {
@@ -466,20 +578,12 @@
     ],
     "copper:recycler": [
       {
-        "count": 1,
-        "offer": "copper:exchange"
-      },
-      {
-        "count": 1,
-        "offer": "copper:consumable"
-      },
-      {
-        "count": 3,
-        "offer": "copper:ingredient"
-      },
-      {
         "count": 4,
         "offer": "copper:recycle"
+      },
+      {
+        "count": 6,
+        "offer": "copper:recycle_upgrade"
       }
     ]
   }

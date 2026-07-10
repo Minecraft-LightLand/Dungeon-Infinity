@@ -533,6 +533,88 @@
         },
         "weight": 100
       }
+    ],
+    "deepslate:recycle_upgrade": [
+      {
+        "cost": "modulargolems:diamond",
+        "count": 1,
+        "limit": 32,
+        "result": {
+          "count": 8,
+          "id": "minecraft:emerald"
+        },
+        "weight": 50
+      },
+      {
+        "cost": "modulargolems:pickup",
+        "count": 1,
+        "limit": 32,
+        "result": {
+          "count": 8,
+          "id": "minecraft:emerald"
+        },
+        "weight": 50
+      },
+      {
+        "cost": "modulargolems:cauldron",
+        "count": 1,
+        "limit": 32,
+        "result": {
+          "count": 8,
+          "id": "minecraft:emerald"
+        },
+        "weight": 100
+      },
+      {
+        "cost": "modulargolems:netherite",
+        "count": 1,
+        "limit": 32,
+        "result": {
+          "count": 2,
+          "id": "minecraft:diamond"
+        },
+        "weight": 100
+      },
+      {
+        "cost": "modulargolems:enchanted_gold",
+        "count": 1,
+        "limit": 32,
+        "result": {
+          "count": 2,
+          "id": "minecraft:diamond"
+        },
+        "weight": 100
+      },
+      {
+        "cost": "modulargolems:recycle",
+        "count": 1,
+        "limit": 32,
+        "result": {
+          "count": 2,
+          "id": "minecraft:diamond"
+        },
+        "weight": 100
+      },
+      {
+        "cost": "golemdungeons:reforge_upgrade",
+        "count": 1,
+        "limit": 32,
+        "result": {
+          "count": 2,
+          "id": "minecraft:diamond"
+        },
+        "weight": 100
+      },
+      {
+        "cost": "golemdungeons:resistance_upgrade",
+        "count": 1,
+        "limit": 32,
+        "result": {
+          "count": 2,
+          "id": "minecraft:diamond"
+        },
+        "weight": 100
+      }
     ]
   },
   "shops": {
@@ -570,16 +652,12 @@
     ],
     "deepslate:recycler": [
       {
-        "count": 1,
-        "offer": "deepslate:exchange"
-      },
-      {
-        "count": 2,
-        "offer": "deepslate:ingredient"
-      },
-      {
         "count": 5,
         "offer": "deepslate:recycle"
+      },
+      {
+        "count": 6,
+        "offer": "deepslate:recycle_upgrade"
       }
     ]
   }
