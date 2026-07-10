@@ -47,6 +47,7 @@ public class BuffSelScreen extends Screen {
 			else data.smallBuff--;
 			DungeonInfinity.HANDLER.toServer(new SelectBuffToServer(large, sel));
 			onClose();
+			return true;
 		}
 
 		var list = large ? data.getLargeBuffList() : data.getSmallBuffList();
@@ -127,8 +128,8 @@ public class BuffSelScreen extends Screen {
 
 	private float renderText(GuiGraphicsExtractor g, Component comp, int x, float y, float rate, int maxW) {
 		var list = font.split(comp, (int) ((maxW - 10) / rate));
-		for (int i = 0; i < list.size(); i++) {
-			y = textLeft(g, list.get(i), x + 5, y, rate, -1);
+		for (FormattedCharSequence formattedCharSequence : list) {
+			y = textLeft(g, formattedCharSequence, x + 5, y, rate, -1);
 		}
 		return y;
 	}
