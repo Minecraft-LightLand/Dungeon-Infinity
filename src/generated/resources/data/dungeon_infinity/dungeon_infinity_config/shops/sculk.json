@@ -229,67 +229,58 @@
     ],
     "sculk:golem_equipments": [
       {
-        "cost": "minecraft:emerald",
-        "count": 20,
-        "limit": 1,
+        "cost": "minecraft:diamond",
+        "count": 6,
+        "limit": 4,
         "result": {
-          "id": "modulargolems:diamond_golem_spear"
+          "id": "modulargolems:netherite_mecha_bow"
         },
-        "weight": 100
+        "weight": 50
       },
       {
-        "cost": "minecraft:emerald",
-        "count": 24,
+        "cost": "minecraft:diamond",
+        "count": 32,
         "limit": 1,
         "result": {
-          "id": "modulargolems:diamond_golem_axe"
-        },
-        "weight": 100
-      },
-      {
-        "cost": "minecraft:emerald",
-        "count": 26,
-        "limit": 1,
-        "result": {
-          "id": "modulargolems:diamond_golem_sword"
+          "id": "modulargolems:beacon_boots"
         },
         "weight": 100
       },
       {
         "cost": "minecraft:diamond",
-        "count": 6,
+        "count": 64,
         "limit": 1,
         "result": {
-          "id": "modulargolems:netherite_mecha_bow"
+          "id": "modulargolems:sonic_cannon"
         },
         "weight": 100
       },
       {
         "cost": "minecraft:diamond",
         "count": 12,
-        "limit": 1,
+        "limit": 4,
         "result": {
           "id": "modulargolems:wind_spirit_helmet"
         },
-        "weight": 100
+        "weight": 50
       },
       {
         "cost": "minecraft:diamond",
         "count": 16,
-        "limit": 1,
+        "limit": 4,
         "result": {
           "id": "modulargolems:wind_spirit_chestplate"
         },
-        "weight": 100
+        "weight": 50
       },
       {
         "cost": "minecraft:diamond",
         "count": 10,
-        "limit": 1,
+        "limit": 4,
         "result": {
           "id": "modulargolems:wind_spirit_shinguard"
         },
-        "weight": 100
+        "weight": 50
       }
     ],
     "sculk:ingredient": [
