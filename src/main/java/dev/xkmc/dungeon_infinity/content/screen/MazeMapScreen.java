@@ -11,6 +11,7 @@ import dev.xkmc.dungeon_infinity.content.packet.UseWaypointPacket;
 import dev.xkmc.dungeon_infinity.init.DungeonInfinity;
 import dev.xkmc.dungeon_infinity.init.data.DILang;
 import dev.xkmc.dungeon_infinity.init.reg.DIMeta;
+import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.screens.Screen;
@@ -28,12 +29,13 @@ public class MazeMapScreen extends Screen implements MapUI {
 
 	private int layerY, diffY;
 
-	private final TextButton up, down, findQuad, findStair, findWarehouse, findWorkshop, findShop;
+	private final TextButton depthLabel, up, down, findQuad, findStair, findWarehouse, findWorkshop, findShop;
 
 	public MazeMapScreen(long seed, boolean canUseWaypoint) {
 		super(Component.literal("Maze Map"));
 		this.seed = seed;
 		this.canUseWaypoint = canUseWaypoint;
+		depthLabel = new TextButton();
 		up = new TextButton();
 		down = new TextButton();
 		findQuad = new TextButton();
@@ -67,6 +69,10 @@ public class MazeMapScreen extends Screen implements MapUI {
 						return true;
 					}
 				}
+			}
+			if (depthLabel.contains(mx, my) && diffY != 0) {
+				diffY = 0;
+				return true;
 			}
 			if (up.contains(mx, my)) {
 				if (Mth.clamp(layerY + diffY + 1, 0, 15) != diffY + layerY) {
@@ -122,6 +128,16 @@ public class MazeMapScreen extends Screen implements MapUI {
 		cmz = (int) (((my - y0) / rate + 63) / 5);
 		this.mx = mx;
 		this.my = my;
+		int mapLeft = (int) (x0 - rate * 64);
+		int mapRight = (int) (x0 + rate * 64);
+		int mapTop = (int) (y0 - rate * 64);
+		int mapBottom = (int) (y0 + rate * 64);
+		g.fill(mapLeft, mapTop, mapRight, mapBottom, 0xC0161616);
+		g.fill(mapLeft, mapTop, mapRight, mapTop + 1, 0xFF4A4A4A);
+		g.fill(mapLeft, mapBottom - 1, mapRight, mapBottom, 0xFF2A2A2A);
+		g.fill(mapLeft, mapTop, mapLeft + 1, mapBottom, 0xFF4A4A4A);
+		g.fill(mapRight - 1, mapTop, mapRight, mapBottom, 0xFF2A2A2A);
+
 		renderMap(player, g, seed, pos, x0, y0, rate, diffY == 0);
 		extractLegend(player, g, x0, y0, rate, pos);
 		extractBuff(player, g, x0, y0, rate);
@@ -131,57 +147,188 @@ public class MazeMapScreen extends Screen implements MapUI {
 		int x1 = (int) (x0 + rate * 64);
 		int y1 = (int) (y0 - rate * 64);
 		var font = getFont();
-		int h = font.lineHeight + 3;
+		int lh = font.lineHeight;
+		int h = lh + 3;
+		int panelW = 110;
+		int panelX = x1 + 10;
+		int panelY = y1 - 10;
+		int panelH = Math.min(200, g.guiHeight() - panelY - 10);
 
-		int bx = x1 + 50;
-		int by = y1;
-		up.update(g, pos.y() < 15, bx, by, font, DILang.UP.get(), mx, my);
-		down.update(g, pos.y() > 0, bx, by + h, font, DILang.DOWN.get(), mx, my);
-		y1 -= h - 5;
+		g.fill(panelX, panelY, panelX + panelW, panelY + panelH, 0xC0161616);
+		g.fill(panelX, panelY, panelX + panelW, panelY + 1, 0xFF4A4A4A);
+		g.fill(panelX, panelY + panelH - 1, panelX + panelW, panelY + panelH, 0xFF2A2A2A);
+		g.fill(panelX, panelY, panelX + 1, panelY + panelH, 0xFF4A4A4A);
+		g.fill(panelX + panelW - 1, panelY, panelX + panelW, panelY + panelH, 0xFF2A2A2A);
+
+		int btnPadX = 4;
+		int btnPadY = 1;
+		int cx = panelX + 8;
+		int cy = panelY + 8;
+		int centerX = panelX + panelW / 2;
+
+		Component infoTitle = DILang.INFO_TITLE.get().copy().withStyle(ChatFormatting.BOLD);
+		float ts = Math.min(1.1f, (panelW - 16) / (float) font.width(infoTitle));
+		g.pose().pushMatrix();
+		g.pose().translate(centerX, cy);
+		g.pose().scale(ts, ts);
+		g.text(font, infoTitle, -font.width(infoTitle) / 2, 0, 0xFFFED83D, true);
+		g.pose().popMatrix();
+		cy += (int) (ts * h);
+		g.fill(cx, cy, panelX + panelW - 8, cy + 1, 0xFF4A4A4A);
+		cy += 4;
 
 		var data = DIMeta.HISTORY.type().getOrCreate(player);
 		var findable = diffY == 0 && (data.finder.finder > 0 || player.isCreative());
 		var mag = DILang.MAGNIFIER.get();
+		int mw = font.width(mag);
 
-		g.text(font, DILang.DEPTH.get(16 - pos.y()), x1, y1 += h, -1);
-		y1 += h;
-		if (findable) {
-			g.text(font, DILang.FINDER.get(data.finder.finder), x1, y1 += h, -1);
-			y1 += h;
+		Component depthText = DILang.DEPTH.get(16 - pos.y());
+		g.text(font, depthText, cx, cy, -1);
+
+		int maxDepthW = font.width(DILang.DEPTH.get(16));
+		depthLabel.set(cx - btnPadX, cy - btnPadY, maxDepthW + btnPadX * 2, lh + btnPadY * 2);
+		int btnY = cy - btnPadY;
+		int rightEdge = panelX + panelW - 8;
+		Component upText = DILang.UP.get();
+		Component downText = DILang.DOWN.get();
+		int uw = font.width(upText);
+		int dw = font.width(downText);
+		int downX = rightEdge - dw - btnPadX;
+		int upX = downX - uw - 9;
+
+		boolean upEnabled = pos.y() < 15;
+		up.set(upX - btnPadX, btnY, uw + btnPadX * 2, lh + btnPadY * 2);
+		boolean uh = upEnabled && up.contains(mx, my);
+		int upBg = upEnabled ? (uh ? 0xFF5A5A5A : 0xFF3D3D3D) : 0xFF2A2A2A;
+		int upBorder = upEnabled ? (uh ? 0xFF7A7A7A : 0xFF5A5A5A) : 0xFF3D3D3D;
+		g.fill(upX - btnPadX, btnY, upX + uw + btnPadX, btnY + lh + btnPadY * 2, upBg);
+		g.fill(upX - btnPadX, btnY, upX + uw + btnPadX, btnY + 1, upBorder);
+		g.fill(upX - btnPadX, btnY + lh + btnPadY * 2 - 1, upX + uw + btnPadX, btnY + lh + btnPadY * 2, 0xFF2A2A2A);
+		g.fill(upX - btnPadX, btnY, upX - btnPadX + 1, btnY + lh + btnPadY * 2, upBorder);
+		g.fill(upX + uw + btnPadX - 1, btnY, upX + uw + btnPadX, btnY + lh + btnPadY * 2, 0xFF2A2A2A);
+		g.text(font, upText, upX, cy, uh ? 0xFFFFAA00 : upEnabled ? 0xFFFFFFFF : 0xFF606060);
+		if (!upEnabled) up.disable();
+
+		boolean downEnabled = pos.y() > 0;
+		down.set(downX - btnPadX, btnY, dw + btnPadX * 2, lh + btnPadY * 2);
+		boolean dh = downEnabled && down.contains(mx, my);
+		int downBg = downEnabled ? (dh ? 0xFF5A5A5A : 0xFF3D3D3D) : 0xFF2A2A2A;
+		int downBorder = downEnabled ? (dh ? 0xFF7A7A7A : 0xFF5A5A5A) : 0xFF3D3D3D;
+		g.fill(downX - btnPadX, btnY, downX + dw + btnPadX, btnY + lh + btnPadY * 2, downBg);
+		g.fill(downX - btnPadX, btnY, downX + dw + btnPadX, btnY + 1, downBorder);
+		g.fill(downX - btnPadX, btnY + lh + btnPadY * 2 - 1, downX + dw + btnPadX, btnY + lh + btnPadY * 2, 0xFF2A2A2A);
+		g.fill(downX - btnPadX, btnY, downX - btnPadX + 1, btnY + lh + btnPadY * 2, downBorder);
+		g.fill(downX + dw + btnPadX - 1, btnY, downX + dw + btnPadX, btnY + lh + btnPadY * 2, 0xFF2A2A2A);
+		g.text(font, downText, downX, cy, dh ? 0xFFFFAA00 : downEnabled ? 0xFFFFFFFF : 0xFF606060);
+		if (!downEnabled) down.disable();
+
+		cy += h;
+		int finderCount = findable ? data.finder.finder : -1;
+		Component finderText = DILang.FINDER.get(Math.max(0, finderCount));
+		g.text(font, finderText, cx, cy, finderCount >= 0 ? -1 : 0xFF606060);
+		cy += h;
+		cy += 3;
+
+		renderFitText(g, DILang.ROOM_TYPES.get(), cx, cy, panelW - 16, 0xFFCCCCCC);
+		cy += h;
+
+		Component[] legendNames = {DILang.BATTLE.get(), DILang.QUAD.get(), DILang.BOSS.get(),
+				DILang.DOWN_STAIR.get(), DILang.UP_STAIR.get(), DILang.WORKSHOP.get(),
+				DILang.SHOP.get(), DILang.WAREHOUSE.get()};
+		int[] legendColors = {MazeMapColors.F, MazeMapColors.Q, MazeMapColors.R,
+				MazeMapColors.G, MazeMapColors.Y, MazeMapColors.K,
+				MazeMapColors.S, MazeMapColors.H};
+		int[] findOrder = {-1, 0, -1, 1, -1, 2, 3, 4};
+		TextButton[] findBtns = {findQuad, findStair, findWorkshop, findShop, findWarehouse};
+
+		float roomScale = 1f;
+		for (int idx = 0; idx < legendNames.length; idx++) {
+			boolean hasMag = findable && findOrder[idx] >= 0;
+			float maxW = hasMag ? (panelW - 28 - mw) : (panelW - 16);
+			float s = Math.min(1f, maxW / font.width(legendNames[idx]));
+			if (s < roomScale) roomScale = s;
 		}
-		g.text(font, DILang.BATTLE.get(), x1, y1 += h, MazeMapColors.F);
-		g.text(font, DILang.QUAD.get(), x1, y1 += h, MazeMapColors.Q);
-		findQuad.update(g, findable, x1 + font.width(DILang.QUAD.get()), y1, font, mag, mx, my);
-		g.text(font, DILang.BOSS.get(), x1, y1 += h, MazeMapColors.R);
-		g.text(font, DILang.DOWN_STAIR.get(), x1, y1 += h, MazeMapColors.G);
-		findStair.update(g, findable, x1 + font.width(DILang.DOWN_STAIR.get()), y1, font, mag, mx, my);
-		g.text(font, DILang.UP_STAIR.get(), x1, y1 += h, MazeMapColors.Y);
-		g.text(font, DILang.WORKSHOP.get(), x1, y1 += h, MazeMapColors.K);
-		findWorkshop.update(g, findable, x1 + font.width(DILang.WORKSHOP.get()), y1, font, mag, mx, my);
-		g.text(font, DILang.SHOP.get(), x1, y1 += h, MazeMapColors.S);
-		findShop.update(g, findable, x1 + font.width(DILang.SHOP.get()), y1, font, mag, mx, my);
-		g.text(font, DILang.WAREHOUSE.get(), x1, y1 += h, MazeMapColors.H);
-		findWarehouse.update(g, findable, x1 + font.width(DILang.WAREHOUSE.get()), y1, font, mag, mx, my);
+
+		for (int i = 0; i < legendNames.length; i++) {
+			boolean hasMag = findable && findOrder[i] >= 0;
+			int magX = hasMag ? panelX + panelW - 12 - mw : 0;
+			g.pose().pushMatrix();
+			g.pose().translate(cx, cy);
+			g.pose().scale(roomScale, roomScale);
+			g.text(font, legendNames[i], 0, 0, legendColors[i]);
+			g.pose().popMatrix();
+			if (hasMag) {
+				int fi = findOrder[i];
+				TextButton btn = findBtns[fi];
+				btn.set(magX - btnPadX, cy - btnPadY, mw + btnPadX * 2, lh + btnPadY * 2);
+				boolean mh = btn.contains(mx, my);
+				g.fill(magX - btnPadX, cy - btnPadY, magX + mw + btnPadX, cy + lh + btnPadY, mh ? 0xFF5A5A5A : 0xFF3D3D3D);
+				g.fill(magX - btnPadX, cy - btnPadY, magX + mw + btnPadX, cy - btnPadY + 1, mh ? 0xFF7A7A7A : 0xFF5A5A5A);
+				g.fill(magX - btnPadX, cy + lh + btnPadY - 1, magX + mw + btnPadX, cy + lh + btnPadY, 0xFF2A2A2A);
+				g.fill(magX - btnPadX, cy - btnPadY, magX - btnPadX + 1, cy + lh + btnPadY, 0xFF5A5A5A);
+				g.fill(magX + mw + btnPadX - 1, cy - btnPadY, magX + mw + btnPadX, cy + lh + btnPadY, 0xFF2A2A2A);
+				g.text(font, mag, magX, cy, mh ? 0xFFFFAA00 : 0xFFFFFFFF);
+				if (mh) {
+					g.setComponentTooltipForNextFrame(font, List.of(DILang.SEARCH.get()), mx, my);
+				}
+			}
+			cy += h;
+		}
 	}
 
 	public void extractBuff(Player player, GuiGraphicsExtractor g, int x0, int y0, float rate) {
 		int x1 = (int) (x0 - rate * 64);
-		int y1 = (int) (y0 - rate * 64);
 		var font = getFont();
-		int h = font.lineHeight + 3;
-		y1 -= h - 5;
+		int lh = font.lineHeight;
+		int h = lh + 3;
+
+		int panelW = 110;
+		int panelX = x1 - panelW - 10;
+		int panelY = (int) (y0 - rate * 64) - 10;
+		int panelH = Math.min(200, g.guiHeight() - panelY - 10);
+
+		g.fill(panelX, panelY, panelX + panelW, panelY + panelH, 0xC0161616);
+		g.fill(panelX, panelY, panelX + panelW, panelY + 1, 0xFF4A4A4A);
+		g.fill(panelX, panelY + panelH - 1, panelX + panelW, panelY + panelH, 0xFF2A2A2A);
+		g.fill(panelX, panelY, panelX + 1, panelY + panelH, 0xFF4A4A4A);
+		g.fill(panelX + panelW - 1, panelY, panelX + panelW, panelY + panelH, 0xFF2A2A2A);
+
+		int cx = panelX + 8;
+		int cy = panelY + 8;
+		int centerX = panelX + panelW / 2;
+
+		Component buffTitle = DILang.BUFF_TITLE.get().copy().withStyle(ChatFormatting.BOLD);
+		float ts = Math.min(1.1f, (panelW - 16) / (float) font.width(buffTitle));
+		g.pose().pushMatrix();
+		g.pose().translate(centerX, cy);
+		g.pose().scale(ts, ts);
+		g.text(font, buffTitle, -font.width(buffTitle) / 2, 0, 0xFFFED83D, true);
+		g.pose().popMatrix();
+		cy += (int) (ts * h);
+		g.fill(cx, cy, panelX + panelW - 8, cy + 1, 0xFF4A4A4A);
+		cy += 4;
+
 		var data = DIMeta.HISTORY.type().getOrCreate(player).buff;
 		for (var e : data.buffs.entrySet()) {
 			var buff = MazeBuff.get(e.getKey());
 			var title = buff.getTitle(e.getValue());
 			int w = font.width(title);
-			int x2 = (x1 - w) / 2;
-			g.text(font, title, x2, y1 += h, -1);
-			if (x2 <= mx && mx <= x2 + w && y1 <= my && my <= y1 + h) {
+			g.text(font, title, cx, cy, 0xFFFFAA00);
+			if (cx <= mx && mx <= cx + w && cy <= my && my <= cy + h) {
 				g.setComponentTooltipForNextFrame(font, buff.getDetail(e.getValue()), mx, my);
 			}
-
+			cy += h;
 		}
+	}
+
+	private void renderFitText(GuiGraphicsExtractor g, Component text, float x, float y, float maxW, int color) {
+		float tw = font.width(text);
+		float scale = Math.min(1f, maxW / tw);
+		g.pose().pushMatrix();
+		g.pose().translate(x, y);
+		g.pose().scale(scale, scale);
+		g.text(font, text, 0, 0, color);
+		g.pose().popMatrix();
 	}
 
 	public void renderWaypoints(GuiGraphicsExtractor g, MazeHistory.Visit visit) {

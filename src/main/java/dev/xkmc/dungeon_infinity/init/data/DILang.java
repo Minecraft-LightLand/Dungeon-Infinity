@@ -35,8 +35,15 @@ public enum DILang {
 	WAREHOUSE("legend.warehouse", "Warehouse Room", 0, null),
 
 	REROLL("info.reroll", "Reroll chance: %s", 1, null),
+	REFRESH("info.refresh", "Reroll", 0, null),
+	REMAIN("info.remain", "Remaining: %s", 1, null),
 	CONFIRM("info.confirm", "Confirm", 0, null),
-	EXP("info.exp", "%s Xp", 1, null);
+	SELECT_TITLE("info.select_title", "Select one reward", 0, null),
+	EXP("info.exp", "%s Xp", 1, null),
+	ROOM_TYPES("info.room_types", "Room Types:", 0, null),
+	SEARCH("info.search", "Search", 0, null),
+	BUFF_TITLE("info.buff_title", "Maze Blessings", 0, null),
+	INFO_TITLE("info.info_title", "Maze Info", 0, null);
 
 	private final String key, def;
 	private final int arg;

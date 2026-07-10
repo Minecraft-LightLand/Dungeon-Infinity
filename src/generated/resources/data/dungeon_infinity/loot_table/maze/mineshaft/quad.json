@@ -11,20 +11,15 @@
               "add": false,
               "count": {
                 "type": "minecraft:uniform",
-                "max": 20.0,
-                "min": 12.0
+                "max": 2.0,
+                "min": 1.0
               },
               "function": "minecraft:set_count"
             }
           ],
-          "name": "minecraft:iron_ingot"
-        }
-      ],
-      "rolls": 1.0
-    },
-    {
-      "bonus_rolls": 0.0,
-      "entries": [
+          "name": "minecraft:gold_ingot",
+          "weight": 10
+        },
         {
           "type": "minecraft:item",
           "functions": [
@@ -32,20 +27,15 @@
               "add": false,
               "count": {
                 "type": "minecraft:uniform",
-                "max": 10.0,
-                "min": 4.0
+                "max": 5.0,
+                "min": 3.0
               },
               "function": "minecraft:set_count"
             }
           ],
-          "name": "minecraft:diamond"
-        }
-      ],
-      "rolls": 1.0
-    },
-    {
-      "bonus_rolls": 0.0,
-      "entries": [
+          "name": "minecraft:copper_ingot",
+          "weight": 30
+        },
         {
           "type": "minecraft:item",
           "functions": [
@@ -53,32 +43,33 @@
               "add": false,
               "count": {
                 "type": "minecraft:uniform",
-                "max": 64.0,
-                "min": 32.0
+                "max": 5.0,
+                "min": 2.0
               },
               "function": "minecraft:set_count"
             }
           ],
-          "name": "minecraft:arrow"
-        }
-      ],
-      "rolls": 1.0
-    },
-    {
-      "bonus_rolls": 0.0,
-      "entries": [
+          "name": "minecraft:iron_ingot",
+          "weight": 50
+        },
         {
           "type": "minecraft:item",
-          "conditions": [
+          "functions": [
             {
-              "chance": 0.5,
-              "condition": "minecraft:random_chance"
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 1.0,
+                "min": 1.0
+              },
+              "function": "minecraft:set_count"
             }
           ],
-          "name": "modulargolems:recycle"
+          "name": "minecraft:diamond",
+          "weight": 50
         }
       ],
-      "rolls": 1.0
+      "rolls": 4.0
     },
     {
       "bonus_rolls": 0.0,
@@ -96,8 +87,14 @@
               "function": "minecraft:set_count"
             }
           ],
-          "name": "minecraft:blaze_rod"
-        },
+          "name": "minecraft:golden_carrot"
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
         {
           "type": "minecraft:item",
           "functions": [
@@ -105,27 +102,53 @@
               "add": false,
               "count": {
                 "type": "minecraft:uniform",
-                "max": 6.0,
+                "max": 5.0,
                 "min": 3.0
               },
               "function": "minecraft:set_count"
             }
           ],
-          "name": "minecraft:ender_pearl"
+          "name": "minecraft:oak_log"
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 20.0,
+                "min": 12.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "minecraft:clay_ball"
         }
       ],
-      "rolls": 1.0
+      "rolls": 3.0
     },
     {
       "bonus_rolls": 0.0,
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "modulargolems:size_upgrade"
+          "name": "modulargolems:diamond",
+          "weight": 2
         },
         {
           "type": "minecraft:item",
-          "name": "modulargolems:slow"
+          "name": "modulargolems:gold",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "modulargolems:pickup",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "modulargolems:recycle"
         }
       ],
       "rolls": 1.0
@@ -140,8 +163,8 @@
               "add": false,
               "count": {
                 "type": "minecraft:uniform",
-                "max": 12.0,
-                "min": 6.0
+                "max": 16.0,
+                "min": 10.0
               },
               "function": "minecraft:set_count"
             }
@@ -161,8 +184,8 @@
               "add": false,
               "count": {
                 "type": "minecraft:uniform",
-                "max": 12.0,
-                "min": 8.0
+                "max": 10.0,
+                "min": 6.0
               },
               "function": "minecraft:set_count"
             }
