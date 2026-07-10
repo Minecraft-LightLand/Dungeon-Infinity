@@ -5,8 +5,8 @@ import dev.xkmc.dungeon_infinity.content.block.merchant.TypeSelToServer;
 import dev.xkmc.dungeon_infinity.content.buff.AllBuffs;
 import dev.xkmc.dungeon_infinity.content.config.ShopConfig;
 import dev.xkmc.dungeon_infinity.content.config.TemplateConfig;
-import dev.xkmc.dungeon_infinity.content.packet.UseWaypointPacket;
 import dev.xkmc.dungeon_infinity.content.packet.*;
+import dev.xkmc.dungeon_infinity.events.DIAttackListener;
 import dev.xkmc.dungeon_infinity.init.data.*;
 import dev.xkmc.dungeon_infinity.init.reg.DIItems;
 import dev.xkmc.dungeon_infinity.init.reg.DIMeta;
@@ -15,6 +15,7 @@ import dev.xkmc.l2core.init.reg.registrate.L2Registrate;
 import dev.xkmc.l2core.init.reg.simple.Reg;
 import dev.xkmc.l2core.serial.config.ConfigTypeEntry;
 import dev.xkmc.l2core.serial.config.PacketHandlerWithConfig;
+import dev.xkmc.l2damagetracker.contents.attack.AttackEventHandler;
 import dev.xkmc.l2serial.network.PacketHandler;
 import net.minecraft.resources.Identifier;
 import net.neoforged.bus.api.EventPriority;
@@ -62,7 +63,7 @@ public class DungeonInfinity {
 		DIWorldGen.register();
 		DITriggers.register();
 		DIConfig.init();
-
+		AttackEventHandler.register(8214, new DIAttackListener());
 	}
 
 	@SubscribeEvent
