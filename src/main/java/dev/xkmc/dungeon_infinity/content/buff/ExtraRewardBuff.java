@@ -25,7 +25,7 @@ public class ExtraRewardBuff extends MazeBuff {
 		sp.giveExperiencePoints(exp * lv);
 		for (int i = 0; i < lv * size; i++) {
 			for (var e : items) {
-				sp.getInventory().add(e.create());
+				sp.getInventory().placeItemBackInInventory(e.create());
 			}
 		}
 	}

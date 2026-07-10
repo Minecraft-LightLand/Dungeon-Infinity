@@ -21,7 +21,7 @@ public class ItemBuff extends MazeBuff {
 	public void onApply(ServerPlayer sp, int lv) {
 		for (int i = 0; i < lv; i++) {
 			for (var e : items) {
-				sp.getInventory().add(e.create());
+				sp.getInventory().placeItemBackInInventory(e.create());
 			}
 		}
 	}

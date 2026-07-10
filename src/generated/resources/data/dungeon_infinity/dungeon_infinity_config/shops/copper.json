@@ -96,15 +96,6 @@
           "id": "minecraft:splash_potion"
         },
         "weight": 50
-      },
-      {
-        "cost": "minecraft:diamond",
-        "count": 8,
-        "limit": 1,
-        "result": {
-          "id": "minecraft:totem_of_undying"
-        },
-        "weight": 50
       }
     ],
     "copper:equipments": [
@@ -304,8 +295,7 @@
         "count": 1,
         "limit": 64,
         "result": {
-          "count": 16,
-          "id": "minecraft:clay_ball"
+          "id": "modulargolems:metal_golem_template"
         },
         "weight": 200
       },
@@ -326,16 +316,6 @@
         "result": {
           "count": 4,
           "id": "minecraft:lapis_lazuli"
-        },
-        "weight": 100
-      },
-      {
-        "cost": "minecraft:emerald",
-        "count": 1,
-        "limit": 32,
-        "result": {
-          "count": 4,
-          "id": "minecraft:amethyst_shard"
         },
         "weight": 100
       },
@@ -389,6 +369,26 @@
       }
     ],
     "copper:recycle": [
+      {
+        "cost": "modulargolems:metal_golem_template",
+        "count": 4,
+        "limit": 32,
+        "result": {
+          "count": 2,
+          "id": "minecraft:emerald"
+        },
+        "weight": 100
+      },
+      {
+        "cost": "modulargolems:empty_upgrade",
+        "count": 1,
+        "limit": 32,
+        "result": {
+          "count": 4,
+          "id": "minecraft:emerald"
+        },
+        "weight": 100
+      },
       {
         "cost": "minecraft:copper_ingot",
         "count": 16,
@@ -446,7 +446,7 @@
         "offer": "copper:equipments"
       },
       {
-        "count": 2,
+        "count": 3,
         "offer": "copper:golem_equipments"
       }
     ],
@@ -471,10 +471,6 @@
       },
       {
         "count": 1,
-        "offer": "copper:food"
-      },
-      {
-        "count": 1,
         "offer": "copper:consumable"
       },
       {
@@ -482,7 +478,7 @@
         "offer": "copper:ingredient"
       },
       {
-        "count": 3,
+        "count": 4,
         "offer": "copper:recycle"
       }
     ]
