@@ -49,13 +49,13 @@
               "add": false,
               "count": {
                 "type": "minecraft:uniform",
-                "max": 5.0,
-                "min": 3.0
+                "max": 3.0,
+                "min": 2.0
               },
               "function": "minecraft:set_count"
             }
           ],
-          "name": "minecraft:cooked_beef"
+          "name": "minecraft:baked_potato"
         }
       ],
       "rolls": 1.0
@@ -85,13 +85,13 @@
               "add": false,
               "count": {
                 "type": "minecraft:uniform",
-                "max": 24.0,
-                "min": 16.0
+                "max": 6.0,
+                "min": 4.0
               },
               "function": "minecraft:set_count"
             }
           ],
-          "name": "minecraft:clay_ball"
+          "name": "modulargolems:metal_golem_template"
         }
       ],
       "rolls": 1.0
@@ -133,8 +133,8 @@
               "add": false,
               "count": {
                 "type": "minecraft:uniform",
-                "max": 6.0,
-                "min": 4.0
+                "max": 10.0,
+                "min": 6.0
               },
               "function": "minecraft:set_count"
             }

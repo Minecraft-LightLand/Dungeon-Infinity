@@ -29,7 +29,7 @@ public class InsuranceBuff extends MazeBuff {
 		removeOne(sp);
 		sp.giveExperiencePoints(exp);
 		for (var e : items) {
-			sp.getInventory().add(e.create());
+			sp.getInventory().placeItemBackInInventory(e.create());
 		}
 	}
 

@@ -1,12 +1,13 @@
 package dev.xkmc.dungeon_infinity.events;
 
 import dev.xkmc.dungeon_infinity.content.cap.MazeHistory;
+import dev.xkmc.dungeon_infinity.content.item.MazeMapItem;
 import dev.xkmc.dungeon_infinity.init.DungeonInfinity;
 import dev.xkmc.dungeon_infinity.init.data.DITagGen;
+import dev.xkmc.dungeon_infinity.init.data.DIDimensionGen;
 import dev.xkmc.dungeon_infinity.init.reg.DIItems;
 import dev.xkmc.dungeon_infinity.init.reg.DIMeta;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.util.TriState;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -52,10 +53,16 @@ public class DIEventHandlers {
 
 	@SubscribeEvent
 	public static void onItemUse(PlayerInteractEvent.RightClickBlock event) {
-		if (event.getItemStack().is(DIItems.MAP) &&
-				event.getLevel().getBlockState(event.getPos()).is(Blocks.RESPAWN_ANCHOR)) {
-			event.setUseItem(TriState.TRUE);
-			event.setUseBlock(TriState.FALSE);
+		var level = event.getLevel();
+		var stack = event.getItemStack();
+		if (stack.is(DIItems.MAP) && level.getBlockState(event.getPos()).is(Blocks.RESPAWN_ANCHOR)) {
+			if (level.dimension().identifier().equals(DIDimensionGen.LEVEL_MAZE.identifier())) {
+				var seed = stack.get(DIItems.SEED);
+				if (seed == null) return;
+				if (level.isClientSide()) {
+					MazeMapItem.ClientHandler.openScreen(seed, true);
+				}
+			}
 		}
 	}
 
