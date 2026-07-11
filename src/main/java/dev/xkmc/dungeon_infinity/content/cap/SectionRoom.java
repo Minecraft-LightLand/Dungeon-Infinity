@@ -113,7 +113,7 @@ public class SectionRoom {
 					mpos.set(x, y, z);
 					var old = lc.getBlockState(mpos);
 					if (gen) {
-						if (!old.isAir()) continue;//TODO
+						if (!old.isAir() && !old.canBeReplaced()) continue;//TODO
 						if (old.is(DITagGen.FORCEFIELD_CANNOT_REPLACE)) continue;
 						level().setBlockAndUpdate(mpos, old.isSolid() ? block : wall);
 					} else {
@@ -195,7 +195,7 @@ public class SectionRoom {
 				CellInterpreter.isQuadRoom(cell) ||
 				!CellInterpreter.isHallway(cell))) {
 			var origin = new Vec3(this.pos.origin());
-			var box = new AABB(origin.add(2, 2, 2), origin.add(14, 14, 14));
+			var box = new AABB(origin.add(1, 1, 1), origin.add(15, 15, 15));
 			if (box.contains(sp.position().add(sp.getBbHeight() / 2))) {
 				var ins = getOrCreateActiveMobRoomInstance();
 				ins.tick(sp);

@@ -226,6 +226,15 @@
       },
       {
         "cost": "minecraft:emerald",
+        "count": 4,
+        "limit": 64,
+        "result": {
+          "id": "modulargolems:empty_upgrade"
+        },
+        "weight": 100
+      },
+      {
+        "cost": "minecraft:emerald",
         "count": 1,
         "limit": 8,
         "result": {
@@ -393,7 +402,7 @@
         "offer": "stone:consumable"
       },
       {
-        "count": 2,
+        "count": 3,
         "offer": "stone:ingredient"
       }
     ],
