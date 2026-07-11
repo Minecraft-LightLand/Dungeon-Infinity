@@ -1,6 +1,7 @@
 package dev.xkmc.dungeon_infinity.init.data;
 
 import dev.xkmc.dungeon_infinity.compat.GolemSpawnData;
+import dev.xkmc.dungeon_infinity.content.config.ColumnLayoutConfig;
 import dev.xkmc.dungeon_infinity.content.config.ShopConfig;
 import dev.xkmc.dungeon_infinity.content.config.TemplateConfig;
 import dev.xkmc.dungeon_infinity.init.DungeonInfinity;
@@ -54,6 +55,18 @@ public class DIConfigGen extends ConfigDataProvider {
 	}
 
 	public void add(ConfigDataProvider.Collector map) {
+		map.add(DungeonInfinity.COLUMN, DungeonInfinity.loc("preset"), new ColumnLayoutConfig()
+				.column("preset")
+				.style("sculk", 4)
+				.style("deepslate", 3)
+				.style("copper", 3)
+				.style("mineshaft", 3)
+				.style("stone", 3)
+				.room("warehouse", 6)
+				.room("workshop", 6)
+				.room("shop", 6)
+				.end()
+		);
 		GolemSpawnData.gen(map);
 		genRooms(map);
 		genShop(map);

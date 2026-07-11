@@ -1,6 +1,7 @@
 package dev.xkmc.dungeon_infinity.content.chunkgen;
 
 import dev.xkmc.dungeon_infinity.content.cap.MazePos;
+import dev.xkmc.dungeon_infinity.content.config.ColumnLayoutConfig;
 import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
 import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 import net.minecraft.core.Direction;
@@ -212,7 +213,7 @@ public class MazeDimHolder {
 					if (checked) return;
 					checked = true;
 					col.check();
-					var grid = strategy.new Grid(RandomSource.create(roomSeed[1]), col.styles[y], maze);
+					var grid = strategy.new Grid(col.layout, RandomSource.create(roomSeed[1]), col.styles[y], maze);
 					strategy.new Scanner(maze, grid).scan(RandomSource.create(roomSeed[2]));
 					strategy.new Marker(RandomSource.create(roomSeed[3]), grid, maze).mark();
 				}
@@ -239,35 +240,44 @@ public class MazeDimHolder {
 			private final int[] styles = new int[y1];
 			private final int[] visibility = new int[y1];
 			private final long stairSeed;
+			private final ColumnLayoutConfig.Layout layout;
 
 			private boolean checked = false;
 
 			public MazeColumn(long seed, int cx, int cz) {
 				this.cx = cx;
 				this.cz = cz;
-				var rand = new Random(seed);
+				var rand = RandomSource.create(seed);
 				stairSeed = rand.nextLong();
-				int count = strategy.getBossRoomCount();
-				int space = (y1 - count * 2) / (count + 1);
-				int[] spaces = new int[count + 1];
-				Arrays.fill(spaces, space);
-				int rem = y1 - count * 2 - space * (count + 1);
+				layout = ColumnLayoutConfig.getRandom(rand);
+				var entries = layout.entries();
+				int n = entries.length;
+				int[] spaces = new int[n];
+				int total = 0;
+				for (int i = 0; i < n; i++) {
+					total += entries[i].layer();
+					spaces[i] = entries[i].layer();
+				}
+				if (total > y1) {
+					total = 0;
+					Arrays.fill(spaces, 0);
+				}
+				int rem = y1 - total;
 				for (int i = 0; i < rem; i++) {
-					int layer = rand.nextInt(spaces.length);
+					int layer = rand.nextInt(n);
 					spaces[layer]++;
 				}
 				int layer = 0;
-				for (int i = 0; i < count; i++) {
+				for (int i = 0; i < n - 1; i++) {
 					int e = spaces[i];
 					layer += e;
-					bossRoom[layer] = 1;
-					bossRoom[layer + 1] = 2;
-					layer += 2;
+					bossRoom[layer - 1] = 1;
+					bossRoom[layer] = 2;
 				}
 				layer = 0;
 				for (int i = 0; i < y1; i++) {
 					if (bossRoom[i] == 2) layer++;
-					styles[i] = strategy.getStyleForLayer(layer);
+					styles[i] = strategy.getStyleForLayer(entries[layer].style());
 					visibility[i] = layer + 1;
 				}
 			}
