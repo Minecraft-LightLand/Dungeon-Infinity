@@ -146,11 +146,11 @@
     "path/cross": {
       "sculk:": {
         "path": "sculk/path/cross",
-        "weight": 90
+        "weight": 50
       },
       "sculk:_waypoint": {
         "path": "sculk/path/cross_waypoint",
-        "weight": 10
+        "weight": 50
       }
     },
     "path/end": {
@@ -176,11 +176,11 @@
     "path/t_way": {
       "sculk:": {
         "path": "sculk/path/t_way",
-        "weight": 80
+        "weight": 70
       },
       "sculk:_waypoint": {
         "path": "sculk/path/t_way_waypoint",
-        "weight": 20
+        "weight": 30
       }
     },
     "quad": {

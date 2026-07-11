@@ -32,15 +32,13 @@ public class PotionBuff extends MazeBuff {
 
 	@Override
 	public void onApply(ServerPlayer sp, int lv) {
-		for (int i = 0; i < lv; i++) {
-			for (var e : effs) {
-				var old = sp.getEffect(e.eff);
-				int dur = e.dur * lv;
-				if (old != null && old.getAmplifier() == e.amp) {
-					dur += old.getDuration();
-				}
-				sp.addEffect(new MobEffectInstance(e.eff, dur, e.amp, false, false, true));
+		for (var e : effs) {
+			var old = sp.getEffect(e.eff);
+			int dur = e.dur * lv;
+			if (old != null && old.getAmplifier() == e.amp) {
+				dur += old.getDuration();
 			}
+			sp.addEffect(new MobEffectInstance(e.eff, dur, e.amp, false, false, true));
 		}
 	}
 

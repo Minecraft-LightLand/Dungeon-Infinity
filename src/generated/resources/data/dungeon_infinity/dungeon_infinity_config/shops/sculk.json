@@ -292,7 +292,7 @@
           "count": 16,
           "id": "minecraft:oak_log"
         },
-        "weight": 200
+        "weight": 25
       },
       {
         "cost": "minecraft:emerald",
@@ -301,17 +301,16 @@
         "result": {
           "id": "modulargolems:metal_golem_template"
         },
-        "weight": 200
+        "weight": 50
       },
       {
         "cost": "minecraft:emerald",
-        "count": 1,
-        "limit": 32,
+        "count": 4,
+        "limit": 64,
         "result": {
-          "count": 4,
-          "id": "minecraft:redstone"
+          "id": "modulargolems:empty_upgrade"
         },
-        "weight": 100
+        "weight": 25
       },
       {
         "cost": "minecraft:emerald",
@@ -388,16 +387,6 @@
         "limit": 32,
         "result": {
           "count": 2,
-          "id": "minecraft:emerald"
-        },
-        "weight": 100
-      },
-      {
-        "cost": "modulargolems:empty_upgrade",
-        "count": 1,
-        "limit": 32,
-        "result": {
-          "count": 4,
           "id": "minecraft:emerald"
         },
         "weight": 100

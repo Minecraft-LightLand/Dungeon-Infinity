@@ -20,28 +20,6 @@ public class RoomProcessorStrategy {
 		this.r1 = r1;
 	}
 
-	public float getRoomChance(int cell) {
-		return switch (CellInterpreter.getTemplateType(cell)) {
-			case 1 -> 0.9f;
-			case 5 -> 1;
-			case 4 -> 0.5f;
-			case 2, 3 -> 0.3f;
-			default -> 0;
-		};
-	}
-
-	public float getEndLargeRoomChance() {
-		return 0.8f;
-	}
-
-	public int getMaxQuadRoom(int max) {
-		return Math.clamp((int) (max * 0.8f), Math.min(max, 5), 10);
-	}
-
-	public float getHallLargeRoomChance() {
-		return 0.8f;
-	}
-
 	public MazeGen genMaze(int rad, long regionSeed) {
 		MazeConfig config = new MazeConfig();
 		config.invariant = 2;
@@ -293,13 +271,13 @@ public class RoomProcessorStrategy {
 			int total = 0;
 			Map<String, Integer> rooms = new LinkedHashMap<>();
 
-			for (var e : layout.rooms().entrySet()) {
+			for (var e : layout.utilities().entrySet()) {
 				total += e.getValue();
 				rooms.put(e.getKey(), e.getValue());
 			}
 			if (total > ends.size()) {
-				int average = ends.size() / layout.rooms().size();
-				for (var e : layout.rooms().entrySet()) {
+				int average = ends.size() / layout.utilities().size();
+				for (var e : layout.utilities().entrySet()) {
 					if (e.getValue() > average) {
 						total -= e.getValue() - average;
 						rooms.put(e.getKey(), average);
@@ -330,10 +308,12 @@ public class RoomProcessorStrategy {
 
 	public class Scanner {
 
+		private final ColumnLayoutConfig.Layout layout;
 		private final int[][] maze;
 		private final Grid marker;
 
-		public Scanner(int[][] maze, Grid marker) {
+		public Scanner(ColumnLayoutConfig.Layout layout, int[][] maze, Grid marker) {
+			this.layout = layout;
 			this.maze = maze;
 			this.marker = marker;
 		}
@@ -358,7 +338,7 @@ public class RoomProcessorStrategy {
 					if (count == 1) candidates.add(new int[]{dx, dz});
 				}
 			}
-			int max = getMaxQuadRoom(candidates.size());
+			int max = layout.getMaxQuadRoom(candidates.size());
 			for (int i = 0; i < max; i++) {
 				var e = candidates.remove(rand.nextInt(candidates.size()));
 				int dx = e[0];
@@ -386,6 +366,7 @@ public class RoomProcessorStrategy {
 
 	public class Marker {
 
+		private final ColumnLayoutConfig.Layout layout;
 		private final RandomSource rand;
 		private final Grid grid;
 		private final int[][] maze;
@@ -393,7 +374,8 @@ public class RoomProcessorStrategy {
 		Queue<int[]> largeRooms = new ArrayDeque<>();
 		Queue<int[]> hallways = new ArrayDeque<>();
 
-		public Marker(RandomSource rand, Grid grid, int[][] maze) {
+		public Marker(ColumnLayoutConfig.Layout layout, RandomSource rand, Grid grid, int[][] maze) {
+			this.layout = layout;
 			this.rand = rand;
 			this.grid = grid;
 			this.maze = maze;
@@ -476,14 +458,14 @@ public class RoomProcessorStrategy {
 		private void fromRoom(int x, int z, int src, int variant) {
 			if (x < 0 || x >= r1 || z < 0 || z >= r1) return;
 			if (grid.marker[x][z] != 0) return;
-			if (src > CellInterpreter.ROOM && rand.nextFloat() < getEndLargeRoomChance()) {
+			if (src > CellInterpreter.ROOM && rand.nextFloat() < layout.getEndLargeRoomChance()) {
 				grid.set(x, z, src - 1, variant);
 				rooms.add(new int[]{x, z});
 			} else if (src >= CellInterpreter.ROOM) {
 				grid.set(x, z, CellInterpreter.HALLWAY);
 				hallways.add(new int[]{x, z});
-			} else if (rand.nextFloat() < getRoomChance(maze[x][z])) {
-				if (rand.nextFloat() < getHallLargeRoomChance()) {
+			} else if (rand.nextFloat() < layout.getRoomChance(maze[x][z])) {
+				if (rand.nextFloat() < layout.getHallLargeRoomChance()) {
 					grid.set(x, z, CellInterpreter.ROOM + 1);
 					largeRooms.add(new int[]{x, z});
 				} else {
