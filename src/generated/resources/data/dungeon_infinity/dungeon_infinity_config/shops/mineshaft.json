@@ -208,7 +208,7 @@
       {
         "cost": "minecraft:emerald",
         "count": 10,
-        "limit": 1,
+        "limit": 4,
         "result": {
           "id": "modulargolems:iron_mecha_bow"
         },
@@ -217,34 +217,34 @@
       {
         "cost": "minecraft:emerald",
         "count": 3,
-        "limit": 1,
+        "limit": 4,
         "result": {
           "id": "modulargolems:iron_golem_spear"
         },
-        "weight": 100
+        "weight": 50
       },
       {
         "cost": "minecraft:emerald",
         "count": 4,
-        "limit": 1,
+        "limit": 4,
         "result": {
           "id": "modulargolems:iron_golem_axe"
         },
-        "weight": 100
+        "weight": 50
       },
       {
         "cost": "minecraft:emerald",
         "count": 5,
-        "limit": 1,
+        "limit": 4,
         "result": {
           "id": "modulargolems:iron_golem_sword"
         },
-        "weight": 100
+        "weight": 50
       },
       {
         "cost": "minecraft:emerald",
         "count": 24,
-        "limit": 1,
+        "limit": 4,
         "result": {
           "id": "modulargolems:roman_guard_helmet"
         },
@@ -253,7 +253,7 @@
       {
         "cost": "minecraft:emerald",
         "count": 32,
-        "limit": 1,
+        "limit": 4,
         "result": {
           "id": "modulargolems:roman_guard_chestplate"
         },
@@ -262,7 +262,7 @@
       {
         "cost": "minecraft:emerald",
         "count": 16,
-        "limit": 1,
+        "limit": 4,
         "result": {
           "id": "modulargolems:roman_guard_shinguard"
         },

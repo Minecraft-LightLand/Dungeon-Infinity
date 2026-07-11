@@ -1,16 +1,17 @@
 package dev.xkmc.dungeon_infinity.content.cap;
 
 import dev.xkmc.dungeon_infinity.content.buff.AllBuffs;
-import dev.xkmc.dungeon_infinity.content.packet.AddWaypointToClient;
-import dev.xkmc.dungeon_infinity.content.packet.SetRadiusToClient;
 import dev.xkmc.dungeon_infinity.content.chunkgen.CellInterpreter;
 import dev.xkmc.dungeon_infinity.content.chunkgen.MazeChunkGenerator;
 import dev.xkmc.dungeon_infinity.content.item.KeyOfAccess;
 import dev.xkmc.dungeon_infinity.content.item.MazeMapItem;
+import dev.xkmc.dungeon_infinity.content.packet.SetRadiusToClient;
 import dev.xkmc.dungeon_infinity.init.DungeonInfinity;
 import dev.xkmc.dungeon_infinity.init.data.DIDimensionGen;
 import dev.xkmc.dungeon_infinity.init.data.DITriggers;
 import dev.xkmc.dungeon_infinity.init.reg.DIMeta;
+import dev.xkmc.dungeon_infinity.util.MazePotionHelper;
+import dev.xkmc.dungeon_infinity.util.RespawnAnchorHelper;
 import dev.xkmc.l2core.capability.player.PlayerCapabilityTemplate;
 import dev.xkmc.l2core.util.TeleportTool;
 import dev.xkmc.l2serial.serialization.marker.SerialClass;
@@ -87,14 +88,14 @@ public class MazeHistory extends PlayerCapabilityTemplate<MazeHistory> {
 		var data = DIMeta.HISTORY.type().getOrCreate(sp);
 		data.entryDim = sp.level().dimension().identifier();
 		data.enterPos = sp.position();
-		data.intoDim(sp);
+		data.whileInMaze(sp);
 	}
 
 	public static void playerReturn(ServerPlayer sp) {
 		var data = DIMeta.HISTORY.type().getOrCreate(sp);
 		var level = data.entryDim == null ? null :
 				sp.level().getServer().getLevel(ResourceKey.create(Registries.DIMENSION, data.entryDim));
-		data.outOfDim(sp);
+		data.whileOutOfMaze(sp);
 		if (level == null || data.enterPos == null) {
 			TeleportTool.teleportHome(sp.level(), sp);
 		} else {
@@ -103,34 +104,15 @@ public class MazeHistory extends PlayerCapabilityTemplate<MazeHistory> {
 		}
 	}
 
-	private void intoDim(ServerPlayer sp) {
-		buff.intoDim(sp);
-		var config = sp.getRespawnConfig();
-		if (config == null) return;
-		if (!config.respawnData().dimension().identifier().equals(DIDimensionGen.LEVEL_MAZE.identifier())) {
-			prevHome = RespawnData.of(config);
-			sp.setRespawnPosition(null, false);
-		} else {
-			var pos = config.respawnData().pos();
-			var mp = MazePos.map(pos);
-			var pmp = MazePos.map(sp.blockPosition());
-			if (mp.key() == pmp.key()) {
-				if (getOrCreate(mp).addWaypoint(mp.px(), pos.getY() % 16, mp.pz())) {
-					DungeonInfinity.HANDLER.toClientPlayer(new AddWaypointToClient(pos), sp);
-				}
-			}
-		}
+	private void whileInMaze(ServerPlayer sp) {
+		buff.whileInMaze(sp);
+		MazePotionHelper.whileInMaze(this, sp);
+		RespawnAnchorHelper.whileInMaze(this, sp);
 	}
 
-	private void outOfDim(ServerPlayer sp) {
-		buff.outOfDim(sp);
-		var respawn = sp.getRespawnConfig();
-		if (respawn != null) {
-			if (respawn.respawnData().dimension().identifier().equals(DIDimensionGen.LEVEL_MAZE.identifier())) {
-				sp.setRespawnPosition(prevHome == null ? null : prevHome.config(), false);
-				prevHome = null;
-			}
-		}
+	private void whileOutOfMaze(ServerPlayer sp) {
+		buff.whileOutOfMaze(sp);
+		RespawnAnchorHelper.whileOutOfMaze(this, sp);
 	}
 
 	@Override
@@ -138,6 +120,7 @@ public class MazeHistory extends PlayerCapabilityTemplate<MazeHistory> {
 		super.onClone(player, isWasDeath);
 		if (isWasDeath && inMazeDim(player) && player instanceof ServerPlayer sp) {
 			buff.onRevive(sp);
+			RespawnAnchorHelper.recharge(sp);
 		}
 	}
 
@@ -154,8 +137,8 @@ public class MazeHistory extends PlayerCapabilityTemplate<MazeHistory> {
 	@Override
 	public void tick(Player player) {
 		if (player instanceof ServerPlayer sp) {
-			if (inMazeDim(sp)) intoDim(sp);
-			else outOfDim(sp);
+			if (inMazeDim(sp)) whileInMaze(sp);
+			else whileOutOfMaze(sp);
 		} else MazeMapItem.ClientHandler.checkBuffScreen();
 		if (!inMazeDim(player)) {
 			activeMobRoom = null;

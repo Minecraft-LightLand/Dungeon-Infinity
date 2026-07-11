@@ -156,7 +156,7 @@
         "result": {
           "id": "modulargolems:iron_golem_spear"
         },
-        "weight": 100
+        "weight": 50
       },
       {
         "cost": "minecraft:emerald",
@@ -165,7 +165,7 @@
         "result": {
           "id": "modulargolems:iron_golem_axe"
         },
-        "weight": 100
+        "weight": 50
       },
       {
         "cost": "minecraft:emerald",
@@ -174,7 +174,7 @@
         "result": {
           "id": "modulargolems:iron_golem_sword"
         },
-        "weight": 100
+        "weight": 50
       },
       {
         "cost": "minecraft:emerald",

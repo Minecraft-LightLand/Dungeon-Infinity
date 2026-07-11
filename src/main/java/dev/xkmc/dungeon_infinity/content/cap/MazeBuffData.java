@@ -30,7 +30,7 @@ public class MazeBuffData {
 
 	private boolean isInDim = false;
 
-	public void intoDim(ServerPlayer sp) {
+	public void whileInMaze(ServerPlayer sp) {
 		if (seed == 0) {
 			seed = sp.getRandom().nextLong();
 			sync(sp);
@@ -42,12 +42,13 @@ public class MazeBuffData {
 		}
 	}
 
-	public void outOfDim(ServerPlayer sp) {
+	public void whileOutOfMaze(ServerPlayer sp) {
 		if (!isInDim) return;
 		isInDim = false;
 		for (var e : buffs.entrySet()) {
 			MazeBuff.get(e.getKey()).onUpdate(sp, 0);
 		}
+		sp.removeAllEffects();
 		//buffs.clear();
 		//sync(sp); TODO
 	}
