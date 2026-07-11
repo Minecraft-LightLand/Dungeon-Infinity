@@ -11,7 +11,6 @@ import net.minecraft.util.RandomSource;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
-import java.util.Map;
 import java.util.TreeSet;
 
 @SerialClass
@@ -51,7 +50,7 @@ public class ColumnLayoutConfig extends BaseConfig {
 
 	}
 
-	public record Layout(ArrayList<Entry> styles, Map<String, Integer> utilities, CombatRoomConfig room,
+	public record Layout(ArrayList<Entry> styles, LinkedHashMap<String, Integer> utilities, CombatRoomConfig room,
 	                     QuadRoomConfig quad) {
 
 		public float getRoomChance(int cell) {
