@@ -84,5 +84,18 @@
   "modulargolems.tooltip.tomb_item_count": "你有%s件物品待取回",
   "modulargolems.tooltip.waypoint": "传送",
   "modulargolems.info.buff_title": "迷宫祝福",
-  "modulargolems.info.info_title": "迷宫信息"
+  "modulargolems.info.info_title": "迷宫信息",
+  "modulargolems.map_settings": "地图设置",
+  "modulargolems.screen_map": "屏幕地图",
+  "modulargolems.follow_player": "跟随玩家",
+  "modulargolems.position": "位置",
+  "modulargolems.overlay_scale": "缩放：%s%%",
+  "modulargolems.overlay_size": "大小：%s%%",
+  "modulargolems.on": "开",
+  "modulargolems.off": "关",
+  "modulargolems.done": "完成",
+  "modulargolems.screen_map.off": "关闭",
+  "modulargolems.screen_map.hold": "手持",
+  "modulargolems.screen_map.hide": "非手持",
+  "modulargolems.screen_map.always": "始终"
 }

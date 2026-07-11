@@ -29,7 +29,7 @@ public class MazeMapScreen extends Screen implements MapUI {
 
 	private int layerY, diffY;
 
-	private final TextButton depthLabel, up, down, findQuad, findStair, findWarehouse, findWorkshop, findShop;
+	private final TextButton depthLabel, up, down, findQuad, findStair, findWarehouse, findWorkshop, findShop, configBtn;
 
 	public MazeMapScreen(long seed, boolean canUseWaypoint) {
 		super(Component.literal("Maze Map"));
@@ -43,6 +43,7 @@ public class MazeMapScreen extends Screen implements MapUI {
 		findWarehouse = new TextButton();
 		findWorkshop = new TextButton();
 		findShop = new TextButton();
+		configBtn = new TextButton();
 	}
 
 	@Override
@@ -106,6 +107,10 @@ public class MazeMapScreen extends Screen implements MapUI {
 				DungeonInfinity.HANDLER.toServer(new UseFinderToServer(RoomFinder.Type.SHOP));
 				return true;
 			}
+			if (configBtn.contains(mx, my)) {
+				Minecraft.getInstance().setScreen(new MapSettingsScreen(seed, canUseWaypoint));
+				return true;
+			}
 		}
 		return super.mouseClicked(event, doubleClick);
 	}
@@ -141,6 +146,21 @@ public class MazeMapScreen extends Screen implements MapUI {
 		renderMap(player, g, seed, pos, x0, y0, rate, diffY == 0);
 		extractLegend(player, g, x0, y0, rate, pos);
 		extractBuff(player, g, x0, y0, rate);
+
+		Component configText = DILang.MAP_SETTINGS.get();
+		int cfgW = font.width(configText);
+		int cfgBtnPX = 6;
+		int cfgBtnPY = 3;
+		int cfgX = (g.guiWidth() - cfgW) / 2;
+		int cfgY = mapBottom + 9;
+		configBtn.set(cfgX - cfgBtnPX, cfgY - cfgBtnPY, cfgW + cfgBtnPX * 2, font.lineHeight + cfgBtnPY * 2);
+		boolean cfgH = configBtn.contains(mx, my);
+		g.fill(cfgX - cfgBtnPX, cfgY - cfgBtnPY, cfgX + cfgW + cfgBtnPX, cfgY + font.lineHeight + cfgBtnPY, cfgH ? 0xFF5A5A5A : 0xFF3D3D3D);
+		g.fill(cfgX - cfgBtnPX, cfgY - cfgBtnPY, cfgX + cfgW + cfgBtnPX, cfgY - cfgBtnPY + 1, cfgH ? 0xFF7A7A7A : 0xFF5A5A5A);
+		g.fill(cfgX - cfgBtnPX, cfgY + font.lineHeight + cfgBtnPY - 1, cfgX + cfgW + cfgBtnPX, cfgY + font.lineHeight + cfgBtnPY, 0xFF2A2A2A);
+		g.fill(cfgX - cfgBtnPX, cfgY - cfgBtnPY, cfgX - cfgBtnPX + 1, cfgY + font.lineHeight + cfgBtnPY, cfgH ? 0xFF7A7A7A : 0xFF5A5A5A);
+		g.fill(cfgX + cfgW + cfgBtnPX - 1, cfgY - cfgBtnPY, cfgX + cfgW + cfgBtnPX, cfgY + font.lineHeight + cfgBtnPY, 0xFF2A2A2A);
+		g.text(font, configText, cfgX, cfgY, cfgH ? 0xFFFFAA00 : 0xFFFFFFFF);
 	}
 
 	public void extractLegend(Player player, GuiGraphicsExtractor g, int x0, int y0, float rate, MazePos pos) {
@@ -171,7 +191,7 @@ public class MazeMapScreen extends Screen implements MapUI {
 		g.pose().pushMatrix();
 		g.pose().translate(centerX, cy);
 		g.pose().scale(ts, ts);
-		g.text(font, infoTitle, -font.width(infoTitle) / 2, 0, 0xFFFED83D, true);
+		g.text(font, infoTitle, -font.width(infoTitle) / 2, 0, -1, true);
 		g.pose().popMatrix();
 		cy += (int) (ts * h);
 		g.fill(cx, cy, panelX + panelW - 8, cy + 1, 0xFF4A4A4A);
@@ -265,7 +285,7 @@ public class MazeMapScreen extends Screen implements MapUI {
 				g.fill(magX - btnPadX, cy - btnPadY, magX + mw + btnPadX, cy + lh + btnPadY, mh ? 0xFF5A5A5A : 0xFF3D3D3D);
 				g.fill(magX - btnPadX, cy - btnPadY, magX + mw + btnPadX, cy - btnPadY + 1, mh ? 0xFF7A7A7A : 0xFF5A5A5A);
 				g.fill(magX - btnPadX, cy + lh + btnPadY - 1, magX + mw + btnPadX, cy + lh + btnPadY, 0xFF2A2A2A);
-				g.fill(magX - btnPadX, cy - btnPadY, magX - btnPadX + 1, cy + lh + btnPadY, 0xFF5A5A5A);
+				g.fill(magX - btnPadX, cy - btnPadY, magX - btnPadX + 1, cy + lh + btnPadY, mh ? 0xFF7A7A7A : 0xFF5A5A5A);
 				g.fill(magX + mw + btnPadX - 1, cy - btnPadY, magX + mw + btnPadX, cy + lh + btnPadY, 0xFF2A2A2A);
 				g.text(font, mag, magX, cy, mh ? 0xFFFFAA00 : 0xFFFFFFFF);
 				if (mh) {
@@ -302,7 +322,7 @@ public class MazeMapScreen extends Screen implements MapUI {
 		g.pose().pushMatrix();
 		g.pose().translate(centerX, cy);
 		g.pose().scale(ts, ts);
-		g.text(font, buffTitle, -font.width(buffTitle) / 2, 0, 0xFFFED83D, true);
+		g.text(font, buffTitle, -font.width(buffTitle) / 2, 0, -1, true);
 		g.pose().popMatrix();
 		cy += (int) (ts * h);
 		g.fill(cx, cy, panelX + panelW - 8, cy + 1, 0xFF4A4A4A);

@@ -43,7 +43,21 @@ public enum DILang {
 	ROOM_TYPES("info.room_types", "Room Types:", 0, null),
 	SEARCH("info.search", "Search", 0, null),
 	BUFF_TITLE("info.buff_title", "Maze Blessings", 0, null),
-	INFO_TITLE("info.info_title", "Maze Info", 0, null);
+	INFO_TITLE("info.info_title", "Maze Info", 0, null),
+	MAP_SETTINGS("map_settings", "Map Settings", 0, null),
+	SCREEN_MAP("screen_map", "Screen Map", 0, null),
+	FOLLOW_PLAYER("follow_player", "Follow Player", 0, null),
+	POSITION("position", "Position", 0, null),
+
+	OVERLAY_SCALE("overlay_scale", "Scale: %s%%", 1, null),
+	OVERLAY_SIZE("overlay_size", "Size: %s%%", 1, null),
+	ON("on", "ON", 0, null),
+	OFF("off", "OFF", 0, null),
+	DONE("done", "Done", 0, null),
+	SCREEN_MAP_OFF("screen_map.off", "OFF", 0, null),
+	SCREEN_MAP_HOLD("screen_map.hold", "Hold", 0, null),
+	SCREEN_MAP_HIDE("screen_map.hide", "Hide", 0, null),
+	SCREEN_MAP_ALWAYS("screen_map.always", "Always", 0, null);
 
 	private final String key, def;
 	private final int arg;
