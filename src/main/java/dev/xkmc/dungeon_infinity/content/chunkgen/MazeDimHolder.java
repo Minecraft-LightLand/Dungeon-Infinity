@@ -270,10 +270,9 @@ public class MazeDimHolder {
 				int layer = 0;
 				for (int i = 0; i < n - 1; i++) {
 					int e = spaces[i];
-					layer += e - 2;
-					bossRoom[layer] = 1;
-					bossRoom[layer + 1] = 2;
-					layer += 2;
+					layer += e;
+					bossRoom[layer - 1] = 1;
+					bossRoom[layer] = 2;
 				}
 				layer = 0;
 				for (int i = 0; i < y1; i++) {
