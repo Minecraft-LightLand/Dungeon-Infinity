@@ -120,7 +120,6 @@ public class MazeHistory extends PlayerCapabilityTemplate<MazeHistory> {
 		super.onClone(player, isWasDeath);
 		if (isWasDeath && inMazeDim(player) && player instanceof ServerPlayer sp) {
 			buff.onRevive(sp);
-			RespawnAnchorHelper.recharge(sp);
 		}
 	}
 
