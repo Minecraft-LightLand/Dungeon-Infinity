@@ -2,6 +2,7 @@ package dev.xkmc.dungeon_infinity.content.packet;
 
 import dev.xkmc.dungeon_infinity.content.cap.MazePos;
 import dev.xkmc.dungeon_infinity.init.reg.DIMeta;
+import dev.xkmc.dungeon_infinity.util.RespawnAnchorHelper;
 import dev.xkmc.l2core.util.TeleportTool;
 import dev.xkmc.l2serial.network.SerialPacketBase;
 import net.minecraft.server.level.ServerPlayer;
@@ -20,6 +21,7 @@ public record UseWaypointPacket(MazePos pos) implements SerialPacketBase<UseWayp
 			if (pos.px() / 16 == x / 16 && pos.pz() / 16 == z / 16) {
 				var p = pos.toPos(y + 1).getBottomCenter();
 				TeleportTool.performTeleport(sp, sp.level(), p.x, p.y, p.z, sp.getYRot(), sp.getXRot());
+				RespawnAnchorHelper.setSpawn(sp, pos.toPos(y));
 				return;
 			}
 		}
