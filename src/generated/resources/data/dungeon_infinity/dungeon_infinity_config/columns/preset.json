@@ -1,0 +1,33 @@
+{
+  "columnStyles": {
+    "preset": [
+      {
+        "layer": 4,
+        "style": "sculk"
+      },
+      {
+        "layer": 3,
+        "style": "deepslate"
+      },
+      {
+        "layer": 3,
+        "style": "copper"
+      },
+      {
+        "layer": 3,
+        "style": "mineshaft"
+      },
+      {
+        "layer": 3,
+        "style": "stone"
+      }
+    ]
+  },
+  "specialRooms": {
+    "preset": {
+      "shop": 6,
+      "warehouse": 6,
+      "workshop": 6
+    }
+  }
+}

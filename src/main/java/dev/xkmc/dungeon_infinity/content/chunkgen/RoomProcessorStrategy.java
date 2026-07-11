@@ -1,6 +1,7 @@
 package dev.xkmc.dungeon_infinity.content.chunkgen;
 
 import com.mojang.datafixers.util.Pair;
+import dev.xkmc.dungeon_infinity.content.config.ColumnLayoutConfig;
 import dev.xkmc.dungeon_infinity.content.config.TemplateConfig;
 import dev.xkmc.dungeon_infinity.content.maze.generator.IRandom;
 import dev.xkmc.dungeon_infinity.content.maze.generator.MazeConfig;
@@ -12,14 +13,6 @@ import net.minecraft.util.RandomSource;
 import java.util.*;
 
 public class RoomProcessorStrategy {
-
-	private static final String[] STYLES = {"sculk", "deepslate", "copper", "mineshaft", "stone"};
-
-	private static final Map<String, Integer> SPECIAL_ROOMS = new TreeMap<>(Map.of(
-			"warehouse", 6,
-			"workshop", 6,
-			"shop", 6
-	));
 
 	private final int r1;
 
@@ -49,10 +42,6 @@ public class RoomProcessorStrategy {
 		return 0.8f;
 	}
 
-	public int getBossRoomCount() {
-		return 4;
-	}
-
 	public MazeGen genMaze(int rad, long regionSeed) {
 		MazeConfig config = new MazeConfig();
 		config.invariant = 2;
@@ -64,8 +53,8 @@ public class RoomProcessorStrategy {
 		return ans;
 	}
 
-	public int getStyleForLayer(int layer) {
-		return TemplateConfig.get().styleIndex(STYLES[layer]);
+	public int getStyleForLayer(String layer) {
+		return TemplateConfig.get().styleIndex(layer);
 	}
 
 	public void enhanceConnections(int[][] maze) {
@@ -209,13 +198,15 @@ public class RoomProcessorStrategy {
 
 	public class Grid {
 
+		ColumnLayoutConfig.Layout layout;
 		private final RandomSource rand;
 		private final int style;
 		private final int[][] maze;
 		private final int[][] marker = new int[r1][r1];
 		private final int[][] variants = new int[r1][r1];
 
-		public Grid(RandomSource rand, int style, int[][] maze) {
+		public Grid(ColumnLayoutConfig.Layout layout, RandomSource rand, int style, int[][] maze) {
+			this.layout = layout;
 			this.rand = rand;
 			this.style = style;
 			this.maze = maze;
@@ -301,13 +292,14 @@ public class RoomProcessorStrategy {
 
 			int total = 0;
 			Map<String, Integer> rooms = new LinkedHashMap<>();
-			for (var e : SPECIAL_ROOMS.entrySet()) {
+
+			for (var e : layout.rooms().entrySet()) {
 				total += e.getValue();
 				rooms.put(e.getKey(), e.getValue());
 			}
 			if (total > ends.size()) {
-				int average = ends.size() / SPECIAL_ROOMS.size();
-				for (var e : SPECIAL_ROOMS.entrySet()) {
+				int average = ends.size() / layout.rooms().size();
+				for (var e : layout.rooms().entrySet()) {
 					if (e.getValue() > average) {
 						total -= e.getValue() - average;
 						rooms.put(e.getKey(), average);

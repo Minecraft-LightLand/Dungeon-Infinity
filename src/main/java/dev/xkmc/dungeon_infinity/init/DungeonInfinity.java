@@ -3,6 +3,7 @@ package dev.xkmc.dungeon_infinity.init;
 import com.tterrag.registrate.providers.ProviderType;
 import dev.xkmc.dungeon_infinity.content.block.merchant.TypeSelToServer;
 import dev.xkmc.dungeon_infinity.content.buff.AllBuffs;
+import dev.xkmc.dungeon_infinity.content.config.ColumnLayoutConfig;
 import dev.xkmc.dungeon_infinity.content.config.ShopConfig;
 import dev.xkmc.dungeon_infinity.content.config.TemplateConfig;
 import dev.xkmc.dungeon_infinity.content.packet.*;
@@ -56,6 +57,7 @@ public class DungeonInfinity {
 
 	public static final ConfigTypeEntry<TemplateConfig> TEMPLATES = new ConfigTypeEntry<>(HANDLER, "templates", TemplateConfig.class);
 	public static final ConfigTypeEntry<ShopConfig> SHOPS = new ConfigTypeEntry<>(HANDLER, "shops", ShopConfig.class);
+	public static final ConfigTypeEntry<ColumnLayoutConfig> COLUMN = new ConfigTypeEntry<>(HANDLER, "columns", ColumnLayoutConfig.class);
 
 	public DungeonInfinity(IEventBus bus) {
 		DIItems.register();
