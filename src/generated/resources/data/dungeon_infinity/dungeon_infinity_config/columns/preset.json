@@ -1,33 +1,50 @@
 {
-  "columnStyles": {
-    "preset": [
-      {
-        "layer": 4,
-        "style": "sculk"
-      },
-      {
-        "layer": 3,
-        "style": "deepslate"
-      },
-      {
-        "layer": 3,
-        "style": "copper"
-      },
-      {
-        "layer": 3,
-        "style": "mineshaft"
-      },
-      {
-        "layer": 3,
-        "style": "stone"
-      }
-    ]
-  },
-  "specialRooms": {
+  "layouts": {
     "preset": {
-      "shop": 6,
-      "warehouse": 6,
-      "workshop": 6
+      "quad": {
+        "max": 10,
+        "min": 5,
+        "rate": 0.8
+      },
+      "room": {
+        "chanceByType": [
+          0.0,
+          0.9,
+          0.3,
+          0.3,
+          0.5,
+          1.0
+        ],
+        "largeEndChance": 0.8,
+        "largeHallChance": 0.8
+      },
+      "styles": [
+        {
+          "layer": 4,
+          "style": "sculk"
+        },
+        {
+          "layer": 3,
+          "style": "deepslate"
+        },
+        {
+          "layer": 3,
+          "style": "copper"
+        },
+        {
+          "layer": 3,
+          "style": "mineshaft"
+        },
+        {
+          "layer": 3,
+          "style": "stone"
+        }
+      ],
+      "utilities": {
+        "shop": 6,
+        "warehouse": 6,
+        "workshop": 6
+      }
     }
   }
 }

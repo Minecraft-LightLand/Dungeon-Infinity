@@ -1,5 +1,6 @@
 package dev.xkmc.dungeon_infinity.content.config;
 
+import dev.xkmc.dungeon_infinity.content.chunkgen.CellInterpreter;
 import dev.xkmc.dungeon_infinity.init.DungeonInfinity;
 import dev.xkmc.l2core.serial.config.BaseConfig;
 import dev.xkmc.l2core.serial.config.CollectType;
@@ -18,25 +19,59 @@ public class ColumnLayoutConfig extends BaseConfig {
 
 	public static Layout getRandom(RandomSource rand) {
 		var map = DungeonInfinity.COLUMN.getMerged();
-		var keys = new ArrayList<>(new TreeSet<>(map.columnStyles.keySet()));
+		var keys = new ArrayList<>(new TreeSet<>(map.layouts.keySet()));
 		var key = keys.get(rand.nextInt(keys.size()));
-		var list = map.columnStyles.get(key);
-		return new Layout(list.toArray(Entry[]::new), map.specialRooms.getOrDefault(key, new LinkedHashMap<>()));
+		return map.layouts.get(key);
 	}
 
 	@SerialField
-	@ConfigCollect(CollectType.MAP_COLLECT)
-	public final LinkedHashMap<String, ArrayList<Entry>> columnStyles = new LinkedHashMap<>();
-
-	@SerialField
-	@ConfigCollect(CollectType.MAP_COLLECT)
-	public final LinkedHashMap<String, LinkedHashMap<String, Integer>> specialRooms = new LinkedHashMap<>();
+	@ConfigCollect(CollectType.MAP_OVERWRITE)
+	public final LinkedHashMap<String, Layout> layouts = new LinkedHashMap<>();
 
 	public record Entry(String style, int layer) {
 
 	}
 
-	public record Layout(Entry[] entries, Map<String, Integer> rooms) {
+	public record CombatRoomConfig(
+			float[] chanceByType, float largeEndChance, float largeHallChance
+	) {
+
+		public static final float[] DEF_CHANCE = {0, 0.9f, 0.3f, 0.3f, 0.5f, 1};
+		public static final CombatRoomConfig DEF = new CombatRoomConfig(DEF_CHANCE, 0.8f, 0.8f);
+
+	}
+
+	public record QuadRoomConfig(int min, int max, float rate) {
+
+		public static final QuadRoomConfig DEF = new QuadRoomConfig(5, 10, 0.8f);
+
+		public int getMaxQuadRoom(int total) {
+			return Math.clamp((int) (total * rate), Math.min(total, min), max);
+		}
+
+	}
+
+	public record Layout(ArrayList<Entry> styles, Map<String, Integer> utilities, CombatRoomConfig room,
+	                     QuadRoomConfig quad) {
+
+		public float getRoomChance(int cell) {
+			int type = CellInterpreter.getTemplateType(cell);
+			if (type < room.chanceByType.length)
+				return room.chanceByType[type];
+			return 0;
+		}
+
+		public float getEndLargeRoomChance() {
+			return room.largeEndChance();
+		}
+
+		public int getMaxQuadRoom(int max) {
+			return quad.getMaxQuadRoom(max);
+		}
+
+		public float getHallLargeRoomChance() {
+			return room.largeHallChance();
+		}
 
 	}
 
@@ -68,8 +103,12 @@ public class ColumnLayoutConfig extends BaseConfig {
 		}
 
 		public ColumnLayoutConfig end() {
-			parent.columnStyles.put(key, styles);
-			parent.specialRooms.put(key, rooms);
+			parent.layouts.put(key, new Layout(styles, rooms, CombatRoomConfig.DEF, QuadRoomConfig.DEF));
+			return parent;
+		}
+
+		public ColumnLayoutConfig end(CombatRoomConfig room, QuadRoomConfig quad) {
+			parent.layouts.put(key, new Layout(styles, rooms, room, quad));
 			return parent;
 		}
 

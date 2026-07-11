@@ -82,8 +82,8 @@ public class DIConfigGen extends ConfigDataProvider {
 				.start("stone")
 				.room("path/corner").variant("", 100).end()
 				.room("path/straight").variant("", 100).end()
-				.room("path/t_way").variant("", 80).variant("_waypoint", 20).end()
-				.room("path/cross").variant("", 90).variant("_waypoint", 10).end()
+				.room("path/t_way").variant("", 70).variant("_waypoint", 30).end()
+				.room("path/cross").variant("", 50).variant("_waypoint", 50).end()
 				.spawn("room", 1, 1,
 						entry(2, 15, GolemSpawnData.EARLY_ROOM_BASIC, 100),
 						entry(3, 15, GolemSpawnData.EARLY_ROOM_LARGE, 100),
@@ -117,8 +117,8 @@ public class DIConfigGen extends ConfigDataProvider {
 				.start("mineshaft")
 				.room("path/corner").variant("", 100).end()
 				.room("path/straight").variant("", 100).end()
-				.room("path/t_way").variant("", 80).variant("_waypoint", 20).end()
-				.room("path/cross").variant("", 90).variant("_waypoint", 10).end()
+				.room("path/t_way").variant("", 70).variant("_waypoint", 30).end()
+				.room("path/cross").variant("", 50).variant("_waypoint", 50).end()
 				.spawn("room", 1, 0,
 						entry(2, 0, GolemSpawnData.MINESHAFT_ROOM_BASIC, 100),
 						entry(3, 0, GolemSpawnData.MINESHAFT_ROOM_LARGE, 100),
@@ -144,8 +144,8 @@ public class DIConfigGen extends ConfigDataProvider {
 				.start("copper")
 				.room("path/corner").variant("", 100).end()
 				.room("path/straight").variant("", 100).end()
-				.room("path/t_way").variant("", 80).variant("_waypoint", 20).end()
-				.room("path/cross").variant("", 90).variant("_waypoint", 10).end()
+				.room("path/t_way").variant("", 70).variant("_waypoint", 30).end()
+				.room("path/cross").variant("", 50).variant("_waypoint", 50).end()
 				.spawn("room", 1, 0,
 						entry(2, 0, GolemSpawnData.COPPER_ROOM_BASIC, 100),
 						entry(3, 0, GolemSpawnData.COPPER_ROOM_LARGE, 100),
@@ -171,8 +171,8 @@ public class DIConfigGen extends ConfigDataProvider {
 				.start("deepslate")
 				.room("path/corner").variant("", 100).end()
 				.room("path/straight").variant("", 100).end()
-				.room("path/t_way").variant("", 80).variant("_waypoint", 20).end()
-				.room("path/cross").variant("", 90).variant("_waypoint", 10).end()
+				.room("path/t_way").variant("", 70).variant("_waypoint", 30).end()
+				.room("path/cross").variant("", 50).variant("_waypoint", 50).end()
 				.spawn("room", 1, 0,
 						entry(2, 0, GolemSpawnData.DEEPSLATE_ROOM_BASIC, 100),
 						entry(3, 0, GolemSpawnData.DEEPSLATE_ROOM_LARGE, 100),
@@ -198,8 +198,8 @@ public class DIConfigGen extends ConfigDataProvider {
 				.start("sculk")
 				.room("path/corner").variant("", 100).end()
 				.room("path/straight").variant("", 100).end()
-				.room("path/t_way").variant("", 80).variant("_waypoint", 20).end()
-				.room("path/cross").variant("", 90).variant("_waypoint", 10).end()
+				.room("path/t_way").variant("", 70).variant("_waypoint", 30).end()
+				.room("path/cross").variant("", 50).variant("_waypoint", 50).end()
 				.spawn("room", 1, 1,
 						entry(2, 1, GolemSpawnData.SCULK_ROOM_BASIC, 100),
 						entry(3, 1, GolemSpawnData.SCULK_ROOM_LARGE, 100),
