@@ -155,15 +155,15 @@
     },
     "path/end": {
       "sculk:shop": {
-        "path": "sculk/shop",
+        "path": "test/shop",
         "weight": 100
       },
       "sculk:warehouse": {
-        "path": "sculk/warehouse",
+        "path": "test/warehouse",
         "weight": 100
       },
       "sculk:workshop": {
-        "path": "sculk/workshop",
+        "path": "test/workshop",
         "weight": 100
       }
     },

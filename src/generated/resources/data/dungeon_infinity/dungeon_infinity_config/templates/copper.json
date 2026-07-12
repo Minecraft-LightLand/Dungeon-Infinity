@@ -107,15 +107,15 @@
     },
     "path/end": {
       "copper:shop": {
-        "path": "copper/shop",
+        "path": "test/shop",
         "weight": 100
       },
       "copper:warehouse": {
-        "path": "copper/warehouse",
+        "path": "test/warehouse",
         "weight": 100
       },
       "copper:workshop": {
-        "path": "copper/workshop",
+        "path": "test/workshop",
         "weight": 100
       }
     },

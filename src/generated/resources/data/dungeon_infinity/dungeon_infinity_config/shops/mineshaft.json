@@ -15,16 +15,6 @@
       {
         "cost": "minecraft:emerald",
         "count": 1,
-        "limit": 32,
-        "result": {
-          "count": 4,
-          "id": "minecraft:glowstone_dust"
-        },
-        "weight": 200
-      },
-      {
-        "cost": "minecraft:emerald",
-        "count": 1,
         "limit": 64,
         "result": {
           "count": 16,

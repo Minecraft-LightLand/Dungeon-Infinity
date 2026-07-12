@@ -107,15 +107,15 @@
     },
     "path/end": {
       "deepslate:shop": {
-        "path": "deepslate/shop",
+        "path": "test/shop",
         "weight": 100
       },
       "deepslate:warehouse": {
-        "path": "deepslate/warehouse",
+        "path": "test/warehouse",
         "weight": 100
       },
       "deepslate:workshop": {
-        "path": "deepslate/workshop",
+        "path": "test/workshop",
         "weight": 100
       }
     },

@@ -140,15 +140,15 @@
     },
     "path/end": {
       "stone:shop": {
-        "path": "stone/shop",
+        "path": "test/shop",
         "weight": 100
       },
       "stone:warehouse": {
-        "path": "stone/warehouse",
+        "path": "test/warehouse",
         "weight": 100
       },
       "stone:workshop": {
-        "path": "stone/workshop",
+        "path": "test/workshop",
         "weight": 100
       }
     },

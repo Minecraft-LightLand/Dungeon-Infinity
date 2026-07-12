@@ -107,15 +107,15 @@
     },
     "path/end": {
       "mineshaft:shop": {
-        "path": "mineshaft/shop",
+        "path": "test/shop",
         "weight": 100
       },
       "mineshaft:warehouse": {
-        "path": "mineshaft/warehouse",
+        "path": "test/warehouse",
         "weight": 100
       },
       "mineshaft:workshop": {
-        "path": "mineshaft/workshop",
+        "path": "test/workshop",
         "weight": 100
       }
     },
