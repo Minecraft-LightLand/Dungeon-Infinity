@@ -104,7 +104,7 @@ public class DIConfigGen extends ConfigDataProvider {
 				.endSpawn()
 				.room("stairs").variant("", 100).end()
 				.room("cross_stairs").variant("", 100).end()
-				.root("test")
+				.root("stone")
 				.room("boss").variant("", 100).end()
 				.spawn("quad", 0, 1,
 						entry(4, 15, GolemSpawnData.EARLY_QUAD, 100),
@@ -134,7 +134,7 @@ public class DIConfigGen extends ConfigDataProvider {
 				.endSpawn()
 				.room("stairs").variant("", 100).end()
 				.room("cross_stairs").variant("", 100).end()
-				.root("test")
+				.root("mineshaft")
 				.room("boss").variant("", 100, GolemSpawnData.MINESHAFT_BOSS).end()
 				.room("quad").variant("", 100, GolemSpawnData.MINESHAFT_QUAD).end()
 				.room("path/end").variants("workshop", "warehouse", "shop").end()
@@ -161,7 +161,7 @@ public class DIConfigGen extends ConfigDataProvider {
 				.endSpawn()
 				.room("stairs").variant("", 100).end()
 				.room("cross_stairs").variant("", 100).end()
-				.root("test")
+				.root("copper")
 				.room("boss").variant("", 100, GolemSpawnData.COPPER_BOSS).end()
 				.room("quad").variant("", 100, GolemSpawnData.COPPER_QUAD).end()
 				.room("path/end").variants("workshop", "warehouse", "shop").end()
@@ -188,7 +188,7 @@ public class DIConfigGen extends ConfigDataProvider {
 				.endSpawn()
 				.room("stairs").variant("", 100).end()
 				.room("cross_stairs").variant("", 100).end()
-				.root("test")
+				.root("deepslate")
 				.room("boss").variant("", 100, GolemSpawnData.DEEPSLATE_BOSS).end()
 				.room("quad").variant("", 100, GolemSpawnData.DEEPSLATE_QUAD).end()
 				.room("path/end").variants("workshop", "warehouse", "shop").end()
@@ -220,7 +220,7 @@ public class DIConfigGen extends ConfigDataProvider {
 				.endSpawn()
 				.room("stairs").variant("", 100).end()
 				.room("cross_stairs").variant("", 100).end()
-				.root("test")
+				.root("sculk")
 				.room("boss").variant("", 100, GolemSpawnData.SCULK_BOSS).end()
 				.spawn("quad", 0, 1,
 						entry(4, 1, GolemSpawnData.SCULK_QUAD, 100),

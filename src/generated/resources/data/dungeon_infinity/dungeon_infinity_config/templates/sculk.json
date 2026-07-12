@@ -126,7 +126,7 @@
   "templates": {
     "boss": {
       "sculk:": {
-        "path": "test/boss",
+        "path": "sculk/boss",
         "spawn": "dungeon_infinity:sculk/boss",
         "weight": 100
       }
@@ -155,15 +155,15 @@
     },
     "path/end": {
       "sculk:shop": {
-        "path": "test/shop",
+        "path": "sculk/shop",
         "weight": 100
       },
       "sculk:warehouse": {
-        "path": "test/warehouse",
+        "path": "sculk/warehouse",
         "weight": 100
       },
       "sculk:workshop": {
-        "path": "test/workshop",
+        "path": "sculk/workshop",
         "weight": 100
       }
     },
@@ -185,7 +185,7 @@
     },
     "quad": {
       "sculk:": {
-        "path": "test/quad",
+        "path": "sculk/quad",
         "spawn": "sculk:quad",
         "weight": 100
       }

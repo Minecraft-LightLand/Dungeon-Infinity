@@ -112,7 +112,7 @@
   "templates": {
     "boss": {
       "stone:": {
-        "path": "test/boss",
+        "path": "stone/boss",
         "weight": 100
       }
     },
@@ -140,15 +140,15 @@
     },
     "path/end": {
       "stone:shop": {
-        "path": "test/shop",
+        "path": "stone/shop",
         "weight": 100
       },
       "stone:warehouse": {
-        "path": "test/warehouse",
+        "path": "stone/warehouse",
         "weight": 100
       },
       "stone:workshop": {
-        "path": "test/workshop",
+        "path": "stone/workshop",
         "weight": 100
       }
     },
@@ -170,7 +170,7 @@
     },
     "quad": {
       "stone:": {
-        "path": "test/quad",
+        "path": "stone/quad",
         "spawn": "stone:quad",
         "weight": 100
       }

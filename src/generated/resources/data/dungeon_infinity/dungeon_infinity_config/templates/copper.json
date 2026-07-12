@@ -78,7 +78,7 @@
   "templates": {
     "boss": {
       "copper:": {
-        "path": "test/boss",
+        "path": "copper/boss",
         "spawn": "dungeon_infinity:copper/boss",
         "weight": 100
       }
@@ -107,15 +107,15 @@
     },
     "path/end": {
       "copper:shop": {
-        "path": "test/shop",
+        "path": "copper/shop",
         "weight": 100
       },
       "copper:warehouse": {
-        "path": "test/warehouse",
+        "path": "copper/warehouse",
         "weight": 100
       },
       "copper:workshop": {
-        "path": "test/workshop",
+        "path": "copper/workshop",
         "weight": 100
       }
     },
@@ -137,7 +137,7 @@
     },
     "quad": {
       "copper:": {
-        "path": "test/quad",
+        "path": "copper/quad",
         "spawn": "dungeon_infinity:copper/quad",
         "weight": 100
       }

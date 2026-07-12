@@ -78,7 +78,7 @@
   "templates": {
     "boss": {
       "mineshaft:": {
-        "path": "test/boss",
+        "path": "mineshaft/boss",
         "spawn": "dungeon_infinity:mineshaft/boss",
         "weight": 100
       }
@@ -107,15 +107,15 @@
     },
     "path/end": {
       "mineshaft:shop": {
-        "path": "test/shop",
+        "path": "mineshaft/shop",
         "weight": 100
       },
       "mineshaft:warehouse": {
-        "path": "test/warehouse",
+        "path": "mineshaft/warehouse",
         "weight": 100
       },
       "mineshaft:workshop": {
-        "path": "test/workshop",
+        "path": "mineshaft/workshop",
         "weight": 100
       }
     },
@@ -137,7 +137,7 @@
     },
     "quad": {
       "mineshaft:": {
-        "path": "test/quad",
+        "path": "mineshaft/quad",
         "spawn": "dungeon_infinity:mineshaft/quad",
         "weight": 100
       }
