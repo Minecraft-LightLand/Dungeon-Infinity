@@ -1,7 +1,11 @@
-package dev.xkmc.dungeon_infinity.content.buff;
+package dev.xkmc.dungeon_infinity.content.buff.core;
 
 import com.mojang.datafixers.util.Pair;
 import com.tterrag.registrate.providers.RegistrateLangProvider;
+import dev.xkmc.dungeon_infinity.content.buff.special.ExtraRewardBuff;
+import dev.xkmc.dungeon_infinity.content.buff.special.HealGolemBuff;
+import dev.xkmc.dungeon_infinity.content.buff.special.InsuranceBuff;
+import dev.xkmc.dungeon_infinity.content.buff.special.ShieldBuff;
 import dev.xkmc.dungeon_infinity.init.DungeonInfinity;
 import dev.xkmc.dungeon_infinity.init.reg.DIItems;
 import dev.xkmc.modulargolems.init.registrate.GolemItems;
@@ -55,6 +59,9 @@ public class AllBuffs {
 	public static final ShieldBuff SHIELD = new ShieldBuff(DungeonInfinity.loc("shield"), 10);
 
 	public static final MazeBuff SIGHT = new MazeBuff(DungeonInfinity.loc("sight"), 1);
+	public static final MazeBuff ENDER = new MazeBuff(DungeonInfinity.loc("ender"), 1);
+	public static final MazeBuff HEARTHEART = new MazeBuff(DungeonInfinity.loc("heartheart"), 1);
+	public static final MazeBuff CARD_MASTER = new MazeBuff(DungeonInfinity.loc("card_master"), 5);
 
 	public static final List<Pair<MazeBuff, Integer>> LARGE_BUFFS = List.of(
 			Pair.of(TREASURE, 3),
@@ -87,6 +94,9 @@ public class AllBuffs {
 		REWARD.genLang(pvd, "Treasure Chest", "For every unit cell of battle room player defeats:");
 		SHIELD.genLang(pvd, "Dungeon Forcefield", "Reduce damage taken by player by %s%%");
 		SIGHT.genLang(pvd, "Vision of Truth", "Double room finder rewards. +1 sight.");
+		ENDER.genLang(pvd, "Ender Force", "You can teleport to other anchors anywhere in the maze when you are not in active battle");
+		CARD_MASTER.genLang(pvd, "Card Master", "Gain %s reroll chance whenever you gain a new blessing");
+		HEARTHEART.genLang(pvd, "heartheart", "All humanoid armors and tools you picked up will be smelted into 1 respective ingot");
 	}
 
 	public static void register() {

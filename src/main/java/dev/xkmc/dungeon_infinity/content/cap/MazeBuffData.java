@@ -1,8 +1,8 @@
 package dev.xkmc.dungeon_infinity.content.cap;
 
 import com.mojang.datafixers.util.Pair;
-import dev.xkmc.dungeon_infinity.content.buff.AllBuffs;
-import dev.xkmc.dungeon_infinity.content.buff.MazeBuff;
+import dev.xkmc.dungeon_infinity.content.buff.core.AllBuffs;
+import dev.xkmc.dungeon_infinity.content.buff.core.MazeBuff;
 import dev.xkmc.dungeon_infinity.content.packet.SyncBuffToClient;
 import dev.xkmc.dungeon_infinity.init.DungeonInfinity;
 import dev.xkmc.l2damagetracker.contents.attack.DamageData;
@@ -67,13 +67,12 @@ public class MazeBuffData {
 		for (var e : new ArrayList<>(buffs.keySet())) {
 			MazeBuff.get(e).onDefeat(sp, buffs.getOrDefault(e, 0), size);
 		}
+		rerollChance += 1 + buffs.getOrDefault(AllBuffs.CARD_MASTER.id, 0);
 		if (holder.isBoss()) {
 			largeBuff++;
-			rerollChance++;
 			sync(sp);
 		} else if (holder.isQuad()) {
 			smallBuff++;
-			rerollChance++;
 			sync(sp);
 		}
 	}

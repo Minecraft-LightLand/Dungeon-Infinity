@@ -1,4 +1,4 @@
-package dev.xkmc.dungeon_infinity.content.buff;
+package dev.xkmc.dungeon_infinity.content.buff.core;
 
 import com.tterrag.registrate.providers.RegistrateLangProvider;
 import dev.xkmc.dungeon_infinity.content.cap.MazeBuffData;
@@ -77,7 +77,7 @@ public class MazeBuff {
 	}
 
 	public List<Component> getDetail(int lv) {
-		return List.of(Component.translatable(id.getNamespace() + ".buff." + id.getPath() + ".desc"));
+		return List.of(Component.translatable(id.getNamespace() + ".buff." + id.getPath() + ".desc", lv));
 	}
 
 	public void genLang(RegistrateLangProvider pvd, String title, String desc) {

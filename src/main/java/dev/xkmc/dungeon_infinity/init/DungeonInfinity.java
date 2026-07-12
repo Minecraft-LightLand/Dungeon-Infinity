@@ -2,7 +2,7 @@ package dev.xkmc.dungeon_infinity.init;
 
 import com.tterrag.registrate.providers.ProviderType;
 import dev.xkmc.dungeon_infinity.content.block.merchant.TypeSelToServer;
-import dev.xkmc.dungeon_infinity.content.buff.AllBuffs;
+import dev.xkmc.dungeon_infinity.content.buff.core.AllBuffs;
 import dev.xkmc.dungeon_infinity.content.config.ColumnLayoutConfig;
 import dev.xkmc.dungeon_infinity.content.config.ShopConfig;
 import dev.xkmc.dungeon_infinity.content.config.TemplateConfig;

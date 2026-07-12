@@ -128,11 +128,11 @@
     "path/t_way": {
       "deepslate:": {
         "path": "deepslate/path/t_way",
-        "weight": 70
+        "weight": 79
       },
       "deepslate:_waypoint": {
         "path": "deepslate/path/t_way_waypoint",
-        "weight": 30
+        "weight": 21
       }
     },
     "quad": {

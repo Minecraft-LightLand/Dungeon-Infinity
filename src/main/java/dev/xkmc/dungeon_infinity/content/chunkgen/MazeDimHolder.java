@@ -38,6 +38,10 @@ public class MazeDimHolder {
 		return stacks.computeIfAbsent(ChunkPos.pack(x, z), k0 -> new RegionStack(x, z));
 	}
 
+	public int getCell(MazePos pos) {
+		return getRegion(pos.x(), pos.y(), pos.z())[pos.px() >> 4][pos.pz() >> 4];
+	}
+
 	public synchronized int[][] getRegion(int x, int y, int z) {
 		int x2 = Mth.floorDiv(x, r2);
 		int z2 = Mth.floorDiv(z, r2);

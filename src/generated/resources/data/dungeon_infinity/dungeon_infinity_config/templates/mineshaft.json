@@ -128,11 +128,11 @@
     "path/t_way": {
       "mineshaft:": {
         "path": "mineshaft/path/t_way",
-        "weight": 70
+        "weight": 73
       },
       "mineshaft:_waypoint": {
         "path": "mineshaft/path/t_way_waypoint",
-        "weight": 30
+        "weight": 27
       }
     },
     "quad": {
