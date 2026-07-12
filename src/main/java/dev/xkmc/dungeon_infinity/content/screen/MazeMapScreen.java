@@ -1,6 +1,6 @@
 package dev.xkmc.dungeon_infinity.content.screen;
 
-import dev.xkmc.dungeon_infinity.content.buff.MazeBuff;
+import dev.xkmc.dungeon_infinity.content.buff.core.MazeBuff;
 import dev.xkmc.dungeon_infinity.content.cap.MazeHistory;
 import dev.xkmc.dungeon_infinity.content.cap.MazePos;
 import dev.xkmc.dungeon_infinity.content.cap.RoomFinder;

@@ -1,6 +1,6 @@
 package dev.xkmc.dungeon_infinity.content.cap;
 
-import dev.xkmc.dungeon_infinity.content.buff.AllBuffs;
+import dev.xkmc.dungeon_infinity.content.buff.core.AllBuffs;
 import dev.xkmc.dungeon_infinity.content.chunkgen.CellInterpreter;
 import dev.xkmc.dungeon_infinity.content.chunkgen.MazeChunkGenerator;
 import dev.xkmc.dungeon_infinity.content.item.KeyOfAccess;

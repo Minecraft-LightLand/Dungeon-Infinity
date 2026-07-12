@@ -1,4 +1,4 @@
-package dev.xkmc.dungeon_infinity.content.buff;
+package dev.xkmc.dungeon_infinity.content.buff.core;
 
 import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;

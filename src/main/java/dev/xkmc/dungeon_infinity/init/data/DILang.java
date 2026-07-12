@@ -1,7 +1,7 @@
 package dev.xkmc.dungeon_infinity.init.data;
 
 import com.tterrag.registrate.providers.RegistrateLangProvider;
-import dev.xkmc.dungeon_infinity.content.buff.AllBuffs;
+import dev.xkmc.dungeon_infinity.content.buff.core.AllBuffs;
 import dev.xkmc.dungeon_infinity.init.DungeonInfinity;
 import dev.xkmc.modulargolems.init.ModularGolems;
 import net.minecraft.ChatFormatting;

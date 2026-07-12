@@ -1,5 +1,6 @@
-package dev.xkmc.dungeon_infinity.content.buff;
+package dev.xkmc.dungeon_infinity.content.buff.special;
 
+import dev.xkmc.dungeon_infinity.content.buff.core.MazeBuff;
 import dev.xkmc.dungeon_infinity.init.data.DILang;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;

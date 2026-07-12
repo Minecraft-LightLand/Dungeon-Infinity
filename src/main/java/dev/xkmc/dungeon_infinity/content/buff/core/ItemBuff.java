@@ -1,6 +1,5 @@
-package dev.xkmc.dungeon_infinity.content.buff;
+package dev.xkmc.dungeon_infinity.content.buff.core;
 
-import dev.xkmc.dungeon_infinity.init.data.DILang;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerPlayer;
@@ -9,21 +8,18 @@ import net.minecraft.world.item.ItemStackTemplate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ExtraRewardBuff extends MazeBuff {
+public class ItemBuff extends MazeBuff {
 
 	private final List<ItemStackTemplate> items;
-	private final int exp;
 
-	public ExtraRewardBuff(Identifier id, int max, int exp, List<ItemStackTemplate> items) {
+	public ItemBuff(Identifier id, int max, List<ItemStackTemplate> items) {
 		super(id, max);
-		this.exp = exp;
 		this.items = items;
 	}
 
 	@Override
-	public void onDefeat(ServerPlayer sp, int lv, int size) {
-		sp.giveExperiencePoints(exp * lv);
-		for (int i = 0; i < lv * size; i++) {
+	public void onApply(ServerPlayer sp, int lv) {
+		for (int i = 0; i < lv; i++) {
 			for (var e : items) {
 				sp.getInventory().placeItemBackInInventory(e.create());
 			}
@@ -36,7 +32,6 @@ public class ExtraRewardBuff extends MazeBuff {
 		for (ItemStackTemplate item : items)
 			ans.add(Component.literal("- ").append(Component.translatable("item.container.item_count",
 					item.create().getHoverName(), item.count() * lv)));
-		ans.add(Component.literal("- ").append(DILang.EXP.get(exp * lv)));
 		return ans;
 	}
 

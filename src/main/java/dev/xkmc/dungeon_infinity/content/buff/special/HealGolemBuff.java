@@ -1,5 +1,6 @@
-package dev.xkmc.dungeon_infinity.content.buff;
+package dev.xkmc.dungeon_infinity.content.buff.special;
 
+import dev.xkmc.dungeon_infinity.content.buff.core.MazeBuff;
 import dev.xkmc.modulargolems.content.entity.common.AbstractGolemEntity;
 import dev.xkmc.modulargolems.content.item.golem.GolemHolder;
 import net.minecraft.network.chat.Component;

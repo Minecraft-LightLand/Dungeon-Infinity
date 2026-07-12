@@ -176,11 +176,11 @@
     "path/t_way": {
       "sculk:": {
         "path": "sculk/path/t_way",
-        "weight": 70
+        "weight": 82
       },
       "sculk:_waypoint": {
         "path": "sculk/path/t_way_waypoint",
-        "weight": 30
+        "weight": 18
       }
     },
     "quad": {

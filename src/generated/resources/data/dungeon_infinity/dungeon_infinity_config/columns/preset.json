@@ -41,9 +41,9 @@
         }
       ],
       "utilities": {
-        "shop": 6,
-        "warehouse": 6,
-        "workshop": 6
+        "shop": 8,
+        "warehouse": 8,
+        "workshop": 8
       }
     }
   }

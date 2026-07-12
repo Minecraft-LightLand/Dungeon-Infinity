@@ -62,9 +62,9 @@ public class DIConfigGen extends ConfigDataProvider {
 				.style("copper", 3)
 				.style("mineshaft", 3)
 				.style("stone", 3)
-				.room("warehouse", 6)
-				.room("workshop", 6)
-				.room("shop", 6)
+				.room("warehouse", 8)
+				.room("workshop", 8)
+				.room("shop", 8)
 				.end()
 		);
 		GolemSpawnData.gen(map);
@@ -117,7 +117,7 @@ public class DIConfigGen extends ConfigDataProvider {
 				.start("mineshaft")
 				.room("path/corner").variant("", 100).end()
 				.room("path/straight").variant("", 100).end()
-				.room("path/t_way").variant("", 70).variant("_waypoint", 30).end()
+				.room("path/t_way").variant("", 73).variant("_waypoint", 27).end()
 				.room("path/cross").variant("", 50).variant("_waypoint", 50).end()
 				.spawn("room", 1, 0,
 						entry(2, 0, GolemSpawnData.MINESHAFT_ROOM_BASIC, 100),
@@ -144,7 +144,7 @@ public class DIConfigGen extends ConfigDataProvider {
 				.start("copper")
 				.room("path/corner").variant("", 100).end()
 				.room("path/straight").variant("", 100).end()
-				.room("path/t_way").variant("", 70).variant("_waypoint", 30).end()
+				.room("path/t_way").variant("", 76).variant("_waypoint", 24).end()
 				.room("path/cross").variant("", 50).variant("_waypoint", 50).end()
 				.spawn("room", 1, 0,
 						entry(2, 0, GolemSpawnData.COPPER_ROOM_BASIC, 100),
@@ -171,7 +171,7 @@ public class DIConfigGen extends ConfigDataProvider {
 				.start("deepslate")
 				.room("path/corner").variant("", 100).end()
 				.room("path/straight").variant("", 100).end()
-				.room("path/t_way").variant("", 70).variant("_waypoint", 30).end()
+				.room("path/t_way").variant("", 79).variant("_waypoint", 21).end()
 				.room("path/cross").variant("", 50).variant("_waypoint", 50).end()
 				.spawn("room", 1, 0,
 						entry(2, 0, GolemSpawnData.DEEPSLATE_ROOM_BASIC, 100),
@@ -198,7 +198,7 @@ public class DIConfigGen extends ConfigDataProvider {
 				.start("sculk")
 				.room("path/corner").variant("", 100).end()
 				.room("path/straight").variant("", 100).end()
-				.room("path/t_way").variant("", 70).variant("_waypoint", 30).end()
+				.room("path/t_way").variant("", 82).variant("_waypoint", 18).end()
 				.room("path/cross").variant("", 50).variant("_waypoint", 50).end()
 				.spawn("room", 1, 1,
 						entry(2, 1, GolemSpawnData.SCULK_ROOM_BASIC, 100),

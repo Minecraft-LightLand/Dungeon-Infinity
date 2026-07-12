@@ -1,6 +1,10 @@
 package dev.xkmc.dungeon_infinity.content.item;
 
+import dev.xkmc.dungeon_infinity.content.buff.core.AllBuffs;
+import dev.xkmc.dungeon_infinity.content.cap.MazePos;
+import dev.xkmc.dungeon_infinity.content.chunkgen.CellInterpreter;
 import dev.xkmc.dungeon_infinity.content.chunkgen.MazeChunkGenerator;
+import dev.xkmc.dungeon_infinity.content.chunkgen.MazeDimHolder;
 import dev.xkmc.dungeon_infinity.content.screen.BuffSelScreen;
 import dev.xkmc.dungeon_infinity.content.screen.MazeMapScreen;
 import dev.xkmc.dungeon_infinity.init.data.DIDimensionGen;
@@ -69,7 +73,15 @@ public class MazeMapItem extends Item {
 			var seed = player.getItemInHand(hand).get(DIItems.SEED);
 			if (seed == null) return InteractionResult.FAIL;
 			if (level.isClientSide()) {
-				ClientHandler.openScreen(seed, false);
+				var data = DIMeta.HISTORY.type().getOrCreate(player);
+				boolean canUse = false;
+				if (data.buff.buffs.getOrDefault(AllBuffs.ENDER.id, 0) > 0) {
+					var pos = MazePos.map(player.blockPosition());
+					var cell = MazeDimHolder.get(seed).getCell(pos);
+					var defeat = data.getOrCreate(pos).isDefeated(pos);
+					canUse = CellInterpreter.isHallway(cell) || defeat;
+				}
+				ClientHandler.openScreen(seed, canUse);
 			}
 			return InteractionResult.SUCCESS;
 		}
