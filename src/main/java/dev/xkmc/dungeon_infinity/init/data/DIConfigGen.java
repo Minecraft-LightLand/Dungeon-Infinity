@@ -104,12 +104,12 @@ public class DIConfigGen extends ConfigDataProvider {
 				.endSpawn()
 				.room("stairs").variant("", 100).end()
 				.room("cross_stairs").variant("", 100).end()
-				.root("test")
 				.room("boss").variant("", 100).end()
 				.spawn("quad", 0, 1,
 						entry(4, 15, GolemSpawnData.EARLY_QUAD, 100),
 						entry(4, 14, GolemSpawnData.STONE_QUAD, 100)
 				).room("quad").variant("", 100).end().endSpawn()
+				.root("test")
 				.room("path/end").variants("workshop", "warehouse", "shop").end()
 				.end());
 
@@ -134,9 +134,9 @@ public class DIConfigGen extends ConfigDataProvider {
 				.endSpawn()
 				.room("stairs").variant("", 100).end()
 				.room("cross_stairs").variant("", 100).end()
-				.root("test")
 				.room("boss").variant("", 100, GolemSpawnData.MINESHAFT_BOSS).end()
 				.room("quad").variant("", 100, GolemSpawnData.MINESHAFT_QUAD).end()
+				.root("test")
 				.room("path/end").variants("workshop", "warehouse", "shop").end()
 				.end());
 
@@ -161,9 +161,9 @@ public class DIConfigGen extends ConfigDataProvider {
 				.endSpawn()
 				.room("stairs").variant("", 100).end()
 				.room("cross_stairs").variant("", 100).end()
-				.root("test")
 				.room("boss").variant("", 100, GolemSpawnData.COPPER_BOSS).end()
 				.room("quad").variant("", 100, GolemSpawnData.COPPER_QUAD).end()
+				.root("test")
 				.room("path/end").variants("workshop", "warehouse", "shop").end()
 				.end());
 
@@ -188,9 +188,9 @@ public class DIConfigGen extends ConfigDataProvider {
 				.endSpawn()
 				.room("stairs").variant("", 100).end()
 				.room("cross_stairs").variant("", 100).end()
-				.root("test")
 				.room("boss").variant("", 100, GolemSpawnData.DEEPSLATE_BOSS).end()
 				.room("quad").variant("", 100, GolemSpawnData.DEEPSLATE_QUAD).end()
+				.root("test")
 				.room("path/end").variants("workshop", "warehouse", "shop").end()
 				.end());
 
@@ -220,12 +220,12 @@ public class DIConfigGen extends ConfigDataProvider {
 				.endSpawn()
 				.room("stairs").variant("", 100).end()
 				.room("cross_stairs").variant("", 100).end()
-				.root("test")
 				.room("boss").variant("", 100, GolemSpawnData.SCULK_BOSS).end()
 				.spawn("quad", 0, 1,
 						entry(4, 1, GolemSpawnData.SCULK_QUAD, 100),
 						entry(4, 0, GolemSpawnData.DEEPEST_QUAD, 100)
 				).room("quad").variant("", 100).end().endSpawn()
+				.root("test")
 				.room("path/end").variants("workshop", "warehouse", "shop").end()
 				.end());
 
@@ -280,7 +280,6 @@ public class DIConfigGen extends ConfigDataProvider {
 				.add(3, Items.GOLDEN_CARROT, 1, 50, 8)
 				.end()
 				.addPool("consumable")
-				.add(1, Items.GLOWSTONE_DUST, 4, 200, 32)
 				.add(1, Items.ARROW, 16, 400, 64)
 				.add(4, DIItems.KEY_OF_TOMB.get(), 1, 200, 4)
 				.add(2, heal, 100, 3)
@@ -343,7 +342,6 @@ public class DIConfigGen extends ConfigDataProvider {
 				.end()
 				.addPool("consumable")
 				.add(1, Items.EXPERIENCE_BOTTLE, 4, 400, 64)
-				.add(1, Items.GLOWSTONE_DUST, 4, 200, 32)
 				.add(1, Items.ARROW, 16, 200, 64)
 				.add(4, DIItems.KEY_OF_TOMB.get(), 1, 200, 6)
 				.add(4, heal2, 100, 3)
@@ -420,7 +418,6 @@ public class DIConfigGen extends ConfigDataProvider {
 				.addPool("consumable")
 				.add(1, Items.ARROW, 16, 200, 64)
 				.add(1, Items.EXPERIENCE_BOTTLE, 4, 200, 64)
-				.add(1, Items.GLOWSTONE_DUST, 4, 200, 32)
 				.add(4, DIItems.KEY_OF_TOMB.get(), 1, 200, 8)
 				.add(4, heal2, 50, 3)
 				.add(6, heal2sp, 50, 3)
@@ -507,7 +504,6 @@ public class DIConfigGen extends ConfigDataProvider {
 				.addPool("consumable")
 				.add(16, Items.ARROW, 64, 200, 64)
 				.add(1, Items.EXPERIENCE_BOTTLE, 4, 200, 64)
-				.add(1, Items.GLOWSTONE_DUST, 4, 200, 32)
 				.add(4, DIItems.KEY_OF_TOMB.get(), 1, 200, 12)
 				.add(4, heal2, 50, 3)
 				.add(6, heal2sp, 50, 3)
@@ -592,7 +588,6 @@ public class DIConfigGen extends ConfigDataProvider {
 				.addPool("consumable")
 				.add(16, Items.ARROW, 64, 200, 64)
 				.add(1, Items.EXPERIENCE_BOTTLE, 4, 200, 64)
-				.add(1, Items.GLOWSTONE_DUST, 4, 200, 32)
 				.add(4, DIItems.KEY_OF_TOMB.get(), 1, 200, 16)
 				.add(4, heal2, 50, 3)
 				.add(6, heal2sp, 50, 3)

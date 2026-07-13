@@ -126,7 +126,7 @@
   "templates": {
     "boss": {
       "sculk:": {
-        "path": "test/boss",
+        "path": "sculk/boss",
         "spawn": "dungeon_infinity:sculk/boss",
         "weight": 100
       }
@@ -185,7 +185,7 @@
     },
     "quad": {
       "sculk:": {
-        "path": "test/quad",
+        "path": "sculk/quad",
         "spawn": "sculk:quad",
         "weight": 100
       }

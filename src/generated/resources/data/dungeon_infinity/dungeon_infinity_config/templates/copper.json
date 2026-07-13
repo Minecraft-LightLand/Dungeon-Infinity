@@ -78,7 +78,7 @@
   "templates": {
     "boss": {
       "copper:": {
-        "path": "test/boss",
+        "path": "copper/boss",
         "spawn": "dungeon_infinity:copper/boss",
         "weight": 100
       }
@@ -137,7 +137,7 @@
     },
     "quad": {
       "copper:": {
-        "path": "test/quad",
+        "path": "copper/quad",
         "spawn": "dungeon_infinity:copper/quad",
         "weight": 100
       }

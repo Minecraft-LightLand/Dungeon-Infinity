@@ -112,7 +112,7 @@
   "templates": {
     "boss": {
       "stone:": {
-        "path": "test/boss",
+        "path": "stone/boss",
         "weight": 100
       }
     },
@@ -170,7 +170,7 @@
     },
     "quad": {
       "stone:": {
-        "path": "test/quad",
+        "path": "stone/quad",
         "spawn": "stone:quad",
         "weight": 100
       }

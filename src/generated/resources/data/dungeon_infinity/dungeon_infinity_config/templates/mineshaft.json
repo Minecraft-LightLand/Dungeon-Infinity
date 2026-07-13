@@ -78,7 +78,7 @@
   "templates": {
     "boss": {
       "mineshaft:": {
-        "path": "test/boss",
+        "path": "mineshaft/boss",
         "spawn": "dungeon_infinity:mineshaft/boss",
         "weight": 100
       }
@@ -137,7 +137,7 @@
     },
     "quad": {
       "mineshaft:": {
-        "path": "test/quad",
+        "path": "mineshaft/quad",
         "spawn": "dungeon_infinity:mineshaft/quad",
         "weight": 100
       }

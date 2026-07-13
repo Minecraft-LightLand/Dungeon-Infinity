@@ -78,7 +78,7 @@
   "templates": {
     "boss": {
       "deepslate:": {
-        "path": "test/boss",
+        "path": "deepslate/boss",
         "spawn": "dungeon_infinity:deepslate/boss",
         "weight": 100
       }
@@ -137,7 +137,7 @@
     },
     "quad": {
       "deepslate:": {
-        "path": "test/quad",
+        "path": "deepslate/quad",
         "spawn": "dungeon_infinity:deepslate/quad",
         "weight": 100
       }
