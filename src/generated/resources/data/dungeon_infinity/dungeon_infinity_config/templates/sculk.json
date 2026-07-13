@@ -140,7 +140,11 @@
     "path/corner": {
       "sculk:": {
         "path": "sculk/path/corner",
-        "weight": 100
+        "weight": 90
+      },
+      "sculk:_attic": {
+        "path": "sculk/path/corner_attic",
+        "weight": 10
       }
     },
     "path/cross": {

@@ -169,7 +169,7 @@ public class DIConfigGen extends ConfigDataProvider {
 
 		map.add(DungeonInfinity.TEMPLATES, DungeonInfinity.loc("deepslate"), new TemplateConfig()
 				.start("deepslate")
-				.room("path/corner").variant("", 100).end()
+				.room("path/corner").variant("", 90).variant("_attic", 10).end()
 				.room("path/straight").variant("", 100).end()
 				.room("path/t_way").variant("", 79).variant("_waypoint", 21).end()
 				.room("path/cross").variant("", 50).variant("_waypoint", 50).end()
@@ -196,7 +196,7 @@ public class DIConfigGen extends ConfigDataProvider {
 
 		map.add(DungeonInfinity.TEMPLATES, DungeonInfinity.loc("sculk"), new TemplateConfig()
 				.start("sculk")
-				.room("path/corner").variant("", 100).end()
+				.room("path/corner").variant("", 90).variant("_attic", 10).end()
 				.room("path/straight").variant("", 100).end()
 				.room("path/t_way").variant("", 82).variant("_waypoint", 18).end()
 				.room("path/cross").variant("", 50).variant("_waypoint", 50).end()

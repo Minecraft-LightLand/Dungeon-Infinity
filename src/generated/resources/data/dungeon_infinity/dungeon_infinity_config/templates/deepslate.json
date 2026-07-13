@@ -92,7 +92,11 @@
     "path/corner": {
       "deepslate:": {
         "path": "deepslate/path/corner",
-        "weight": 100
+        "weight": 90
+      },
+      "deepslate:_attic": {
+        "path": "deepslate/path/corner_attic",
+        "weight": 10
       }
     },
     "path/cross": {
