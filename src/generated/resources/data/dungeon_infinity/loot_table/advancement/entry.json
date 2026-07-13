@@ -118,7 +118,7 @@
             {
               "components": {
                 "minecraft:can_break": {
-                  "blocks": "#minecraft:logs"
+                  "blocks": "minecraft:oak_log"
                 }
               },
               "function": "minecraft:set_components"

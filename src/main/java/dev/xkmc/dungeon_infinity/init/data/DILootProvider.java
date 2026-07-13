@@ -73,7 +73,7 @@ public class DILootProvider {
 				.withPool(LootPool.lootPool().add(LootItem.lootTableItem(DIItems.KEY_OF_TOMB.asItem())))
 				.withPool(LootPool.lootPool().add(getGolem(GolemItems.HOLDER_GOLEM.get(), ModularGolems.loc("iron"))))
 				.withPool(LootPool.lootPool().add(mineable(pvd, Items.IRON_PICKAXE, Blocks.RAW_COPPER_BLOCK, Blocks.RAW_IRON_BLOCK, Blocks.RAW_GOLD_BLOCK, Blocks.COAL_BLOCK)))
-				.withPool(LootPool.lootPool().add(mineable(pvd, Items.IRON_AXE, BlockTags.LOGS)))
+				.withPool(LootPool.lootPool().add(mineable(pvd, Items.IRON_AXE, Blocks.OAK_LOG)))
 				.withPool(LootPool.lootPool().add(mineable(pvd, Items.IRON_SHOVEL, Blocks.CLAY)))
 				.withPool(LootPool.lootPool().add(mineable(pvd, Items.IRON_SWORD, Blocks.COBWEB)))
 				.withPool(LootPool.lootPool().add(LootItem.lootTableItem(Items.IRON_HELMET)))
