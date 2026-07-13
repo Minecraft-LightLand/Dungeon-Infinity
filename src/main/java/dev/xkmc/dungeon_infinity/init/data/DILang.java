@@ -64,7 +64,7 @@ public enum DILang {
 	private final ChatFormatting format;
 
 	DILang(String key, String def, int arg, @Nullable ChatFormatting format) {
-		this.key = ModularGolems.MODID + "." + key;
+		this.key = DungeonInfinity.MODID + "." + key;
 		this.def = def;
 		this.arg = arg;
 		this.format = format;
@@ -100,5 +100,14 @@ public enum DILang {
 		pvd.add(DungeonInfinity.MODID + ".merchant.groceries", "Grocery Vendor");
 		pvd.add(DungeonInfinity.MODID + ".merchant.blacksmith", "Black Smith");
 		pvd.add(DungeonInfinity.MODID + ".merchant.recycler", "Metal Scrapper");
+		String[] styles = new String[]{"early", "stone", "mineshaft", "copper", "deepslate", "sculk", "deepest"};
+		String[] styleName = new String[]{"Dungeon", "Dungeon", "Mineshaft", "Trial", "Deep", "Sculk", "Abyss"};
+		String[] rooms = new String[]{"room/basic", "room/large", "room/ranged", "room/rider", "room/mixed", "quad", "boss"};
+		String[] roomName = new String[]{"Soldiers", "Crushers", "Archers", "Riders", "Army", "Elites", "Gatekeepers"};
+		for (int i = 0; i < styles.length; i++) {
+			for (int j = 0; j < rooms.length; j++) {
+				pvd.add("trial." + DungeonInfinity.MODID + "." + styles[i] + "/" + rooms[j], styleName[i] + " " + roomName[j]);
+			}
+		}
 	}
 }
