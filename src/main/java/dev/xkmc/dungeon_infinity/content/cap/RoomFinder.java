@@ -1,10 +1,9 @@
 package dev.xkmc.dungeon_infinity.content.cap;
 
-import com.mojang.datafixers.util.Pair;
-import dev.xkmc.dungeon_infinity.content.packet.RevealPathToClient;
-import dev.xkmc.dungeon_infinity.content.packet.SyncFinderToClient;
 import dev.xkmc.dungeon_infinity.content.chunkgen.CellInterpreter;
 import dev.xkmc.dungeon_infinity.content.config.TemplateConfig;
+import dev.xkmc.dungeon_infinity.content.packet.RevealPathToClient;
+import dev.xkmc.dungeon_infinity.content.packet.SyncFinderToClient;
 import dev.xkmc.dungeon_infinity.init.DungeonInfinity;
 import dev.xkmc.l2serial.serialization.marker.SerialClass;
 import dev.xkmc.l2serial.serialization.marker.SerialField;
@@ -86,49 +85,72 @@ public class RoomFinder {
 	private boolean findPathTo(ServerPlayer sp, MazePos mp, MazeAccess access, MazeHistory.Visit visit, Type type, RandomSource rand) {
 		int[][] maze = access.getMaze();
 		var bfs = new BFS(maze, visit, access.getX(), access.getZ()).run();
-		List<Pair<Integer, Integer>> candidates = new ArrayList<>();
-		List<Pair<Integer, Integer>> found = new ArrayList<>();
+		var next = getNext(maze, bfs, visit, type, rand);
+		prevType = type;
+		if (next == null) {
+			path = new int[0];
+			return false;
+		}
+		path = bfs.getPath(next.pos());
+		visit.markPath(path);
+		DungeonInfinity.HANDLER.toClientPlayer(new RevealPathToClient(mp, path), sp);
+		return next.takeFinder();
+	}
+
+	private @Nullable TargetRoom getNext(int[][] maze, BFS bfs, MazeHistory.Visit visit, Type type, RandomSource rand) {
+		List<TargetRoom> candidates = new ArrayList<>();
+		List<TargetRoom> found = new ArrayList<>();
 		int cmin = 1000000, fmin = 1000000;
 		for (int x = 0; x < R; x++) {
 			for (int z = 0; z < R; z++) {
 				int cell = maze[x][z];
 				if (visit.isDefeated(x, z)) continue;
 				if (type.pred.test(cell)) {
-					if (bfs.unlock[x][z] > 0) {
-						int cost = bfs.ans[x][z];
+					int cost = bfs.ans[x][z];
+					boolean takeFinder = bfs.unlock[x][z] > 0;
+					var tri = new TargetRoom(cost, bfs.dist[x][z], x << 5 | z, takeFinder);
+					if (takeFinder) {
 						if (cost > cmin) continue;
 						if (cost < cmin) {
 							candidates.clear();
 							cmin = cost;
 						}
-						candidates.add(Pair.of(bfs.ans[x][z], x << 5 | z));
+						candidates.add(tri);
 					} else {
-						int cost = bfs.ans[x][z];
-						if (cost > fmin) continue;
-						if (cost < fmin) {
-							found.clear();
-							fmin = cost;
-						}
-						found.add(Pair.of(bfs.ans[x][z], x << 5 | z));
+						fmin = Math.min(fmin, cost);
+						found.add(tri);
 					}
 				}
 			}
 		}
-		boolean findNew = cmin < fmin || prevType == type;
-		prevType = type;
-		var target = findNew && !candidates.isEmpty() ? candidates : !found.isEmpty() ? found : null;
-		if (target == null) return false;
-		var pair = target.get(rand.nextInt(target.size()));
-		int pos = pair.getSecond();
-		path = bfs.getPath(pos);
-		visit.markPath(path);
-		DungeonInfinity.HANDLER.toClientPlayer(new RevealPathToClient(mp, path), sp);
-		return target == candidates;
+		found.sort(TargetRoom.COMPARATOR);
+
+		boolean repeat = prevType == type;
+		boolean findNew = cmin < fmin || repeat;
+		if (findNew && !candidates.isEmpty()) {
+			return candidates.get(rand.nextInt(candidates.size()));
+		} else if (!found.isEmpty()) {
+			if (repeat && path.length > 0) {
+				for (int i = 0; i < found.size(); i++) {
+					if (found.get(i).pos == path[0]) {
+						return found.get((i + 1) % found.size());
+					}
+				}
+			}
+			return found.getFirst();
+		} else return null;
+	}
+
+	private record TargetRoom(int cost, int dist, int pos, boolean takeFinder) {
+
+		public final static Comparator<TargetRoom> COMPARATOR = Comparator.comparingInt(TargetRoom::cost)
+				.thenComparingInt(TargetRoom::dist)
+				.thenComparing(TargetRoom::pos);
 	}
 
 	private static class BFS {
 
-		private final int[][] ans = new int[R][R], unlock = new int[R][R], prev = new int[R][R], maze;
+		private final int[][] ans = new int[R][R], dist = new int[R][R], unlock = new int[R][R], prev = new int[R][R], maze;
 		private final MazeHistory.Visit visit;
 		private final Queue<Integer> queue = new ArrayDeque<>();
 
@@ -136,6 +158,7 @@ public class RoomFinder {
 			this.maze = maze;
 			this.visit = visit;
 			ans[x0][z0] = 1;
+			dist[x0][z0] = 1;
 			for (var arr : prev)
 				Arrays.fill(arr, -1);
 			queue.add(x0 << 5 | z0);
@@ -156,10 +179,11 @@ public class RoomFinder {
 		}
 
 		private void tryAdd(int x0, int z0, int px, int pz) {
-			int dist = ans[x0][z0];
-			if (ans[px][pz] > 0 && ans[px][pz] <= dist + 1) return;
-			if (!CellInterpreter.isHallway(maze[px][pz]) && !visit.isDefeated(px, pz)) dist++;
-			ans[px][pz] = dist;
+			int roomCost = ans[x0][z0];
+			if (ans[px][pz] > 0 && ans[px][pz] <= roomCost + 1) return;
+			if (!CellInterpreter.isHallway(maze[px][pz]) && !visit.isDefeated(px, pz)) roomCost++;
+			ans[px][pz] = roomCost;
+			dist[px][pz] = dist[x0][z0] + 1;
 			unlock[px][pz] = unlock[x0][z0];
 			if (!visit.isVisible(px, pz))
 				unlock[px][pz]++;
