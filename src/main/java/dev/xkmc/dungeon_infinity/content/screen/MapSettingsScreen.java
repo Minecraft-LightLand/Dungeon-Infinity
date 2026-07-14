@@ -23,10 +23,10 @@ public class MapSettingsScreen extends Screen {
 	private final boolean canUseWaypoint;
 
 	private static final String[] MODE_KEYS = {
-			"modulargolems.screen_map.off",
-			"modulargolems.screen_map.hold",
-			"modulargolems.screen_map.hide",
-			"modulargolems.screen_map.always"
+			"dungeon_infinity.screen_map.off",
+			"dungeon_infinity.screen_map.hold",
+			"dungeon_infinity.screen_map.hide",
+			"dungeon_infinity.screen_map.always"
 	};
 
 	public MapSettingsScreen(long seed, boolean canUseWaypoint) {

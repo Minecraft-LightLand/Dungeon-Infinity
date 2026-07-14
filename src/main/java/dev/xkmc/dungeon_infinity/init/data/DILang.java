@@ -34,7 +34,6 @@ public enum DILang {
 	SHOP("legend.shop", "Merchant Room", 0, null),
 	WAREHOUSE("legend.warehouse", "Warehouse Room", 0, null),
 
-	REROLL("info.reroll", "Reroll chance: %s", 1, null),
 	REFRESH("info.refresh", "Reroll", 0, null),
 	REMAIN("info.remain", "Remaining: %s", 1, null),
 	CONFIRM("info.confirm", "Confirm", 0, null),
@@ -102,11 +101,11 @@ public enum DILang {
 		pvd.add(DungeonInfinity.MODID + ".merchant.recycler", "Metal Scrapper");
 		String[] styles = new String[]{"early", "stone", "mineshaft", "copper", "deepslate", "sculk", "deepest"};
 		String[] styleName = new String[]{"Dungeon", "Dungeon", "Mineshaft", "Trial", "Deep", "Sculk", "Abyss"};
-		String[] rooms = new String[]{"room/basic", "room/large", "room/ranged", "room/rider", "room/mixed", "quad", "boss"};
+		String[] rooms = new String[]{"room.basic", "room.large", "room.ranged", "room.rider", "room.mixed", "quad", "boss"};
 		String[] roomName = new String[]{"Soldiers", "Crushers", "Archers", "Riders", "Army", "Elites", "Gatekeepers"};
 		for (int i = 0; i < styles.length; i++) {
 			for (int j = 0; j < rooms.length; j++) {
-				pvd.add("trial." + DungeonInfinity.MODID + "." + styles[i] + "/" + rooms[j], styleName[i] + " " + roomName[j]);
+				pvd.add("trial." + DungeonInfinity.MODID + "." + styles[i] + "." + rooms[j], styleName[i] + " " + roomName[j]);
 			}
 		}
 	}
