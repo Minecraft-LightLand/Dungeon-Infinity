@@ -20,8 +20,10 @@ public enum DILang {
 	MAP("tooltip.map", "Right click to open map. Click on Respawn Anchor to teleport to other Anchors", 0, ChatFormatting.GRAY),
 	WAYPOINT("tooltip.waypoint", "Teleport", 0, null),
 
+
 	DEPTH("legend.depth", "Depth: %s", 1, null),
 	FINDER("legend.finder", "Finders left: %s", 1, null),
+	CHORUS("legend.chorus","Teleport to path finder target (%s)",1,null),
 	UP("legend.up", "↑", 0, null),
 	DOWN("legend.down", "↓", 0, null),
 	MAGNIFIER("legend.magnifier", "\uD83D\uDD0E\uFE0E", 0, null),

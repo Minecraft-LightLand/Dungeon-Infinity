@@ -1,5 +1,6 @@
 package dev.xkmc.dungeon_infinity.content.screen;
 
+import dev.xkmc.dungeon_infinity.content.buff.core.AllBuffs;
 import dev.xkmc.dungeon_infinity.content.buff.core.MazeBuff;
 import dev.xkmc.dungeon_infinity.content.cap.MazeHistory;
 import dev.xkmc.dungeon_infinity.content.cap.MazePos;
@@ -7,6 +8,7 @@ import dev.xkmc.dungeon_infinity.content.cap.RoomFinder;
 import dev.xkmc.dungeon_infinity.content.map.MapUI;
 import dev.xkmc.dungeon_infinity.content.map.MazeMapColors;
 import dev.xkmc.dungeon_infinity.content.packet.UseFinderToServer;
+import dev.xkmc.dungeon_infinity.content.packet.UseSkillToServer;
 import dev.xkmc.dungeon_infinity.content.packet.UseWaypointPacket;
 import dev.xkmc.dungeon_infinity.init.DungeonInfinity;
 import dev.xkmc.dungeon_infinity.init.data.DILang;
@@ -29,7 +31,7 @@ public class MazeMapScreen extends Screen implements MapUI {
 
 	private int layerY, diffY;
 
-	private final TextButton depthLabel, up, down, findQuad, findStair, findWarehouse, findWorkshop, findShop, configBtn;
+	private final TextButton depthLabel, up, down, chorus, findQuad, findStair, findWarehouse, findWorkshop, findShop, configBtn;
 
 	public MazeMapScreen(long seed, boolean canUseWaypoint) {
 		super(Component.literal("Maze Map"));
@@ -43,6 +45,7 @@ public class MazeMapScreen extends Screen implements MapUI {
 		findWarehouse = new TextButton();
 		findWorkshop = new TextButton();
 		findShop = new TextButton();
+		chorus = new TextButton();
 		configBtn = new TextButton();
 	}
 
@@ -86,6 +89,10 @@ public class MazeMapScreen extends Screen implements MapUI {
 					diffY--;
 					return true;
 				}
+			}
+			if (chorus.contains(mx, my)) {
+				DungeonInfinity.HANDLER.toServer(new UseSkillToServer(AllBuffs.CHORUS.id));
+				return true;
 			}
 			if (findQuad.contains(mx, my)) {
 				DungeonInfinity.HANDLER.toServer(new UseFinderToServer(RoomFinder.Type.QUAD));
@@ -247,6 +254,14 @@ public class MazeMapScreen extends Screen implements MapUI {
 		Component finderText = DILang.FINDER.get(Math.max(0, finderCount));
 		g.text(font, finderText, cx, cy, finderCount >= 0 ? -1 : 0xFF606060);
 		cy += h;
+		int chrousCount = data.buff.buffs.getOrDefault(AllBuffs.CHORUS.id, 0);
+		var chorusText = DILang.CHORUS.get(chrousCount);
+		var visit = DIMeta.HISTORY.type().getOrCreate(player).getOrCreate(pos);
+		chorus.update(g, diffY == 0 && chrousCount > 0 && visit.getPath().length > 0, cx, cy, font, chorusText, mx, my);
+
+		cy += h;
+
+
 		cy += 3;
 
 		renderFitText(g, DILang.ROOM_TYPES.get(), cx, cy, panelW - 16, 0xFFCCCCCC);

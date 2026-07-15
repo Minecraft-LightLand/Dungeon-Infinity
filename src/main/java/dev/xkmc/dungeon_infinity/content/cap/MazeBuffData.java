@@ -77,9 +77,23 @@ public class MazeBuffData {
 		}
 	}
 
+	public boolean onAttacked(ServerPlayer sp, DamageData.Attack data) {
+		for (var e : new ArrayList<>(buffs.keySet())) {
+			if (MazeBuff.get(e).onAttacked(sp, buffs.getOrDefault(e, 0), data))
+				return true;
+		}
+		return false;
+	}
+
 	public void onDamage(ServerPlayer sp, DamageData.Defence data) {
 		for (var e : new ArrayList<>(buffs.keySet())) {
 			MazeBuff.get(e).onDamage(sp, buffs.getOrDefault(e, 0), data);
+		}
+	}
+
+	public void onEnterBattle(ServerPlayer sp) {
+		for (var e : new ArrayList<>(buffs.keySet())) {
+			MazeBuff.get(e).onEnterBattle(sp, buffs.getOrDefault(e, 0));
 		}
 	}
 

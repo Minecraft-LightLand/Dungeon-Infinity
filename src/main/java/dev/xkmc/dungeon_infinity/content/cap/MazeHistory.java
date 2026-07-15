@@ -171,6 +171,8 @@ public class MazeHistory extends PlayerCapabilityTemplate<MazeHistory> {
 			if (sec != null) {
 				sec.tick(ent, pos, sp);
 				if (sec.isActive()) {
+					if (activeMobRoom == null)
+						buff.onEnterBattle(sp);
 					activeMobRoom = sp.blockPosition();
 				}
 				if (visited) {

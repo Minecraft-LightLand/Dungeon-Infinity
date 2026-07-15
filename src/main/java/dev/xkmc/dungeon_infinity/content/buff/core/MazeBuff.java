@@ -4,6 +4,7 @@ import com.tterrag.registrate.providers.RegistrateLangProvider;
 import dev.xkmc.dungeon_infinity.content.cap.MazeBuffData;
 import dev.xkmc.dungeon_infinity.init.reg.DIMeta;
 import dev.xkmc.l2damagetracker.contents.attack.DamageData;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerPlayer;
@@ -73,7 +74,11 @@ public class MazeBuff {
 			lvt = Component.literal(" X");
 		}
 		lvt.append(Component.translatable("potion.potency." + (lv - 1)));
-		return Component.translatable(id.getNamespace() + ".buff." + id.getPath()).append(lvt);
+		var ans = Component.translatable(id.getNamespace() + ".buff." + id.getPath()).append(lvt);
+		if (lv >= getMaxLevel()) {
+			ans.withStyle(ChatFormatting.GOLD);
+		}
+		return ans;
 	}
 
 	public List<Component> getDetail(int lv) {
@@ -93,7 +98,18 @@ public class MazeBuff {
 
 	}
 
+	public void onEnterBattle(ServerPlayer sp, int lv) {
+
+	}
+
+	public boolean onAttacked(ServerPlayer sp, int lv, DamageData.Attack data) {
+		return false;
+	}
+
 	public void onDamage(ServerPlayer sp, int lv, DamageData.Defence data) {
+	}
+
+	public void onSkillUse(ServerPlayer sp) {
 	}
 
 	public boolean fitsOn(MazeBuffData data, int lv) {
