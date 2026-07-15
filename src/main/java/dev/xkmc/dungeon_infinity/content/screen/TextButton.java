@@ -87,8 +87,8 @@ public class TextButton {
 		int bw = fixed ? fixedW : scaledTw + padX * 2;
 		int bh = font.lineHeight + padY * 2;
 		set(bx, by, bw, bh);
-		int tx = bx + (bw - scaledTw) / 2;
-		int ty = by + padY + (int) ((font.lineHeight * (1 - scale)) / 2);
+		float tx = bx + (bw - scaledTw) / 2f;
+		float ty = by + padY + (font.lineHeight * (1 - scale)) / 2f;
 		if (!enable) {
 			disable();
 			g.fill(bx, by, bx + bw, by + bh, bgDisabled);

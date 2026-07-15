@@ -63,7 +63,7 @@ public class MazeMapScreen extends Screen implements MapUI {
 				new TextButton().pad(4, 1),
 				new TextButton().pad(4, 1),
 		};
-		chorus = new TextButton();
+		chorus = new TextButton().pad(2, 1);
 		configBtn = new TextButton().pad(6, 3);
 	}
 
@@ -203,9 +203,9 @@ public class MazeMapScreen extends Screen implements MapUI {
 		Component infoTitle = DILang.INFO_TITLE.get().copy().withStyle(ChatFormatting.BOLD);
 		float ts = Math.min(1.1f, (panelW - 16) / (float) font.width(infoTitle));
 		g.pose().pushMatrix();
-		g.pose().translate(centerX, cy);
+		g.pose().translate(centerX, cy + font.lineHeight * (1 - ts) / 2);
 		g.pose().scale(ts, ts);
-		g.text(font, infoTitle, -font.width(infoTitle) / 2, (int) (font.lineHeight * (1 - ts) / 2), -1, true);
+		g.text(font, infoTitle, -font.width(infoTitle) / 2, 0, -1, true);
 		g.pose().popMatrix();
 		cy += (int) (ts * h);
 		g.fill(cx, cy, panelX + panelW - 8, cy + 1, 0xFF4A4A4A);
@@ -240,18 +240,8 @@ public class MazeMapScreen extends Screen implements MapUI {
 		int finderCount = findable ? data.finder.finder : -1;
 		Component finderText = DILang.FINDER.get(Math.max(0, finderCount));
 		g.text(font, finderText, cx, cy, finderCount >= 0 ? -1 : 0xFF606060);
-		cy += h;
-		int chorusCount = data.buff.buffs.getOrDefault(AllBuffs.CHORUS.id, 0);
-		var chorusText = AllBuffs.CHORUS.getTitle();
-		var visit = DIMeta.HISTORY.type().getOrCreate(player).getOrCreate(pos);
-		boolean hasChorus = diffY == 0 && chorusCount > 0 && visit.getPath().length > 0;
-		chorus.update(g, hasChorus, cx, cy, font, chorusText, mx, my);
-		if (chorus.contains(mx, my)) {
-			g.setComponentTooltipForNextFrame(font, List.of(DILang.CHORUS.get(chorusCount)), mx, my);
-		}
 
-		cy += h;
-		cy += 3;
+		cy += h + 3;
 
 		renderFitText(g, DILang.ROOM_TYPES.get(), cx, cy, panelW - 16, 0xFFCCCCCC);
 		cy += h;
@@ -268,9 +258,9 @@ public class MazeMapScreen extends Screen implements MapUI {
 			boolean hasMag = findable && info.finderIndex >= 0;
 			int magX = hasMag ? panelX + panelW - 12 - mw : 0;
 			g.pose().pushMatrix();
-			g.pose().translate(cx, cy);
+			g.pose().translate(cx, cy + font.lineHeight * (1 - roomScale) / 2);
 			g.pose().scale(roomScale, roomScale);
-			g.text(font, info.name, 0, (int) (font.lineHeight * (1 - roomScale) / 2), info.color);
+			g.text(font, info.name, 0, 0, info.color);
 			g.pose().popMatrix();
 			if (hasMag) {
 				TextButton btn = findBtns[info.finderIndex];
@@ -307,20 +297,33 @@ public class MazeMapScreen extends Screen implements MapUI {
 		Component buffTitle = DILang.BUFF_TITLE.get().copy().withStyle(ChatFormatting.BOLD);
 		float ts = Math.min(1.1f, (panelW - 16) / (float) font.width(buffTitle));
 		g.pose().pushMatrix();
-		g.pose().translate(centerX, cy);
+		g.pose().translate(centerX, cy + font.lineHeight * (1 - ts) / 2);
 		g.pose().scale(ts, ts);
-		g.text(font, buffTitle, -font.width(buffTitle) / 2, (int) (font.lineHeight * (1 - ts) / 2), -1, true);
+		g.text(font, buffTitle, -font.width(buffTitle) / 2, 0, -1, true);
 		g.pose().popMatrix();
 		cy += (int) (ts * h);
 		g.fill(cx, cy, panelX + panelW - 8, cy + 1, 0xFF4A4A4A);
 		cy += 4;
 
 		var data = DIMeta.HISTORY.type().getOrCreate(player).buff;
+		chorus.disable();
 		for (var e : data.buffs.entrySet()) {
 			var buff = MazeBuff.get(e.getKey());
 			var title = buff.getTitle(e.getValue());
-			int w = Math.min(font.width(title), panelW - 16);
-			renderFitText(g, title, cx, cy, panelW - 16, 0xFFFFAA00);
+			boolean isChorus = e.getKey().equals(AllBuffs.CHORUS.id);
+			int maxW = panelW - 16;
+			if (isChorus) {
+				Component tpText = DILang.WAYPOINT.get();
+				int tpW = font.width(tpText);
+				int btnFixedW = 22;
+				float btnScale = Math.min(1f, (btnFixedW - 4) / (float) tpW);
+				maxW = panelW - 20 - btnFixedW;
+				int btnX = panelX + panelW - 4 - btnFixedW;
+				chorus.fixedWidth(btnFixedW).setScale(btnScale);
+				chorus.update(g, true, btnX - 4, cy - 1, font, tpText, mx, my);
+			}
+			int w = Math.min(font.width(title), maxW);
+			renderFitText(g, title, cx, cy, maxW, 0xFFFFAA00);
 			if (cx <= mx && mx <= cx + w && cy <= my && my <= cy + h) {
 				g.setComponentTooltipForNextFrame(font, buff.getDetail(e.getValue()), mx, my);
 			}
@@ -332,9 +335,9 @@ public class MazeMapScreen extends Screen implements MapUI {
 		float tw = font.width(text);
 		float scale = Math.min(1f, maxW / tw);
 		g.pose().pushMatrix();
-		g.pose().translate(x, y);
+		g.pose().translate(x, y + font.lineHeight * (1 - scale) / 2);
 		g.pose().scale(scale, scale);
-		g.text(font, text, 0, (int) (font.lineHeight * (1 - scale) / 2), color);
+		g.text(font, text, 0, 0, color);
 		g.pose().popMatrix();
 	}
 
