@@ -35,7 +35,8 @@ public class MazeMapScreen extends Screen implements MapUI {
 	private final TextButton[] findBtns;
 	private final TextButton configBtn;
 
-	private record RoomTypeInfo(Component name, int color, int finderIndex) {}
+	private record RoomTypeInfo(Component name, int color, int finderIndex) {
+	}
 
 	private static final RoomTypeInfo[] ROOM_TYPES = {
 			new RoomTypeInfo(DILang.BATTLE.get(), MazeMapColors.F, -1),
@@ -241,11 +242,13 @@ public class MazeMapScreen extends Screen implements MapUI {
 		g.text(font, finderText, cx, cy, finderCount >= 0 ? -1 : 0xFF606060);
 		cy += h;
 		int chorusCount = data.buff.buffs.getOrDefault(AllBuffs.CHORUS.id, 0);
-		var chorusText = DILang.CHORUS.get(chorusCount);
+		var chorusText = AllBuffs.CHORUS.getTitle();
 		var visit = DIMeta.HISTORY.type().getOrCreate(player).getOrCreate(pos);
-		float chorusScale = Math.min(1f, (panelW - 24) / (float) font.width(chorusText));
-		chorus.setScale(chorusScale);
-		chorus.update(g, diffY == 0 && chorusCount > 0 && visit.getPath().length > 0, cx, cy, font, chorusText, mx, my);
+		boolean hasChorus = diffY == 0 && chorusCount > 0 && visit.getPath().length > 0;
+		chorus.update(g, hasChorus, cx, cy, font, chorusText, mx, my);
+		if (chorus.contains(mx, my)) {
+			g.setComponentTooltipForNextFrame(font, List.of(DILang.CHORUS.get(chorusCount)), mx, my);
+		}
 
 		cy += h;
 		cy += 3;
