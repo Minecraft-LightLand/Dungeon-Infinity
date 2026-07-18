@@ -17,8 +17,7 @@
         "count": 1,
         "limit": 64,
         "result": {
-          "count": 4,
-          "id": "minecraft:experience_bottle"
+          "id": "golemdungeons:experience_pill"
         },
         "weight": 400
       },

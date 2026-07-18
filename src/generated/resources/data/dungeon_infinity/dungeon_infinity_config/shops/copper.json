@@ -24,11 +24,11 @@
       },
       {
         "cost": "minecraft:emerald",
-        "count": 1,
+        "count": 4,
         "limit": 64,
         "result": {
           "count": 4,
-          "id": "minecraft:experience_bottle"
+          "id": "golemdungeons:experience_pill"
         },
         "weight": 200
       },
