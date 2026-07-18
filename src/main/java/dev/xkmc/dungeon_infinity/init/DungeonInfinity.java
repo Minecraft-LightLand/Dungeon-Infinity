@@ -53,7 +53,8 @@ public class DungeonInfinity {
 			e -> e.create(RevealPathToClient.class, PacketHandler.NetDir.PLAY_TO_CLIENT),
 			e -> e.create(SyncBuffToClient.class, PacketHandler.NetDir.PLAY_TO_CLIENT),
 			e -> e.create(SelectBuffToServer.class, PacketHandler.NetDir.PLAY_TO_SERVER),
-			e -> e.create(RerollBuffToServer.class, PacketHandler.NetDir.PLAY_TO_SERVER)
+			e -> e.create(RerollBuffToServer.class, PacketHandler.NetDir.PLAY_TO_SERVER),
+			e -> e.create(UseSkillToServer.class, PacketHandler.NetDir.PLAY_TO_SERVER)
 	);
 
 	public static final ConfigTypeEntry<TemplateConfig> TEMPLATES = new ConfigTypeEntry<>(HANDLER, "templates", TemplateConfig.class);

@@ -33,14 +33,14 @@ public class MapSettingsScreen extends Screen {
 		super(Component.literal("Map Settings"));
 		this.seed = seed;
 		this.canUseWaypoint = canUseWaypoint;
-		btnScreenMapMode = new TextButton();
-		btnFollowPlayer = new TextButton();
+		btnScreenMapMode = new TextButton().fixedWidth(60);
+		btnFollowPlayer = new TextButton().fixedWidth(60);
 		for (int i = 0; i < 9; i++) posBtns[i] = new TextButton();
-		btnScaleUp = new TextButton();
-		btnScaleDown = new TextButton();
-		btnSizeUp = new TextButton();
-		btnSizeDown = new TextButton();
-		btnDone = new TextButton();
+		btnScaleUp = new TextButton().fixedWidth(25);
+		btnScaleDown = new TextButton().fixedWidth(25);
+		btnSizeUp = new TextButton().fixedWidth(25);
+		btnSizeDown = new TextButton().fixedWidth(25);
+		btnDone = new TextButton().pad(6, 3);
 	}
 
 	@Override
@@ -96,8 +96,6 @@ public class MapSettingsScreen extends Screen {
 		int panelX = (w - panelW) / 2;
 		int panelY = 20;
 		int panelH = h - 40;
-		int btnPX = 4;
-		int btnPY = 2;
 
 		g.fill(0, 0, w, h, 0x80000000);
 		g.fill(panelX, panelY, panelX + panelW, panelY + panelH, 0xC0161616);
@@ -114,7 +112,7 @@ public class MapSettingsScreen extends Screen {
 		float ts = 1.3f;
 		g.pose().translate(w / 2f, cy + ts * font.lineHeight / 2f);
 		g.pose().scale(ts, ts);
-		g.text(font, title, -font.width(title) / 2, -font.lineHeight / 2, -1, true);
+		g.text(font, title, -font.width(title) / 2, (int) (font.lineHeight * (1 - ts) / 2 - font.lineHeight / 2), -1, true);
 		g.pose().popMatrix();
 		cy += (int) (ts * font.lineHeight) + 6;
 		g.fill(cx, cy, panelX + panelW - 12, cy + 1, 0xFF4A4A4A);
@@ -124,30 +122,17 @@ public class MapSettingsScreen extends Screen {
 
 		g.text(font, DILang.SCREEN_MAP.get(), cx, cy, -1);
 		int mode = MapOverlayConfig.screenMapMode;
-		Component modeName = Component.translatable(MODE_KEYS[mode]);
-		int modeW = font.width(modeName);
-		btnScreenMapMode.set(btnX, cy - btnPY, 60, lh + btnPY * 2);
-		boolean smH = btnScreenMapMode.contains(mx, my);
-		g.fill(btnX, cy - btnPY, btnX + 60, cy + lh + btnPY, smH ? 0xFF5A5A5A : 0xFF3D3D3D);
-		g.fill(btnX, cy - btnPY, btnX + 60, cy - btnPY + 1, smH ? 0xFF7A7A7A : 0xFF5A5A5A);
-		g.fill(btnX, cy + lh + btnPY - 1, btnX + 60, cy + lh + btnPY, 0xFF2A2A2A);
-		g.fill(btnX, cy - btnPY, btnX + 1, cy + lh + btnPY, smH ? 0xFF7A7A7A : 0xFF5A5A5A);
-		g.fill(btnX + 59, cy - btnPY, btnX + 60, cy + lh + btnPY, 0xFF2A2A2A);
-		g.text(font, modeName, btnX + (60 - modeW) / 2, cy, smH ? 0xFFFFAA00 : -1);
+		btnScreenMapMode.update(g, true, btnX, cy - 2, font, Component.translatable(MODE_KEYS[mode]), mx, my);
 		cy += lh + 5;
 
 		g.text(font, DILang.FOLLOW_PLAYER.get(), cx, cy, -1);
-		btnFollowPlayer.set(btnX, cy - btnPY, 60, lh + btnPY * 2);
 		boolean fp = MapOverlayConfig.followPlayer;
-		boolean fpH = btnFollowPlayer.contains(mx, my);
-		int fpBg = fpH ? 0xFF5A5A5A : (fp ? 0xFF3D3D3D : 0xFF2A2A2A);
-		int fpBorder = fpH ? 0xFF7A7A7A : (fp ? 0xFF5A5A5A : 0xFF3D3D3D);
-		g.fill(btnX, cy - btnPY, btnX + 60, cy + lh + btnPY, fpBg);
-		g.fill(btnX, cy - btnPY, btnX + 60, cy - btnPY + 1, fpBorder);
-		g.fill(btnX, cy + lh + btnPY - 1, btnX + 60, cy + lh + btnPY, 0xFF2A2A2A);
-		g.fill(btnX, cy - btnPY, btnX + 1, cy + lh + btnPY, fpBorder);
-		g.fill(btnX + 59, cy - btnPY, btnX + 60, cy + lh + btnPY, 0xFF2A2A2A);
-		g.text(font, fp ? DILang.ON.get() : DILang.OFF.get(), btnX + (60 - font.width(fp ? DILang.ON.get() : DILang.OFF.get())) / 2, cy, fpH ? 0xFFFFAA00 : -1);
+		if (fp) {
+			btnFollowPlayer.bg(0xFF3D3D3D, 0xFF5A5A5A, 0xFF2A2A2A).border(0xFF5A5A5A, 0xFF7A7A7A, 0xFF3D3D3D);
+		} else {
+			btnFollowPlayer.bg(0xFF2A2A2A, 0xFF5A5A5A, 0xFF2A2A2A).border(0xFF3D3D3D, 0xFF7A7A7A, 0xFF3D3D3D);
+		}
+		btnFollowPlayer.update(g, true, btnX, cy - 2, font, fp ? DILang.ON.get() : DILang.OFF.get(), mx, my);
 		cy += lh + 10;
 
 		Component posTitle = DILang.POSITION.get();
@@ -178,63 +163,19 @@ public class MapSettingsScreen extends Screen {
 
 		Component scaleText = DILang.OVERLAY_SCALE.get(Math.round(MapOverlayConfig.scale * 100));
 		g.text(font, scaleText, cx, cy, -1);
-		btnScaleDown.set(btnX, cy - btnPY, 25, lh + btnPY * 2);
-		btnScaleUp.set(btnX + 35, cy - btnPY, 25, lh + btnPY * 2);
-		boolean scH = btnScaleDown.contains(mx, my);
-		int scBg = scH ? 0xFF5A5A5A : 0xFF3D3D3D;
-		int scBorder = scH ? 0xFF7A7A7A : 0xFF5A5A5A;
-		g.fill(btnX, cy - btnPY, btnX + 25, cy + lh + btnPY, scBg);
-		g.fill(btnX, cy - btnPY, btnX + 25, cy - btnPY + 1, scBorder);
-		g.fill(btnX, cy + lh + btnPY - 1, btnX + 25, cy + lh + btnPY, 0xFF2A2A2A);
-		g.fill(btnX, cy - btnPY, btnX + 1, cy + lh + btnPY, scBorder);
-		g.fill(btnX + 24, cy - btnPY, btnX + 25, cy + lh + btnPY, 0xFF2A2A2A);
-		g.text(font, Component.literal("-"), btnX + 10, cy + 1, scH ? 0xFFFFAA00 : -1);
-		boolean scH2 = btnScaleUp.contains(mx, my);
-		int scBg2 = scH2 ? 0xFF5A5A5A : 0xFF3D3D3D;
-		int scBorder2 = scH2 ? 0xFF7A7A7A : 0xFF5A5A5A;
-		g.fill(btnX + 35, cy - btnPY, btnX + 60, cy + lh + btnPY, scBg2);
-		g.fill(btnX + 35, cy - btnPY, btnX + 60, cy - btnPY + 1, scBorder2);
-		g.fill(btnX + 35, cy + lh + btnPY - 1, btnX + 60, cy + lh + btnPY, 0xFF2A2A2A);
-		g.fill(btnX + 35, cy - btnPY, btnX + 36, cy + lh + btnPY, scBorder2);
-		g.fill(btnX + 59, cy - btnPY, btnX + 60, cy + lh + btnPY, 0xFF2A2A2A);
-		g.text(font, Component.literal("+"), btnX + 45, cy + 1, scH2 ? 0xFFFFAA00 : -1);
+		btnScaleDown.update(g, true, btnX, cy - 2, font, Component.literal("-"), mx, my);
+		btnScaleUp.update(g, true, btnX + 35, cy - 2, font, Component.literal("+"), mx, my);
 		cy += lh + 5;
 
 		Component sizeText = DILang.OVERLAY_SIZE.get(MapOverlayConfig.size);
 		g.text(font, sizeText, cx, cy, -1);
-		btnSizeDown.set(btnX, cy - btnPY, 25, lh + btnPY * 2);
-		btnSizeUp.set(btnX + 35, cy - btnPY, 25, lh + btnPY * 2);
-		boolean szH = btnSizeDown.contains(mx, my);
-		int szBg = szH ? 0xFF5A5A5A : 0xFF3D3D3D;
-		int szBorder = szH ? 0xFF7A7A7A : 0xFF5A5A5A;
-		g.fill(btnX, cy - btnPY, btnX + 25, cy + lh + btnPY, szBg);
-		g.fill(btnX, cy - btnPY, btnX + 25, cy - btnPY + 1, szBorder);
-		g.fill(btnX, cy + lh + btnPY - 1, btnX + 25, cy + lh + btnPY, 0xFF2A2A2A);
-		g.fill(btnX, cy - btnPY, btnX + 1, cy + lh + btnPY, szBorder);
-		g.fill(btnX + 24, cy - btnPY, btnX + 25, cy + lh + btnPY, 0xFF2A2A2A);
-		g.text(font, Component.literal("-"), btnX + 10, cy + 1, szH ? 0xFFFFAA00 : -1);
-		boolean szH2 = btnSizeUp.contains(mx, my);
-		int szBg2 = szH2 ? 0xFF5A5A5A : 0xFF3D3D3D;
-		int szBorder2 = szH2 ? 0xFF7A7A7A : 0xFF5A5A5A;
-		g.fill(btnX + 35, cy - btnPY, btnX + 60, cy + lh + btnPY, szBg2);
-		g.fill(btnX + 35, cy - btnPY, btnX + 60, cy - btnPY + 1, szBorder2);
-		g.fill(btnX + 35, cy + lh + btnPY - 1, btnX + 60, cy + lh + btnPY, 0xFF2A2A2A);
-		g.fill(btnX + 35, cy - btnPY, btnX + 36, cy + lh + btnPY, szBorder2);
-		g.fill(btnX + 59, cy - btnPY, btnX + 60, cy + lh + btnPY, 0xFF2A2A2A);
-		g.text(font, Component.literal("+"), btnX + 45, cy + 1, szH2 ? 0xFFFFAA00 : -1);
+		btnSizeDown.update(g, true, btnX, cy - 2, font, Component.literal("-"), mx, my);
+		btnSizeUp.update(g, true, btnX + 35, cy - 2, font, Component.literal("+"), mx, my);
 
 		Component doneText = DILang.DONE.get();
-		int doneW = font.width(doneText);
-		int donePX = 6, donePY = 3;
+		int doneW = btnDone.visualWidth(font, doneText);
 		int doneX = (w - doneW) / 2;
 		int doneY = panelY + panelH - 20;
-		btnDone.set(doneX - donePX, doneY - donePY, doneW + donePX * 2, lh + donePY * 2);
-		boolean doneH = btnDone.contains(mx, my);
-		g.fill(doneX - donePX, doneY - donePY, doneX + doneW + donePX, doneY + lh + donePY, doneH ? 0xFF5A5A5A : 0xFF3D3D3D);
-		g.fill(doneX - donePX, doneY - donePY, doneX + doneW + donePX, doneY - donePY + 1, doneH ? 0xFF7A7A7A : 0xFF5A5A5A);
-		g.fill(doneX - donePX, doneY + lh + donePY - 1, doneX + doneW + donePX, doneY + lh + donePY, 0xFF2A2A2A);
-		g.fill(doneX - donePX, doneY - donePY, doneX - donePX + 1, doneY + lh + donePY, doneH ? 0xFF7A7A7A : 0xFF5A5A5A);
-		g.fill(doneX + doneW + donePX - 1, doneY - donePY, doneX + doneW + donePX, doneY + lh + donePY, 0xFF2A2A2A);
-		g.text(font, doneText, doneX, doneY, doneH ? 0xFFFFAA00 : -1);
+		btnDone.update(g, true, doneX, doneY - 3, font, doneText, mx, my);
 	}
 }

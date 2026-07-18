@@ -201,7 +201,7 @@ public class MazeRoomLootGen {
 						.add(weight(GolemItems.GOLD.get(), 2))
 						.add(weight(GolemItems.DIAMOND.get(), 2))
 						.add(weight(GolemItems.PICKUP.get(), 3)),
-				single(Items.EXPERIENCE_BOTTLE, 6, 10),
+				single(GDItems.XP_PILL, 1, 1),
 				single(Items.EMERALD, 4, 6)
 		);
 
@@ -217,7 +217,7 @@ public class MazeRoomLootGen {
 						.add(weight(GolemItems.GOLD.get(), 1))
 						.add(weight(GolemItems.DIAMOND.get(), 1))
 						.add(weight(GolemItems.PICKUP.get(), 1)),
-				single(Items.EXPERIENCE_BOTTLE, 8, 12),
+				single(GDItems.XP_PILL, 1, 2),
 				single(Items.EMERALD, 6, 10)
 		);
 
@@ -236,7 +236,7 @@ public class MazeRoomLootGen {
 						.add(weight(GolemItems.QUARTZ.get(), 1))
 						.add(weight(GolemItems.GOLD.get(), 1))
 						.add(weight(GolemItems.DIAMOND.get(), 1)),
-				single(Items.EXPERIENCE_BOTTLE, 4, 6),
+				single(GDItems.XP_PILL, 1, 1),
 				single(Items.EMERALD, 2, 4)
 		);
 
@@ -255,7 +255,7 @@ public class MazeRoomLootGen {
 						.add(weight(GolemItems.QUARTZ.get(), 1))
 						.add(weight(GolemItems.GOLD.get(), 1))
 						.add(weight(GolemItems.DIAMOND.get(), 1)),
-				single(Items.EXPERIENCE_BOTTLE, 6, 10),
+				single(GDItems.XP_PILL, 1, 1),
 				single(Items.EMERALD, 3, 6)
 		);
 
@@ -277,7 +277,7 @@ public class MazeRoomLootGen {
 						.add(weight(GolemItems.WITHER.get(), 1))
 						.add(weight(GolemItems.SLOW.get(), 1)),
 				single(Items.ARROW, 16, 32),
-				single(Items.EXPERIENCE_BOTTLE, 6, 10),
+				single(GDItems.XP_PILL, 1, 1),
 				single(Items.EMERALD, 3, 6)
 		);
 
@@ -296,7 +296,7 @@ public class MazeRoomLootGen {
 						.add(weight(GolemItems.SPEED.get(), 2))
 						.add(weight(GolemItems.MOUNT_UPGRADE.get(), 1))
 						.add(weight(GolemItems.SIZE_UPGRADE.get(), 1)),
-				single(Items.EXPERIENCE_BOTTLE, 6, 10),
+				single(GDItems.XP_PILL, 1, 1),
 				single(Items.EMERALD, 3, 6)
 		);
 
@@ -316,7 +316,7 @@ public class MazeRoomLootGen {
 						.add(weight(GolemItems.SIZE_UPGRADE.get(), 1))
 						.add(weight(GolemItems.PICKUP.get(), 1))
 						.add(weight(GolemItems.RECYCLE.get(), 1)),
-				single(Items.EXPERIENCE_BOTTLE, 8, 12),
+				single(GDItems.XP_PILL, 1, 2),
 				single(Items.EMERALD, 4, 8)
 		);
 
@@ -335,7 +335,7 @@ public class MazeRoomLootGen {
 						.add(weight(GolemItems.GOLD.get(), 2))
 						.add(weight(GolemItems.PICKUP.get(), 2))
 						.add(weight(GolemItems.RECYCLE.get(), 1)),
-				single(Items.EXPERIENCE_BOTTLE, 10, 16),
+				single(GDItems.XP_PILL, 2, 2),
 				single(Items.EMERALD, 6, 10)
 		);
 
@@ -355,7 +355,7 @@ public class MazeRoomLootGen {
 						.add(weight(GDModifiers.ITEM_REFORGE.get(), 1))
 						.add(weight(GolemItems.PICKUP.get(), 1))
 						.add(weight(GolemItems.RECYCLE.get(), 1)),
-				single(Items.EXPERIENCE_BOTTLE, 12, 18),
+				single(GDItems.XP_PILL, 2, 3),
 				single(Items.EMERALD, 10, 16),
 				single(GDItems.ANCIENT_FORGE, 1, 1)
 		);
@@ -379,7 +379,7 @@ public class MazeRoomLootGen {
 						.add(weight(GolemItems.QUARTZ.get(), 1))
 						.add(weight(GolemItems.GOLD.get(), 1))
 						.add(weight(GolemItems.DIAMOND.get(), 1)),
-				single(Items.EXPERIENCE_BOTTLE, 6, 10),
+				single(GDItems.XP_PILL, 1, 2),
 				single(Items.EMERALD, 4, 8)
 		);
 
@@ -399,7 +399,7 @@ public class MazeRoomLootGen {
 						.add(weight(GolemItems.QUARTZ.get(), 1))
 						.add(weight(GolemItems.GOLD.get(), 1))
 						.add(weight(GolemItems.DIAMOND.get(), 1)),
-				single(Items.EXPERIENCE_BOTTLE, 10, 16),
+				single(GDItems.XP_PILL, 2, 2),
 				single(Items.EMERALD, 6, 10)
 		);
 
@@ -421,7 +421,7 @@ public class MazeRoomLootGen {
 						.add(weight(GolemItems.WEAK.get(), 1))
 						.add(weight(GolemItems.WITHER.get(), 1))
 						.add(weight(GolemItems.SLOW.get(), 1)),
-				single(Items.EXPERIENCE_BOTTLE, 10, 16),
+				single(GDItems.XP_PILL, 2, 2),
 				single(Items.EMERALD, 6, 10)
 		);
 
@@ -441,7 +441,7 @@ public class MazeRoomLootGen {
 						.add(weight(GolemItems.SPEED.get(), 2))
 						.add(weight(GolemItems.MOUNT_UPGRADE.get(), 1))
 						.add(weight(GolemItems.SIZE_UPGRADE.get(), 1)),
-				single(Items.EXPERIENCE_BOTTLE, 10, 16),
+				single(GDItems.XP_PILL, 2, 2),
 				single(Items.EMERALD, 6, 10)
 		);
 
@@ -461,7 +461,7 @@ public class MazeRoomLootGen {
 						.add(weight(GDModifiers.ITEM_REFORGE.get(), 1))
 						.add(weight(GolemItems.PICKUP.get(), 1))
 						.add(weight(GolemItems.RECYCLE.get(), 1)),
-				single(Items.EXPERIENCE_BOTTLE, 12, 20),
+				single(GDItems.XP_PILL, 2, 3),
 				single(Items.EMERALD, 8, 12)
 		);
 
@@ -481,7 +481,7 @@ public class MazeRoomLootGen {
 						.add(weight(GDModifiers.ITEM_REFORGE.get(), 1))
 						.add(weight(GolemItems.TALENTED.get(), 1))
 						.add(weight(GolemItems.RECYCLE.get(), 1)),
-				single(Items.EXPERIENCE_BOTTLE, 16, 24),
+				single(GDItems.XP_PILL, 2, 4),
 				single(Items.EMERALD, 10, 16)
 		);
 
@@ -503,7 +503,7 @@ public class MazeRoomLootGen {
 						.add(weight(GolemItems.ADD_DIAMOND.get(), 1))
 						.add(weight(GolemItems.RECYCLE.get(), 1)),
 				single(GDItems.FLAME_SWORD, 1, 1),
-				single(Items.EXPERIENCE_BOTTLE, 20, 28),
+				single(GDItems.XP_PILL, 3, 4),
 				single(Items.EMERALD, 12, 20)
 		);
 
@@ -525,7 +525,7 @@ public class MazeRoomLootGen {
 						.add(weight(GolemItems.QUARTZ.get(), 1))
 						.add(weight(GolemItems.GOLD.get(), 1))
 						.add(weight(GolemItems.DIAMOND.get(), 1)),
-				single(Items.EXPERIENCE_BOTTLE, 8, 12),
+				single(GDItems.XP_PILL, 2, 2),
 				single(Items.EMERALD, 6, 10)
 		);
 
@@ -545,7 +545,7 @@ public class MazeRoomLootGen {
 						.add(weight(GolemItems.SIZE_UPGRADE.get(), 1))
 						.add(weight(GolemItems.NETHERITE.get(), 1))
 						.add(weight(GolemItems.ADD_DIAMOND.get(), 1)),
-				single(Items.EXPERIENCE_BOTTLE, 12, 20),
+				single(GDItems.XP_PILL, 2, 3),
 				single(Items.DIAMOND, 1, 2)
 		);
 
@@ -567,7 +567,7 @@ public class MazeRoomLootGen {
 						.add(weight(GolemItems.WEAK.get(), 1))
 						.add(weight(GolemItems.WITHER.get(), 1))
 						.add(weight(GolemItems.SLOW.get(), 1)),
-				single(Items.EXPERIENCE_BOTTLE, 12, 20),
+				single(GDItems.XP_PILL, 2, 3),
 				single(Items.DIAMOND, 1, 2)
 		);
 
@@ -587,7 +587,7 @@ public class MazeRoomLootGen {
 						.add(weight(GolemItems.PICKUP.get(), 1))
 						.add(weight(GolemItems.MOUNT_UPGRADE.get(), 1))
 						.add(weight(GolemItems.SIZE_UPGRADE.get(), 1)),
-				single(Items.EXPERIENCE_BOTTLE, 12, 20),
+				single(GDItems.XP_PILL, 2, 3),
 				single(Items.DIAMOND, 1, 2)
 		);
 
@@ -607,7 +607,7 @@ public class MazeRoomLootGen {
 						.add(weight(GDModifiers.ITEM_REFORGE.get(), 1))
 						.add(weight(GolemItems.ADD_DIAMOND.get(), 1))
 						.add(weight(GolemItems.RECYCLE.get(), 1)),
-				single(Items.EXPERIENCE_BOTTLE, 12, 20),
+				single(GDItems.XP_PILL, 2, 4),
 				single(Items.DIAMOND, 1, 2)
 		);
 
@@ -627,7 +627,7 @@ public class MazeRoomLootGen {
 						.add(weight(GDModifiers.ITEM_REFORGE.get(), 1))
 						.add(weight(GolemItems.TALENTED.get(), 1))
 						.add(weight(GolemItems.ADD_DIAMOND.get(), 1)),
-				single(Items.EXPERIENCE_BOTTLE, 12, 20),
+				single(GDItems.XP_PILL, 3, 4),
 				single(Items.DIAMOND, 1, 2)
 		);
 
@@ -650,7 +650,7 @@ public class MazeRoomLootGen {
 						.add(weight(GolemItems.TALENTED.get(), 1))
 						.add(weight(GolemItems.ADD_NETHERITE.get(), 1)),
 				single(GDItems.SCULK_SCYTHE, 1, 1),
-				single(Items.EXPERIENCE_BOTTLE, 12, 20),
+				single(GDItems.XP_PILL, 4, 5),
 				single(Items.NETHERITE_INGOT, 2, 2)
 		);
 
@@ -672,7 +672,7 @@ public class MazeRoomLootGen {
 						.add(weight(GolemItems.ADD_DIAMOND.get(), 1))
 						.add(weight(GolemItems.GOLD.get(), 1))
 						.add(weight(GolemItems.NETHERITE.get(), 1)),
-				single(Items.EXPERIENCE_BOTTLE, 8, 12),
+				single(GDItems.XP_PILL, 2, 3),
 				single(Items.DIAMOND, 1, 2)
 		);
 
@@ -692,7 +692,7 @@ public class MazeRoomLootGen {
 						.add(weight(GolemItems.ADD_NETHERITE.get(), 1))
 						.add(weight(GolemItems.NETHERITE.get(), 1))
 						.add(weight(GDModifiers.ITEM_RESISTANCE.get(), 1)),
-				single(Items.EXPERIENCE_BOTTLE, 12, 20),
+				single(GDItems.XP_PILL, 3, 4),
 				single(Items.DIAMOND, 2, 3)
 		);
 
@@ -714,7 +714,7 @@ public class MazeRoomLootGen {
 						.add(weight(GolemItems.WEAK.get(), 1))
 						.add(weight(GolemItems.WITHER.get(), 1))
 						.add(weight(GolemItems.SLOW.get(), 1)),
-				single(Items.EXPERIENCE_BOTTLE, 12, 20),
+				single(GDItems.XP_PILL, 3, 4),
 				single(Items.DIAMOND, 2, 3)
 		);
 
@@ -734,7 +734,7 @@ public class MazeRoomLootGen {
 						.add(weight(GDModifiers.ITEM_RESISTANCE.get(), 1))
 						.add(weight(GolemItems.MOUNT_UPGRADE.get(), 1))
 						.add(weight(GolemItems.SIZE_UPGRADE.get(), 1)),
-				single(Items.EXPERIENCE_BOTTLE, 12, 20),
+				single(GDItems.XP_PILL, 3, 4),
 				single(Items.DIAMOND, 2, 3)
 		);
 
@@ -755,7 +755,7 @@ public class MazeRoomLootGen {
 				LootPool.lootPool()
 						.add(weight(GolemItems.ENCHANTED_GOLD.get(), 1))
 						.add(weight(GolemItems.ADD_NETHERITE.get(), 1)),
-				single(Items.EXPERIENCE_BOTTLE, 12, 20),
+				single(GDItems.XP_PILL, 4, 5),
 				single(Items.DIAMOND, 3, 4)
 		);
 
@@ -777,7 +777,7 @@ public class MazeRoomLootGen {
 						.add(weight(GolemItems.ENCHANTED_GOLD.get(), 1))
 						.add(weight(GolemItems.TALENTED.get(), 1))
 						.add(weight(GolemItems.ADD_NETHERITE.get(), 1)),
-				single(Items.EXPERIENCE_BOTTLE, 12, 20),
+				single(GDItems.XP_PILL, 5, 6),
 				single(Items.DIAMOND, 3, 4)
 		);
 

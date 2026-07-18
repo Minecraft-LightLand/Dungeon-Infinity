@@ -21,6 +21,16 @@ public class PotionBuff extends MazeBuff {
 			MutableComponent line = PotionContents.getPotionDescription(eff, amp);
 			return Component.translatable("potion.withDuration", line, StringUtil.formatTickDuration(dur * lv, 20));
 		}
+
+		public void apply(ServerPlayer sp, int lv) {
+			var old = sp.getEffect(eff);
+			int time = this.dur * lv;
+			if (old != null && old.getAmplifier() == amp) {
+				time += old.getDuration();
+			}
+			sp.addEffect(new MobEffectInstance(eff, time, amp, false, false, true));
+		}
+
 	}
 
 	private final List<PotionEntry> effs;
@@ -33,12 +43,7 @@ public class PotionBuff extends MazeBuff {
 	@Override
 	public void onApply(ServerPlayer sp, int lv) {
 		for (var e : effs) {
-			var old = sp.getEffect(e.eff);
-			int dur = e.dur * lv;
-			if (old != null && old.getAmplifier() == e.amp) {
-				dur += old.getDuration();
-			}
-			sp.addEffect(new MobEffectInstance(e.eff, dur, e.amp, false, false, true));
+			e.apply(sp, lv);
 		}
 	}
 

@@ -1,5 +1,6 @@
 package dev.xkmc.dungeon_infinity.content.screen;
 
+import dev.xkmc.dungeon_infinity.content.buff.core.AllBuffs;
 import dev.xkmc.dungeon_infinity.content.buff.core.MazeBuff;
 import dev.xkmc.dungeon_infinity.content.cap.MazeHistory;
 import dev.xkmc.dungeon_infinity.content.cap.MazePos;
@@ -7,6 +8,7 @@ import dev.xkmc.dungeon_infinity.content.cap.RoomFinder;
 import dev.xkmc.dungeon_infinity.content.map.MapUI;
 import dev.xkmc.dungeon_infinity.content.map.MazeMapColors;
 import dev.xkmc.dungeon_infinity.content.packet.UseFinderToServer;
+import dev.xkmc.dungeon_infinity.content.packet.UseSkillToServer;
 import dev.xkmc.dungeon_infinity.content.packet.UseWaypointPacket;
 import dev.xkmc.dungeon_infinity.init.DungeonInfinity;
 import dev.xkmc.dungeon_infinity.init.data.DILang;
@@ -29,21 +31,40 @@ public class MazeMapScreen extends Screen implements MapUI {
 
 	private int layerY, diffY;
 
-	private final TextButton depthLabel, up, down, findQuad, findStair, findWarehouse, findWorkshop, findShop, configBtn;
+	private final TextButton depthLabel, up, down, chorus;
+	private final TextButton[] findBtns;
+	private final TextButton configBtn;
+
+	private record RoomTypeInfo(Component name, int color, int finderIndex) {
+	}
+
+	private static final RoomTypeInfo[] ROOM_TYPES = {
+			new RoomTypeInfo(DILang.BATTLE.get(), MazeMapColors.F, -1),
+			new RoomTypeInfo(DILang.QUAD.get(), MazeMapColors.Q, 0),
+			new RoomTypeInfo(DILang.BOSS.get(), MazeMapColors.R, -1),
+			new RoomTypeInfo(DILang.DOWN_STAIR.get(), MazeMapColors.G, 1),
+			new RoomTypeInfo(DILang.UP_STAIR.get(), MazeMapColors.Y, -1),
+			new RoomTypeInfo(DILang.WORKSHOP.get(), MazeMapColors.K, 2),
+			new RoomTypeInfo(DILang.SHOP.get(), MazeMapColors.S, 3),
+			new RoomTypeInfo(DILang.WAREHOUSE.get(), MazeMapColors.H, 4),
+	};
 
 	public MazeMapScreen(long seed, boolean canUseWaypoint) {
 		super(Component.literal("Maze Map"));
 		this.seed = seed;
 		this.canUseWaypoint = canUseWaypoint;
 		depthLabel = new TextButton();
-		up = new TextButton();
-		down = new TextButton();
-		findQuad = new TextButton();
-		findStair = new TextButton();
-		findWarehouse = new TextButton();
-		findWorkshop = new TextButton();
-		findShop = new TextButton();
-		configBtn = new TextButton();
+		up = new TextButton().pad(4, 1).text(0xFFFFFFFF, 0xFFFFAA00, 0xFF606060);
+		down = new TextButton().pad(4, 1).text(0xFFFFFFFF, 0xFFFFAA00, 0xFF606060);
+		findBtns = new TextButton[]{
+				new TextButton().pad(4, 1),
+				new TextButton().pad(4, 1),
+				new TextButton().pad(4, 1),
+				new TextButton().pad(4, 1),
+				new TextButton().pad(4, 1),
+		};
+		chorus = new TextButton().pad(2, 1);
+		configBtn = new TextButton().pad(6, 3);
 	}
 
 	@Override
@@ -87,24 +108,28 @@ public class MazeMapScreen extends Screen implements MapUI {
 					return true;
 				}
 			}
-			if (findQuad.contains(mx, my)) {
+			if (chorus.contains(mx, my)) {
+				DungeonInfinity.HANDLER.toServer(new UseSkillToServer(AllBuffs.CHORUS.id));
+				return true;
+			}
+			if (findBtns[0].contains(mx, my)) {
 				DungeonInfinity.HANDLER.toServer(new UseFinderToServer(RoomFinder.Type.QUAD));
 				return true;
 			}
-			if (findStair.contains(mx, my)) {
+			if (findBtns[1].contains(mx, my)) {
 				DungeonInfinity.HANDLER.toServer(new UseFinderToServer(RoomFinder.Type.STAIR));
 				return true;
 			}
-			if (findWarehouse.contains(mx, my)) {
-				DungeonInfinity.HANDLER.toServer(new UseFinderToServer(RoomFinder.Type.WAREHOUSE));
-				return true;
-			}
-			if (findWorkshop.contains(mx, my)) {
+			if (findBtns[2].contains(mx, my)) {
 				DungeonInfinity.HANDLER.toServer(new UseFinderToServer(RoomFinder.Type.WORKSHOP));
 				return true;
 			}
-			if (findShop.contains(mx, my)) {
+			if (findBtns[3].contains(mx, my)) {
 				DungeonInfinity.HANDLER.toServer(new UseFinderToServer(RoomFinder.Type.SHOP));
+				return true;
+			}
+			if (findBtns[4].contains(mx, my)) {
+				DungeonInfinity.HANDLER.toServer(new UseFinderToServer(RoomFinder.Type.WAREHOUSE));
 				return true;
 			}
 			if (configBtn.contains(mx, my)) {
@@ -148,19 +173,10 @@ public class MazeMapScreen extends Screen implements MapUI {
 		extractBuff(player, g, x0, y0, rate);
 
 		Component configText = DILang.MAP_SETTINGS.get();
-		int cfgW = font.width(configText);
-		int cfgBtnPX = 6;
-		int cfgBtnPY = 3;
+		int cfgW = configBtn.visualWidth(font, configText);
 		int cfgX = (g.guiWidth() - cfgW) / 2;
 		int cfgY = mapBottom + 9;
-		configBtn.set(cfgX - cfgBtnPX, cfgY - cfgBtnPY, cfgW + cfgBtnPX * 2, font.lineHeight + cfgBtnPY * 2);
-		boolean cfgH = configBtn.contains(mx, my);
-		g.fill(cfgX - cfgBtnPX, cfgY - cfgBtnPY, cfgX + cfgW + cfgBtnPX, cfgY + font.lineHeight + cfgBtnPY, cfgH ? 0xFF5A5A5A : 0xFF3D3D3D);
-		g.fill(cfgX - cfgBtnPX, cfgY - cfgBtnPY, cfgX + cfgW + cfgBtnPX, cfgY - cfgBtnPY + 1, cfgH ? 0xFF7A7A7A : 0xFF5A5A5A);
-		g.fill(cfgX - cfgBtnPX, cfgY + font.lineHeight + cfgBtnPY - 1, cfgX + cfgW + cfgBtnPX, cfgY + font.lineHeight + cfgBtnPY, 0xFF2A2A2A);
-		g.fill(cfgX - cfgBtnPX, cfgY - cfgBtnPY, cfgX - cfgBtnPX + 1, cfgY + font.lineHeight + cfgBtnPY, cfgH ? 0xFF7A7A7A : 0xFF5A5A5A);
-		g.fill(cfgX + cfgW + cfgBtnPX - 1, cfgY - cfgBtnPY, cfgX + cfgW + cfgBtnPX, cfgY + font.lineHeight + cfgBtnPY, 0xFF2A2A2A);
-		g.text(font, configText, cfgX, cfgY, cfgH ? 0xFFFFAA00 : 0xFFFFFFFF);
+		configBtn.update(g, true, cfgX, cfgY - 3, font, configText, mx, my);
 	}
 
 	public void extractLegend(Player player, GuiGraphicsExtractor g, int x0, int y0, float rate, MazePos pos) {
@@ -180,8 +196,6 @@ public class MazeMapScreen extends Screen implements MapUI {
 		g.fill(panelX, panelY, panelX + 1, panelY + panelH, 0xFF4A4A4A);
 		g.fill(panelX + panelW - 1, panelY, panelX + panelW, panelY + panelH, 0xFF2A2A2A);
 
-		int btnPadX = 4;
-		int btnPadY = 1;
 		int cx = panelX + 8;
 		int cy = panelY + 8;
 		int centerX = panelX + panelW / 2;
@@ -189,7 +203,7 @@ public class MazeMapScreen extends Screen implements MapUI {
 		Component infoTitle = DILang.INFO_TITLE.get().copy().withStyle(ChatFormatting.BOLD);
 		float ts = Math.min(1.1f, (panelW - 16) / (float) font.width(infoTitle));
 		g.pose().pushMatrix();
-		g.pose().translate(centerX, cy);
+		g.pose().translate(centerX, cy + font.lineHeight * (1 - ts) / 2);
 		g.pose().scale(ts, ts);
 		g.text(font, infoTitle, -font.width(infoTitle) / 2, 0, -1, true);
 		g.pose().popMatrix();
@@ -206,89 +220,52 @@ public class MazeMapScreen extends Screen implements MapUI {
 		g.text(font, depthText, cx, cy, -1);
 
 		int maxDepthW = font.width(DILang.DEPTH.get(16));
-		depthLabel.set(cx - btnPadX, cy - btnPadY, maxDepthW + btnPadX * 2, lh + btnPadY * 2);
-		int btnY = cy - btnPadY;
+		depthLabel.set(cx - 4, cy - 1, maxDepthW + 8, lh + 2);
+		int btnY = cy - 1;
 		int rightEdge = panelX + panelW - 8;
 		Component upText = DILang.UP.get();
 		Component downText = DILang.DOWN.get();
 		int uw = font.width(upText);
 		int dw = font.width(downText);
-		int downX = rightEdge - dw - btnPadX;
+		int downX = rightEdge - dw - 4;
 		int upX = downX - uw - 9;
 
 		boolean upEnabled = pos.y() < 15;
-		up.set(upX - btnPadX, btnY, uw + btnPadX * 2, lh + btnPadY * 2);
-		boolean uh = upEnabled && up.contains(mx, my);
-		int upBg = upEnabled ? (uh ? 0xFF5A5A5A : 0xFF3D3D3D) : 0xFF2A2A2A;
-		int upBorder = upEnabled ? (uh ? 0xFF7A7A7A : 0xFF5A5A5A) : 0xFF3D3D3D;
-		g.fill(upX - btnPadX, btnY, upX + uw + btnPadX, btnY + lh + btnPadY * 2, upBg);
-		g.fill(upX - btnPadX, btnY, upX + uw + btnPadX, btnY + 1, upBorder);
-		g.fill(upX - btnPadX, btnY + lh + btnPadY * 2 - 1, upX + uw + btnPadX, btnY + lh + btnPadY * 2, 0xFF2A2A2A);
-		g.fill(upX - btnPadX, btnY, upX - btnPadX + 1, btnY + lh + btnPadY * 2, upBorder);
-		g.fill(upX + uw + btnPadX - 1, btnY, upX + uw + btnPadX, btnY + lh + btnPadY * 2, 0xFF2A2A2A);
-		g.text(font, upText, upX, cy, uh ? 0xFFFFAA00 : upEnabled ? 0xFFFFFFFF : 0xFF606060);
-		if (!upEnabled) up.disable();
+		up.update(g, upEnabled, upX - 4, btnY, font, upText, mx, my);
 
 		boolean downEnabled = pos.y() > 0;
-		down.set(downX - btnPadX, btnY, dw + btnPadX * 2, lh + btnPadY * 2);
-		boolean dh = downEnabled && down.contains(mx, my);
-		int downBg = downEnabled ? (dh ? 0xFF5A5A5A : 0xFF3D3D3D) : 0xFF2A2A2A;
-		int downBorder = downEnabled ? (dh ? 0xFF7A7A7A : 0xFF5A5A5A) : 0xFF3D3D3D;
-		g.fill(downX - btnPadX, btnY, downX + dw + btnPadX, btnY + lh + btnPadY * 2, downBg);
-		g.fill(downX - btnPadX, btnY, downX + dw + btnPadX, btnY + 1, downBorder);
-		g.fill(downX - btnPadX, btnY + lh + btnPadY * 2 - 1, downX + dw + btnPadX, btnY + lh + btnPadY * 2, 0xFF2A2A2A);
-		g.fill(downX - btnPadX, btnY, downX - btnPadX + 1, btnY + lh + btnPadY * 2, downBorder);
-		g.fill(downX + dw + btnPadX - 1, btnY, downX + dw + btnPadX, btnY + lh + btnPadY * 2, 0xFF2A2A2A);
-		g.text(font, downText, downX, cy, dh ? 0xFFFFAA00 : downEnabled ? 0xFFFFFFFF : 0xFF606060);
-		if (!downEnabled) down.disable();
+		down.update(g, downEnabled, downX - 4, btnY, font, downText, mx, my);
 
 		cy += h;
 		int finderCount = findable ? data.finder.finder : -1;
 		Component finderText = DILang.FINDER.get(Math.max(0, finderCount));
 		g.text(font, finderText, cx, cy, finderCount >= 0 ? -1 : 0xFF606060);
-		cy += h;
-		cy += 3;
+
+		cy += h + 3;
 
 		renderFitText(g, DILang.ROOM_TYPES.get(), cx, cy, panelW - 16, 0xFFCCCCCC);
 		cy += h;
 
-		Component[] legendNames = {DILang.BATTLE.get(), DILang.QUAD.get(), DILang.BOSS.get(),
-				DILang.DOWN_STAIR.get(), DILang.UP_STAIR.get(), DILang.WORKSHOP.get(),
-				DILang.SHOP.get(), DILang.WAREHOUSE.get()};
-		int[] legendColors = {MazeMapColors.F, MazeMapColors.Q, MazeMapColors.R,
-				MazeMapColors.G, MazeMapColors.Y, MazeMapColors.K,
-				MazeMapColors.S, MazeMapColors.H};
-		int[] findOrder = {-1, 0, -1, 1, -1, 2, 3, 4};
-		TextButton[] findBtns = {findQuad, findStair, findWorkshop, findShop, findWarehouse};
-
 		float roomScale = 1f;
-		for (int idx = 0; idx < legendNames.length; idx++) {
-			boolean hasMag = findable && findOrder[idx] >= 0;
+		for (RoomTypeInfo info : ROOM_TYPES) {
+			boolean hasMag = findable && info.finderIndex >= 0;
 			float maxW = hasMag ? (panelW - 28 - mw) : (panelW - 16);
-			float s = Math.min(1f, maxW / font.width(legendNames[idx]));
+			float s = Math.min(1f, maxW / font.width(info.name));
 			if (s < roomScale) roomScale = s;
 		}
 
-		for (int i = 0; i < legendNames.length; i++) {
-			boolean hasMag = findable && findOrder[i] >= 0;
+		for (RoomTypeInfo info : ROOM_TYPES) {
+			boolean hasMag = findable && info.finderIndex >= 0;
 			int magX = hasMag ? panelX + panelW - 12 - mw : 0;
 			g.pose().pushMatrix();
-			g.pose().translate(cx, cy);
+			g.pose().translate(cx, cy + font.lineHeight * (1 - roomScale) / 2);
 			g.pose().scale(roomScale, roomScale);
-			g.text(font, legendNames[i], 0, 0, legendColors[i]);
+			g.text(font, info.name, 0, 0, info.color);
 			g.pose().popMatrix();
 			if (hasMag) {
-				int fi = findOrder[i];
-				TextButton btn = findBtns[fi];
-				btn.set(magX - btnPadX, cy - btnPadY, mw + btnPadX * 2, lh + btnPadY * 2);
-				boolean mh = btn.contains(mx, my);
-				g.fill(magX - btnPadX, cy - btnPadY, magX + mw + btnPadX, cy + lh + btnPadY, mh ? 0xFF5A5A5A : 0xFF3D3D3D);
-				g.fill(magX - btnPadX, cy - btnPadY, magX + mw + btnPadX, cy - btnPadY + 1, mh ? 0xFF7A7A7A : 0xFF5A5A5A);
-				g.fill(magX - btnPadX, cy + lh + btnPadY - 1, magX + mw + btnPadX, cy + lh + btnPadY, 0xFF2A2A2A);
-				g.fill(magX - btnPadX, cy - btnPadY, magX - btnPadX + 1, cy + lh + btnPadY, mh ? 0xFF7A7A7A : 0xFF5A5A5A);
-				g.fill(magX + mw + btnPadX - 1, cy - btnPadY, magX + mw + btnPadX, cy + lh + btnPadY, 0xFF2A2A2A);
-				g.text(font, mag, magX, cy, mh ? 0xFFFFAA00 : 0xFFFFFFFF);
-				if (mh) {
+				TextButton btn = findBtns[info.finderIndex];
+				btn.update(g, true, magX - 4, cy - 1, font, mag, mx, my);
+				if (btn.contains(mx, my)) {
 					g.setComponentTooltipForNextFrame(font, List.of(DILang.SEARCH.get()), mx, my);
 				}
 			}
@@ -320,7 +297,7 @@ public class MazeMapScreen extends Screen implements MapUI {
 		Component buffTitle = DILang.BUFF_TITLE.get().copy().withStyle(ChatFormatting.BOLD);
 		float ts = Math.min(1.1f, (panelW - 16) / (float) font.width(buffTitle));
 		g.pose().pushMatrix();
-		g.pose().translate(centerX, cy);
+		g.pose().translate(centerX, cy + font.lineHeight * (1 - ts) / 2);
 		g.pose().scale(ts, ts);
 		g.text(font, buffTitle, -font.width(buffTitle) / 2, 0, -1, true);
 		g.pose().popMatrix();
@@ -329,11 +306,24 @@ public class MazeMapScreen extends Screen implements MapUI {
 		cy += 4;
 
 		var data = DIMeta.HISTORY.type().getOrCreate(player).buff;
+		chorus.disable();
 		for (var e : data.buffs.entrySet()) {
 			var buff = MazeBuff.get(e.getKey());
 			var title = buff.getTitle(e.getValue());
-			int w = font.width(title);
-			g.text(font, title, cx, cy, 0xFFFFAA00);
+			boolean isChorus = e.getKey().equals(AllBuffs.CHORUS.id);
+			int maxW = panelW - 16;
+			if (isChorus) {
+				Component tpText = DILang.WAYPOINT.get();
+				int tpW = font.width(tpText);
+				int btnFixedW = 22;
+				float btnScale = Math.min(1f, (btnFixedW - 4) / (float) tpW);
+				maxW = panelW - 20 - btnFixedW;
+				int btnX = panelX + panelW - 4 - btnFixedW;
+				chorus.fixedWidth(btnFixedW).setScale(btnScale);
+				chorus.update(g, true, btnX - 4, cy - 1, font, tpText, mx, my);
+			}
+			int w = Math.min(font.width(title), maxW);
+			renderFitText(g, title, cx, cy, maxW, 0xFFFFAA00);
 			if (cx <= mx && mx <= cx + w && cy <= my && my <= cy + h) {
 				g.setComponentTooltipForNextFrame(font, buff.getDetail(e.getValue()), mx, my);
 			}
@@ -345,7 +335,7 @@ public class MazeMapScreen extends Screen implements MapUI {
 		float tw = font.width(text);
 		float scale = Math.min(1f, maxW / tw);
 		g.pose().pushMatrix();
-		g.pose().translate(x, y);
+		g.pose().translate(x, y + font.lineHeight * (1 - scale) / 2);
 		g.pose().scale(scale, scale);
 		g.text(font, text, 0, 0, color);
 		g.pose().popMatrix();

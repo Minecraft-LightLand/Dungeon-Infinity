@@ -9,6 +9,18 @@ import net.minecraft.server.level.ServerPlayer;
 public class DIAttackListener implements AttackListener {
 
 	@Override
+	public boolean onAttack(DamageData.Attack data) {
+		if (data.getTarget() instanceof ServerPlayer sp) {
+			if (MazeHistory.inMazeDim(sp)) {
+				var buffs = DIMeta.HISTORY.type().getOrCreate(sp).buff;
+				if (buffs.onAttacked(sp, data))
+					return true;
+			}
+		}
+		return false;
+	}
+
+	@Override
 	public void onDamage(DamageData.Defence data) {
 		if (data.getTarget() instanceof ServerPlayer sp) {
 			if (MazeHistory.inMazeDim(sp)) {

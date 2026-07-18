@@ -185,13 +185,13 @@
               "add": false,
               "count": {
                 "type": "minecraft:uniform",
-                "max": 16.0,
-                "min": 10.0
+                "max": 2.0,
+                "min": 2.0
               },
               "function": "minecraft:set_count"
             }
           ],
-          "name": "minecraft:experience_bottle"
+          "name": "golemdungeons:experience_pill"
         }
       ],
       "rolls": 1.0

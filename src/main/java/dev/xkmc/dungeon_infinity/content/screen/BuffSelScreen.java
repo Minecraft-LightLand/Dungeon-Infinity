@@ -26,8 +26,8 @@ public class BuffSelScreen extends Screen {
 	public BuffSelScreen(boolean large) {
 		super(Component.literal("Buff Selection"));
 		this.large = large;
-		reroll = new TextButton();
-		confirm = new TextButton();
+		reroll = new TextButton().pad(10, 5).fixedWidth(80);
+		confirm = new TextButton().pad(10, 5).fixedWidth(80);
 	}
 
 	public boolean mouseClicked(MouseButtonEvent event, boolean doubleClick) {
@@ -102,53 +102,21 @@ public class BuffSelScreen extends Screen {
 		g.pose().pushMatrix();
 		g.pose().translate(w / 2f, y0 / 2f);
 		g.pose().scale(titleScale, titleScale);
-		g.text(font, screenTitle, -font.width(screenTitle) / 2, 0, -1, true);
+		g.text(font, screenTitle, -font.width(screenTitle) / 2, (int) (font.lineHeight * (1 - titleScale) / 2), -1, true);
 		g.pose().popMatrix();
 
-		int btnPadX = 10;
-		int btnPadY = 5;
-		int fixedBtnW = 80;
 		int cardRight = x0 + pw * n + margin * (n - 1);
 		int cardCenterX = (x0 + cardRight) / 2;
 		int btnGap = 80;
 
 		int rby = h - y0 / 2;
 		Component rerollBtnText = Component.literal(DILang.REFRESH.get().getString() + " (" + data.rerollChance + ")");
-		int rtw = font.width(rerollBtnText);
-		int rbx = cardCenterX - btnGap - fixedBtnW / 2;
-		boolean canReroll = data.rerollChance > 0;
-		reroll.set(rbx, rby - btnPadY, fixedBtnW, font.lineHeight + btnPadY * 2);
-		boolean rh = canReroll && reroll.contains(mx, my);
-		g.fill(rbx, rby - btnPadY, rbx + fixedBtnW, rby + font.lineHeight + btnPadY, rh ? 0xFF5A5A5A : canReroll ? 0xFF3D3D3D : 0xFF2A2A2A);
-		g.fill(rbx, rby - btnPadY, rbx + fixedBtnW, rby - btnPadY + 1, rh ? 0xFF7A7A7A : canReroll ? 0xFF5A5A5A : 0xFF3D3D3D);
-		g.fill(rbx, rby + font.lineHeight + btnPadY - 1, rbx + fixedBtnW, rby + font.lineHeight + btnPadY, 0xFF2A2A2A);
-		g.fill(rbx, rby - btnPadY, rbx + 1, rby + font.lineHeight + btnPadY, rh ? 0xFF7A7A7A : canReroll ? 0xFF5A5A5A : 0xFF3D3D3D);
-		g.fill(rbx + fixedBtnW - 1, rby - btnPadY, rbx + fixedBtnW, rby + font.lineHeight + btnPadY, 0xFF2A2A2A);
-		g.text(font, rerollBtnText, rbx + (fixedBtnW - rtw) / 2, rby, rh ? 0xFFFFAA00 : canReroll ? 0xFFFFFFFF : 0xFF808080);
-		if (!canReroll) reroll.disable();
+		int rbx = cardCenterX - btnGap - 40;
+		reroll.update(g, data.rerollChance > 0, rbx, rby - 5, font, rerollBtnText, mx, my);
 
 		Component confirmText = DILang.CONFIRM.get();
-		int ctw = font.width(confirmText);
-		int cbx = cardCenterX + btnGap - fixedBtnW / 2;
-		int cby = h - y0 / 2;
-		if (sel >= 0) {
-			confirm.set(cbx, cby - btnPadY, fixedBtnW, font.lineHeight + btnPadY * 2);
-			boolean ch = confirm.contains(mx, my);
-			g.fill(cbx, cby - btnPadY, cbx + fixedBtnW, cby + font.lineHeight + btnPadY, ch ? 0xFF5A5A5A : 0xFF3D3D3D);
-			g.fill(cbx, cby - btnPadY, cbx + fixedBtnW, cby - btnPadY + 1, ch ? 0xFF7A7A7A : 0xFF5A5A5A);
-			g.fill(cbx, cby + font.lineHeight + btnPadY - 1, cbx + fixedBtnW, cby + font.lineHeight + btnPadY, 0xFF2A2A2A);
-			g.fill(cbx, cby - btnPadY, cbx + 1, cby + font.lineHeight + btnPadY, ch ? 0xFF7A7A7A : 0xFF5A5A5A);
-			g.fill(cbx + fixedBtnW - 1, cby - btnPadY, cbx + fixedBtnW, cby + font.lineHeight + btnPadY, 0xFF2A2A2A);
-			g.text(font, confirmText, cbx + (fixedBtnW - ctw) / 2, cby, ch ? 0xFFFFAA00 : 0xFFFFFFFF);
-		} else {
-			g.fill(cbx, cby - btnPadY, cbx + fixedBtnW, cby + font.lineHeight + btnPadY, 0xFF2A2A2A);
-			g.fill(cbx, cby - btnPadY, cbx + fixedBtnW, cby - btnPadY + 1, 0xFF3D3D3D);
-			g.fill(cbx, cby + font.lineHeight + btnPadY - 1, cbx + fixedBtnW, cby + font.lineHeight + btnPadY, 0xFF2A2A2A);
-			g.fill(cbx, cby - btnPadY, cbx + 1, cby + font.lineHeight + btnPadY, 0xFF3D3D3D);
-			g.fill(cbx + fixedBtnW - 1, cby - btnPadY, cbx + fixedBtnW, cby + font.lineHeight + btnPadY, 0xFF2A2A2A);
-			confirm.set(cbx, cby - btnPadY, fixedBtnW, font.lineHeight + btnPadY * 2);
-			g.text(font, confirmText, cbx + (fixedBtnW - ctw) / 2, cby, 0xFF808080);
-		}
+		int cbx = cardCenterX + btnGap - 40;
+		confirm.update(g, sel >= 0, cbx, rby - 5, font, confirmText, mx, my);
 
 		for (int i = 0; i < n; i++) {
 			var e = list.get(i);
@@ -185,7 +153,7 @@ public class BuffSelScreen extends Screen {
 		g.pose().pushMatrix();
 		g.pose().translate(x, y);
 		g.pose().scale(rate, rate);
-		g.text(font, comp, -font.width(comp) / 2, 0, -1);
+		g.text(font, comp, -font.width(comp) / 2, (int) (font.lineHeight * (1 - rate) / 2), -1);
 		g.pose().popMatrix();
 		return y + rate * font.lineHeight;
 	}
@@ -194,7 +162,7 @@ public class BuffSelScreen extends Screen {
 		g.pose().pushMatrix();
 		g.pose().translate(x, y);
 		g.pose().scale(rate, rate);
-		g.text(font, comp, 0, 0, -1);
+		g.text(font, comp, 0, (int) (font.lineHeight * (1 - rate) / 2), -1);
 		g.pose().popMatrix();
 		return y + rate * font.lineHeight;
 	}

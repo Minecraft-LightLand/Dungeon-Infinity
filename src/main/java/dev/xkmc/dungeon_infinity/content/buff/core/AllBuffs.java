@@ -2,10 +2,7 @@ package dev.xkmc.dungeon_infinity.content.buff.core;
 
 import com.mojang.datafixers.util.Pair;
 import com.tterrag.registrate.providers.RegistrateLangProvider;
-import dev.xkmc.dungeon_infinity.content.buff.special.ExtraRewardBuff;
-import dev.xkmc.dungeon_infinity.content.buff.special.HealGolemBuff;
-import dev.xkmc.dungeon_infinity.content.buff.special.InsuranceBuff;
-import dev.xkmc.dungeon_infinity.content.buff.special.ShieldBuff;
+import dev.xkmc.dungeon_infinity.content.buff.special.*;
 import dev.xkmc.dungeon_infinity.init.DungeonInfinity;
 import dev.xkmc.dungeon_infinity.init.reg.DIItems;
 import dev.xkmc.modulargolems.init.registrate.GolemItems;
@@ -54,9 +51,12 @@ public class AllBuffs {
 			new ItemStackTemplate(Items.EMERALD, 1)
 	));
 
-	public static final HealGolemBuff HEAL = new HealGolemBuff(DungeonInfinity.loc("heal"), 2);
+	public static final NinjaBuff NINJA = new NinjaBuff(DungeonInfinity.loc("ninja"), 1,
+			new PotionBuff.PotionEntry(MobEffects.INVISIBILITY, 0, 1200));
 
+	public static final HealGolemBuff HEAL = new HealGolemBuff(DungeonInfinity.loc("heal"), 2);
 	public static final ShieldBuff SHIELD = new ShieldBuff(DungeonInfinity.loc("shield"), 10);
+	public static final ChorusBuff CHORUS = new ChorusBuff(DungeonInfinity.loc("chorus"), 20);
 
 	public static final MazeBuff SIGHT = new MazeBuff(DungeonInfinity.loc("sight"), 1);
 	public static final MazeBuff ENDER = new MazeBuff(DungeonInfinity.loc("ender"), 1);
@@ -70,7 +70,9 @@ public class AllBuffs {
 			Pair.of(HEAL, 1),
 			Pair.of(REWARD, 4),
 			Pair.of(SHIELD, 5),
-			Pair.of(SIGHT, 1)
+			Pair.of(SIGHT, 1),
+			Pair.of(ENDER, 1),
+			Pair.of(NINJA, 1)
 	);
 	public static final List<Pair<MazeBuff, Integer>> SMALL_BUFFS = List.of(
 			Pair.of(TREASURE, 1),
@@ -80,7 +82,10 @@ public class AllBuffs {
 			Pair.of(SHIELD, 1),
 			Pair.of(SPEED, 1),
 			Pair.of(REACH, 1),
-			Pair.of(ARMOR, 1)
+			Pair.of(ARMOR, 1),
+			Pair.of(CHORUS, 3),
+			Pair.of(CARD_MASTER, 1),
+			Pair.of(HEARTHEART, 1)
 	);
 
 	public static void genLang(RegistrateLangProvider pvd) {
@@ -96,7 +101,9 @@ public class AllBuffs {
 		SIGHT.genLang(pvd, "Vision of Truth", "Double room finder rewards. +1 sight.");
 		ENDER.genLang(pvd, "Ender Force", "You can teleport to other anchors anywhere in the maze when you are not in active battle");
 		CARD_MASTER.genLang(pvd, "Card Master", "Gain %s reroll chance whenever you gain a new blessing");
-		HEARTHEART.genLang(pvd, "heartheart", "All humanoid armors and tools you picked up will be smelted into 1 respective ingot");
+		HEARTHEART.genLang(pvd, "Hearth heart", "All humanoid armors and tools you picked up will be smelted into 1 respective ingot");
+		NINJA.genLang(pvd, "Shadow Ninja", "Gain %s when entering battle. Immune to all damage from mobs not targeting you.");
+		CHORUS.genLang(pvd, "Chorus Power", "May teleport to target location after using room finder.");
 	}
 
 	public static void register() {

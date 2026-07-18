@@ -1,5 +1,6 @@
 package dev.xkmc.dungeon_infinity.content.buff.special;
 
+import dev.xkmc.dungeon_infinity.content.buff.core.ConsumableBuff;
 import dev.xkmc.dungeon_infinity.content.buff.core.MazeBuff;
 import dev.xkmc.dungeon_infinity.init.data.DILang;
 import net.minecraft.network.chat.Component;
@@ -10,7 +11,7 @@ import net.minecraft.world.item.ItemStackTemplate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class InsuranceBuff extends MazeBuff {
+public class InsuranceBuff extends ConsumableBuff {
 
 	private final List<ItemStackTemplate> items;
 	private final int exp;
@@ -20,12 +21,6 @@ public class InsuranceBuff extends MazeBuff {
 		this.exp = exp;
 		this.items = items;
 	}
-
-	@Override
-	public Component getTitle(int lv) {
-		return Component.translatable(id.getNamespace() + ".buff." + id.getPath()).append(" (" + lv + ")");
-	}
-
 	public void onRevive(ServerPlayer sp, int lv) {
 		removeOne(sp);
 		sp.giveExperiencePoints(exp);
