@@ -6,6 +6,7 @@ import dev.xkmc.dungeon_infinity.content.config.ShopConfig;
 import dev.xkmc.dungeon_infinity.content.config.TemplateConfig;
 import dev.xkmc.dungeon_infinity.init.DungeonInfinity;
 import dev.xkmc.dungeon_infinity.init.reg.DIItems;
+import dev.xkmc.golemdungeons.init.reg.GDItems;
 import dev.xkmc.golemdungeons.init.reg.GDModifiers;
 import dev.xkmc.l2core.serial.config.ConfigDataProvider;
 import dev.xkmc.modulargolems.init.material.GolemWeaponType;
@@ -343,7 +344,7 @@ public class DIConfigGen extends ConfigDataProvider {
 				.end()
 				.addPool("consumable")
 				.add(1, Items.GLOWSTONE_DUST, 4, 200, 32)
-				.add(1, Items.EXPERIENCE_BOTTLE, 4, 400, 64)
+				.add(1, GDItems.XP_PILL.get(), 1, 400, 64)
 				.add(1, Items.ARROW, 16, 200, 64)
 				.add(4, DIItems.KEY_OF_TOMB.get(), 1, 200, 6)
 				.add(4, heal2, 100, 3)
@@ -420,7 +421,7 @@ public class DIConfigGen extends ConfigDataProvider {
 				.addPool("consumable")
 				.add(1, Items.GLOWSTONE_DUST, 4, 200, 32)
 				.add(1, Items.ARROW, 16, 200, 64)
-				.add(1, Items.EXPERIENCE_BOTTLE, 4, 200, 64)
+				.add(4, GDItems.XP_PILL.get(), 4, 200, 64)
 				.add(4, DIItems.KEY_OF_TOMB.get(), 1, 200, 8)
 				.add(4, heal2, 50, 3)
 				.add(6, heal2sp, 50, 3)
@@ -507,7 +508,7 @@ public class DIConfigGen extends ConfigDataProvider {
 				.addPool("consumable")
 				.add(1, Items.GLOWSTONE_DUST, 4, 200, 32)
 				.add(16, Items.ARROW, 64, 200, 64)
-				.add(1, Items.EXPERIENCE_BOTTLE, 4, 200, 64)
+				.add(8, GDItems.XP_CAPSULE.get(), 1, 200, 64)
 				.add(4, DIItems.KEY_OF_TOMB.get(), 1, 200, 12)
 				.add(4, heal2, 50, 3)
 				.add(6, heal2sp, 50, 3)
@@ -592,7 +593,7 @@ public class DIConfigGen extends ConfigDataProvider {
 				.addPool("consumable")
 				.add(1, Items.GLOWSTONE_DUST, 4, 200, 32)
 				.add(16, Items.ARROW, 64, 200, 64)
-				.add(1, Items.EXPERIENCE_BOTTLE, 4, 200, 64)
+				.add(8, GDItems.XP_CAPSULE.get(), 1, 200, 64)
 				.add(4, DIItems.KEY_OF_TOMB.get(), 1, 200, 16)
 				.add(4, heal2, 50, 3)
 				.add(6, heal2sp, 50, 3)
