@@ -94,7 +94,11 @@ public class GolemSpawnTicker implements TrialTicker, MobSpawnTicker {
 			ins.healAll(level, 0.01f);
 		}
 		this.data.tickTrial(this, level, level.getGameTime());
-		if (this.bar != null) {
+		if (this.bar == null && !completed && active) {
+			bar = this.makeBar();
+			bar.setPlayers(ins.data.players);
+		}
+		if (bar != null) {
 			this.data.updateBar(this.bar, level, level.getGameTime());
 			bar.setPlayers(ins.data.players);
 		}
