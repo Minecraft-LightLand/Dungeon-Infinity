@@ -21,6 +21,7 @@ import dev.xkmc.l2core.init.reg.simple.DCReg;
 import dev.xkmc.l2core.init.reg.simple.DCVal;
 import dev.xkmc.l2modularblock.core.BlockTemplates;
 import dev.xkmc.l2modularblock.core.DelegateBlock;
+import net.minecraft.client.data.models.model.TexturedModel;
 import net.minecraft.core.BlockPos;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.CreativeModeTab;
@@ -91,7 +92,9 @@ public class DIItems {
 
 		MERCHANT_BLOCK = DungeonInfinity.REGISTRATE.block("merchant_block", p ->
 						DelegateBlock.newBaseBlock(p.noLootTable(), new MerchantBlock(), MerchantBlock.TE))
-				.defaultBlockstate().simpleItem()
+				.blockstate(()->(ctx,pvd)->
+						pvd.createTrivialBlock(ctx.get(), TexturedModel.CUBE_TOP_BOTTOM))
+				.simpleItem()
 				.tag(BlockTags.MINEABLE_WITH_PICKAXE)
 				.register();
 
