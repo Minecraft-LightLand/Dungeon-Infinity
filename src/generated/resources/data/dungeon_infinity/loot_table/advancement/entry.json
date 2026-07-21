@@ -76,6 +76,68 @@
           "functions": [
             {
               "components": {
+                "modulargolems:golem_materials": {
+                  "parts": [
+                    {
+                      "material": "modulargolems:iron",
+                      "part": "modulargolems:humanoid_golem_body"
+                    },
+                    {
+                      "material": "modulargolems:iron",
+                      "part": "modulargolems:humanoid_golem_arms"
+                    },
+                    {
+                      "material": "modulargolems:iron",
+                      "part": "modulargolems:humanoid_golem_legs"
+                    }
+                  ]
+                }
+              },
+              "function": "minecraft:set_components"
+            }
+          ],
+          "name": "modulargolems:humanoid_golem_holder"
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "components": {
+                "modulargolems:golem_materials": {
+                  "parts": [
+                    {
+                      "material": "modulargolems:iron",
+                      "part": "modulargolems:dog_golem_body"
+                    },
+                    {
+                      "material": "modulargolems:iron",
+                      "part": "modulargolems:dog_golem_legs"
+                    }
+                  ]
+                }
+              },
+              "function": "minecraft:set_components"
+            }
+          ],
+          "name": "modulargolems:dog_golem_holder"
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "components": {
                 "minecraft:can_break": {
                   "blocks": [
                     "minecraft:raw_copper_block",

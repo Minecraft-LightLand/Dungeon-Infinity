@@ -91,6 +91,7 @@ public class KeyOfAccess extends Item {
 				data.buff.sync(sp);
 			}
 		}
+		player.getCooldowns().addCooldown(stack, 10);
 		return InteractionResult.SUCCESS;
 	}
 

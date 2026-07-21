@@ -120,8 +120,8 @@ public class MazeRoomLootGen {
 						.add(weight(Items.IRON_INGOT, 2, 3, 80)),
 				single(Items.APPLE, 2, 4),
 				LootPool.lootPool()
-						.add(LootTableTemplate.getItem(Items.OAK_LOG, 3, 6))
-						.add(LootTableTemplate.getItem(GolemItems.GOLEM_TEMPLATE.get(), 3, 5)),
+						.add(LootTableTemplate.getItem(Items.OAK_LOG, 2, 4))
+						.add(LootTableTemplate.getItem(GolemItems.GOLEM_TEMPLATE.get(), 2, 4)),
 				LootPool.lootPool()
 						.when(LootItemRandomChanceCondition.randomChance(5 / 16f))
 						.add(weight(GolemItems.GOLD.get(), 1))
@@ -138,8 +138,8 @@ public class MazeRoomLootGen {
 						.add(weight(Items.IRON_INGOT, 2, 3, 80)),
 				single(Items.APPLE, 2, 4),
 				LootPool.lootPool()
-						.add(LootTableTemplate.getItem(Items.OAK_LOG, 3, 6))
-						.add(LootTableTemplate.getItem(GolemItems.GOLEM_TEMPLATE.get(), 3, 5)),
+						.add(LootTableTemplate.getItem(Items.OAK_LOG, 2, 4))
+						.add(LootTableTemplate.getItem(GolemItems.GOLEM_TEMPLATE.get(), 2, 4)),
 				LootPool.lootPool()
 						.when(LootItemRandomChanceCondition.randomChance(5 / 16f))
 						.add(weight(GolemItems.GOLD.get(), 1))
@@ -158,8 +158,8 @@ public class MazeRoomLootGen {
 						.add(weight(Items.IRON_INGOT, 2, 3, 80)),
 				single(Items.APPLE, 2, 4),
 				LootPool.lootPool()
-						.add(LootTableTemplate.getItem(Items.OAK_LOG, 3, 6))
-						.add(LootTableTemplate.getItem(GolemItems.GOLEM_TEMPLATE.get(), 3, 5)),
+						.add(LootTableTemplate.getItem(Items.OAK_LOG, 2, 4))
+						.add(LootTableTemplate.getItem(GolemItems.GOLEM_TEMPLATE.get(), 2, 4)),
 				LootPool.lootPool()
 						.when(LootItemRandomChanceCondition.randomChance(5 / 16f))
 						.add(weight(GolemItems.GOLD.get(), 1))
@@ -176,8 +176,8 @@ public class MazeRoomLootGen {
 						.add(weight(Items.IRON_INGOT, 3, 5, 80)),
 				single(Items.BAKED_POTATO, 2, 3),
 				LootPool.lootPool()
-						.add(LootTableTemplate.getItem(Items.OAK_LOG, 3, 6))
-						.add(LootTableTemplate.getItem(GolemItems.GOLEM_TEMPLATE.get(), 3, 5)),
+						.add(LootTableTemplate.getItem(Items.OAK_LOG, 2, 4))
+						.add(LootTableTemplate.getItem(GolemItems.GOLEM_TEMPLATE.get(), 2, 4)),
 				LootPool.lootPool()
 						.when(LootItemRandomChanceCondition.randomChance(7 / 16f))
 						.add(weight(GolemItems.GOLD.get(), 2))
@@ -194,8 +194,8 @@ public class MazeRoomLootGen {
 						.add(weight(Items.IRON_INGOT, 6, 8, 50)),
 				single(Items.BAKED_POTATO, 2, 3),
 				LootPool.lootPool()
-						.add(LootTableTemplate.getItem(Items.OAK_LOG, 3, 6))
-						.add(LootTableTemplate.getItem(GolemItems.GOLEM_TEMPLATE.get(), 4, 6)),
+						.add(LootTableTemplate.getItem(Items.OAK_LOG, 2, 4))
+						.add(LootTableTemplate.getItem(GolemItems.GOLEM_TEMPLATE.get(), 2, 4)),
 				LootPool.lootPool()
 						.when(LootItemRandomChanceCondition.randomChance(7 / 16f))
 						.add(weight(GolemItems.GOLD.get(), 2))
@@ -229,7 +229,7 @@ public class MazeRoomLootGen {
 						.add(weight(Items.COPPER_INGOT, 3, 5, 30))
 						.add(weight(Items.IRON_INGOT, 2, 5, 60)),
 				single(Items.BAKED_POTATO, 2, 3),
-				single(Items.OAK_LOG, 3, 5),
+				single(Items.OAK_LOG, 2, 4),
 				LootPool.lootPool()
 						.when(LootItemRandomChanceCondition.randomChance(4 / 16f))
 						.add(weight(GolemItems.SPEED.get(), 1))
@@ -247,8 +247,8 @@ public class MazeRoomLootGen {
 						.add(weight(Items.IRON_INGOT, 2, 5, 60)),
 				single(Items.BAKED_POTATO, 2, 3),
 				LootTableTemplate.getPool(2, 0)
-						.add(LootTableTemplate.getItem(Items.OAK_LOG, 3, 5))
-						.add(LootTableTemplate.getItem(GolemItems.GOLEM_TEMPLATE.get(), 3, 5)),
+						.add(LootTableTemplate.getItem(Items.OAK_LOG, 2, 4))
+						.add(LootTableTemplate.getItem(GolemItems.GOLEM_TEMPLATE.get(), 2, 4)),
 				LootPool.lootPool()
 						.when(LootItemRandomChanceCondition.randomChance(4 / 8f))
 						.add(weight(GolemItems.SPEED.get(), 1))
@@ -266,8 +266,8 @@ public class MazeRoomLootGen {
 						.add(weight(Items.IRON_INGOT, 2, 5, 60)),
 				single(Items.BAKED_POTATO, 2, 3),
 				LootTableTemplate.getPool(2, 0)
-						.add(LootTableTemplate.getItem(Items.OAK_LOG, 3, 5))
-						.add(LootTableTemplate.getItem(GolemItems.GOLEM_TEMPLATE.get(), 3, 5)),
+						.add(LootTableTemplate.getItem(Items.OAK_LOG, 2, 4))
+						.add(LootTableTemplate.getItem(GolemItems.GOLEM_TEMPLATE.get(), 2, 4)),
 				LootPool.lootPool()
 						.when(LootItemRandomChanceCondition.randomChance(8 / 16f))
 						.add(weight(GolemItems.GOLD.get(), 2))
@@ -288,8 +288,8 @@ public class MazeRoomLootGen {
 						.add(weight(Items.IRON_INGOT, 2, 5, 60)),
 				single(Items.GOLDEN_CARROT, 1, 2),
 				LootTableTemplate.getPool(2, 0)
-						.add(LootTableTemplate.getItem(Items.OAK_LOG, 3, 5))
-						.add(LootTableTemplate.getItem(GolemItems.GOLEM_TEMPLATE.get(), 3, 5)),
+						.add(LootTableTemplate.getItem(Items.OAK_LOG, 2, 4))
+						.add(LootTableTemplate.getItem(GolemItems.GOLEM_TEMPLATE.get(), 2, 4)),
 				LootPool.lootPool()
 						.when(LootItemRandomChanceCondition.randomChance(5 / 8f))
 						.add(weight(GolemItems.DIAMOND.get(), 1))
@@ -307,8 +307,8 @@ public class MazeRoomLootGen {
 						.add(weight(Items.IRON_INGOT, 2, 5, 60)),
 				single(Items.GOLDEN_CARROT, 1, 2),
 				LootTableTemplate.getPool(3, 0)
-						.add(LootTableTemplate.getItem(Items.OAK_LOG, 3, 5))
-						.add(LootTableTemplate.getItem(GolemItems.GOLEM_TEMPLATE.get(), 3, 5)),
+						.add(LootTableTemplate.getItem(Items.OAK_LOG, 2, 4))
+						.add(LootTableTemplate.getItem(GolemItems.GOLEM_TEMPLATE.get(), 2, 4)),
 				LootPool.lootPool()
 						.add(weight(GolemItems.DIAMOND.get(), 1))
 						.add(weight(GolemItems.SPEED.get(), 2))
@@ -328,8 +328,8 @@ public class MazeRoomLootGen {
 						.add(weight(Items.DIAMOND, 1, 1, 50)),
 				single(Items.GOLDEN_CARROT, 1, 2),
 				LootTableTemplate.getPool(3, 0)
-						.add(LootTableTemplate.getItem(Items.OAK_LOG, 3, 5))
-						.add(LootTableTemplate.getItem(GolemItems.GOLEM_TEMPLATE.get(), 3, 5)),
+						.add(LootTableTemplate.getItem(Items.OAK_LOG, 2, 4))
+						.add(LootTableTemplate.getItem(GolemItems.GOLEM_TEMPLATE.get(), 2, 4)),
 				LootPool.lootPool()
 						.add(weight(GolemItems.DIAMOND.get(), 2))
 						.add(weight(GolemItems.GOLD.get(), 2))
@@ -347,9 +347,8 @@ public class MazeRoomLootGen {
 				single(Items.DIAMOND, 3, 5),
 				single(Items.GOLDEN_CARROT, 1, 2),
 				LootTableTemplate.getPool(3, 0)
-						.add(LootTableTemplate.getItem(Items.OAK_LOG, 3, 5))
 						.add(LootTableTemplate.getItem(Items.LAPIS_LAZULI, 3, 5))
-						.add(LootTableTemplate.getItem(GolemItems.GOLEM_TEMPLATE.get(), 4, 6)),
+						.add(LootTableTemplate.getItem(GolemItems.GOLEM_TEMPLATE.get(), 2, 4)),
 				LootPool.lootPool()
 						.add(weight(GolemItems.ENCHANTED_GOLD.get(), 1))
 						.add(weight(GDModifiers.ITEM_REFORGE.get(), 1))
@@ -370,9 +369,8 @@ public class MazeRoomLootGen {
 						.add(weight(Items.IRON_INGOT, 4, 6, 60)),
 				single(Items.COOKED_BEEF, 2, 3),
 				LootTableTemplate.getPool(1, 1)
-						.add(LootTableTemplate.getItem(Items.OAK_LOG, 3, 5))
 						.add(LootTableTemplate.getItem(Items.LAPIS_LAZULI, 3, 5))
-						.add(LootTableTemplate.getItem(GolemItems.GOLEM_TEMPLATE.get(), 4, 6)),
+						.add(LootTableTemplate.getItem(GolemItems.GOLEM_TEMPLATE.get(), 2, 4)),
 				LootPool.lootPool()
 						.when(LootItemRandomChanceCondition.randomChance(4 / 8f))
 						.add(weight(GolemItems.SPEED.get(), 1))
@@ -391,9 +389,8 @@ public class MazeRoomLootGen {
 						.add(weight(Items.IRON_INGOT, 4, 6, 60)),
 				single(Items.COOKED_BEEF, 2, 3),
 				LootTableTemplate.getPool(2, 1)
-						.add(LootTableTemplate.getItem(Items.OAK_LOG, 3, 5))
 						.add(LootTableTemplate.getItem(Items.LAPIS_LAZULI, 3, 5))
-						.add(LootTableTemplate.getItem(GolemItems.GOLEM_TEMPLATE.get(), 4, 6)),
+						.add(LootTableTemplate.getItem(GolemItems.GOLEM_TEMPLATE.get(), 2, 4)),
 				LootPool.lootPool()
 						.add(weight(GolemItems.SPEED.get(), 1))
 						.add(weight(GolemItems.QUARTZ.get(), 1))
@@ -411,9 +408,8 @@ public class MazeRoomLootGen {
 						.add(weight(Items.IRON_INGOT, 4, 6, 60)),
 				single(Items.COOKED_BEEF, 2, 3),
 				LootTableTemplate.getPool(2, 1)
-						.add(LootTableTemplate.getItem(Items.OAK_LOG, 3, 5))
 						.add(LootTableTemplate.getItem(Items.LAPIS_LAZULI, 3, 5))
-						.add(LootTableTemplate.getItem(GolemItems.GOLEM_TEMPLATE.get(), 4, 6)),
+						.add(LootTableTemplate.getItem(GolemItems.GOLEM_TEMPLATE.get(), 2, 4)),
 				LootPool.lootPool()
 						.add(weight(GolemItems.GOLD.get(), 2))
 						.add(weight(GolemItems.SPEED.get(), 2))
@@ -433,9 +429,8 @@ public class MazeRoomLootGen {
 						.add(weight(Items.IRON_INGOT, 4, 6, 60)),
 				single(Items.GOLDEN_CARROT, 1, 2),
 				LootTableTemplate.getPool(2, 1)
-						.add(LootTableTemplate.getItem(Items.OAK_LOG, 3, 5))
 						.add(LootTableTemplate.getItem(Items.LAPIS_LAZULI, 3, 5))
-						.add(LootTableTemplate.getItem(GolemItems.GOLEM_TEMPLATE.get(), 4, 6)),
+						.add(LootTableTemplate.getItem(GolemItems.GOLEM_TEMPLATE.get(), 2, 4)),
 				LootPool.lootPool()
 						.add(weight(GolemItems.DIAMOND.get(), 1))
 						.add(weight(GolemItems.SPEED.get(), 2))
@@ -453,9 +448,8 @@ public class MazeRoomLootGen {
 						.add(weight(Items.IRON_INGOT, 4, 6, 60)),
 				single(Items.GOLDEN_CARROT, 1, 2),
 				LootTableTemplate.getPool(3, 1)
-						.add(LootTableTemplate.getItem(Items.OAK_LOG, 3, 5))
 						.add(LootTableTemplate.getItem(Items.LAPIS_LAZULI, 3, 5))
-						.add(LootTableTemplate.getItem(GolemItems.GOLEM_TEMPLATE.get(), 4, 6)),
+						.add(LootTableTemplate.getItem(GolemItems.GOLEM_TEMPLATE.get(), 2, 4)),
 				LootPool.lootPool()
 						.add(weight(GDModifiers.ITEM_RESISTANCE.get(), 1))
 						.add(weight(GDModifiers.ITEM_REFORGE.get(), 1))
@@ -473,9 +467,8 @@ public class MazeRoomLootGen {
 						.add(weight(Items.IRON_INGOT, 4, 6, 60)),
 				single(Items.GOLDEN_APPLE, 2, 3),
 				LootTableTemplate.getPool(3, 1)
-						.add(LootTableTemplate.getItem(Items.OAK_LOG, 3, 5))
 						.add(LootTableTemplate.getItem(Items.LAPIS_LAZULI, 3, 5))
-						.add(LootTableTemplate.getItem(GolemItems.GOLEM_TEMPLATE.get(), 4, 6)),
+						.add(LootTableTemplate.getItem(GolemItems.GOLEM_TEMPLATE.get(), 2, 4)),
 				LootPool.lootPool()
 						.add(weight(GDModifiers.ITEM_RESISTANCE.get(), 1))
 						.add(weight(GDModifiers.ITEM_REFORGE.get(), 1))
@@ -494,9 +487,8 @@ public class MazeRoomLootGen {
 				single(Items.NETHERITE_INGOT, 1, 2),
 				single(Items.ENCHANTED_GOLDEN_APPLE, 1, 1),
 				LootTableTemplate.getPool(3, 1)
-						.add(LootTableTemplate.getItem(Items.OAK_LOG, 3, 5))
 						.add(LootTableTemplate.getItem(Items.LAPIS_LAZULI, 3, 5))
-						.add(LootTableTemplate.getItem(GolemItems.GOLEM_TEMPLATE.get(), 4, 6)),
+						.add(LootTableTemplate.getItem(GolemItems.GOLEM_TEMPLATE.get(), 2, 4)),
 				LootPool.lootPool()
 						.add(weight(GDModifiers.ITEM_RESISTANCE.get(), 1))
 						.add(weight(GolemItems.ENCHANTED_GOLD.get(), 1))
@@ -517,9 +509,8 @@ public class MazeRoomLootGen {
 						.add(weight(Items.IRON_INGOT, 6, 8, 30)),
 				single(Items.COOKED_BEEF, 2, 3),
 				LootTableTemplate.getPool(1, 1)
-						.add(LootTableTemplate.getItem(Items.OAK_LOG, 3, 5))
 						.add(LootTableTemplate.getItem(Items.LAPIS_LAZULI, 3, 5))
-						.add(LootTableTemplate.getItem(GolemItems.GOLEM_TEMPLATE.get(), 4, 6)),
+						.add(LootTableTemplate.getItem(GolemItems.GOLEM_TEMPLATE.get(), 2, 4)),
 				LootPool.lootPool()
 						.add(weight(GolemItems.SPEED.get(), 1))
 						.add(weight(GolemItems.QUARTZ.get(), 1))
@@ -537,9 +528,8 @@ public class MazeRoomLootGen {
 						.add(weight(Items.IRON_INGOT, 6, 8, 30)),
 				single(Items.COOKED_BEEF, 2, 3),
 				LootTableTemplate.getPool(2, 1)
-						.add(LootTableTemplate.getItem(Items.OAK_LOG, 3, 5))
 						.add(LootTableTemplate.getItem(Items.TNT, 3, 5))
-						.add(LootTableTemplate.getItem(GolemItems.GOLEM_TEMPLATE.get(), 4, 6)),
+						.add(LootTableTemplate.getItem(GolemItems.GOLEM_TEMPLATE.get(), 2, 4)),
 				LootPool.lootPool()
 						.add(weight(GolemItems.GOLD.get(), 1))
 						.add(weight(GolemItems.SIZE_UPGRADE.get(), 1))
@@ -557,9 +547,8 @@ public class MazeRoomLootGen {
 						.add(weight(Items.IRON_INGOT, 6, 8, 30)),
 				single(Items.COOKED_BEEF, 2, 3),
 				LootTableTemplate.getPool(2, 1)
-						.add(LootTableTemplate.getItem(Items.OAK_LOG, 3, 5))
 						.add(LootTableTemplate.getItem(Items.TNT, 3, 5))
-						.add(LootTableTemplate.getItem(GolemItems.GOLEM_TEMPLATE.get(), 4, 6)),
+						.add(LootTableTemplate.getItem(GolemItems.GOLEM_TEMPLATE.get(), 2, 4)),
 				LootPool.lootPool()
 						.add(weight(GolemItems.ENCHANTED_GOLD.get(), 1))
 						.add(weight(GolemItems.ADD_DIAMOND.get(), 1))
@@ -579,9 +568,8 @@ public class MazeRoomLootGen {
 						.add(weight(Items.IRON_INGOT, 6, 8, 30)),
 				single(Items.GOLDEN_CARROT, 1, 2),
 				LootTableTemplate.getPool(2, 1)
-						.add(LootTableTemplate.getItem(Items.OAK_LOG, 3, 5))
 						.add(LootTableTemplate.getItem(Items.TNT, 3, 5))
-						.add(LootTableTemplate.getItem(GolemItems.GOLEM_TEMPLATE.get(), 4, 6)),
+						.add(LootTableTemplate.getItem(GolemItems.GOLEM_TEMPLATE.get(), 2, 4)),
 				LootPool.lootPool()
 						.add(weight(GolemItems.ADD_DIAMOND.get(), 1))
 						.add(weight(GolemItems.PICKUP.get(), 1))
@@ -599,9 +587,8 @@ public class MazeRoomLootGen {
 						.add(weight(Items.IRON_INGOT, 6, 8, 30)),
 				single(Items.GOLDEN_CARROT, 1, 2),
 				LootTableTemplate.getPool(3, 1)
-						.add(LootTableTemplate.getItem(Items.OAK_LOG, 3, 5))
 						.add(LootTableTemplate.getItem(Items.TNT, 3, 5))
-						.add(LootTableTemplate.getItem(GolemItems.GOLEM_TEMPLATE.get(), 4, 6)),
+						.add(LootTableTemplate.getItem(GolemItems.GOLEM_TEMPLATE.get(), 2, 4)),
 				LootPool.lootPool()
 						.add(weight(GDModifiers.ITEM_RESISTANCE.get(), 1))
 						.add(weight(GDModifiers.ITEM_REFORGE.get(), 1))
@@ -619,9 +606,8 @@ public class MazeRoomLootGen {
 						.add(weight(Items.IRON_INGOT, 6, 8, 30)),
 				single(Items.GOLDEN_APPLE, 2, 3),
 				LootTableTemplate.getPool(3, 1)
-						.add(LootTableTemplate.getItem(Items.OAK_LOG, 3, 5))
 						.add(LootTableTemplate.getItem(Items.TNT, 3, 5))
-						.add(LootTableTemplate.getItem(GolemItems.GOLEM_TEMPLATE.get(), 4, 6)),
+						.add(LootTableTemplate.getItem(GolemItems.GOLEM_TEMPLATE.get(), 2, 4)),
 				LootPool.lootPool()
 						.add(weight(GDModifiers.ITEM_RESISTANCE.get(), 1))
 						.add(weight(GDModifiers.ITEM_REFORGE.get(), 1))
@@ -641,9 +627,8 @@ public class MazeRoomLootGen {
 				single(Items.NETHERITE_INGOT, 1, 2),
 				single(Items.ENCHANTED_GOLDEN_APPLE, 1, 1),
 				LootTableTemplate.getPool(3, 1)
-						.add(LootTableTemplate.getItem(Items.OAK_LOG, 3, 5))
 						.add(LootTableTemplate.getItem(Items.TNT, 3, 5))
-						.add(LootTableTemplate.getItem(GolemItems.GOLEM_TEMPLATE.get(), 4, 6)),
+						.add(LootTableTemplate.getItem(GolemItems.GOLEM_TEMPLATE.get(), 2, 4)),
 				LootPool.lootPool()
 						.add(weight(GDModifiers.ITEM_RESISTANCE.get(), 1))
 						.add(weight(GolemItems.ENCHANTED_GOLD.get(), 1))
@@ -664,9 +649,8 @@ public class MazeRoomLootGen {
 						.add(weight(Items.IRON_INGOT, 6, 8, 30)),
 				single(Items.COOKED_BEEF, 2, 3),
 				LootTableTemplate.getPool(1, 1)
-						.add(LootTableTemplate.getItem(Items.OAK_LOG, 3, 5))
 						.add(LootTableTemplate.getItem(Items.TNT, 3, 5))
-						.add(LootTableTemplate.getItem(GolemItems.GOLEM_TEMPLATE.get(), 4, 6)),
+						.add(LootTableTemplate.getItem(GolemItems.GOLEM_TEMPLATE.get(), 2, 4)),
 				LootPool.lootPool()
 						.add(weight(GolemItems.SPEED.get(), 1))
 						.add(weight(GolemItems.ADD_DIAMOND.get(), 1))
@@ -684,9 +668,8 @@ public class MazeRoomLootGen {
 						.add(weight(Items.IRON_INGOT, 6, 8, 30)),
 				single(Items.COOKED_BEEF, 2, 3),
 				LootTableTemplate.getPool(2, 1)
-						.add(LootTableTemplate.getItem(Items.OAK_LOG, 3, 5))
 						.add(LootTableTemplate.getItem(Items.TNT, 3, 5))
-						.add(LootTableTemplate.getItem(GolemItems.GOLEM_TEMPLATE.get(), 4, 6)),
+						.add(LootTableTemplate.getItem(GolemItems.GOLEM_TEMPLATE.get(), 2, 4)),
 				LootPool.lootPool()
 						.add(weight(GolemItems.GOLD.get(), 1))
 						.add(weight(GolemItems.ADD_NETHERITE.get(), 1))
@@ -704,9 +687,8 @@ public class MazeRoomLootGen {
 						.add(weight(Items.IRON_INGOT, 6, 8, 30)),
 				single(Items.COOKED_BEEF, 2, 3),
 				LootTableTemplate.getPool(2, 1)
-						.add(LootTableTemplate.getItem(Items.OAK_LOG, 3, 5))
 						.add(LootTableTemplate.getItem(Items.TNT, 3, 5))
-						.add(LootTableTemplate.getItem(GolemItems.GOLEM_TEMPLATE.get(), 4, 6)),
+						.add(LootTableTemplate.getItem(GolemItems.GOLEM_TEMPLATE.get(), 2, 4)),
 				LootPool.lootPool()
 						.add(weight(GolemItems.ADD_NETHERITE.get(), 1))
 						.add(weight(GolemItems.CAULDRON.get(), 3)),
@@ -726,9 +708,8 @@ public class MazeRoomLootGen {
 						.add(weight(Items.IRON_INGOT, 6, 8, 30)),
 				single(Items.GOLDEN_CARROT, 1, 2),
 				LootTableTemplate.getPool(2, 1)
-						.add(LootTableTemplate.getItem(Items.OAK_LOG, 3, 5))
 						.add(LootTableTemplate.getItem(Items.TNT, 3, 5))
-						.add(LootTableTemplate.getItem(GolemItems.GOLEM_TEMPLATE.get(), 4, 6)),
+						.add(LootTableTemplate.getItem(GolemItems.GOLEM_TEMPLATE.get(), 2, 4)),
 				LootPool.lootPool()
 						.add(weight(GolemItems.ADD_NETHERITE.get(), 1))
 						.add(weight(GDModifiers.ITEM_RESISTANCE.get(), 1))
@@ -746,9 +727,8 @@ public class MazeRoomLootGen {
 						.add(weight(Items.IRON_INGOT, 6, 8, 30)),
 				single(Items.GOLDEN_CARROT, 1, 2),
 				LootTableTemplate.getPool(3, 1)
-						.add(LootTableTemplate.getItem(Items.OAK_LOG, 3, 5))
 						.add(LootTableTemplate.getItem(Items.TNT, 3, 5))
-						.add(LootTableTemplate.getItem(GolemItems.GOLEM_TEMPLATE.get(), 4, 6)),
+						.add(LootTableTemplate.getItem(GolemItems.GOLEM_TEMPLATE.get(), 2, 4)),
 				LootPool.lootPool()
 						.add(weight(GDModifiers.ITEM_RESISTANCE.get(), 1))
 						.add(weight(GDModifiers.ITEM_REFORGE.get(), 1)),
@@ -767,9 +747,8 @@ public class MazeRoomLootGen {
 						.add(weight(Items.IRON_INGOT, 6, 8, 30)),
 				single(Items.GOLDEN_APPLE, 2, 3),
 				LootTableTemplate.getPool(3, 1)
-						.add(LootTableTemplate.getItem(Items.OAK_LOG, 3, 5))
 						.add(LootTableTemplate.getItem(Items.TNT, 3, 5))
-						.add(LootTableTemplate.getItem(GolemItems.GOLEM_TEMPLATE.get(), 4, 6)),
+						.add(LootTableTemplate.getItem(GolemItems.GOLEM_TEMPLATE.get(), 2, 4)),
 				LootPool.lootPool()
 						.add(weight(GDModifiers.ITEM_RESISTANCE.get(), 1))
 						.add(weight(GDModifiers.ITEM_REFORGE.get(), 1)),
