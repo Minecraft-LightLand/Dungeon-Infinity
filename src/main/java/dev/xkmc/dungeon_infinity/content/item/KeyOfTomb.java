@@ -27,12 +27,13 @@ public class KeyOfTomb extends Item {
 		var data = DIMeta.LOST.type().getOrCreate(player);
 		if (!data.list.isEmpty()) {
 			if (player instanceof ServerPlayer sp) {
+				player.getCooldowns().addCooldown(player.getItemInHand(hand), 10);
+				player.getItemInHand(hand).shrink(1);
 				var list = data.poll(9);
 				for (var e : list) {
 					sp.getInventory().placeItemBackInInventory(e);
 				}
 				DIMeta.LOST.type().network.toClient(sp);
-				player.getItemInHand(hand).shrink(1);
 				return InteractionResult.SUCCESS;
 			}
 		}
