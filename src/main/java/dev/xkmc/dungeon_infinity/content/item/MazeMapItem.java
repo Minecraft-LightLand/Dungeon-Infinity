@@ -95,6 +95,7 @@ public class MazeMapItem extends Item {
 		}
 
 		public static void checkBuffScreen() {
+			if (Minecraft.getInstance().screen != null) return;
 			var player = Minecraft.getInstance().player;
 			if (player == null) return;
 			var data = DIMeta.HISTORY.type().getOrCreate(player).buff;
