@@ -127,7 +127,6 @@ public class EarlyGolemSpawn extends AbstractGolemSpawn {
 
 			// LARGE: 大型兵+远程护卫
 			map.add(GolemDungeons.TRIAL, GolemSpawnData.EARLY_ROOM_LARGE, new TrialConfig().setReward(MazeRoomLootGen.STONE_ROOM_LARGE)
-					.add(of(LARGE_1, 1))
 					.add(of(LARGE_1, 1), of(HUMANOID_RANGED, 1))
 			);
 
