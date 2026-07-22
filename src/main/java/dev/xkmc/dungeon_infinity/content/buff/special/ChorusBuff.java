@@ -21,8 +21,11 @@ public class ChorusBuff extends ConsumableBuff {
 		removeOne(sp);
 		int x = prev[0] >> 5;
 		int z = prev[0] & 31;
-		var pos = MazePos.map(sp.blockPosition());
-		var target = new BlockPos(pos.x() * 400 + x * 16 + 8, pos.y() * 16 + 3, pos.z() * 400 + z * 16 + 8).getCenter();
+		var mp = MazePos.map(sp.blockPosition());
+		var pos = new BlockPos(mp.x() * 400 + x * 16 + 8, mp.y() * 16 + 8, mp.z() * 400 + z * 16 + 8);
+		while (sp.level().getBlockState(pos).isAir())
+			pos = pos.below();
+		var target = pos.above().getCenter();
 		sp.teleportTo(target.x, target.y, target.z);
 	}
 

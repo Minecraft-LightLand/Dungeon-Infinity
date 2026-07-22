@@ -50,6 +50,8 @@ public class GolemSpawnTicker implements TrialTicker, MobSpawnTicker {
 	public boolean active = false;
 	@SerialField
 	public boolean completed = false;
+	@SerialField
+	public final List<UUID> passive = new ArrayList<>();
 
 	private @Nullable CustomBossEvent bar;
 
@@ -92,6 +94,18 @@ public class GolemSpawnTicker implements TrialTicker, MobSpawnTicker {
 	public void tick(ServerLevel level, MobRoomHolder ins) {
 		if (completed && active) {
 			ins.healAll(level, 0.01f);
+		}
+		if (completed || !active) {
+			if (!passive.isEmpty()) {
+				for (var id : passive) {
+					if (level.getEntity(id) instanceof LivingEntity le) {
+						if (le.isAlive() && le.getPassengers().isEmpty()) {
+							le.discard();
+						}
+					}
+				}
+				passive.clear();
+			}
 		}
 		this.data.tickTrial(this, level, level.getGameTime());
 		if (this.bar == null && !completed && active) {
@@ -162,6 +176,9 @@ public class GolemSpawnTicker implements TrialTicker, MobSpawnTicker {
 
 		Vec3 vec = Vec3.atCenterOf(pos);
 		e.setPos(vec);
+		for (Entity le : e.getSelfAndPassengers().toList())
+			if (le instanceof LivingEntity && !(le instanceof AbstractGolemEntity<?, ?>))
+				passive.add(le.getUUID());
 	}
 
 	@Override

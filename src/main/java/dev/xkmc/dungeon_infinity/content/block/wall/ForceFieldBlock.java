@@ -7,6 +7,7 @@ import dev.xkmc.dungeon_infinity.content.cap.MazePos;
 import dev.xkmc.dungeon_infinity.init.reg.DIMeta;
 import dev.xkmc.l2modularblock.core.BlockTemplates;
 import dev.xkmc.l2modularblock.core.DelegateBlock;
+import dev.xkmc.l2modularblock.core.VoxelBuilder;
 import dev.xkmc.l2modularblock.mult.PlacementBlockMethod;
 import dev.xkmc.l2modularblock.one.PathFindBlockMethod;
 import dev.xkmc.l2modularblock.one.ShapeBlockMethod;
@@ -17,6 +18,7 @@ import net.minecraft.client.data.models.model.ModelTemplates;
 import net.minecraft.client.data.models.model.TextureMapping;
 import net.minecraft.client.data.models.model.TexturedModel;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BlockItem;
@@ -24,10 +26,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Mirror;
-import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -39,7 +38,20 @@ import org.jspecify.annotations.Nullable;
 import static net.minecraft.client.data.models.BlockModelGenerators.ROTATION_FACING;
 import static net.minecraft.client.data.models.BlockModelGenerators.plainVariant;
 
-public class ForceFieldBlock  implements PlacementBlockMethod, ShapeBlockMethod, PathFindBlockMethod {
+public class ForceFieldBlock implements PlacementBlockMethod, ShapeBlockMethod, PathFindBlockMethod {
+
+	public static VoxelShape[] SHAPES = new VoxelShape[6];
+
+	static {
+		var vox = new VoxelBuilder(0, 0, 0, 16, 16, 1);
+		for (var dir : Direction.values()) {
+			if (dir == Direction.UP)
+				SHAPES[dir.ordinal()] = Block.box(0, 15, 0, 16, 16, 16);
+			else if (dir == Direction.DOWN)
+				SHAPES[dir.ordinal()] = Block.box(0, 0, 0, 16, 1, 16);
+			else SHAPES[dir.ordinal()] = vox.rotateFromNorth(dir);
+		}
+	}
 
 	@Override
 	public @Nullable BlockState getStateForPlacement(BlockState state, BlockPlaceContext context) {
@@ -60,12 +72,12 @@ public class ForceFieldBlock  implements PlacementBlockMethod, ShapeBlockMethod,
 			var dir = state.getValue(BlockStateProperties.FACING).getUnitVec3();
 			return cen.dot(dir) > 0 ? Shapes.block() : Shapes.empty();
 		}
-		return Shapes.block();
+		return SHAPES[state.getValue(BlockStateProperties.FACING).ordinal()];
 	}
 
 	@Override
 	public @Nullable VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext ctx) {
-		return Shapes.block();
+		return SHAPES[state.getValue(BlockStateProperties.FACING).ordinal()];
 	}
 
 	@Override
