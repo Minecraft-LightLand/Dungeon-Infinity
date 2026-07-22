@@ -65,7 +65,6 @@ public class MerchantBlockEntity extends BaseBlockEntity implements TickableBloc
 		var level = getLevel();
 		if (!(level instanceof ServerLevel sl)) return;
 		long time = level.getGameTime();
-		if (time < nextSpawnTime) return;
 		if (time % 20 != 0) return;
 		if (prevMerchant != null) {
 			var sp = hasPlayerNearby(level, 48);
@@ -80,6 +79,7 @@ public class MerchantBlockEntity extends BaseBlockEntity implements TickableBloc
 				return;
 			}
 		}
+		if (time < nextSpawnTime) return;
 		var sp = hasPlayerNearby(level, 24);
 		if (sp == null || !MazeHistory.inMazeDim(sp)) {
 			return;
