@@ -3,6 +3,7 @@ package dev.xkmc.dungeon_infinity.content.block.merchant;
 import dev.xkmc.dungeon_infinity.content.cap.MazeHistory;
 import dev.xkmc.dungeon_infinity.init.DungeonInfinity;
 import dev.xkmc.l2core.base.tile.BaseBlockEntity;
+import dev.xkmc.l2core.util.ServerProxy;
 import dev.xkmc.l2modularblock.tile_api.TickableBlockEntity;
 import dev.xkmc.l2serial.serialization.marker.SerialClass;
 import dev.xkmc.l2serial.serialization.marker.SerialField;
@@ -68,9 +69,9 @@ public class MerchantBlockEntity extends BaseBlockEntity implements TickableBloc
 		var level = getLevel();
 		if (!(level instanceof ServerLevel sl)) return;
 		if (type.isEmpty()) {
-			DungeonInfinity.LOGGER.error("TICK: MerchantBlock at " + getBlockPos() + " is empty!");
+			DungeonInfinity.LOGGER.error("TICK FAIL: MerchantBlock at " + getBlockPos() + " is empty!");
 			for (var e : sl.players()) {
-				e.sendSystemMessage(Component.literal("TICK: MerchantBlock at " + getBlockPos() + " is empty!" +
+				e.sendSystemMessage(Component.literal("TICK: MerchantBlock at " + getBlockPos() + " is empty! Dist = " +
 						(int) getBlockPos().getCenter().subtract(e.position()).horizontalDistance()));
 			}
 			setType("groceries");
@@ -120,17 +121,19 @@ public class MerchantBlockEntity extends BaseBlockEntity implements TickableBloc
 	@Override
 	protected void loadAdditional(ValueInput input) {
 		super.loadAdditional(input);
-		if (level instanceof ServerLevel sl) {
-			if (type.isEmpty()) {
-				DungeonInfinity.LOGGER.error("LOAD: MerchantBlock at " + getBlockPos() + " is empty!");
-				for (var e : sl.players()) {
-					e.sendSystemMessage(Component.literal("LOAD: MerchantBlock at " + getBlockPos() + " is empty! Dist = " +
-							(int) getBlockPos().getCenter().subtract(e.position()).horizontalDistance()));
-				}
-				setType("groceries");
-			} else {
-				DungeonInfinity.LOGGER.info("LOAD: MerchantBlock at " + getBlockPos() + " is loaded as " + type);
+		if (level != null && level.isClientSide()) return;
+		var server = ServerProxy.getServer();
+		if (server.isEmpty()) return;
+		var list = server.get().getPlayerList().getPlayers();
+		if (type.isEmpty()) {
+			DungeonInfinity.LOGGER.error("LOAD FAIL: MerchantBlock at " + getBlockPos() + " is empty!");
+			for (var e : list) {
+				e.sendSystemMessage(Component.literal("LOAD: MerchantBlock at " + getBlockPos() + " is empty! Dist = " +
+						(int) getBlockPos().getCenter().subtract(e.position()).horizontalDistance()));
 			}
+			setType("groceries");
+		} else {
+			DungeonInfinity.LOGGER.info("LOAD: MerchantBlock at " + getBlockPos() + " is loaded as " + type);
 		}
 	}
 }
