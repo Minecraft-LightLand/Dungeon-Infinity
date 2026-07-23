@@ -1,17 +1,20 @@
 package dev.xkmc.dungeon_infinity.content.block.merchant;
 
 import dev.xkmc.dungeon_infinity.content.cap.MazeHistory;
+import dev.xkmc.dungeon_infinity.init.DungeonInfinity;
 import dev.xkmc.l2core.base.tile.BaseBlockEntity;
 import dev.xkmc.l2modularblock.tile_api.TickableBlockEntity;
 import dev.xkmc.l2serial.serialization.marker.SerialClass;
 import dev.xkmc.l2serial.serialization.marker.SerialField;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.trading.Merchant;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.storage.ValueInput;
 import org.jspecify.annotations.Nullable;
 
 import java.util.UUID;
@@ -20,7 +23,7 @@ import java.util.UUID;
 public class MerchantBlockEntity extends BaseBlockEntity implements TickableBlockEntity {
 
 	@SerialField
-	public String type = "groceries";
+	public String type = "";
 
 	@SerialField
 	public long nextSpawnTime;
@@ -64,6 +67,14 @@ public class MerchantBlockEntity extends BaseBlockEntity implements TickableBloc
 	public void tick() {
 		var level = getLevel();
 		if (!(level instanceof ServerLevel sl)) return;
+		if (type.isEmpty()) {
+			DungeonInfinity.LOGGER.error("TICK: MerchantBlock at " + getBlockPos() + " is empty!");
+			for (var e : sl.players()) {
+				e.sendSystemMessage(Component.literal("TICK: MerchantBlock at " + getBlockPos() + " is empty!" +
+						(int) getBlockPos().getCenter().subtract(e.position()).horizontalDistance()));
+			}
+			setType("groceries");
+		}
 		long time = level.getGameTime();
 		if (time % 20 != 0) return;
 		if (prevMerchant != null) {
@@ -106,4 +117,20 @@ public class MerchantBlockEntity extends BaseBlockEntity implements TickableBloc
 		prevMerchant = merchant.getUUID();
 	}
 
+	@Override
+	protected void loadAdditional(ValueInput input) {
+		super.loadAdditional(input);
+		if (level instanceof ServerLevel sl) {
+			if (type.isEmpty()) {
+				DungeonInfinity.LOGGER.error("LOAD: MerchantBlock at " + getBlockPos() + " is empty!");
+				for (var e : sl.players()) {
+					e.sendSystemMessage(Component.literal("LOAD: MerchantBlock at " + getBlockPos() + " is empty! Dist = " +
+							(int) getBlockPos().getCenter().subtract(e.position()).horizontalDistance()));
+				}
+				setType("groceries");
+			} else {
+				DungeonInfinity.LOGGER.info("LOAD: MerchantBlock at " + getBlockPos() + " is loaded as " + type);
+			}
+		}
+	}
 }
