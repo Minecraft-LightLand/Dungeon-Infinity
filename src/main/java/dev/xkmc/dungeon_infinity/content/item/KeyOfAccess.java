@@ -53,8 +53,8 @@ public class KeyOfAccess extends Item {
 		var pos = DIItems.POS.get(stack);
 		if (pos == null) {
 			var r = player.getRandom();
-			int x = (int) Math.round(r.nextGaussian() * 2);
-			int z = (int) Math.round(r.nextGaussian() * 2);
+			int x = r.nextInt(-2, 3);
+			int z = r.nextInt(-2, 3);
 			if (target.getChunkSource().getGenerator() instanceof MazeChunkGenerator gen) {
 				var dim = gen.getMaze(target.getChunkSource().randomState());
 				var maze = dim.getRegion(x, 15, z);
