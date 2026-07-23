@@ -42,7 +42,7 @@ public class PositionerRenderer implements BlockEntityRenderer<PositionerBlockEn
 
 	public boolean shouldRender(PositionerBlockEntity be, Vec3 pos) {
 		LocalPlayer player = Minecraft.getInstance().player;
-		return player != null && player.getAbilities().instabuild;
+		return player != null && player.getAbilities().instabuild && BlockEntityRenderer.super.shouldRender(be, pos);
 	}
 
 	public PositionerRenderState createRenderState() {
@@ -62,7 +62,7 @@ public class PositionerRenderer implements BlockEntityRenderer<PositionerBlockEn
 		Vector3f zero = Vec3.atLowerCornerOf(be.blockPos).toVector3f();
 
 		for (BlockPos e : be.targets) {
-			AABB aabb = new AABB( (e.getX() - 1),  e.getY(),  (e.getZ() - 1),  (e.getX() + 2),  (e.getY() + 3),  (e.getZ() + 2));
+			AABB aabb = new AABB((e.getX() - 1), e.getY(), (e.getZ() - 1), (e.getX() + 2), (e.getY() + 3), (e.getZ() + 2));
 			renderBox(pose, vc, aabb, zero, -8401440);
 		}
 	}
