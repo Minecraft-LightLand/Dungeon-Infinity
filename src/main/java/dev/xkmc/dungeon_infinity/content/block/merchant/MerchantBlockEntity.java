@@ -132,8 +132,7 @@ public class MerchantBlockEntity extends BaseBlockEntity implements TickableBloc
 						(int) getBlockPos().getCenter().subtract(e.position()).horizontalDistance()));
 			}
 			setType("groceries");
-		} else {
-			DungeonInfinity.LOGGER.info("LOAD: MerchantBlock at " + getBlockPos() + " is loaded as " + type);
 		}
 	}
+
 }

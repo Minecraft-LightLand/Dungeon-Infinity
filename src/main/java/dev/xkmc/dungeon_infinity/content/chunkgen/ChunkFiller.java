@@ -56,13 +56,7 @@ public class ChunkFiller {
 		var src = StructureTemplate.transform(new BlockPos(ins.x0(), 0, ins.z0()), ins.mir(), ins.rot(), BlockPos.ZERO);
 
 		o = o.offset(Math.max(0, -dst.getX()), 0, Math.max(0, -dst.getZ())).subtract(src);
-		if (ins.id().startsWith("test")) {
-			DungeonInfinity.LOGGER.info("Start MerchantBlock Generation");
-		}
 		template.placeInWorld(level, o, o, settings, random, 18);
-		if (ins.id().startsWith("test")) {
-			DungeonInfinity.LOGGER.info("End MerchantBlock Generation");
-		}
 	}
 
 }
