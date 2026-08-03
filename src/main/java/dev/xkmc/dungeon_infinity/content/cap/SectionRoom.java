@@ -195,8 +195,8 @@ public class SectionRoom {
 				CellInterpreter.isQuadRoom(cell) ||
 				!CellInterpreter.isHallway(cell))) {
 			var origin = new Vec3(this.pos.origin());
-			var box = new AABB(origin.add(1, 1, 1), origin.add(15, 15, 15));
-			if (box.contains(sp.position().add(sp.getBbHeight() / 2))) {
+			var box = new AABB(origin.add(1.3, 1.3, 1.3), origin.add(14.7, 14.7, 14.7));
+			if (box.contains(sp.position().add(0, sp.getBbHeight() / 2, 0))) {
 				var ins = getOrCreateActiveMobRoomInstance();
 				ins.tick(sp);
 			}
