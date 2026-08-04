@@ -214,6 +214,13 @@ public class MazeHistory extends PlayerCapabilityTemplate<MazeHistory> {
 		this.radius = rad;
 	}
 
+	public void reset() {
+		data.clear();
+		finder = new RoomFinder();
+		radius = 1;
+		buff.buffs.clear();
+	}
+
 	@SerialClass
 	public static class Visit {
 
