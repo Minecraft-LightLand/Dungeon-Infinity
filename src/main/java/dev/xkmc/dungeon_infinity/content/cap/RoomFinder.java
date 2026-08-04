@@ -57,6 +57,10 @@ public class RoomFinder {
 	@SerialField
 	public @Nullable Type prevType = null;
 
+	public void sync(ServerPlayer sp) {
+		DungeonInfinity.HANDLER.toClientPlayer(new SyncFinderToClient(this), sp);
+	}
+
 	public void accumulate(ServerPlayer sp, int size) {
 		int points = 10;
 		int max = 3;
@@ -67,7 +71,7 @@ public class RoomFinder {
 		if (defeated >= points) {
 			defeated -= points;
 			finder++;
-			DungeonInfinity.HANDLER.toClientPlayer(new SyncFinderToClient(this), sp);
+			sync(sp);
 		}
 	}
 
@@ -78,7 +82,7 @@ public class RoomFinder {
 		MazeHistory.Visit visit = data.getOrCreate(pos);
 		if (findPathTo(sp, pos, room.getAccess(), visit, type, sp.getRandom())) {
 			if (!sp.isCreative()) finder--;
-			DungeonInfinity.HANDLER.toClientPlayer(new SyncFinderToClient(this), sp);
+			sync(sp);
 		}
 	}
 

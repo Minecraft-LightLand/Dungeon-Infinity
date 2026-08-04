@@ -55,4 +55,13 @@ public class LostAndFoundData extends PlayerCapabilityTemplate<LostAndFoundData>
 		}
 	}
 
+	public void release(ServerPlayer sp) {
+		for (var e : important)
+			sp.getInventory().placeItemBackInInventory(e);
+		for (var e : list)
+			sp.getInventory().placeItemBackInInventory(e);
+		important.clear();
+		list.clear();
+	}
+
 }

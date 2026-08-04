@@ -22,10 +22,25 @@ public class DICommandEventHandlers {
 	@SubscribeEvent
 	public static void register(RegisterCommandsEvent event) {
 		event.getDispatcher().register(literal("maze")
+				.then(literal("item")
+						.then(argument("player", EntityArgument.player())
+								.then(literal("release")
+										.executes(DICommandEventHandlers::releaseItems))
+								.then(literal("clear")
+										.executes(DICommandEventHandlers::clearItems))))
+				.then(literal("progress")
+						.then(argument("player", EntityArgument.player())
+								.then(literal("clear_all")
+										.executes(DICommandEventHandlers::clearProgress))
+								.then(literal("clear_visit")
+										.executes(DICommandEventHandlers::clearVisit))
+								.then(literal("add_finder")
+										.then(argument("count", IntegerArgumentType.integer(1))
+												.executes(DICommandEventHandlers::addFinder)))))
 				.then(literal("buff")
 						.then(argument("player", EntityArgument.player())
 								.then(literal("clear")
-										.executes(DICommandEventHandlers::clear))
+										.executes(DICommandEventHandlers::clearBuff))
 								.then(literal("add_small")
 										.then(argument("count", IntegerArgumentType.integer(1))
 												.executes(DICommandEventHandlers::addSmall)))
@@ -38,7 +53,55 @@ public class DICommandEventHandlers {
 						)));
 	}
 
-	private static int clear(CommandContext<CommandSourceStack> ctx) throws CommandSyntaxException {
+	private static int clearItems(CommandContext<CommandSourceStack> ctx) throws CommandSyntaxException {
+		EntitySelector sel = ctx.getArgument("player", EntitySelector.class);
+		ServerPlayer sp = sel.findSinglePlayer(ctx.getSource());
+		var data = DIMeta.LOST.type().getOrCreate(sp);
+		data.list.clear();
+		data.important.clear();
+		DIMeta.LOST.type().network.toClient(sp);
+		return 0;
+	}
+
+	private static int releaseItems(CommandContext<CommandSourceStack> ctx) throws CommandSyntaxException {
+		EntitySelector sel = ctx.getArgument("player", EntitySelector.class);
+		ServerPlayer sp = sel.findSinglePlayer(ctx.getSource());
+		var data = DIMeta.LOST.type().getOrCreate(sp);
+		data.release(sp);
+		DIMeta.LOST.type().network.toClient(sp);
+		return 0;
+	}
+
+	private static int clearVisit(CommandContext<CommandSourceStack> ctx) throws CommandSyntaxException {
+		EntitySelector sel = ctx.getArgument("player", EntitySelector.class);
+		ServerPlayer sp = sel.findSinglePlayer(ctx.getSource());
+		var data = DIMeta.HISTORY.type().getOrCreate(sp);
+		data.data.clear();
+		DIMeta.HISTORY.type().network.toClient(sp);
+		return 0;
+	}
+
+	private static int clearProgress(CommandContext<CommandSourceStack> ctx) throws CommandSyntaxException {
+		EntitySelector sel = ctx.getArgument("player", EntitySelector.class);
+		ServerPlayer sp = sel.findSinglePlayer(ctx.getSource());
+		var data = DIMeta.HISTORY.type().getOrCreate(sp);
+		data.reset();
+		DIMeta.HISTORY.type().network.toClient(sp);
+		clearItems(ctx);
+		return 0;
+	}
+
+	private static int addFinder(CommandContext<CommandSourceStack> ctx) throws CommandSyntaxException {
+		EntitySelector sel = ctx.getArgument("player", EntitySelector.class);
+		int count = ctx.getArgument("count", Integer.class);
+		ServerPlayer sp = sel.findSinglePlayer(ctx.getSource());
+		var data = DIMeta.HISTORY.type().getOrCreate(sp);
+		data.finder.finder += count;
+		data.finder.sync(sp);
+		return 0;
+	}
+
+	private static int clearBuff(CommandContext<CommandSourceStack> ctx) throws CommandSyntaxException {
 		EntitySelector sel = ctx.getArgument("player", EntitySelector.class);
 		ServerPlayer sp = sel.findSinglePlayer(ctx.getSource());
 		var data = DIMeta.HISTORY.type().getOrCreate(sp);
