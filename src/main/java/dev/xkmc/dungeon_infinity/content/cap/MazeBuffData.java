@@ -49,8 +49,6 @@ public class MazeBuffData {
 			MazeBuff.get(e.getKey()).onUpdate(sp, 0);
 		}
 		sp.removeAllEffects();
-		//buffs.clear();
-		//sync(sp); TODO
 	}
 
 	public void sync(ServerPlayer sp) {

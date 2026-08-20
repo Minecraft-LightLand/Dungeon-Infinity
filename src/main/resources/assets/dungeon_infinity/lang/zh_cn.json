@@ -156,5 +156,6 @@
   "trial.dungeon_infinity.stone.room.large": "地牢·巨像",
   "trial.dungeon_infinity.stone.room.mixed": "地牢·军团",
   "trial.dungeon_infinity.stone.room.ranged": "地牢·射手",
-  "trial.dungeon_infinity.stone.room.rider": "地牢·骑兵"
+  "trial.dungeon_infinity.stone.room.rider": "地牢·骑兵",
+  "dungeon_infinity.tooltip.access_pos": "绑定至迷宫坐标 (%s,%s,%s)"
 }

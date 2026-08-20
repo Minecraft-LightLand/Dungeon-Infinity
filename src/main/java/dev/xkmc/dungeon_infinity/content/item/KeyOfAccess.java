@@ -45,16 +45,19 @@ public class KeyOfAccess extends Item {
 			return InteractionResult.SUCCESS;
 		}
 
-		if (!(level instanceof ServerLevel sl))
+		if (!(player instanceof ServerPlayer sp))
 			return InteractionResult.SUCCESS;
+		var sl = sp.level();
 		ItemStack stack = player.getItemInHand(hand);
 		var target = sl.getServer().getLevel(ResourceKey.create(Registries.DIMENSION, DIDimensionGen.LEVEL_MAZE.identifier()));
 		if (target == null) return InteractionResult.FAIL;
 		var pos = DIItems.POS.get(stack);
+		var data = DIMeta.HISTORY.type().getOrCreate(sp);
 		if (pos == null) {
 			var r = player.getRandom();
-			int x = (int) Math.round(r.nextGaussian() * 2);
-			int z = (int) Math.round(r.nextGaussian() * 2);
+			int scale = data.entryMade + 1;
+			int x = (int) Math.round((r.nextFloat() * 2 - 1) * Math.pow(scale, 0.7));
+			int z = (int) Math.round((r.nextFloat() * 2 - 1) * Math.pow(scale, 0.7));
 			if (target.getChunkSource().getGenerator() instanceof MazeChunkGenerator gen) {
 				var dim = gen.getMaze(target.getChunkSource().randomState());
 				var maze = dim.getRegion(x, 15, z);
@@ -79,17 +82,16 @@ public class KeyOfAccess extends Item {
 			DIItems.POS.set(stack, pos);
 		}
 		var vec = pos.getCenter();
-		if (player instanceof ServerPlayer sp) {
-			MazeHistory.markEntry(sp);
-			performTeleport(player, target, vec.x, vec.y, vec.z);
-			var mp = MazePos.map(sp.blockPosition());
-			var data = DIMeta.HISTORY.type().getOrCreate(sp);
-			var ent = data.getOrCreate(mp);
-			if (mp.y() == 15 && ent.getVisible() == 0) {
-				data.buff.largeBuff++;
-				data.buff.rerollChance += 3;
-				data.buff.sync(sp);
-			}
+
+		MazeHistory.markEntry(sp);
+		performTeleport(player, target, vec.x, vec.y, vec.z);
+		var mp = MazePos.map(sp.blockPosition());
+		var ent = data.getOrCreate(mp);
+		if (mp.y() == 15 && ent.getVisible() == 0) {
+			data.buff.buffs.clear();
+			data.buff.largeBuff++;
+			data.buff.rerollChance += 3;
+			data.buff.sync(sp);
 		}
 		player.getCooldowns().addCooldown(stack, 20);
 		return InteractionResult.SUCCESS;
@@ -108,8 +110,12 @@ public class KeyOfAccess extends Item {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack itemStack, TooltipContext context, TooltipDisplay display, Consumer<Component> builder, TooltipFlag tooltipFlag) {
+	public void appendHoverText(ItemStack stack, TooltipContext context, TooltipDisplay display, Consumer<Component> builder, TooltipFlag tooltipFlag) {
 		builder.accept(DILang.ACCESS.get());
+		var pos = DIItems.POS.get(stack);
+		if (pos != null) {
+			builder.accept(DILang.ACCESS_POS.get(pos.getX(), pos.getY(), pos.getZ()));
+		}
 	}
 
 }

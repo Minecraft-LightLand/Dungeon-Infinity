@@ -63,7 +63,7 @@ public class MazeHistory extends PlayerCapabilityTemplate<MazeHistory> {
 	public @Nullable BlockPos activeMobRoom = null;
 
 	@SerialField
-	public int radius = 1;
+	public int radius = 1, entryMade = 0;
 
 	@SerialField
 	@Nullable
