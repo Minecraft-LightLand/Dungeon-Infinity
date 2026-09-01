@@ -78,6 +78,10 @@ public class MazeHistory extends PlayerCapabilityTemplate<MazeHistory> {
 	public RespawnData prevHome;
 
 	@SerialField
+	@Nullable
+	public BlockPos lastWaypoint;
+
+	@SerialField
 	public MazeBuffData buff = new MazeBuffData();
 
 	public static boolean inMazeDim(LivingEntity e) {

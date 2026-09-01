@@ -1,5 +1,6 @@
 package dev.xkmc.dungeon_infinity.init.reg;
 
+import com.tterrag.registrate.util.DataIngredient;
 import com.tterrag.registrate.util.entry.BlockEntityEntry;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.entry.ItemEntry;
@@ -21,11 +22,14 @@ import dev.xkmc.l2core.init.reg.simple.DCReg;
 import dev.xkmc.l2core.init.reg.simple.DCVal;
 import dev.xkmc.l2modularblock.core.BlockTemplates;
 import dev.xkmc.l2modularblock.core.DelegateBlock;
+import dev.xkmc.modulargolems.init.registrate.GolemItems;
 import net.minecraft.client.data.models.model.TexturedModel;
 import net.minecraft.core.BlockPos;
+import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
@@ -92,7 +96,7 @@ public class DIItems {
 
 		MERCHANT_BLOCK = DungeonInfinity.REGISTRATE.block("merchant_block", p ->
 						DelegateBlock.newBaseBlock(p.noLootTable(), new MerchantBlock(), MerchantBlock.TE))
-				.blockstate(()->(ctx,pvd)->
+				.blockstate(() -> (ctx, pvd) ->
 						pvd.createTrivialBlock(ctx.get(), TexturedModel.CUBE_TOP_BOTTOM))
 				.simpleItem()
 				.tag(BlockTags.MINEABLE_WITH_PICKAXE)
@@ -123,7 +127,16 @@ public class DIItems {
 
 		KEY_OF_ACCESS = DungeonInfinity.REGISTRATE.item("key_of_access", KeyOfAccess::new)
 				.tag(DITagGen.ALWAYS_KEEP)
-				.defaultModel().register();
+				.defaultModel()
+				.recipe((ctx, pvd) ->
+						pvd.shaped(RecipeCategory.MISC, ctx.get())
+								.unlockedBy("has_" + ctx.getName(), DataIngredient.items(ctx.get()).getCriterion(pvd))
+								.pattern("C C").pattern("ABA").pattern("C C")
+								.define('C', Items.COPPER_INGOT)
+								.define('B', Items.COMPASS)
+								.define('A', GolemItems.GOLEM_TEMPLATE)
+								.save(pvd)
+				).register();
 
 	}
 

@@ -47,6 +47,7 @@ public class RespawnAnchorHelper {
 			data.prevHome = MazeHistory.RespawnData.of(config);
 		} else {
 			var pos = config.respawnData().pos();
+			data.lastWaypoint = pos;
 			var mp = MazePos.map(pos);
 			var pmp = MazePos.map(sp.blockPosition());
 			if (mp.key() == pmp.key()) {

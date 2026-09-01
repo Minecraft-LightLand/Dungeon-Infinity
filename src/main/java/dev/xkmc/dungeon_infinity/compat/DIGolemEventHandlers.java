@@ -12,6 +12,9 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.shapes.Shapes;
+import net.minecraft.world.phys.shapes.VoxelShape;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -80,8 +83,11 @@ public class DIGolemEventHandlers {
 					} else root = g;
 					if (root != null) {
 						var r = pl.getRandom();
-						var pos = center.getCenter().add(r.nextFloat() * 2 - 1, 0, r.nextFloat() * 2 - 1);
-						root.teleportTo(pos.x, pos.y, pos.z);
+						var pos = center.getCenter().add(r.nextFloat() * 2 - 1, root.getBbHeight() / 2, r.nextFloat() * 2 - 1);
+						VoxelShape allowedCenters = Shapes.create(AABB.ofSize(pos, root.getBbWidth(), root.getBbHeight(), root.getBbWidth()));
+						var opt = pl.level().findFreePosition(root, allowedCenters, pos, root.getBbWidth(), root.getBbHeight(), root.getBbWidth());
+						if (opt.isPresent()) pos = opt.get();
+						root.teleportTo(pos.x, pos.y - root.getBbHeight() / 2, pos.z);
 					}
 				}
 			}
