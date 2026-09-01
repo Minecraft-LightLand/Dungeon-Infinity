@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": "modulargolems:metal_golem_template",
+    "B": "minecraft:compass",
+    "C": "minecraft:copper_ingot"
+  },
+  "pattern": [
+    "C C",
+    "ABA",
+    "C C"
+  ],
+  "result": {
+    "id": "dungeon_infinity:key_of_access"
+  }
+}

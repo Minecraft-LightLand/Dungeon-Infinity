@@ -78,12 +78,18 @@ public class KeyOfAccess extends Item {
 			} else pos = new BlockPos(200 + x * 400, 244, 200 + z * 400);
 			DIItems.POS.set(stack, pos);
 		}
-		var vec = pos.getCenter();
 		if (player instanceof ServerPlayer sp) {
 			MazeHistory.markEntry(sp);
-			performTeleport(player, target, vec.x, vec.y, vec.z);
-			var mp = MazePos.map(sp.blockPosition());
 			var data = DIMeta.HISTORY.type().getOrCreate(sp);
+			var mp = MazePos.map(pos);
+			if (data.lastWaypoint != null) {
+				var prev = MazePos.map(data.lastWaypoint);
+				if (mp.x() == prev.x() && mp.z() == prev.z()) {
+					pos = data.lastWaypoint;
+				}
+			}
+			var vec = pos.getCenter();
+			performTeleport(player, target, vec.x, vec.y, vec.z);
 			var ent = data.getOrCreate(mp);
 			if (mp.y() == 15 && ent.getVisible() == 0) {
 				data.buff.largeBuff++;
@@ -91,7 +97,7 @@ public class KeyOfAccess extends Item {
 				data.buff.sync(sp);
 			}
 		}
-		player.getCooldowns().addCooldown(stack, 20);
+		player.getCooldowns().addCooldown(stack, 100);
 		return InteractionResult.SUCCESS;
 	}
 
@@ -108,8 +114,12 @@ public class KeyOfAccess extends Item {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack itemStack, TooltipContext context, TooltipDisplay display, Consumer<Component> builder, TooltipFlag tooltipFlag) {
+	public void appendHoverText(ItemStack stack, TooltipContext context, TooltipDisplay display, Consumer<Component> builder, TooltipFlag tooltipFlag) {
 		builder.accept(DILang.ACCESS.get());
+		var pos = DIItems.POS.get(stack);
+		if (pos != null) {
+			builder.accept(DILang.ACCESS_POS.get(pos.getX(), pos.getY(), pos.getZ()));
+		}
 	}
 
 }
