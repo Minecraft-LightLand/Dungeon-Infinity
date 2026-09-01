@@ -17,6 +17,7 @@ public enum DILang {
 	TOMB("tooltip.tomb", "Retrieve up to 9 items from previous death in the maze", 0, ChatFormatting.GRAY),
 	TOMB_ITEM_COUNT("tooltip.tomb_item_count", "You have %s items to be retrieved", 1, ChatFormatting.GRAY),
 	ACCESS("tooltip.access", "Teleport into or out of the maze", 0, ChatFormatting.GRAY),
+	ACCESS_POS("tooltip.access_pos", "Bound to (%s,%s,%s) in maze", 3, ChatFormatting.GRAY),
 	MAP("tooltip.map", "Right click to open map. Click on Respawn Anchor to teleport to other Anchors", 0, ChatFormatting.GRAY),
 	WAYPOINT("tooltip.waypoint", "Teleport", 0, null),
 

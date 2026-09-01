@@ -114,8 +114,12 @@ public class KeyOfAccess extends Item {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack itemStack, TooltipContext context, TooltipDisplay display, Consumer<Component> builder, TooltipFlag tooltipFlag) {
+	public void appendHoverText(ItemStack stack, TooltipContext context, TooltipDisplay display, Consumer<Component> builder, TooltipFlag tooltipFlag) {
 		builder.accept(DILang.ACCESS.get());
+		var pos = DIItems.POS.get(stack);
+		if (pos != null) {
+			builder.accept(DILang.ACCESS_POS.get(pos.getX(), pos.getY(), pos.getZ()));
+		}
 	}
 
 }
