@@ -3,10 +3,11 @@ package dev.xkmc.dungeon_infinity.events;
 import dev.xkmc.dungeon_infinity.content.cap.MazeHistory;
 import dev.xkmc.dungeon_infinity.content.item.MazeMapItem;
 import dev.xkmc.dungeon_infinity.init.DungeonInfinity;
-import dev.xkmc.dungeon_infinity.init.data.DITagGen;
 import dev.xkmc.dungeon_infinity.init.data.DIDimensionGen;
+import dev.xkmc.dungeon_infinity.init.data.DITagGen;
 import dev.xkmc.dungeon_infinity.init.reg.DIItems;
 import dev.xkmc.dungeon_infinity.init.reg.DIMeta;
+import dev.xkmc.dungeon_infinity.util.RespawnAnchorHelper;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
@@ -17,11 +18,18 @@ import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.LivingDropsEvent;
+import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.tick.LevelTickEvent;
 
 @EventBusSubscriber(modid = DungeonInfinity.MODID)
 public class DIEventHandlers {
+
+	@SubscribeEvent
+	public static void respawnEvent(PlayerEvent.PlayerRespawnEvent event) {
+		if (event.getEntity() instanceof ServerPlayer sp && MazeHistory.inMazeDim(sp) && !event.isEndConquered())
+			RespawnAnchorHelper.recharge(sp);
+	}
 
 	@SubscribeEvent
 	public static void levelTick(LevelTickEvent.Post event) {
